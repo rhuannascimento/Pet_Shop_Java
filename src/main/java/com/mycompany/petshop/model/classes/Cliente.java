@@ -11,6 +11,11 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public Cliente(String nome) {
+        this.animais = new ArrayList<Animal>();
+        this.nome = nome;
+    }
+
     public ArrayList<Animal> getAnimais() {
         return animais;
     }
@@ -18,9 +23,13 @@ public class Cliente {
     public void listAnimais(){
       System.out.println("Animais de "+this.nome);
       for(Animal animal : animais){
-        System.out.println(" - " + a.getNome());
+        System.out.println(" - " + animal.getNome());
       }
       System.out.println("\n");
+    }
+
+    public void addAnimal(Animal animal){
+      animais.add(animal);
     }
 
     public void setAnimais(ArrayList<Animal> animais) {
