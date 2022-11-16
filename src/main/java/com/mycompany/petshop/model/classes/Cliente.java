@@ -17,7 +17,7 @@ public class Cliente {
 
     public void listAnimais(){
       System.out.println("Animais de "+this.nome);
-      animais.forEach(Animal a){
+      for(Animal animal : animais){
         System.out.println(" - " + a.getNome());
       }
       System.out.println("\n");
