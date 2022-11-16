@@ -15,6 +15,14 @@ public class Cliente {
         return animais;
     }
 
+    public void listAnimais(){
+      System.out.println("Animais de "+this.nome);
+      animais.forEach(Animal a){
+        System.out.println(" - " + a.getNome());
+      }
+      System.out.println("\n");
+    }
+
     public void setAnimais(ArrayList<Animal> animais) {
         this.animais = animais;
     }
