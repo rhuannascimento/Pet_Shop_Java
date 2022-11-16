@@ -12,6 +12,13 @@ package com.mycompany.petshop;
 public class PETSHOP {
 
     public static void main(String[] args) {
-        
+        Cliente cliente = new Cliente("José");
+
+        Animal gato = new Animal("Gatinho");
+        Animal cachorro = new Animal("Doguinho");
+
+        cliente.addAnimal(gato);
+        cliente.addAnimal(cachorro);
+
     }
 }
