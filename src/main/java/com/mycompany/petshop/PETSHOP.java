@@ -5,6 +5,9 @@
 
 package com.mycompany.petshop;
 
+import com.mycompany.petshop.model.classes.Cliente;
+import com.mycompany.petshop.model.classes.Animal;
+
 /**
  *
  * @author Rhuan
@@ -19,6 +22,9 @@ public class PETSHOP {
 
         cliente.addAnimal(gato);
         cliente.addAnimal(cachorro);
+
+        cliente.listAnimais();
+
 
     }
 }
