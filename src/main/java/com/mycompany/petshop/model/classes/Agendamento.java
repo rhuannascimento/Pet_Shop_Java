@@ -16,6 +16,12 @@ public class Agendamento {
         this.animal = animal;
         this.servico = servico;
     }
+    public Agendamento(LocalDateTime data_hora, Animal animal, Servico servico) {
+        this.id = id;
+        this.data_hora = data_hora;
+        this.animal = animal;
+        this.servico = servico;
+    }
 
     public LocalDateTime getData_hora() {
         return data_hora;
