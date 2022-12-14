@@ -1,4 +1,4 @@
-# Pet_Shop_Java
+# Pet Shop - Gato Feliz
 
 Trabalho em grupo da matéria de Orientação a Objeto.
 
