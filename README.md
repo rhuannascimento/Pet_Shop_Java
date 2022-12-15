@@ -10,7 +10,8 @@ Gestão do projeto: https://trello.com/b/2HzWGQDL/pet-shop-java
   <img src="./Architeture.png" width="250" title="Arquitetura">
 </p>
 
-
+O Desenvolvimento do projeto tem uma ordem baseada na arquitetura: Primeiro será feito o model, e depois o business (O repository não é necessário para que o business exista), posteriormente o controller e, enfim, o view.
+A dependência de cada classe específica está detalhada no trello.
 
 ### Repository:
 As classes Repository são as responsáveis por trazer os dados à aplicação, seja de arquivos, banco de dados ou API's, e persisti-los, em caso de mudança.
