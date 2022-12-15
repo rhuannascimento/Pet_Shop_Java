@@ -30,3 +30,14 @@ Os controllers serão responsáveis por fazer a interface entre as classes view 
 ##### View:
 Esse pacote é responsável por exibir informações de forma gráfica e interagir com o usuário.
 
+## Orientações para o desenvolvimento:
+Ao assumir uma tarefa, crie uma branch (à partir da master) para atuar exclusivamente nela; se for para outra tarefa, utilizar outra branch.
+
+Para padronização, utilizaremos a seguinte regra para o nome das branches: "Pacote"/"Classe", exemplo: "repository/cliente".
+
+Os commits devem ter os seguintes prefixos (conventional commits): 
+ - "feat: " para novas implementações; 
+ - "BREAKING: " para alterações muito importantes;
+ - "fix: " para correções;
+ - "refactor: " para refatorações;
+ - "chore: " para tarefas genéricas não enquadrada nas superiores
