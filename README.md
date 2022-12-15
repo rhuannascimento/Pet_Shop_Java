@@ -2,7 +2,7 @@
 
 Trabalho em grupo da matéria de Orientação a Objeto.
 
-Gestão do projeto: shorturl.at/rHSUY
+Gestão do projeto: https://trello.com/b/2HzWGQDL/pet-shop-java
 
 ## Arquitetura:
 
