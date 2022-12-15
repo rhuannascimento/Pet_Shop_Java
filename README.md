@@ -33,7 +33,8 @@ Esse pacote é responsável por exibir informações de forma gráfica e interag
 ## Orientações para o desenvolvimento:
 Ao assumir uma tarefa, crie uma branch (à partir da master) para atuar exclusivamente nela; se for para outra tarefa, utilizar outra branch.
 
-Para padronização, utilizaremos a seguinte regra para o nome das branches: "Pacote"/"Classe", exemplo: "repository/cliente".
+Para padronização, utilizaremos a seguinte regra para o nome das branches: "'pacote'/'classe'", exemplo: "repository/cliente".
+Os pull-requests devem seguir um padrão semelhante: "'Pacote': 'Classe'".
 
 Os commits devem ter os seguintes prefixos (conventional commits): 
  - "feat: " para novas implementações; 
