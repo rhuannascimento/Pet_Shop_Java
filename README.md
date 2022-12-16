@@ -30,6 +30,17 @@ Os controllers serão responsáveis por fazer a interface entre as classes view 
 ##### View:
 Esse pacote é responsável por exibir informações de forma gráfica e interagir com o usuário.
 
+## Organização das classes do model:
+
+<p align="center">
+  <img src="./classes.png" width="500" title="Classes">
+</p>
+
+A imagem acima define a organização e a hieraraquia das classes a serem seguidas.
+As classes de cima devem ser feitas antes das de baixo, já que há dependência entre elas.
+
+As classes business serão responsáveis por tratar cada tipo de classe do model, com base em sua identificação.
+
 ## Orientações para o desenvolvimento:
 Ao assumir uma tarefa, crie uma branch (à partir da master) para atuar exclusivamente nela; se for para outra tarefa, utilizar outra branch.
 
