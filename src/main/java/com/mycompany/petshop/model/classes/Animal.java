@@ -1,35 +1,21 @@
 package com.mycompany.petshop.model.classes;
 
-public class Animal {
-    private int id;
-    private Cliente cliente;
-    private String nome;
+public class Animal extends Cliente {
+    private String especie;
 
-    public Animal(int id, Cliente cliente, String nome) {
-        this.id = id;
-        this.cliente = cliente;
-        this.nome = nome;
+    public Animal() {
     }
 
-    public Animal(Cliente cliente, String nome) {
-        this.cliente = cliente;
-        this.nome = nome;
+    public Animal(int id, String nome, String cpf, String tipo) {
+        super(id, nome, cpf, "animal");
     }
 
-    public Animal(String nome) {
-        this.nome = nome;
+    public String getEspecie() {
+        return this.especie;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    public int getId() {
-        return id;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
-    public String getNome() {
-        return nome;
-    }
-  
 }
