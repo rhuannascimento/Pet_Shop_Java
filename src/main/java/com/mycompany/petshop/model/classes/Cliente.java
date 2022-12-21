@@ -1,48 +1,51 @@
 package com.mycompany.petshop.model.classes;
 
-import java.util.ArrayList;
-
 public class Cliente {
-  private ArrayList<Animal> animais;
+  private int id;
   private String nome;
+  private String cpf;
+  private String tipo;
 
-    public Cliente(ArrayList<Animal> animais, String nome) {
-        this.animais = animais;
-        this.nome = nome;
-    }
+  public Cliente() {
+  }
 
-    public Cliente(String nome) {
-        this.animais = new ArrayList<Animal>();
-        this.nome = nome;
-    }
+  public Cliente(int id, String nome, String cpf, String tipo) {
+    this.id = id;
+    this.nome = nome;
+    this.cpf = cpf;
+    this.tipo = tipo;
+  }
 
-    public ArrayList<Animal> getAnimais() {
-        return animais;
-    }
+  public int getId() {
+    return this.id;
+  }
 
-    public void listAnimais(){
-      System.out.println("Animais de "+this.nome);
-      for(Animal animal : animais){
-        System.out.println(" - " + animal.getNome());
-      }
-      System.out.println("\n");
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void addAnimal(Animal animal){
-      animais.add(animal);
-    }
+  public String getNome() {
+    return this.nome;
+  }
 
-    public void setAnimais(ArrayList<Animal> animais) {
-        this.animais = animais;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public String getCpf() {
+    return this.cpf;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-  
-  
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
+
+  public String getTipo() {
+    return this.tipo;
+  }
+
+  public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
+
 }
