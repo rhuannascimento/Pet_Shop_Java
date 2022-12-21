@@ -6,8 +6,9 @@ public class Animal extends Cliente {
     public Animal() {
     }
 
-    public Animal(int id, String nome, String cpf, String tipo) {
+    public Animal(int id, String nome, String cpf, String tipo, String especie) {
         super(id, nome, cpf, "animal");
+        this.especie = especie;
     }
 
     public String getEspecie() {
