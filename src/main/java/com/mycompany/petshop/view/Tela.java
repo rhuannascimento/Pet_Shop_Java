@@ -1,51 +1,92 @@
 package com.mycompany.petshop.view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Tela extends JFrame {
 
-    private JPanel telaInicial;
+    private JPanel painelPrincipal;
+    private JPanel painelHome;
+    private JPanel painelFuncionarios;
+    private JPanel painelClientes;
+    private JPanel painelItens;
 
     public Tela() {
         super("Pet Shop");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void renderiza() {
-        this.setSize(700, 400);
 
-        this.telaInicial = new JPanel();
+        painelPrincipal = new JPanel();
+        painelPrincipal.setLayout(new CardLayout());
 
-        this.telaInicial.setLayout(new BorderLayout());
+        // Cria páginas para cada classe
+        painelHome = new JPanel();
+        painelHome.add(new JLabel("Home"));
+        painelPrincipal.add(painelHome, "Home");
 
-        desenhaTelaInicial();
+        painelFuncionarios = new JPanel();
+        painelFuncionarios.add(new JLabel("Funcionários"));
+        painelPrincipal.add(painelFuncionarios, "Funcionários");
 
-        this.add(this.telaInicial);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        painelClientes = new JPanel();
+        painelClientes.add(new JLabel("Clientes"));
+        painelPrincipal.add(painelClientes, "Clientes");
 
-        this.setVisible(true);
+        painelItens = new JPanel();
+        painelItens.add(new JLabel("Itens"));
+        painelPrincipal.add(painelItens, "Itens");
 
-        this.repaint();
-    }
-
-    public void desenhaTelaInicial() {
+        // Barra de botões
         JPanel barraBotoes = new JPanel();
-        JButton clientes = new JButton("Clientes");
-        JButton itens = new JButton("Itens");
-        JButton funcionarios = new JButton("Funcionários");
 
-        clientes.setPreferredSize(new Dimension(120, 25));
-        itens.setPreferredSize(new Dimension(120, 25));
-        funcionarios.setPreferredSize(new Dimension(120, 25));
+        JButton botaoHome = new JButton("Home");
+        barraBotoes.add(botaoHome);
 
-        barraBotoes.add(funcionarios);
-        barraBotoes.add(clientes);
-        barraBotoes.add(itens);
+        JButton botaoFuncionarios = new JButton("Funcionários");
+        barraBotoes.add(botaoFuncionarios);
 
-        telaInicial.add(barraBotoes, BorderLayout.SOUTH);
+        JButton botaoClientes = new JButton("Clientes");
+        barraBotoes.add(botaoClientes);
+
+        JButton botaoItens = new JButton("Itens");
+        barraBotoes.add(botaoItens);
+
+        // Tamanho dos botões
+        botaoHome.setPreferredSize(new Dimension(120, 25));
+        botaoFuncionarios.setPreferredSize(new Dimension(120, 25));
+        botaoClientes.setPreferredSize(new Dimension(120, 25));
+        botaoItens.setPreferredSize(new Dimension(120, 25));
+
+        // Troca de página quando clica nos botões
+        botaoHome.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Home");
+        });
+        botaoFuncionarios.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Funcionários");
+        });
+        botaoClientes.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Clientes");
+        });
+        botaoItens.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Itens");
+        });
+
+        add(painelPrincipal, BorderLayout.CENTER);
+
+        add(barraBotoes, BorderLayout.SOUTH);
+
+        this.setSize(700, 400);
+        setVisible(true);
     }
-
 }
