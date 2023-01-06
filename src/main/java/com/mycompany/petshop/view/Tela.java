@@ -16,8 +16,10 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -81,6 +83,12 @@ public class Tela extends JFrame {
         painelFuncionarios = new JPanel();
         painelFuncionarios.add(new JLabel("Funcionários"));
         painelPrincipal.add(painelFuncionarios, "Funcionários");
+
+        JButton newFuncButton = new JButton("Cadastrar funcionário");
+        painelFuncionarios.add(newFuncButton);
+        newFuncButton.addActionListener(e -> {
+            cadastrarFuncionario();
+        });
     }
 
     public void desenhaPaginaClientes() {
@@ -155,25 +163,22 @@ public class Tela extends JFrame {
     }
 
     public JPanel desenhaAgenda() {
-        JPanel agenda = new JPanel();
+        JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Serviço", "Horário" }, 0);
-        JTable tabelaAgendamentos = new JTable(tableModel);
+        ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        agendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        JList<Agendamento> list = new JList<>(agendamentos.toArray(new Agendamento[0]));
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
-        }
-        agenda.add(tabelaAgendamentos);
+        agenda.add(list);
 
         JButton agendarButton = new JButton("Novo Agendamento");
-        agenda.add(agendarButton);
+
+        agenda.add(agendarButton, BorderLayout.SOUTH);
+
         agendarButton.addActionListener(e -> {
             criarAgendamento();
         });
@@ -187,8 +192,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+        c.insets = new Insets(3, 3, 3, 3);
+        c.fill = GridBagConstraints.HORIZONTAL;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -227,6 +232,57 @@ public class Tela extends JFrame {
         c.gridy = 7;
         JComboBox horario = new JComboBox();
         painel.add(horario, c);
+
+        JButton agendar = new JButton("Agendar");
+        JButton cancelar = new JButton("Cancelar");
+
+        cancelar.addActionListener(e -> {
+            frame.dispose();
+        });
+        painel.add(agendar);
+        painel.add(cancelar);
+
+        frame.add(painel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+    }
+
+    public void cadastrarFuncionario() {
+
+        JFrame frame = new JFrame("Cadastrar funcionário");
+        JPanel painel = new JPanel();
+        painel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.insets = new Insets(3, 3, 3, 3);
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 0;
+        c.gridy = 0;
+        painel.add(new JLabel("Nome"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        JTextField nome = new JTextField();
+        painel.add(nome, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        painel.add(new JLabel("ID"), c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        JTextField id = new JTextField();
+        painel.add(id, c);
+
+        JButton cadastrar = new JButton("Cadastrar");
+        JButton cancelar = new JButton("Cancelar");
+
+        cancelar.addActionListener(e -> {
+            frame.dispose();
+        });
+        painel.add(cadastrar);
+        painel.add(cancelar);
 
         frame.add(painel);
         frame.setSize(300, 300);
