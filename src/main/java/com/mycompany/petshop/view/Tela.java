@@ -3,11 +3,19 @@ package com.mycompany.petshop.view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JTextField;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 public class Tela extends JFrame {
 
@@ -54,15 +62,19 @@ public class Tela extends JFrame {
         painelHome.add(splitPane, BorderLayout.CENTER);
 
         JPanel agenda = new JPanel();
-        agenda.add(new JLabel("Agenda"));
+        agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
         JButton agendarButton = new JButton("Novo Agendamento");
-        agenda.add(agendarButton, BorderLayout.SOUTH);
+        agenda.add(agendarButton);
+        agendarButton.addActionListener(e -> {
+            criarAgendamento();
+        });
 
         JPanel pendencias = new JPanel();
-        pendencias.add(new JLabel("Pendências"));
+        pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
 
         splitPane.setLeftComponent(agenda);
         splitPane.setRightComponent(pendencias);
+
         painelPrincipal.add(painelHome, "Home");
     }
 
@@ -142,4 +154,70 @@ public class Tela extends JFrame {
 
         add(barraBotoes, BorderLayout.SOUTH);
     }
+
+    public void criarAgendamento() {
+        JFrame frame = new JFrame("Novo agendamento");
+        JPanel painel = new JPanel();
+        painel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+
+        c.gridx = 0;
+        c.gridy = 0;
+        painel.add(new JLabel("Nome"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        JComboBox nome = new JComboBox();
+        painel.add(nome, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        painel.add(new JLabel("Serviço"), c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        JComboBox servico = new JComboBox();
+        painel.add(servico, c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        painel.add(new JLabel("Data"), c);
+
+        c.gridx = 0;
+        c.gridy = 5;
+        JDateChooser data = new JDateChooser();
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
+        editor.setEditable(false);
+        painel.add(data, c);
+
+        c.gridx = 0;
+        c.gridy = 6;
+        painel.add(new JLabel("Horário"), c);
+
+        c.gridx = 0;
+        c.gridy = 7;
+        JComboBox horario = new JComboBox();
+        painel.add(horario, c);
+
+        frame.add(painel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+    }
 }
+
+/*
+ * agendarButton.addActionListener(new ActionListener() {
+ * 
+ * @Override
+ * public void actionPerformed(ActionEvent e) {
+ * 
+ * JFrame frame = new JFrame("Novo Frame");
+ * frame.add(new JLabel("Olá, mundo!"));
+ * frame.setSize(300, 300);
+ * frame.setVisible(true);
+ * }
+ * });
+ */
