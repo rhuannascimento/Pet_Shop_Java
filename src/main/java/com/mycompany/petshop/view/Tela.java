@@ -16,6 +16,10 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.List;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Tela extends JFrame {
 
@@ -61,13 +65,8 @@ public class Tela extends JFrame {
 
         painelHome.add(splitPane, BorderLayout.CENTER);
 
-        JPanel agenda = new JPanel();
-        agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
-        JButton agendarButton = new JButton("Novo Agendamento");
-        agenda.add(agendarButton);
-        agendarButton.addActionListener(e -> {
-            criarAgendamento();
-        });
+        // Agenda
+        JPanel agenda = desenhaAgenda();
 
         JPanel pendencias = new JPanel();
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
@@ -155,6 +154,33 @@ public class Tela extends JFrame {
         add(barraBotoes, BorderLayout.SOUTH);
     }
 
+    public JPanel desenhaAgenda() {
+        JPanel agenda = new JPanel();
+        agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Serviço", "Horário" }, 0);
+        JTable tabelaAgendamentos = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+        }
+        agenda.add(tabelaAgendamentos);
+
+        JButton agendarButton = new JButton("Novo Agendamento");
+        agenda.add(agendarButton);
+        agendarButton.addActionListener(e -> {
+            criarAgendamento();
+        });
+
+        return agenda;
+    }
+
     public void criarAgendamento() {
         JFrame frame = new JFrame("Novo agendamento");
         JPanel painel = new JPanel();
@@ -207,17 +233,3 @@ public class Tela extends JFrame {
         frame.setVisible(true);
     }
 }
-
-/*
- * agendarButton.addActionListener(new ActionListener() {
- * 
- * @Override
- * public void actionPerformed(ActionEvent e) {
- * 
- * JFrame frame = new JFrame("Novo Frame");
- * frame.add(new JLabel("Olá, mundo!"));
- * frame.setSize(300, 300);
- * frame.setVisible(true);
- * }
- * });
- */
