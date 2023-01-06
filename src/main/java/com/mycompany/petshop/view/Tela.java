@@ -1,4 +1,4 @@
-package com.mycompany.petshop.view;
+package com.mycompany.teste;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 public class Tela extends JFrame {
 
@@ -14,7 +15,8 @@ public class Tela extends JFrame {
     private JPanel painelHome;
     private JPanel painelFuncionarios;
     private JPanel painelClientes;
-    private JPanel painelItens;
+    private JPanel painelServicos;
+    private JPanel painelMercadorias;
 
     public Tela() {
         super("Pet Shop");
@@ -26,9 +28,26 @@ public class Tela extends JFrame {
         painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new CardLayout());
 
-        // Cria páginas para cada classe
+        //Cria páginas para cada classe
+        //Página inicial       
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        splitPane.setDividerLocation(420);
+        splitPane.setResizeWeight(0);
+        splitPane.setEnabled(false);
+        splitPane.setPreferredSize(new Dimension(700, 400));
+
         painelHome = new JPanel();
-        painelHome.add(new JLabel("Home"));
+
+        painelHome.add(splitPane, BorderLayout.CENTER);
+
+        JPanel agenda = new JPanel();
+        agenda.add(new JLabel("Agenda"));
+
+        JPanel pendencias = new JPanel();
+        pendencias.add(new JLabel("Pendências"));
+
+        splitPane.setLeftComponent(agenda);
+        splitPane.setRightComponent(pendencias);
         painelPrincipal.add(painelHome, "Home");
 
         painelFuncionarios = new JPanel();
@@ -39,11 +58,15 @@ public class Tela extends JFrame {
         painelClientes.add(new JLabel("Clientes"));
         painelPrincipal.add(painelClientes, "Clientes");
 
-        painelItens = new JPanel();
-        painelItens.add(new JLabel("Itens"));
-        painelPrincipal.add(painelItens, "Itens");
+        painelServicos = new JPanel();
+        painelServicos.add(new JLabel("Serviços"));
+        painelPrincipal.add(painelServicos, "Serviços");
 
-        // Barra de botões
+        painelMercadorias = new JPanel();
+        painelMercadorias.add(new JLabel("Mercadorias"));
+        painelPrincipal.add(painelMercadorias, "Mercadorias");
+
+        //Barra de botões
         JPanel barraBotoes = new JPanel();
 
         JButton botaoHome = new JButton("Home");
@@ -55,38 +78,56 @@ public class Tela extends JFrame {
         JButton botaoClientes = new JButton("Clientes");
         barraBotoes.add(botaoClientes);
 
-        JButton botaoItens = new JButton("Itens");
-        barraBotoes.add(botaoItens);
+        JButton botaoServicos = new JButton("Serviços");
+        barraBotoes.add(botaoServicos);
 
-        // Tamanho dos botões
+        JButton botaoMercadorias = new JButton("Mercadorias");
+        barraBotoes.add(botaoMercadorias);
+
+        //Tamanho dos botões
         botaoHome.setPreferredSize(new Dimension(120, 25));
         botaoFuncionarios.setPreferredSize(new Dimension(120, 25));
         botaoClientes.setPreferredSize(new Dimension(120, 25));
-        botaoItens.setPreferredSize(new Dimension(120, 25));
+        botaoServicos.setPreferredSize(new Dimension(120, 25));
+        botaoMercadorias.setPreferredSize(new Dimension(120, 25));
 
-        // Troca de página quando clica nos botões
+        //Troca de página quando clica nos botões
         botaoHome.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
             cardLayout.show(painelPrincipal, "Home");
-        });
-        botaoFuncionarios.addActionListener(e -> {
+        }
+        );
+        botaoFuncionarios.addActionListener(e
+                -> {
             CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
             cardLayout.show(painelPrincipal, "Funcionários");
-        });
-        botaoClientes.addActionListener(e -> {
+        }
+        );
+        botaoClientes.addActionListener(e
+                -> {
             CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
             cardLayout.show(painelPrincipal, "Clientes");
-        });
-        botaoItens.addActionListener(e -> {
+        }
+        );
+        botaoServicos.addActionListener(e
+                -> {
             CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Itens");
-        });
+            cardLayout.show(painelPrincipal, "Serviços");
+        }
+        );
+        botaoMercadorias.addActionListener(e
+                -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Mercadorias");
+        }
+        );
 
         add(painelPrincipal, BorderLayout.CENTER);
 
         add(barraBotoes, BorderLayout.SOUTH);
 
         this.setSize(700, 400);
-        setVisible(true);
+        this.pack();
+        this.setVisible(true);
     }
 }
