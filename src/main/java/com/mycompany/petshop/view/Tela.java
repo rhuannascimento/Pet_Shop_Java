@@ -16,12 +16,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class Tela extends JFrame {
 
@@ -51,17 +47,17 @@ public class Tela extends JFrame {
 
         desenhaBarraBotoes();
 
-        this.setSize(700, 300);
+        this.setSize(600, 300);
         this.pack();
         this.setVisible(true);
     }
 
     public void desenhaPaginaHome() {
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        splitPane.setDividerLocation(420);
+        splitPane.setDividerLocation(360);
         splitPane.setResizeWeight(0);
         splitPane.setEnabled(false);
-        splitPane.setPreferredSize(new Dimension(700, 300));
+        splitPane.setPreferredSize(new Dimension(600, 300));
 
         painelHome = new JPanel();
 
@@ -70,96 +66,13 @@ public class Tela extends JFrame {
         // Agenda
         JPanel agenda = desenhaAgenda();
 
-        JPanel pendencias = new JPanel();
-        pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
+        // Pendencias
+        JPanel pendencias = desenhaPendencias();
 
         splitPane.setLeftComponent(agenda);
         splitPane.setRightComponent(pendencias);
 
         painelPrincipal.add(painelHome, "Home");
-    }
-
-    public void desenhaPaginaFuncionarios() {
-        painelFuncionarios = new JPanel();
-        painelFuncionarios.add(new JLabel("Funcionários"));
-        painelPrincipal.add(painelFuncionarios, "Funcionários");
-
-        JButton newFuncButton = new JButton("Cadastrar funcionário");
-        painelFuncionarios.add(newFuncButton);
-        newFuncButton.addActionListener(e -> {
-            cadastrarFuncionario();
-        });
-    }
-
-    public void desenhaPaginaClientes() {
-        painelClientes = new JPanel();
-        painelClientes.add(new JLabel("Clientes"));
-        painelPrincipal.add(painelClientes, "Clientes");
-    }
-
-    public void desenhaPaginaServiços() {
-        painelServicos = new JPanel();
-        painelServicos.add(new JLabel("Serviços"));
-        painelPrincipal.add(painelServicos, "Serviços");
-    }
-
-    public void desenhaPaginaMercadorias() {
-        painelMercadorias = new JPanel();
-        painelMercadorias.add(new JLabel("Mercadorias"));
-        painelPrincipal.add(painelMercadorias, "Mercadorias");
-    }
-
-    public void desenhaBarraBotoes() {
-        // Barra de botões
-        JPanel barraBotoes = new JPanel();
-
-        JButton botaoHome = new JButton("Home");
-        barraBotoes.add(botaoHome);
-
-        JButton botaoFuncionarios = new JButton("Funcionários");
-        barraBotoes.add(botaoFuncionarios);
-
-        JButton botaoClientes = new JButton("Clientes");
-        barraBotoes.add(botaoClientes);
-
-        JButton botaoServicos = new JButton("Serviços");
-        barraBotoes.add(botaoServicos);
-
-        JButton botaoMercadorias = new JButton("Mercadorias");
-        barraBotoes.add(botaoMercadorias);
-
-        // Tamanho dos botões
-        botaoHome.setPreferredSize(new Dimension(120, 25));
-        botaoFuncionarios.setPreferredSize(new Dimension(120, 25));
-        botaoClientes.setPreferredSize(new Dimension(120, 25));
-        botaoServicos.setPreferredSize(new Dimension(120, 25));
-        botaoMercadorias.setPreferredSize(new Dimension(120, 25));
-
-        // Troca de página quando clica nos botões
-        botaoHome.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Home");
-        });
-        botaoFuncionarios.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Funcionários");
-        });
-        botaoClientes.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Clientes");
-        });
-        botaoServicos.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Serviços");
-        });
-        botaoMercadorias.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
-            cardLayout.show(painelPrincipal, "Mercadorias");
-        });
-
-        add(painelPrincipal, BorderLayout.CENTER);
-
-        add(barraBotoes, BorderLayout.SOUTH);
     }
 
     public JPanel desenhaAgenda() {
@@ -172,13 +85,10 @@ public class Tela extends JFrame {
         agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         JList<Agendamento> list = new JList<>(agendamentos.toArray(new Agendamento[0]));
-
         agenda.add(list);
 
         JButton agendarButton = new JButton("Novo Agendamento");
-
         agenda.add(agendarButton, BorderLayout.SOUTH);
-
         agendarButton.addActionListener(e -> {
             criarAgendamento();
         });
@@ -188,12 +98,14 @@ public class Tela extends JFrame {
 
     public void criarAgendamento() {
         JFrame frame = new JFrame("Novo agendamento");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3);
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -239,12 +151,42 @@ public class Tela extends JFrame {
         cancelar.addActionListener(e -> {
             frame.dispose();
         });
-        painel.add(agendar);
-        painel.add(cancelar);
+
+        c.gridx = 0;
+        c.gridy = 8;
+        painel.add(agendar, c);
+
+        c.gridx = 1;
+        c.gridy = 8;
+        painel.add(cancelar, c);
 
         frame.add(painel);
         frame.setSize(300, 300);
         frame.setVisible(true);
+    }
+
+    public JPanel desenhaPendencias() {
+        JPanel pendencias = new JPanel(new BorderLayout());
+        pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
+
+        // JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
+        JButton adicionar = new JButton("Adicionar");
+
+        pendencias.add(adicionar, BorderLayout.SOUTH);
+
+        return pendencias;
+    }
+
+    public void desenhaPaginaFuncionarios() {
+        painelFuncionarios = new JPanel();
+        painelFuncionarios.add(new JLabel("Funcionários"));
+        painelPrincipal.add(painelFuncionarios, "Funcionários");
+
+        JButton newFuncButton = new JButton("Cadastrar funcionário");
+        painelFuncionarios.add(newFuncButton);
+        newFuncButton.addActionListener(e -> {
+            cadastrarFuncionario();
+        });
     }
 
     public void cadastrarFuncionario() {
@@ -254,8 +196,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3);
-        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -281,11 +223,163 @@ public class Tela extends JFrame {
         cancelar.addActionListener(e -> {
             frame.dispose();
         });
-        painel.add(cadastrar);
-        painel.add(cancelar);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        painel.add(cadastrar, c);
+        c.gridx = 1;
+        c.gridy = 4;
+        painel.add(cancelar, c);
 
         frame.add(painel);
         frame.setSize(300, 300);
         frame.setVisible(true);
     }
+
+    public void desenhaPaginaClientes() {
+        painelClientes = new JPanel();
+        painelClientes.add(new JLabel("Clientes"));
+        painelPrincipal.add(painelClientes, "Clientes");
+
+        JButton newClienteButton = new JButton("Nova ficha");
+        painelFuncionarios.add(newClienteButton);
+        newClienteButton.addActionListener(e -> {
+            cadastrarCliente();
+        });
+
+        painelClientes.add(newClienteButton);
+    }
+
+    public void cadastrarCliente() {
+        JFrame frame = new JFrame("Novo ficha");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel painel = new JPanel();
+        painel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre componentes
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 0;
+        c.gridy = 0;
+        painel.add(new JLabel("Nome"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        JTextField nome = new JTextField();
+        painel.add(nome, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        painel.add(new JLabel("Espécie"), c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        JTextField servico = new JTextField();
+        painel.add(servico, c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        painel.add(new JLabel("Idade (em anos)"), c);
+
+        c.gridx = 0;
+        c.gridy = 5;
+        JTextField idade = new JTextField();
+        painel.add(idade, c);
+
+        c.gridx = 0;
+        c.gridy = 6;
+        painel.add(new JLabel("CPF do dono"), c);
+
+        c.gridx = 0;
+        c.gridy = 7;
+        JTextField cpf = new JTextField();
+        painel.add(cpf, c);
+
+        JButton cadastrar = new JButton("Cadastrar");
+        JButton cancelar = new JButton("Cancelar");
+
+        cancelar.addActionListener(e -> {
+            frame.dispose();
+        });
+
+        c.gridx = 0;
+        c.gridy = 8;
+        painel.add(cadastrar, c);
+
+        c.gridx = 1;
+        c.gridy = 8;
+        painel.add(cancelar, c);
+
+        frame.add(painel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+    }
+
+    public void desenhaPaginaServiços() {
+        painelServicos = new JPanel();
+        painelServicos.add(new JLabel("Serviços"));
+        painelPrincipal.add(painelServicos, "Serviços");
+    }
+
+    public void desenhaPaginaMercadorias() {
+        painelMercadorias = new JPanel();
+        painelMercadorias.add(new JLabel("Mercadorias"));
+        painelPrincipal.add(painelMercadorias, "Mercadorias");
+    }
+
+    public void desenhaBarraBotoes() {
+        // Barra de botões
+        JPanel barraBotoes = new JPanel();
+
+        JButton botaoHome = new JButton("Home");
+        barraBotoes.add(botaoHome);
+
+        JButton botaoFuncionarios = new JButton("Funcionários");
+        barraBotoes.add(botaoFuncionarios);
+
+        JButton botaoClientes = new JButton("Clientes");
+        barraBotoes.add(botaoClientes);
+
+        JButton botaoServicos = new JButton("Serviços");
+        barraBotoes.add(botaoServicos);
+
+        JButton botaoMercadorias = new JButton("Mercadorias");
+        barraBotoes.add(botaoMercadorias);
+
+        // Tamanho dos botões
+        botaoHome.setPreferredSize(new Dimension(115, 25));
+        botaoFuncionarios.setPreferredSize(new Dimension(115, 25));
+        botaoClientes.setPreferredSize(new Dimension(115, 25));
+        botaoServicos.setPreferredSize(new Dimension(115, 25));
+        botaoMercadorias.setPreferredSize(new Dimension(115, 25));
+
+        // Troca de página quando clica nos botões
+        botaoHome.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Home");
+        });
+        botaoFuncionarios.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Funcionários");
+        });
+        botaoClientes.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Clientes");
+        });
+        botaoServicos.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Serviços");
+        });
+        botaoMercadorias.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) painelPrincipal.getLayout();
+            cardLayout.show(painelPrincipal, "Mercadorias");
+        });
+
+        add(painelPrincipal, BorderLayout.CENTER);
+
+        add(barraBotoes, BorderLayout.SOUTH);
+    }
+
 }
