@@ -8,7 +8,10 @@ public abstract class Mercadoria extends Item {
     public Mercadoria() {
     }
 
-    public Mercadoria(int estoque, String fornecedor, String categoria) {
+    public Mercadoria(int estoque, String fornecedor, String categoria, int id, String nome, float preco, String tipo,
+            boolean disponivel) {
+
+        super(id, nome, preco, tipo, disponivel);
         this.estoque = estoque;
         this.fornecedor = fornecedor;
         this.categoria = categoria;
