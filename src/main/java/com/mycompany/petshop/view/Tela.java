@@ -18,6 +18,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 import javax.swing.JList;
+import javax.swing.JTabbedPane;
 
 public class Tela extends JFrame {
 
@@ -42,7 +43,7 @@ public class Tela extends JFrame {
         desenhaPaginaHome();
         desenhaPaginaFuncionarios();
         desenhaPaginaClientes();
-        desenhaPaginaServiços();
+        desenhaPaginaServicos();
         desenhaPaginaMercadorias();
 
         desenhaBarraBotoes();
@@ -178,15 +179,19 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaFuncionarios() {
-        painelFuncionarios = new JPanel();
-        painelFuncionarios.add(new JLabel("Funcionários"));
-        painelPrincipal.add(painelFuncionarios, "Funcionários");
+        painelFuncionarios = new JPanel(new BorderLayout());
+        painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
 
         JButton newFuncButton = new JButton("Cadastrar funcionário");
-        painelFuncionarios.add(newFuncButton);
+
         newFuncButton.addActionListener(e -> {
             cadastrarFuncionario();
         });
+
+        painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
+
+        painelPrincipal.add(painelFuncionarios, "Funcionários");
+
     }
 
     public void cadastrarFuncionario() {
@@ -237,17 +242,18 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaClientes() {
-        painelClientes = new JPanel();
-        painelClientes.add(new JLabel("Clientes"));
-        painelPrincipal.add(painelClientes, "Clientes");
+        painelClientes = new JPanel(new BorderLayout());
+        painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
         JButton newClienteButton = new JButton("Nova ficha");
-        painelFuncionarios.add(newClienteButton);
         newClienteButton.addActionListener(e -> {
             cadastrarCliente();
         });
 
-        painelClientes.add(newClienteButton);
+        painelClientes.add(newClienteButton, BorderLayout.SOUTH);
+
+        painelPrincipal.add(painelClientes, "Clientes");
+
     }
 
     public void cadastrarCliente() {
@@ -317,16 +323,39 @@ public class Tela extends JFrame {
         frame.setVisible(true);
     }
 
-    public void desenhaPaginaServiços() {
-        painelServicos = new JPanel();
-        painelServicos.add(new JLabel("Serviços"));
+    public void desenhaPaginaServicos() {
+        painelServicos = new JPanel(new BorderLayout());
+        painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
         painelPrincipal.add(painelServicos, "Serviços");
+
     }
 
     public void desenhaPaginaMercadorias() {
-        painelMercadorias = new JPanel();
-        painelMercadorias.add(new JLabel("Mercadorias"));
+        painelMercadorias = new JPanel(new BorderLayout());
+        painelMercadorias.setBorder(BorderFactory.createTitledBorder("Mercadorias"));
+
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        JPanel racao = new JPanel();
+        // Botões CRUD e tabela
+        tabbedPane.addTab("Ração", racao);
+
+        JPanel roupas = new JPanel();
+        // Botões CRUD e tabela
+        tabbedPane.addTab("Roupas", roupas);
+
+        JPanel brinquedos = new JPanel();
+        // Botões CRUD e tabela
+        tabbedPane.addTab("Brinquedos", brinquedos);
+
+        JPanel remedios = new JPanel();
+        // Botões CRUD e tabela
+        tabbedPane.addTab("Remédios", remedios);
+
+        painelMercadorias.add(tabbedPane);
+
         painelPrincipal.add(painelMercadorias, "Mercadorias");
+
     }
 
     public void desenhaBarraBotoes() {
