@@ -1,6 +1,6 @@
 package com.mycompany.petshop.model.classes;
 
-public class Item {
+public abstract class Item {
     private int id;
     private String nome;
     private float preco;
