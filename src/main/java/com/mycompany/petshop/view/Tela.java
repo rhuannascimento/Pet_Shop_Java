@@ -21,6 +21,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Tela extends JFrame {
 
@@ -66,10 +68,10 @@ public class Tela extends JFrame {
 
         painelHome.add(splitPane, BorderLayout.CENTER);
 
-        //Agenda
+        // Agenda
         JPanel agenda = desenhaAgenda();
 
-        //Pendencias
+        // Pendencias
         JPanel pendencias = desenhaPendencias();
 
         splitPane.setLeftComponent(agenda);
@@ -119,8 +121,10 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
         c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridwidth = 3;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -161,18 +165,28 @@ public class Tela extends JFrame {
         painel.add(horario, c);
 
         JButton salvar = new JButton("Salvar");
+        JButton excluir = new JButton("Excluir");
         JButton cancelar = new JButton("Cancelar");
 
         cancelar.addActionListener(e -> {
             frame.dispose();
         });
 
+        c.gridwidth = 1;
+
         c.gridx = 0;
         c.gridy = 8;
+
         painel.add(salvar, c);
 
         c.gridx = 1;
         c.gridy = 8;
+
+        painel.add(excluir, c);
+
+        c.gridx = 2;
+        c.gridy = 8;
+
         painel.add(cancelar, c);
 
         frame.add(painel);
@@ -188,8 +202,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL;  // componente ocupa toda a largura da célula
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -253,7 +267,7 @@ public class Tela extends JFrame {
         JPanel pendencias = new JPanel(new BorderLayout());
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
 
-        //JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
+        // JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
         JButton adicionar = new JButton("Adicionar");
 
         pendencias.add(adicionar, BorderLayout.SOUTH);
@@ -284,8 +298,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL;  // componente ocupa toda a largura da célula
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -347,7 +361,7 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3); //espaçamento entre componentes
+        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre componentes
         c.fill = GridBagConstraints.HORIZONTAL;
 
         c.gridx = 0;
@@ -420,25 +434,93 @@ public class Tela extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
 
         JPanel racao = new JPanel();
-        //Botões CRUD e tabela
+        racao.add(tabelaRacao());
         tabbedPane.addTab("Ração", racao);
 
         JPanel roupas = new JPanel();
-        //Botões CRUD e tabela
+        racao.add(tabelaRoupas());
         tabbedPane.addTab("Roupas", roupas);
 
         JPanel brinquedos = new JPanel();
-        //Botões CRUD e tabela
+        racao.add(tabelaBrinquedos());
         tabbedPane.addTab("Brinquedos", brinquedos);
 
         JPanel remedios = new JPanel();
-        //Botões CRUD e tabela
+        racao.add(tabelaRemedios());
         tabbedPane.addTab("Remédios", remedios);
 
         painelMercadorias.add(tabbedPane);
 
         painelPrincipal.add(painelMercadorias, "Mercadorias");
 
+    }
+
+    public JTable tabelaRacao() {
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+        }
+
+        return tabela;
+    }
+
+    public JTable tabelaRoupas() {
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+        }
+
+        return tabela;
+    }
+
+    public JTable tabelaBrinquedos() {
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+        }
+
+        return tabela;
+    }
+
+    public JTable tabelaRemedios() {
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+        }
+
+        return tabela;
     }
 
     public void desenhaBarraBotoes() {
