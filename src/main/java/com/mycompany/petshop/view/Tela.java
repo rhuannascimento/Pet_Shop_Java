@@ -16,6 +16,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
@@ -64,10 +66,10 @@ public class Tela extends JFrame {
 
         painelHome.add(splitPane, BorderLayout.CENTER);
 
-        // Agenda
+        //Agenda
         JPanel agenda = desenhaAgenda();
 
-        // Pendencias
+        //Pendencias
         JPanel pendencias = desenhaPendencias();
 
         splitPane.setLeftComponent(agenda);
@@ -85,7 +87,19 @@ public class Tela extends JFrame {
         agendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
         agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        JList<Agendamento> list = new JList<>(agendamentos.toArray(new Agendamento[0]));
+        JList<Agendamento> list = new JList<>(agendamentos.toArray(Agendamento[]::new));
+
+        list.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    Agendamento selected = list.getSelectedValue();
+
+                    visualizarAgendamento(selected);
+                }
+            }
+        });
+
         agenda.add(list);
 
         JButton agendarButton = new JButton("Novo Agendamento");
@@ -97,6 +111,75 @@ public class Tela extends JFrame {
         return agenda;
     }
 
+    public void visualizarAgendamento(Agendamento selected) {
+        JFrame frame = new JFrame("Agendamento de " + selected.getNome());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel painel = new JPanel();
+        painel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 0;
+        c.gridy = 0;
+        painel.add(new JLabel("Nome"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        JComboBox nome = new JComboBox();
+        painel.add(nome, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        painel.add(new JLabel("Serviço"), c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        JComboBox servico = new JComboBox();
+        painel.add(servico, c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        painel.add(new JLabel("Data"), c);
+
+        c.gridx = 0;
+        c.gridy = 5;
+        JDateChooser data = new JDateChooser();
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
+        editor.setEditable(false);
+        painel.add(data, c);
+
+        c.gridx = 0;
+        c.gridy = 6;
+        painel.add(new JLabel("Horário"), c);
+
+        c.gridx = 0;
+        c.gridy = 7;
+        JComboBox horario = new JComboBox();
+        painel.add(horario, c);
+
+        JButton salvar = new JButton("Salvar");
+        JButton cancelar = new JButton("Cancelar");
+
+        cancelar.addActionListener(e -> {
+            frame.dispose();
+        });
+
+        c.gridx = 0;
+        c.gridy = 8;
+        painel.add(salvar, c);
+
+        c.gridx = 1;
+        c.gridy = 8;
+        painel.add(cancelar, c);
+
+        frame.add(painel);
+        frame.setSize(300, 300);
+        frame.setVisible(true);
+    }
+
     public void criarAgendamento() {
         JFrame frame = new JFrame("Novo agendamento");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,8 +188,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL;  // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -170,7 +253,7 @@ public class Tela extends JFrame {
         JPanel pendencias = new JPanel(new BorderLayout());
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
 
-        // JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
+        //JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
         JButton adicionar = new JButton("Adicionar");
 
         pendencias.add(adicionar, BorderLayout.SOUTH);
@@ -201,8 +284,8 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+        c.insets = new Insets(3, 3, 3, 3);  // espaçamento entre os componentes
+        c.fill = GridBagConstraints.HORIZONTAL;  // componente ocupa toda a largura da célula
 
         c.gridx = 0;
         c.gridy = 0;
@@ -264,7 +347,7 @@ public class Tela extends JFrame {
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre componentes
+        c.insets = new Insets(3, 3, 3, 3); //espaçamento entre componentes
         c.fill = GridBagConstraints.HORIZONTAL;
 
         c.gridx = 0;
@@ -337,19 +420,19 @@ public class Tela extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
 
         JPanel racao = new JPanel();
-        // Botões CRUD e tabela
+        //Botões CRUD e tabela
         tabbedPane.addTab("Ração", racao);
 
         JPanel roupas = new JPanel();
-        // Botões CRUD e tabela
+        //Botões CRUD e tabela
         tabbedPane.addTab("Roupas", roupas);
 
         JPanel brinquedos = new JPanel();
-        // Botões CRUD e tabela
+        //Botões CRUD e tabela
         tabbedPane.addTab("Brinquedos", brinquedos);
 
         JPanel remedios = new JPanel();
-        // Botões CRUD e tabela
+        //Botões CRUD e tabela
         tabbedPane.addTab("Remédios", remedios);
 
         painelMercadorias.add(tabbedPane);
