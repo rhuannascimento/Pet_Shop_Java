@@ -22,25 +22,63 @@ public class Migrator {
         this.connection = MyConnector.connect();
        
         createCliente();
+        createItem();
+        createFuncionario();
+        closeConnection();
+    }
+
+    private void closeConnection() {
+        try {
+            if(connection != null) connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
     }
     
     private void createCliente(){
-        String sql = "CREATE TABLE IF NOT EXISTS cliente (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, cpf TEXT NOT NULL, tipo TEXT NOT NULL, especie TEXT, email TEXT, telefone TEXT);";
+        String sql = "CREATE TABLE IF NOT EXISTS cliente (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, cpf TEXT NOT NULL, especie TEXT, email TEXT, telefone TEXT);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            db.runUpdateQuery(statement);
+            int result = db.runUpdateQuery(statement);
             
-            System.out.println("Tabela Cliente Criada.");
+            if(result == 0) System.out.println("Tabela Cliente Criada.");
             
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if(connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        }
+        
+    }
+    
+    
+    private void createItem(){
+        String sql = "CREATE TABLE IF NOT EXISTS item ( id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, preco REAL NOT NULL, tipo TEXT NOT NULL, disponivel INTEGER NOT NULL, duracao INTEGER, funcionario_id INTEGER, estoque INTEGER, categoria TEXT, fornecedor TEXT, utilidade TEXT, orientacao TEXT, especie TEXT, cor TEXT, tamanho TEXT, material TEXT, sabor TEXT, idade_recomendada INTEGER);";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            int result = db.runUpdateQuery(statement);
+            
+            if(result == 0) System.out.println("Tabela Item Criada.");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    private void createFuncionario(){
+        String sql = "CREATE TABLE IF NOT EXISTS funcionario (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, horario_inicio TIME NOT NULL, horario_fim TIME NOT NULL, cargo TEXT NOT NULL, senha TEXT NOT NULL);";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            int result = db.runUpdateQuery(statement);
+            
+            if(result == 0) System.out.println("Tabela Funcionario Criada.");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         
     }
