@@ -16,7 +16,7 @@ public class cadastrarFuncionario extends JFrame {
 
     public cadastrarFuncionario() {
         super("Cadastrar funcionário");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void desenha() {
@@ -50,6 +50,8 @@ public class cadastrarFuncionario extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO CONTROLLER
+        // cadastrar.addActionListener(cadastrarFuncionario(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
@@ -64,7 +66,7 @@ public class cadastrarFuncionario extends JFrame {
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 300);
+        this.setSize(300, 200);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

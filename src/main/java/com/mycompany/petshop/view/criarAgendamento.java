@@ -20,7 +20,7 @@ public class criarAgendamento extends JFrame {
 
     public criarAgendamento() {
         super("Novo agendamento");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void desenha() {
@@ -75,6 +75,8 @@ public class criarAgendamento extends JFrame {
         JButton agendar = new JButton("Agendar");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO DO CONTROLLER
+        // agendar.addActionListener(new CriarAgendamento(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });

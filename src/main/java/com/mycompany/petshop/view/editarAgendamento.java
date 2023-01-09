@@ -14,14 +14,14 @@ import javax.swing.JTextField;
 
 public class editarAgendamento extends JFrame {
 
-    JTextField nome = new JTextField();
-    JComboBox servico = new JComboBox();
-    JDateChooser data = new JDateChooser();
-    JComboBox horario = new JComboBox();
+    private JTextField nome;
+    private JComboBox servico;
+    private JDateChooser data;
+    private JComboBox horario;
 
     public editarAgendamento(Agendamento selected) {
         super("Agendamento de " + selected.getNome());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
@@ -78,6 +78,9 @@ public class editarAgendamento extends JFrame {
         JButton excluir = new JButton("Excluir");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO DO CONTROLLER
+        // salvar.addActionListener(editarContato(this));
+        // excluir.addActionListener(excluirContato(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });

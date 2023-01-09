@@ -18,7 +18,7 @@ public class cadastrarCliente extends JFrame {
 
     public cadastrarCliente() {
         super("Nova ficha");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void desenha() {
@@ -70,6 +70,8 @@ public class cadastrarCliente extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO CONTROLLER
+        // cadastrar.addActionListener(cadastrarCliente(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
