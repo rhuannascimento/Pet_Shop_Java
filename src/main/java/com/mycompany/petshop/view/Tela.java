@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -104,7 +105,11 @@ public class Tela extends JFrame {
             }
         });
 
-        agenda.add(tabela);
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setMaximumSize(new Dimension(this.getSize().width, this.getSize().height));
+
+        agenda.add(sp);
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
@@ -163,7 +168,11 @@ public class Tela extends JFrame {
             }
         });
 
-        painelFuncionarios.add(tabela);
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
+
+        painelFuncionarios.add(sp);
 
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
@@ -212,7 +221,11 @@ public class Tela extends JFrame {
             }
         });
 
-        painelClientes.add(tabela);
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
+
+        painelClientes.add(sp);
 
         JButton newClienteButton = new JButton("Nova ficha");
         newClienteButton.addActionListener(e -> {
@@ -229,7 +242,6 @@ public class Tela extends JFrame {
     public void desenhaPaginaServicos() {
         JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
-        painelPrincipal.add(painelServicos, "Serviços");
 
         DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
@@ -261,7 +273,13 @@ public class Tela extends JFrame {
             }
         });
 
-        painelServicos.add(tabela);
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
+
+        painelServicos.add(sp);
+
+        painelPrincipal.add(painelServicos, "Serviços");
 
     }
 
