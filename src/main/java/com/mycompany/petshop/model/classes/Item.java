@@ -6,16 +6,26 @@ public abstract class Item {
     private float preco;
     private String tipo;
     private boolean disponivel;
+    String categoria;
 
     public Item() {
     }
 
-    public Item(int id, String nome, float preco, String tipo, boolean disponivel) {
+    public Item(int id, String nome, float preco, String tipo, boolean disponivel, String categoria) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.tipo = tipo;
         this.disponivel = disponivel;
+        this.categoria = categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getCategoria() {
+        return categoria;
     }
 
     public int getId() {

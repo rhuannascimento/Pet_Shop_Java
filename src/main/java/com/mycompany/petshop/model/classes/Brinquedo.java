@@ -7,10 +7,10 @@ public class Brinquedo extends Mercadoria {
     public Brinquedo() {
     }
 
-    public Brinquedo(int estoque, String fornecedor, String categoria, int id, String nome, float preco, String tipo,
+    public Brinquedo(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String especie) {
 
-        super(estoque, fornecedor, categoria, id, nome, preco, tipo, disponivel);
+        super(estoque, fornecedor, "brinquedo", id, nome, preco, tipo, disponivel);
         this.especie = especie;
 
     }

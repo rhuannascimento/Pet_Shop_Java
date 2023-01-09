@@ -7,10 +7,10 @@ public class Racao extends Mercadoria {
     public Racao() {
     }
 
-    public Racao(int estoque, String fornecedor, String categoria, int id, String nome, float preco, String tipo,
+    public Racao(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String especie, String sabor) {
 
-        super(estoque, fornecedor, categoria, id, nome, preco, tipo, disponivel);
+        super(estoque, fornecedor, "racao", id, nome, preco, tipo, disponivel);
         this.especie = especie;
         this.sabor = sabor;
 

@@ -8,10 +8,10 @@ public class Roupa extends Mercadoria {
     public Roupa() {
     }
 
-    public Roupa(int estoque, String fornecedor, String categoria, int id, String nome, float preco, String tipo,
+    public Roupa(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String tamanho, String especie) {
 
-        super(estoque, fornecedor, categoria, id, nome, preco, tipo, disponivel);
+        super(estoque, fornecedor, "roupa", id, nome, preco, tipo, disponivel);
         this.tamanho = tamanho;
         this.especie = especie;
 
