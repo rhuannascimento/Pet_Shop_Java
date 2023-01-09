@@ -6,7 +6,6 @@
 package com.mycompany.petshop;
 
 import com.mycompany.petshop.model.classes.*;
-import com.mycompany.petshop.model.parser.*;
 import com.mycompany.petshop.repository.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,30 +31,49 @@ public class PETSHOP {
         if(args.length == 2){
             m.migrate();
             s.seed();
-        }
-        if(args.length == 1){
+        }else if(args.length == 1){
             if(args[0].equalsIgnoreCase("migrate")) m.migrate();
             if(args[0].equalsIgnoreCase("seed")) s.seed();
-        }
-        
-        
-        FuncionarioRep rep = new FuncionarioRep();
-        
-        Funcionario f = new Funcionario(0, "claudio", Time.valueOf("08:00:00"), Time.valueOf("18:00:00"), "mypassword");
-        
-        rep.insertOne(f);
-        
-        ResultSet rs = rep.selectAll();
+        }else{
+            // SEGUE ABAIXO EXEMPLO DE COMO USAR O REPOSITORY
+            // rep -> acessa o banco
+            FuncionarioRep rep = new FuncionarioRep();
 
-        FuncionarioParser fp = new FuncionarioParser();
-        
-        ArrayList<Funcionario> listaaa = fp.getList(rs);
-        
-        for(Funcionario f2 : listaaa){
-            System.out.println("f2: "+f2);
+            // lista funcionários
+            ArrayList<Funcionario> funcionarios = listarFuncionarios();
+
+            // atualiza primeiro funcionário da lista
+            Funcionario toUpdate = funcionarios.get(0);
+            toUpdate.setNome("Teste testado");
+            rep.update(toUpdate);
+
+            // insere funcionário novo
+            rep.insertOne(new Funcionario(0, "Teste criação", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "minhasenha123"));
+
+            // lista dnv
+            funcionarios = listarFuncionarios();
+
+            // deleta o funcionário de id 1, e tbm o 3° funcionário da lista
+            Funcionario toDelete = funcionarios.get(2);
+            rep.deleteById(1);
+            rep.delete(toDelete);
             
+            
+            funcionarios = listarFuncionarios();
         }
         
         
+        
+        
+        
+        
+    }
+    
+    static ArrayList<Funcionario> listarFuncionarios(){
+        FuncionarioRep rep = new FuncionarioRep();
+        ArrayList<Funcionario> funcionarios = rep.getAll();
+        for(Funcionario f: funcionarios) System.out.println(f);
+        System.out.println("\n\n");
+        return funcionarios;
     }
 }

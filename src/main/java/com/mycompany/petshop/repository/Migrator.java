@@ -15,10 +15,8 @@ import java.util.logging.Logger;
  * @author viier
  */
 public class Migrator {
-    private SqlRunner db;
     private Connection connection;
     public void migrate(){
-        this.db = new SqlRunner();
         this.connection = MyConnector.connect();
        
         createCliente();
@@ -42,7 +40,7 @@ public class Migrator {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result == 0) System.out.println("Tabela Cliente Criada.");
             
@@ -58,7 +56,7 @@ public class Migrator {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result == 0) System.out.println("Tabela Item Criada.");
             
@@ -73,7 +71,7 @@ public class Migrator {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result == 0) System.out.println("Tabela Funcionario Criada.");
             

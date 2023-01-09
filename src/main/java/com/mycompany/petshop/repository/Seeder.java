@@ -15,10 +15,8 @@ import java.util.logging.Logger;
  * @author viier
  */
 public class Seeder {
-    private SqlRunner db;
     private Connection connection;
     public void seed(){
-        this.db = new SqlRunner();
         this.connection = MyConnector.connect();
        
         populateCliente();
@@ -42,7 +40,7 @@ public class Seeder {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result > 0) System.out.println(result + " valores inseridos dados na tabela cliente.");
             
@@ -57,7 +55,7 @@ public class Seeder {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result > 0) System.out.println(result + " valores inseridos dados na tabela funcionario.");
             
@@ -73,7 +71,7 @@ public class Seeder {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             
-            int result = db.runUpdateQuery(statement);
+            int result = statement.executeUpdate();
             
             if(result > 0) System.out.println(result + " valores inseridos dados na tabela item.");
             

@@ -4,19 +4,28 @@ import java.sql.Time;
 
 public class Funcionario {
     private int id;
-    private String nome, password;
+    private String nome, password, cargo;
     private Time startTime;
     private Time endTime;
 
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, Time startTime, Time endTime, String password) {
+    public Funcionario(int id, String nome, Time startTime, Time endTime, String cargo, String password) {
         this.id = id;
         this.nome = nome;
         this.startTime = startTime;
         this.endTime = endTime;
         this.password = password;
+        this.cargo = cargo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public int getId() {

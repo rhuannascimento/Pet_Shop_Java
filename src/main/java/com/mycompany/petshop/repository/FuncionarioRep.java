@@ -9,184 +9,231 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author viier
  */
-public class FuncionarioRep implements InterfaceRep<Funcionario> {
-    
-    public FuncionarioRep(){
-        
-    }
-    @Override
-    public boolean insertOne(Funcionario f) {
-        int affected = 0;
-        Connection con = MyConnector.connect();;
-        try{
-            SqlRunner run = new SqlRunner();
-            
-            String sql = "INSERT INTO funcionario (nome, horario_inicio, horario_fim, cargo, senha) VALUES (?, ?, ?, ?, ?);";
-        
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setString(1, f.getNome());
-            ps.setTime(2, f.getStartTime());
-            ps.setTime(3, f.getEndTime());
-            ps.setString(4, f.getNome());
-            ps.setString(5, f.getPassword());
-            
-            affected = run.runUpdateQuery(ps);
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-            return affected != 0;
-        }
-        
-    }
+public class FuncionarioRep implements DataAcessObject<Funcionario> {
 
     @Override
-    public boolean update(Funcionario f) {
-        int affected = 0;
-        Connection con = MyConnector.connect();
-        try{
-            SqlRunner run = new SqlRunner();
-            
-            String sql = "UPDATE TABLE funcionario SET nome = ?, horario_inicio = ?, horario_fim = ?, cargo = ?;";
-        
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setString(1, f.getNome());
-            ps.setTime(2, f.getStartTime());
-            ps.setTime(3, f.getEndTime());
-            ps.setString(4, f.getNome());
-            
-            affected = run.runUpdateQuery(ps);
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-            return affected != 0;
-        }
-        
-    }
-
-    @Override
-    public boolean delete(Funcionario f) {
-        int affected = 0;
-        Connection con = MyConnector.connect();;
-        try{
-            SqlRunner run = new SqlRunner();
-            
-            String sql = "DELETE FROM funcionario WHERE id = ?;";
-        
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setInt(1, f.getId());
-            
-            affected = run.runUpdateQuery(ps);
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
-            return affected != 0;
-        }
-    }
-
-    @Override
-    public ResultSet selectAll() {
-        ResultSet results = null;
-        Connection con = MyConnector.connect();
+    public boolean insertOne(Funcionario valor) {
+        System.out.println("Inserindo o funcionário "+valor);
         PreparedStatement ps = null;
+        Connection con = null;
+        int affected = 0;
         try{
-            SqlRunner run = new SqlRunner();
+            con = MyConnector.connect();
             
-            String sql = "SELECT * FROM funcionario;";
-        
+            String sql = "INSERT INTO funcionario(nome, horario_inicio, horario_fim, cargo, senha) VALUES (?,?,?,?,?)";
+            
             ps = con.prepareStatement(sql);
-
-            results = run.runListQuery(ps);
             
-
-        }catch(Exception e){
+            ps.setString(1, valor.getNome());
+            ps.setTime(2, valor.getStartTime());
+            ps.setTime(3, valor.getStartTime());
+            ps.setString(4, valor.getCargo());
+            ps.setString(5, valor.getPassword());
+            
+            affected = ps.executeUpdate();
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
             e.printStackTrace();
         }
         
-        
-        return results;
-        
+        return affected != 0;
     }
 
     @Override
-    public ResultSet selectByID(int id) {
-        ResultSet results = null;
-        Connection con = MyConnector.connect();;
-        try{
-            SqlRunner run = new SqlRunner();
-            
-            String sql = "SELECT * FROM funcionario WHERE id = ?;";
+    public boolean update(Funcionario valor) {
+        System.out.println("Atualizando o funcionário "+valor);
+        int affected = 0;
         
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "UPDATE funcionario set nome = ?, horario_inicio = ?, horario_fim = ? , cargo = ?, senha = ? WHERE id = ?;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, valor.getNome());
+            ps.setTime(2, valor.getStartTime());
+            ps.setTime(3, valor.getStartTime());
+            ps.setString(4, valor.getCargo());
+            ps.setString(5, valor.getPassword());
+            ps.setInt(6, valor.getId());
+            
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
+    }
+
+    @Override
+    public boolean delete(Funcionario valor) {
+        System.out.println("Deletando o funcionário "+valor);
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM funcionario WHERE id = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, valor.getId());
+            
+            affected = ps.executeUpdate();
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
+    }
+    
+    public boolean deleteById(int id) {
+        System.out.println("Deletando o funcionário "+id);
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM funcionario WHERE id = ?";
+            
             PreparedStatement ps = con.prepareStatement(sql);
             
             ps.setInt(1, id);
             
-            results = run.runListQuery(ps);
-        }catch(Exception e){
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
             e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
+        }catch(NullPointerException e){
+            e.printStackTrace();
         }
         
-        return results;
+        return affected != 0;
     }
 
     @Override
-    public ResultSet selectByName(String name) {
-        ResultSet results = null;
-        Connection con = MyConnector.connect();;
-        try{
-            SqlRunner run = new SqlRunner();
-            
-            String sql = "SELECT * FROM funcionario WHERE nome = ?;";
+    public ArrayList<Funcionario> getAll() {
+        System.out.println("Listando todos os funcionários");
+        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
         
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM funcionario;";
+            
             PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ResultSet rs = ps.executeQuery();
             
-            ps.setString(1, name);
-            
-            results = run.runListQuery(ps);
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                Time horario_inicio = rs.getTime("horario_inicio");
+                Time horario_fim = rs.getTime("horario_fim");
+                String cargo = rs.getString("cargo");
+                String senha = rs.getString("senha");
+                Funcionario f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+                lista.add(f);
             }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
         }
         
-        return results;
+        return lista;
     }
+
+    @Override
+    public Funcionario getById(int id_busca) {
+        System.out.println("Buscando o funcionário "+id_busca);
+        Funcionario f = null;
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM funcionario WHERE id = ?;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ps.setInt(1, id_busca);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                Time horario_inicio = rs.getTime("horario_inicio");
+                Time horario_fim = rs.getTime("horario_fim");
+                String cargo = rs.getString("cargo");
+                String senha = rs.getString("senha");
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return f;
+    }
+
+    @Override
+    public ArrayList<Funcionario> getByNome(String nome_busca) {
+        System.out.println("Buscando o funcionário "+nome_busca);
+        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+        Funcionario f = null;
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM funcionario WHERE nome REGEXP ?;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ps.setString(1, nome_busca);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                Time horario_inicio = rs.getTime("horario_inicio");
+                Time horario_fim = rs.getTime("horario_fim");
+                String cargo = rs.getString("cargo");
+                String senha = rs.getString("senha");
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+                lista.add(f);
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return lista;
+    }
+
     
 }
