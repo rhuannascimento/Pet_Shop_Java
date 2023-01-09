@@ -35,8 +35,8 @@ public class PETSHOP {
             if(args[0].equalsIgnoreCase("migrate")) m.migrate();
             if(args[0].equalsIgnoreCase("seed")) s.seed();
         }else{
-//            // SEGUE ABAIXO EXEMPLO DE COMO USAR O REPOSITORY
-//            // rep -> acessa o banco
+            // SEGUE ABAIXO EXEMPLO DE COMO USAR O REPOSITORY
+            // rep -> acessa o banco
 //            FuncionarioRep rep = new FuncionarioRep();
 //
 //            // lista funcionários
@@ -48,7 +48,7 @@ public class PETSHOP {
 //            rep.update(toUpdate);
 //
 //            // insere funcionário novo
-//            rep.insertOne(new Funcionario(0, "Teste criação", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "caio.costa", "senhacaio"));
+//            rep.insertOne(new Funcionario(0, "Novo funcionario tal", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "user.name", "senhacaio"));
 //
 //            // lista dnv
 //            funcionarios = listarFuncionarios();
@@ -65,23 +65,23 @@ public class PETSHOP {
 //            if(lista.size() == 0) System.out.println("Não existe funcionário com esse username!");
 //            else System.out.println("Existe funcionário com esse username!");
 
-            ClienteRep cr = new ClienteRep();
+//            ClienteRep cr = new ClienteRep();
+//            
+//            ArrayList<Cliente> clientes = listarClientes();
+//            
+//            Cliente c = clientes.get(0);
+//            c.setNome("Claudim buxexa");
+//            cr.update(c);
+//            
+//            Animal a = new Animal(0, "Cachorro do claudim", c.getCpf(), "Cachorro");
+//            
+//            cr.insertOne(a);
             
-            ArrayList<Cliente> clientes = listarClientes();
             
-            Cliente c = clientes.get(0);
-            c.setNome("Claudim buxexa");
-            cr.update(c);
-            
-            Animal a = new Animal(0, "Cachorro do claudim", c.getCpf(), "Cachorro");
-            
-            cr.insertOne(a);
-            
-            
-            
-            cr.deleteById(2);
-            
-            clientes = listarClientes();
+//            
+//            cr.deleteById(2);
+//            
+//            clientes = listarClientes();
 
         }
         
