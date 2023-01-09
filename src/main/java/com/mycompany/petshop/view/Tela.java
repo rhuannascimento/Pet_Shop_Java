@@ -1,4 +1,4 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -24,6 +24,10 @@ import javax.swing.JList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.mycompany.petshop.model.classes.*;
+import java.sql.Time;
+import java.util.Date;
 
 public class Tela extends JFrame {
 
@@ -83,8 +87,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> agendamentos = new ArrayList<>();
 
-        agendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+//        agendamentos.add(new Agendamento("Lily", new Date(2023, 2, 20, 12, 00), "Tosa"));
+//        agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         JList<Agendamento> list = new JList<>(agendamentos.toArray(Agendamento[]::new));
 
@@ -94,8 +98,8 @@ public class Tela extends JFrame {
                 if (e.getClickCount() == 2) {
                     Agendamento selected = list.getSelectedValue();
 
-                    editarAgendamento a = new editarAgendamento(selected);
-                    a.desenha(selected);
+//                    editarAgendamento a = new editarAgendamento(selected);
+//                    a.desenha(selected);
                 }
             }
         });
@@ -104,10 +108,10 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        agendarButton.addActionListener((ActionEvent e) -> {
-            criarAgendamento a = new criarAgendamento();
-            a.desenha();
-        });
+//        agendarButton.addActionListener((ActionEvent e) -> {
+//            criarAgendamento a = new criarAgendamento();
+//            a.desenha();
+//        });
 
         return agenda;
     }
@@ -130,10 +134,10 @@ public class Tela extends JFrame {
 
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
-        newFuncButton.addActionListener(e -> {
-            cadastrarFuncionario f = new cadastrarFuncionario();
-            f.desenha();
-        });
+//        newFuncButton.addActionListener(e -> {
+////            cadastrarFuncionario f = new cadastrarFuncionario();
+//            f.desenha();
+//        });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
 
@@ -146,10 +150,10 @@ public class Tela extends JFrame {
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
         JButton newClienteButton = new JButton("Nova ficha");
-        newClienteButton.addActionListener(e -> {
-            cadastrarCliente c = new cadastrarCliente();
-            c.desenha();
-        });
+//        newClienteButton.addActionListener(e -> {
+////            cadastrarCliente c = new cadastrarCliente();
+//            c.desenha();
+//        });
 
         painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
@@ -198,13 +202,13 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+//        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+//        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
-        }
+//        for (Agendamento agendamento : listaAgendamentos) {
+//            tableModel
+//                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+//        }
 
         return tabela;
     }
@@ -215,13 +219,13 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+//        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+//        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
-        }
+//        for (Agendamento agendamento : listaAgendamentos) {
+//            tableModel
+//                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+//        }
 
         return tabela;
     }
@@ -232,13 +236,13 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+//        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+//        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
-        }
+//        for (Agendamento agendamento : listaAgendamentos) {
+//            tableModel
+//                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+//        }
 
         return tabela;
     }
@@ -249,13 +253,13 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+//        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+//        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
-        }
+//        for (Agendamento agendamento : listaAgendamentos) {
+//            tableModel
+//                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+//        }
 
         return tabela;
     }

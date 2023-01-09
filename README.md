@@ -53,3 +53,17 @@ Os commits devem ter os seguintes prefixos (conventional commits):
  - "fix: " para correções;
  - "refactor: " para refatorações;
  - "chore: " para tarefas genéricas não enquadrada nas superiores
+
+## Orientações para a execução
+
+Para criar o banco de dados, utiliza-se o argumento "migrate"
+
+Para colocar informações no banco, utiliza-se o argumento "seed"
+
+Exemplo: 
+
+```mvn package && java -jar target/PETSHOP-1.0-SNAPSHOT-jar-with-dependencies.jar migrate seed```
+
+Para executar o projeto, sem alterações pré-programadas de banco, basta executar o projeto da seguinte forma:
+
+```mvn package && java -jar target/PETSHOP-1.0-SNAPSHOT-jar-with-dependencies.jar```
