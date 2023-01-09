@@ -4,8 +4,10 @@
  */
 package com.mycompany.petshop.business.funcionarios;
 
+import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.repository.FuncionarioRep;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -14,18 +16,13 @@ import java.util.ArrayList;
  */
 public class CadastrarFuncionario {
     
-    public CadastrarFuncionario(Funcionario f) throws FuncionarioExp{
+    public CadastrarFuncionario(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password) throws FuncionarioExp{
     
+        Funcionario f = new Funcionario(id,nome, startTime, endTime, cargo, username, password);
+        
         FuncionarioRep fr = new FuncionarioRep();
         
-        ArrayList<Funcionario> l = fr.getByNome(f.getNome());
         ArrayList<Funcionario> l2 = fr.getByUsername(f.getNome());
-        
-        if(l.size() == 1){
-            if(l.get(0).getNome().equalsIgnoreCase(f.getNome())){
-                throw new FuncionarioExp("Funcionario com este nome já existe!");
-            }
-        }
         
         if(l2.size() >= 1){
             
