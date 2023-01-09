@@ -53,7 +53,7 @@ public class Seeder {
     }
 
     private void populateFuncionario(){
-        String sql = "INSERT INTO funcionario (nome, horario_inicio, horario_fim, cargo, senha) VALUES ('João da Silva', '08:00:00', '17:00:00', 'Gerente', 'minhasenha123'), ('Maria da Silva', '09:00:00', '18:00:00', 'Atendente', 'suasenha123');";
+        String sql = "INSERT INTO funcionario (nome, horario_inicio, horario_fim, cargo, senha) VALUES ('João da Silva', '39600000', '75600000', 'Gerente', 'minhasenha123'), ('Maria da Silva', '39600000', '75600000', 'Atendente', 'suasenha123');";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             

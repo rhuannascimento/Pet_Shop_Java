@@ -58,5 +58,9 @@ public class Funcionario {
     public void setPassword(String newPass) {
         this.password = newPass;
     }
+    
+    public String toString(){
+        return (this.id + " -> " +this.nome + " - " + this.startTime + " - " + this.endTime);
+    }
 
 }
