@@ -1,4 +1,4 @@
-package com.mycompany.petshop.view;
+package com.mycompany.teste;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -16,6 +16,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -27,11 +28,6 @@ import javax.swing.table.DefaultTableModel;
 public class Tela extends JFrame {
 
     private JPanel painelPrincipal;
-    private JPanel painelHome;
-    private JPanel painelFuncionarios;
-    private JPanel painelClientes;
-    private JPanel painelServicos;
-    private JPanel painelMercadorias;
 
     public Tela() {
         super("Pet Shop");
@@ -65,7 +61,7 @@ public class Tela extends JFrame {
         splitPane.setEnabled(false);
         splitPane.setPreferredSize(new Dimension(600, 300));
 
-        painelHome = new JPanel();
+        JPanel painelHome = new JPanel();
 
         painelHome.add(splitPane, BorderLayout.CENTER);
 
@@ -107,8 +103,9 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        agendarButton.addActionListener(e -> {
-            criarAgendamento();
+        agendarButton.addActionListener((ActionEvent e) -> {
+            criarAgendamento a = new criarAgendamento();
+            a.desenha();
         });
 
         return agenda;
@@ -197,80 +194,6 @@ public class Tela extends JFrame {
         frame.setVisible(true);
     }
 
-    public void criarAgendamento() {
-        JFrame frame = new JFrame("Novo agendamento");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
-
-        c.gridwidth = 2;
-
-        c.gridx = 0;
-        c.gridy = 0;
-        painel.add(new JLabel("Nome"), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
-        JComboBox nome = new JComboBox();
-        painel.add(nome, c);
-
-        c.gridx = 0;
-        c.gridy = 2;
-        painel.add(new JLabel("Serviço"), c);
-
-        c.gridx = 0;
-        c.gridy = 3;
-        JComboBox servico = new JComboBox();
-        painel.add(servico, c);
-
-        c.gridx = 0;
-        c.gridy = 4;
-        painel.add(new JLabel("Data"), c);
-
-        c.gridx = 0;
-        c.gridy = 5;
-        JDateChooser data = new JDateChooser();
-        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
-        editor.setEditable(false);
-        painel.add(data, c);
-
-        c.gridx = 0;
-        c.gridy = 6;
-        painel.add(new JLabel("Horário"), c);
-
-        c.gridx = 0;
-        c.gridy = 7;
-        JComboBox horario = new JComboBox();
-        painel.add(horario, c);
-
-        JButton agendar = new JButton("Agendar");
-        JButton cancelar = new JButton("Cancelar");
-
-        cancelar.addActionListener(e -> {
-            frame.dispose();
-        });
-
-        c.gridwidth = 1;
-
-        c.gridx = 0;
-        c.gridy = 8;
-        painel.add(agendar, c);
-
-        c.gridx = 1;
-        c.gridy = 8;
-        painel.add(cancelar, c);
-
-        frame.add(painel);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
     public JPanel desenhaPendencias() {
         JPanel pendencias = new JPanel(new BorderLayout());
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
@@ -284,7 +207,7 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaFuncionarios() {
-        painelFuncionarios = new JPanel(new BorderLayout());
+        JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
 
         JButton newFuncButton = new JButton("Cadastrar funcionário");
@@ -352,7 +275,7 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaClientes() {
-        painelClientes = new JPanel(new BorderLayout());
+        JPanel painelClientes = new JPanel(new BorderLayout());
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
         JButton newClienteButton = new JButton("Nova ficha");
@@ -438,14 +361,14 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaServicos() {
-        painelServicos = new JPanel(new BorderLayout());
+        JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
         painelPrincipal.add(painelServicos, "Serviços");
 
     }
 
     public void desenhaPaginaMercadorias() {
-        painelMercadorias = new JPanel(new BorderLayout());
+        JPanel painelMercadorias = new JPanel(new BorderLayout());
         painelMercadorias.setBorder(BorderFactory.createTitledBorder("Mercadorias"));
 
         JTabbedPane tabbedPane = new JTabbedPane();
