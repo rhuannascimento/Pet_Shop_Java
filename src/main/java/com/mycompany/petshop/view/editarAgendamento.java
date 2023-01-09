@@ -1,5 +1,6 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view;
 
+import com.mycompany.petshop.model.classes.Agendamento;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
@@ -20,7 +21,7 @@ public class editarAgendamento extends JFrame {
     private JComboBox horario;
 
     public editarAgendamento(Agendamento selected) {
-        super("Agendamento de " + selected.getNome());
+        super("Agendamento de " + selected.getA());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }

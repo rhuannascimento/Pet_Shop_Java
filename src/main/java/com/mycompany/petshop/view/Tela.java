@@ -1,8 +1,9 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view;
+
+import com.mycompany.petshop.model.classes.Agendamento;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -13,10 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -77,27 +74,37 @@ public class Tela extends JFrame {
         JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        List<Agendamento> agendamentos = new ArrayList<>();
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        JTable tabela = new JTable(tableModel);
 
-        agendamentos.add(new Agendamento("Tom", "Tosa", "16:00"));
-        agendamentos.add(new Agendamento("Jerry", "Banho", "17:00"));
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        JList<Agendamento> list = new JList<>(agendamentos.toArray(Agendamento[]::new));
-        list.setCellRenderer(renderer);
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
-        list.addMouseListener(new MouseAdapter() {
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    Agendamento selected = list.getSelectedValue();
-
-                    editarAgendamento a = new editarAgendamento(selected);
-                    a.desenha(selected);
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarAgendamento edit = new editarAgendamento(a);
+                        edit.desenha(a);
+                    }
                 }
             }
         });
 
-        agenda.add(list);
+        agenda.add(tabela);
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
@@ -107,16 +114,8 @@ public class Tela extends JFrame {
         });
 
         return agenda;
-    }
 
-    DefaultListCellRenderer renderer = new DefaultListCellRenderer() {
-        public Component getListCellRendererComponent(JList<?> list, Agendamento value, int index, boolean isSelected,
-                boolean cellHasFocus) {
-            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            setText(value.toString());
-            return this;
-        }
-    };
+    }
 
     public JPanel desenhaPendencias() {
         JPanel pendencias = new JPanel(new BorderLayout());
@@ -133,6 +132,38 @@ public class Tela extends JFrame {
     public void desenhaPaginaFuncionarios() {
         JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarAgendamento edit = new editarAgendamento(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
+
+        painelFuncionarios.add(tabela);
 
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
@@ -151,6 +182,38 @@ public class Tela extends JFrame {
         JPanel painelClientes = new JPanel(new BorderLayout());
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarAgendamento edit = new editarAgendamento(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
+
+        painelClientes.add(tabela);
+
         JButton newClienteButton = new JButton("Nova ficha");
         newClienteButton.addActionListener(e -> {
             cadastrarCliente c = new cadastrarCliente();
@@ -167,6 +230,38 @@ public class Tela extends JFrame {
         JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
         painelPrincipal.add(painelServicos, "Serviços");
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+
+        for (Agendamento agendamento : listaAgendamentos) {
+            tableModel
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarAgendamento edit = new editarAgendamento(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
+
+        painelServicos.add(tabela);
 
     }
 
@@ -209,7 +304,7 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -222,7 +317,7 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento a = listaAgendamentos.get(row);
-                        JFrame f = new JFrame(a.getNome());
+                        JFrame f = new JFrame(a.getA());
                         f.setSize(300, 300);
                         f.setVisible(true);
                     }
@@ -244,7 +339,7 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -263,7 +358,7 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -282,7 +377,7 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
 
         tabela.setDefaultEditor(Object.class, null);

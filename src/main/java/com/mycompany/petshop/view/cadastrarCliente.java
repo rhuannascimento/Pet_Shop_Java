@@ -1,4 +1,4 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
