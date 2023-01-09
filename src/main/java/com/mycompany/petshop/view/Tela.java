@@ -75,7 +75,7 @@ public class Tela extends JFrame {
         JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Serviço", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -138,7 +138,7 @@ public class Tela extends JFrame {
         JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID", "Nome", "Cargo", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -177,7 +177,7 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            cadastrarFuncionario f = new cadastrarFuncionario();
+            criarFuncionario f = new criarFuncionario();
             f.desenha();
         });
 
@@ -191,7 +191,8 @@ public class Tela extends JFrame {
         JPanel painelClientes = new JPanel(new BorderLayout());
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new String[] { "Nome", "Espécie", "Idade", "CPF do dono" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -229,7 +230,7 @@ public class Tela extends JFrame {
 
         JButton newClienteButton = new JButton("Nova ficha");
         newClienteButton.addActionListener(e -> {
-            cadastrarCliente c = new cadastrarCliente();
+            criarCliente c = new criarCliente();
             c.desenha();
         });
 
@@ -243,7 +244,7 @@ public class Tela extends JFrame {
         JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Cargo", "Horário" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Tipo", "Duração", "Valor" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -274,9 +275,7 @@ public class Tela extends JFrame {
         });
 
         JScrollPane sp = new JScrollPane(tabela);
-
         sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
-
         painelServicos.add(sp);
 
         painelPrincipal.add(painelServicos, "Serviços");
@@ -305,14 +304,17 @@ public class Tela extends JFrame {
         remedios.add(tabelaRemedios());
         tabbedPane.addTab("Remédios", remedios);
 
+        tabbedPane.setPreferredSize(new Dimension(600, 300));
+
         painelMercadorias.add(tabbedPane);
 
         painelPrincipal.add(painelMercadorias, "Mercadorias");
 
     }
 
-    public JTable tabelaRacao() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+    public JScrollPane tabelaRacao() {
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -343,11 +345,13 @@ public class Tela extends JFrame {
             }
         });
 
-        return tabela;
+        JScrollPane sp = new JScrollPane(tabela);
+        return sp;
     }
 
     public JTable tabelaRoupas() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -366,7 +370,8 @@ public class Tela extends JFrame {
     }
 
     public JTable tabelaBrinquedos() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -385,7 +390,8 @@ public class Tela extends JFrame {
     }
 
     public JTable tabelaRemedios() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();

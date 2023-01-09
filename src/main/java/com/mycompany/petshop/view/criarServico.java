@@ -9,14 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class cadastrarCliente extends JFrame {
+public class criarServico extends JFrame {
 
     private JTextField nome;
     private JTextField especie;
     private JTextField idade;
     private JTextField cpf;
 
-    public cadastrarCliente() {
+    public criarServico() {
         super("Nova ficha");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

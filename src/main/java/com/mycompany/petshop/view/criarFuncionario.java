@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class cadastrarFuncionario extends JFrame {
+public class criarFuncionario extends JFrame {
 
     private JTextField login;
     private JTextField senha;
 
-    public cadastrarFuncionario() {
+    public criarFuncionario() {
         super("Cadastrar funcionário");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
