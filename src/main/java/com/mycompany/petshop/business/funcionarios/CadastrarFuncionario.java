@@ -4,7 +4,6 @@
  */
 package com.mycompany.petshop.business.funcionarios;
 
-import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.sql.Time;
