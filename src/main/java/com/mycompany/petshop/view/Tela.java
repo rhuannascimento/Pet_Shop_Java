@@ -53,6 +53,7 @@ public class Tela extends JFrame {
         desenhaBarraBotoes();
 
         this.setSize(600, 300);
+        this.setLocationRelativeTo(null);
         this.pack();
         this.setVisible(true);
     }
@@ -132,7 +133,8 @@ public class Tela extends JFrame {
 
         c.gridx = 0;
         c.gridy = 1;
-        JComboBox nome = new JComboBox();
+        JTextField nome = new JTextField();
+        nome.setEditable(false);
         painel.add(nome, c);
 
         c.gridx = 0;
@@ -191,6 +193,7 @@ public class Tela extends JFrame {
 
         frame.add(painel);
         frame.setSize(300, 300);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -204,6 +207,8 @@ public class Tela extends JFrame {
 
         c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
         c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+
+        c.gridwidth = 2;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -250,6 +255,8 @@ public class Tela extends JFrame {
             frame.dispose();
         });
 
+        c.gridwidth = 1;
+
         c.gridx = 0;
         c.gridy = 8;
         painel.add(agendar, c);
@@ -260,6 +267,7 @@ public class Tela extends JFrame {
 
         frame.add(painel);
         frame.setSize(300, 300);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -301,18 +309,20 @@ public class Tela extends JFrame {
         c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
         c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
 
+        c.gridwidth = 2;
+
         c.gridx = 0;
         c.gridy = 0;
-        painel.add(new JLabel("Nome"), c);
+        painel.add(new JLabel("Login"), c);
 
         c.gridx = 0;
         c.gridy = 1;
-        JTextField nome = new JTextField();
-        painel.add(nome, c);
+        JTextField login = new JTextField();
+        painel.add(login, c);
 
         c.gridx = 0;
         c.gridy = 2;
-        painel.add(new JLabel("ID"), c);
+        painel.add(new JLabel("Senha"), c);
 
         c.gridx = 0;
         c.gridy = 3;
@@ -326,6 +336,8 @@ public class Tela extends JFrame {
             frame.dispose();
         });
 
+        c.gridwidth = 1;
+
         c.gridx = 0;
         c.gridy = 4;
         painel.add(cadastrar, c);
@@ -335,6 +347,7 @@ public class Tela extends JFrame {
 
         frame.add(painel);
         frame.setSize(300, 300);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -354,7 +367,7 @@ public class Tela extends JFrame {
     }
 
     public void cadastrarCliente() {
-        JFrame frame = new JFrame("Novo ficha");
+        JFrame frame = new JFrame("Nova ficha");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painel = new JPanel();
@@ -366,6 +379,7 @@ public class Tela extends JFrame {
 
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 2;
         painel.add(new JLabel("Nome"), c);
 
         c.gridx = 0;
@@ -407,6 +421,8 @@ public class Tela extends JFrame {
             frame.dispose();
         });
 
+        c.gridwidth = 1;
+
         c.gridx = 0;
         c.gridy = 8;
         painel.add(cadastrar, c);
@@ -417,6 +433,7 @@ public class Tela extends JFrame {
 
         frame.add(painel);
         frame.setSize(300, 300);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -438,15 +455,15 @@ public class Tela extends JFrame {
         tabbedPane.addTab("Ração", racao);
 
         JPanel roupas = new JPanel();
-        racao.add(tabelaRoupas());
+        roupas.add(tabelaRoupas());
         tabbedPane.addTab("Roupas", roupas);
 
         JPanel brinquedos = new JPanel();
-        racao.add(tabelaBrinquedos());
+        brinquedos.add(tabelaBrinquedos());
         tabbedPane.addTab("Brinquedos", brinquedos);
 
         JPanel remedios = new JPanel();
-        racao.add(tabelaRemedios());
+        remedios.add(tabelaRemedios());
         tabbedPane.addTab("Remédios", remedios);
 
         painelMercadorias.add(tabbedPane);
@@ -576,4 +593,10 @@ public class Tela extends JFrame {
         add(barraBotoes, BorderLayout.SOUTH);
     }
 
+    public static void main(String args[]) {
+
+        Tela tela = new Tela();
+        tela.renderiza();
+
+    }
 }
