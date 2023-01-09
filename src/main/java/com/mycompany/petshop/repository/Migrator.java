@@ -67,7 +67,7 @@ public class Migrator {
     }
 
     private void createFuncionario(){
-        String sql = "CREATE TABLE IF NOT EXISTS funcionario (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, horario_inicio TIME NOT NULL, horario_fim TIME NOT NULL, cargo TEXT NOT NULL, senha TEXT NOT NULL);";
+        String sql = "CREATE TABLE IF NOT EXISTS funcionario (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, horario_inicio TIME NOT NULL, horario_fim TIME NOT NULL, cargo TEXT NOT NULL, usuario TEXT NOT NULL, senha TEXT NOT NULL);";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             

@@ -4,9 +4,11 @@
  */
 package com.mycompany.petshop.repository;
 
+import com.mycompany.petshop.model.classes.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,17 +53,21 @@ public class Seeder {
     }
 
     private void populateFuncionario(){
-        String sql = "INSERT INTO funcionario (nome, horario_inicio, horario_fim, cargo, senha) VALUES ('João da Silva', '39600000', '75600000', 'Gerente', 'minhasenha123'), ('Maria da Silva', '39600000', '75600000', 'Atendente', 'suasenha123');";
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            
-            int result = statement.executeUpdate();
-            
-            if(result > 0) System.out.println(result + " valores inseridos dados na tabela funcionario.");
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Funcionario f1 = new Funcionario(0, "Caio Vieira", Time.valueOf("08:00:00"), Time.valueOf("16:00:00"), "gerente", "caio.costa", "senhacaio");
+        Funcionario f2 = new Funcionario(0, "Rhuan Nascimento", Time.valueOf("10:00:00"), Time.valueOf("18:00:00"), "funcionario", "rhuan.nascimento", "senharhuan");
+        Funcionario f3 = new Funcionario(0, "Bernardo Ortiz", Time.valueOf("09:00:00"), Time.valueOf("17:00:00"), "funcionario", "bernardo.ortiz", "senhabernardo");
+        Funcionario f4 = new Funcionario(0, "Lucas Duarte", Time.valueOf("11:00:00"), Time.valueOf("19:00:00"), "funcionario", "lucas.duarte", "senhalucas");
+        
+        FuncionarioRep rp = new FuncionarioRep();
+        boolean n1 = rp.insertOne(f1);
+        boolean n2 = rp.insertOne(f2);
+        boolean n3 = rp.insertOne(f3);
+        boolean n4 = rp.insertOne(f4);
+        
+        if(n1) System.out.println("Funcionario Caio cadastrado");
+        if(n2) System.out.println("Funcionario Rhuan cadastrado");
+        if(n3) System.out.println("Funcionario Bernardo cadastrado");
+        if(n4) System.out.println("Funcionario Lucas cadastrado");
         
     }
 

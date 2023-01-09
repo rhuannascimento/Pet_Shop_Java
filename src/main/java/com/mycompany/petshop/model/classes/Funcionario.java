@@ -4,20 +4,29 @@ import java.sql.Time;
 
 public class Funcionario {
     private int id;
-    private String nome, password, cargo;
+    private String nome, password, cargo, username;
     private Time startTime;
     private Time endTime;
 
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, Time startTime, Time endTime, String cargo, String password) {
+    public Funcionario(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password) {
         this.id = id;
         this.nome = nome;
         this.startTime = startTime;
         this.endTime = endTime;
         this.password = password;
         this.cargo = cargo;
+        this.username = username.toLowerCase();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getCargo() {
@@ -69,7 +78,7 @@ public class Funcionario {
     }
     
     public String toString(){
-        return (this.id + " -> " +this.nome + " - " + this.startTime + " - " + this.endTime);
+        return (this.id + " -> " +this.nome + " - " + this.startTime + " - " + this.endTime + " - " + this.username);
     }
 
 }

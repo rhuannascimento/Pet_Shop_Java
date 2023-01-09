@@ -29,15 +29,16 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         try{
             con = MyConnector.connect();
             
-            String sql = "INSERT INTO funcionario(nome, horario_inicio, horario_fim, cargo, senha) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO funcionario(nome, horario_inicio, horario_fim, cargo, usuario, senha) VALUES (?,?,?,?,?,?)";
             
             ps = con.prepareStatement(sql);
             
             ps.setString(1, valor.getNome());
             ps.setTime(2, valor.getStartTime());
-            ps.setTime(3, valor.getStartTime());
+            ps.setTime(3, valor.getEndTime());
             ps.setString(4, valor.getCargo());
-            ps.setString(5, valor.getPassword());
+            ps.setString(5, valor.getUsername());
+            ps.setString(6, valor.getPassword());
             
             affected = ps.executeUpdate();
             
@@ -59,16 +60,17 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "UPDATE funcionario set nome = ?, horario_inicio = ?, horario_fim = ? , cargo = ?, senha = ? WHERE id = ?;";
+            String sql = "UPDATE funcionario set nome = ?, horario_inicio = ?, horario_fim = ? , cargo = ?, usuario = ?, senha = ? WHERE id = ?;";
             
             PreparedStatement ps = con.prepareStatement(sql);
             
             ps.setString(1, valor.getNome());
             ps.setTime(2, valor.getStartTime());
-            ps.setTime(3, valor.getStartTime());
+            ps.setTime(3, valor.getEndTime());
             ps.setString(4, valor.getCargo());
-            ps.setString(5, valor.getPassword());
-            ps.setInt(6, valor.getId());
+            ps.setString(5, valor.getUsername());
+            ps.setString(6, valor.getPassword());
+            ps.setInt(7, valor.getId());
             
             affected = ps.executeUpdate();
             
@@ -151,8 +153,9 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
                 Time horario_inicio = rs.getTime("horario_inicio");
                 Time horario_fim = rs.getTime("horario_fim");
                 String cargo = rs.getString("cargo");
+                String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
-                Funcionario f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+                Funcionario f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, usuario, senha);
                 lista.add(f);
             }
             
@@ -186,8 +189,9 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
                 Time horario_inicio = rs.getTime("horario_inicio");
                 Time horario_fim = rs.getTime("horario_fim");
                 String cargo = rs.getString("cargo");
+                String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
-                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo,usuario, senha);
             }
             
         }catch(SQLException e){
@@ -221,8 +225,9 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
                 Time horario_inicio = rs.getTime("horario_inicio");
                 Time horario_fim = rs.getTime("horario_fim");
                 String cargo = rs.getString("cargo");
+                String usuario = rs.getString("usuario");
                 String senha = rs.getString("senha");
-                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, senha);
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, usuario, senha);
                 lista.add(f);
             }
             
@@ -235,5 +240,41 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         return lista;
     }
 
+    public ArrayList<Funcionario> getByUsername(String nome_busca) {
+        nome_busca = nome_busca.toLowerCase();
+        System.out.println("Buscando o funcionário "+nome_busca);
+        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+        Funcionario f = null;
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM funcionario WHERE usuario = ?;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ps.setString(1, nome_busca);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                Time horario_inicio = rs.getTime("horario_inicio");
+                Time horario_fim = rs.getTime("horario_fim");
+                String cargo = rs.getString("cargo");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, usuario, senha);
+                lista.add(f);
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return lista;
+    }
     
 }

@@ -42,24 +42,29 @@ public class PETSHOP {
             // lista funcionários
             ArrayList<Funcionario> funcionarios = listarFuncionarios();
 
-            // atualiza primeiro funcionário da lista
-            Funcionario toUpdate = funcionarios.get(0);
-            toUpdate.setNome("Teste testado");
-            rep.update(toUpdate);
+//            // atualiza primeiro funcionário da lista
+//            Funcionario toUpdate = funcionarios.get(0);
+//            toUpdate.setNome("Teste testado");
+//            rep.update(toUpdate);
+//
+//            // insere funcionário novo
+//            rep.insertOne(new Funcionario(0, "Teste criação", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "caio.costa", "senhacaio"));
+//
+//            // lista dnv
+//            funcionarios = listarFuncionarios();
+//
+//            // deleta o funcionário de id 1, e tbm o 3° funcionário da lista
+//            Funcionario toDelete = funcionarios.get(2);
+//            rep.deleteById(1);
+//            rep.delete(toDelete);
+//            
+//            
+//            funcionarios = listarFuncionarios();
+              ArrayList<Funcionario> lista = rep.getByUsername("caio.costaa");
+              
+              if(lista.size() == 0) System.out.println("Não existe funcionário com esse username!");
+              else System.out.println("Existe funcionário com esse username!");
 
-            // insere funcionário novo
-            rep.insertOne(new Funcionario(0, "Teste criação", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "minhasenha123"));
-
-            // lista dnv
-            funcionarios = listarFuncionarios();
-
-            // deleta o funcionário de id 1, e tbm o 3° funcionário da lista
-            Funcionario toDelete = funcionarios.get(2);
-            rep.deleteById(1);
-            rep.delete(toDelete);
-            
-            
-            funcionarios = listarFuncionarios();
         }
         
         
