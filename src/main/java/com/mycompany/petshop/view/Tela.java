@@ -94,7 +94,8 @@ public class Tela extends JFrame {
                 if (e.getClickCount() == 2) {
                     Agendamento selected = list.getSelectedValue();
 
-                    visualizarAgendamento(selected);
+                    editarAgendamento a = new editarAgendamento(selected);
+                    a.desenha(selected);
                 }
             }
         });
@@ -109,89 +110,6 @@ public class Tela extends JFrame {
         });
 
         return agenda;
-    }
-
-    public void visualizarAgendamento(Agendamento selected) {
-        JFrame frame = new JFrame("Agendamento de " + selected.getNome());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL;
-
-        c.gridwidth = 3;
-
-        c.gridx = 0;
-        c.gridy = 0;
-        painel.add(new JLabel("Nome"), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
-        JTextField nome = new JTextField();
-        nome.setEditable(false);
-        painel.add(nome, c);
-
-        c.gridx = 0;
-        c.gridy = 2;
-        painel.add(new JLabel("Serviço"), c);
-
-        c.gridx = 0;
-        c.gridy = 3;
-        JComboBox servico = new JComboBox();
-        painel.add(servico, c);
-
-        c.gridx = 0;
-        c.gridy = 4;
-        painel.add(new JLabel("Data"), c);
-
-        c.gridx = 0;
-        c.gridy = 5;
-        JDateChooser data = new JDateChooser();
-        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
-        editor.setEditable(false);
-        painel.add(data, c);
-
-        c.gridx = 0;
-        c.gridy = 6;
-        painel.add(new JLabel("Horário"), c);
-
-        c.gridx = 0;
-        c.gridy = 7;
-        JComboBox horario = new JComboBox();
-        painel.add(horario, c);
-
-        JButton salvar = new JButton("Salvar");
-        JButton excluir = new JButton("Excluir");
-        JButton cancelar = new JButton("Cancelar");
-
-        cancelar.addActionListener(e -> {
-            frame.dispose();
-        });
-
-        c.gridwidth = 1;
-
-        c.gridx = 0;
-        c.gridy = 8;
-
-        painel.add(salvar, c);
-
-        c.gridx = 1;
-        c.gridy = 8;
-
-        painel.add(excluir, c);
-
-        c.gridx = 2;
-        c.gridy = 8;
-
-        painel.add(cancelar, c);
-
-        frame.add(painel);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
 
     public JPanel desenhaPendencias() {
