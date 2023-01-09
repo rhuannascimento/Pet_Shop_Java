@@ -11,8 +11,8 @@ import javax.swing.JTextField;
 
 public class cadastrarFuncionario extends JFrame {
 
-    JTextField login;
-    JTextField senha;
+    private JTextField login;
+    private JTextField senha;
 
     public cadastrarFuncionario() {
         super("Cadastrar funcionário");

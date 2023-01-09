@@ -11,10 +11,10 @@ import javax.swing.JTextField;
 
 public class cadastrarCliente extends JFrame {
 
-    JTextField nome;
-    JTextField especie;
-    JTextField idade;
-    JTextField cpf;
+    private JTextField nome;
+    private JTextField especie;
+    private JTextField idade;
+    private JTextField cpf;
 
     public cadastrarCliente() {
         super("Nova ficha");
