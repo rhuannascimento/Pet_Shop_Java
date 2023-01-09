@@ -112,25 +112,22 @@ public class FuncionarioRep implements InterfaceRep<Funcionario> {
     @Override
     public ResultSet selectAll() {
         ResultSet results = null;
-        Connection con = MyConnector.connect();;
+        Connection con = MyConnector.connect();
+        PreparedStatement ps = null;
         try{
             SqlRunner run = new SqlRunner();
             
             String sql = "SELECT * FROM funcionario;";
         
-            PreparedStatement ps = con.prepareStatement(sql);
-            
+            ps = con.prepareStatement(sql);
+
             results = run.runListQuery(ps);
+            
+
         }catch(Exception e){
             e.printStackTrace();
-        }finally{
-            try{
-                if(con != null) con.close();
-                
-            }catch(SQLException e){
-                e.printStackTrace();
-            }
         }
+        
         
         return results;
         

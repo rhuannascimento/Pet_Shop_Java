@@ -20,6 +20,7 @@ import java.util.logging.Logger;
  */
 public class SqlRunner {
     public int runUpdateQuery(PreparedStatement statement){    
+        
         int numRows = 0;
         try {
             numRows = statement.executeUpdate();
@@ -43,27 +44,18 @@ public class SqlRunner {
         }
     }
     
-    public ResultSet runListQuery(PreparedStatement statement){    
+    public ResultSet runListQuery(PreparedStatement statement){  
+        ResultSet rows = null;
         try {
-            ResultSet rows = statement.executeQuery();
+            rows = statement.executeQuery();
             
             if(!rows.isBeforeFirst()) throw new NothingSelectedException(statement.getWarnings());
-            
-            return rows;
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (NothingSelectedException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return null;
-            
         }
+        return rows;
     }
 }

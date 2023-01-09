@@ -25,18 +25,25 @@ public class PETSHOP {
 
     public static void main(String[] args) {
         Migrator m = new Migrator();
-        m.migrate();
-
         Seeder s = new Seeder();
-        s.seed();
+        
+        if(args.length == 2){
+            m.migrate();
+            s.seed();
+        }
+        if(args.length == 1){
+            if(args[0].equalsIgnoreCase("migrate")) m.migrate();
+            if(args[0].equalsIgnoreCase("seed")) s.seed();
+        }
+        
         
         FuncionarioRep rep = new FuncionarioRep();
         
         Funcionario f = new Funcionario(0, "claudio", Time.valueOf("08:00:00"), Time.valueOf("18:00:00"), "mypassword");
         
         rep.insertOne(f);
-        
         ResultSet rs = rep.selectAll();
+
         try {
             while (rs.next()) {
                 int id;
@@ -48,7 +55,7 @@ public class PETSHOP {
                 System.out.println("ID: " + id + ", Nome: " + nome);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PETSHOP.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ex: "+ex);
         }
         
     }
