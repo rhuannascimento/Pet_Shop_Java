@@ -213,65 +213,14 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            cadastrarFuncionario();
+            cadastrarFuncionario f = new cadastrarFuncionario();
+            f.desenha();
         });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
 
         painelPrincipal.add(painelFuncionarios, "Funcionários");
 
-    }
-
-    public void cadastrarFuncionario() {
-
-        JFrame frame = new JFrame("Cadastrar funcionário");
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
-
-        c.gridwidth = 2;
-
-        c.gridx = 0;
-        c.gridy = 0;
-        painel.add(new JLabel("Login"), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
-        JTextField login = new JTextField();
-        painel.add(login, c);
-
-        c.gridx = 0;
-        c.gridy = 2;
-        painel.add(new JLabel("Senha"), c);
-
-        c.gridx = 0;
-        c.gridy = 3;
-        JTextField id = new JTextField();
-        painel.add(id, c);
-
-        JButton cadastrar = new JButton("Cadastrar");
-        JButton cancelar = new JButton("Cancelar");
-
-        cancelar.addActionListener(e -> {
-            frame.dispose();
-        });
-
-        c.gridwidth = 1;
-
-        c.gridx = 0;
-        c.gridy = 4;
-        painel.add(cadastrar, c);
-        c.gridx = 1;
-        c.gridy = 4;
-        painel.add(cancelar, c);
-
-        frame.add(painel);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
 
     public void desenhaPaginaClientes() {
