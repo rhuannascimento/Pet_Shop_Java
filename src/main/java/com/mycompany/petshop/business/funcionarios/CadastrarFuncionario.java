@@ -22,16 +22,10 @@ public class CadastrarFuncionario {
         
         FuncionarioRep fr = new FuncionarioRep();
         
-        ArrayList<Funcionario> l2 = fr.getByUsername(f.getNome());
+        ArrayList<Funcionario> l = fr.getByUsername(f.getUsername());
         
-        if(l2.size() >= 1){
-            
-            for (int i = 0; i < l2.size(); i++) {
-                if(l2.get(i).getNome().equalsIgnoreCase(f.getNome())){
-                    throw new FuncionarioExp("Funcionario com este nome já existe!");
-                }
-            }
-            
+        if(!l.isEmpty()){
+            throw new FuncionarioExp("Este Username esta em uso");
         }
             
         fr.insertOne(f);
