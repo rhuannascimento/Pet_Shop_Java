@@ -1,21 +1,31 @@
 package com.mycompany.petshop.model.classes;
 
-import java.time.LocalDateTime;
+import java.sql.Time;
 
 public class Funcionario {
     private int id;
-    private String nome;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String nome, password, cargo;
+    private Time startTime;
+    private Time endTime;
 
     public Funcionario() {
     }
 
-    public Funcionario(int id, String nome, LocalDateTime startTime, LocalDateTime endTime) {
+    public Funcionario(int id, String nome, Time startTime, Time endTime, String cargo, String password) {
         this.id = id;
         this.nome = nome;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.password = password;
+        this.cargo = cargo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public int getId() {
@@ -34,20 +44,32 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public LocalDateTime getStartTime() {
+    public Time getStartTime() {
         return this.startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(Time startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public Time getEndTime() {
         return this.endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(Time endTime) {
         this.endTime = endTime;
+    }
+    
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String newPass) {
+        this.password = newPass;
+    }
+    
+    public String toString(){
+        return (this.id + " -> " +this.nome + " - " + this.startTime + " - " + this.endTime);
     }
 
 }

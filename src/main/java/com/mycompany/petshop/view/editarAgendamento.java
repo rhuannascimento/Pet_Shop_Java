@@ -1,4 +1,4 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mycompany.petshop.model.classes.*;
+
 public class editarAgendamento extends JFrame {
 
     JTextField nome = new JTextField();
@@ -20,7 +22,7 @@ public class editarAgendamento extends JFrame {
     JComboBox horario = new JComboBox();
 
     public editarAgendamento(Agendamento selected) {
-        super("Agendamento de " + selected.getNome());
+//        super("Agendamento de " + selected.getNome());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }

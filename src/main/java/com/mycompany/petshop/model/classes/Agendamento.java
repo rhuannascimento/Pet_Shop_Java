@@ -3,31 +3,32 @@ package com.mycompany.petshop.model.classes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Agendamento {
   private int id;
-  private LocalDateTime data_hora;
+  private Date data_hora;
   private Animal animal;
   private Servico servico;
 
-    public Agendamento(int id, LocalDateTime data_hora, Animal animal, Servico servico) {
+    public Agendamento(int id, Date data_hora, Animal animal, Servico servico) {
         this.id = id;
         this.data_hora = data_hora;
         this.animal = animal;
         this.servico = servico;
     }
-    public Agendamento(LocalDateTime data_hora, Animal animal, Servico servico) {
+    public Agendamento(Animal animal, Date data_hora, Servico servico) {
         this.id = id;
         this.data_hora = data_hora;
         this.animal = animal;
         this.servico = servico;
     }
 
-    public LocalDateTime getData_hora() {
+    public Date getData_hora() {
         return data_hora;
     }
 
-    public void setData_hora(LocalDateTime data_hora) {
+    public void setData_hora(Date data_hora) {
         this.data_hora = data_hora;
     }
 

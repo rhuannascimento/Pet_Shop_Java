@@ -5,14 +5,18 @@
 
 package com.mycompany.petshop;
 
-import com.mycompany.petshop.model.classes.Agendamento;
-import com.mycompany.petshop.model.classes.Cliente;
-import com.mycompany.petshop.model.classes.Animal;
-import com.mycompany.petshop.model.classes.Servico;
-import com.mycompany.petshop.model.classes.Agenda;
+import com.mycompany.petshop.model.classes.*;
+import com.mycompany.petshop.repository.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,29 +25,55 @@ import java.time.LocalDate;
 public class PETSHOP {
 
     public static void main(String[] args) {
-        Cliente cliente = new Cliente("José");
+        Migrator m = new Migrator();
+        Seeder s = new Seeder();
+        
+        if(args.length == 2){
+            m.migrate();
+            s.seed();
+        }else if(args.length == 1){
+            if(args[0].equalsIgnoreCase("migrate")) m.migrate();
+            if(args[0].equalsIgnoreCase("seed")) s.seed();
+        }else{
+            // SEGUE ABAIXO EXEMPLO DE COMO USAR O REPOSITORY
+            // rep -> acessa o banco
+            FuncionarioRep rep = new FuncionarioRep();
 
-        Animal gato = new Animal("Gatinho");
-        Animal cachorro = new Animal("Doguinho");
-        
-        Servico tosa = new Servico("Tosa", 20.00f);
+            // lista funcionários
+            ArrayList<Funcionario> funcionarios = listarFuncionarios();
 
-        cliente.addAnimal(gato);
-        cliente.addAnimal(cachorro);
+            // atualiza primeiro funcionário da lista
+            Funcionario toUpdate = funcionarios.get(0);
+            toUpdate.setNome("Teste testado");
+            rep.update(toUpdate);
 
-        cliente.listAnimais();
+            // insere funcionário novo
+            rep.insertOne(new Funcionario(0, "Teste criação", Time.valueOf("08:00:00"), Time.valueOf("12:00:00"), "funcionario", "minhasenha123"));
+
+            // lista dnv
+            funcionarios = listarFuncionarios();
+
+            // deleta o funcionário de id 1, e tbm o 3° funcionário da lista
+            Funcionario toDelete = funcionarios.get(2);
+            rep.deleteById(1);
+            rep.delete(toDelete);
+            
+            
+            funcionarios = listarFuncionarios();
+        }
         
         
-        LocalDateTime hora = LocalDateTime.of(LocalDate.of(2022, 11, 20), LocalTime.of(9,30,0,0));
-        Agendamento a1 = new Agendamento(hora, gato, tosa);
-        LocalDateTime hora2 = LocalDateTime.of(LocalDate.of(2022, 11, 20), LocalTime.of(10,30,0,0));
-        Agendamento a2 = new Agendamento(hora2, cachorro, tosa);
         
-        Agenda agenda = new Agenda();
-        agenda.agendar(a1);
-        agenda.agendar(a2);
         
-        agenda.listAgendamentos();
         
+        
+    }
+    
+    static ArrayList<Funcionario> listarFuncionarios(){
+        FuncionarioRep rep = new FuncionarioRep();
+        ArrayList<Funcionario> funcionarios = rep.getAll();
+        for(Funcionario f: funcionarios) System.out.println(f);
+        System.out.println("\n\n");
+        return funcionarios;
     }
 }
