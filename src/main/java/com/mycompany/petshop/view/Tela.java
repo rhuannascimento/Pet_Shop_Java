@@ -229,84 +229,14 @@ public class Tela extends JFrame {
 
         JButton newClienteButton = new JButton("Nova ficha");
         newClienteButton.addActionListener(e -> {
-            cadastrarCliente();
+            cadastrarCliente c = new cadastrarCliente();
+            c.desenha();
         });
 
         painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
         painelPrincipal.add(painelClientes, "Clientes");
 
-    }
-
-    public void cadastrarCliente() {
-        JFrame frame = new JFrame("Nova ficha");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
-        c.insets = new Insets(3, 3, 3, 3); // espaçamento entre componentes
-        c.fill = GridBagConstraints.HORIZONTAL;
-
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        painel.add(new JLabel("Nome"), c);
-
-        c.gridx = 0;
-        c.gridy = 1;
-        JTextField nome = new JTextField();
-        painel.add(nome, c);
-
-        c.gridx = 0;
-        c.gridy = 2;
-        painel.add(new JLabel("Espécie"), c);
-
-        c.gridx = 0;
-        c.gridy = 3;
-        JTextField servico = new JTextField();
-        painel.add(servico, c);
-
-        c.gridx = 0;
-        c.gridy = 4;
-        painel.add(new JLabel("Idade (em anos)"), c);
-
-        c.gridx = 0;
-        c.gridy = 5;
-        JTextField idade = new JTextField();
-        painel.add(idade, c);
-
-        c.gridx = 0;
-        c.gridy = 6;
-        painel.add(new JLabel("CPF do dono"), c);
-
-        c.gridx = 0;
-        c.gridy = 7;
-        JTextField cpf = new JTextField();
-        painel.add(cpf, c);
-
-        JButton cadastrar = new JButton("Cadastrar");
-        JButton cancelar = new JButton("Cancelar");
-
-        cancelar.addActionListener(e -> {
-            frame.dispose();
-        });
-
-        c.gridwidth = 1;
-
-        c.gridx = 0;
-        c.gridy = 8;
-        painel.add(cadastrar, c);
-
-        c.gridx = 1;
-        c.gridy = 8;
-        painel.add(cancelar, c);
-
-        frame.add(painel);
-        frame.setSize(300, 300);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
     }
 
     public void desenhaPaginaServicos() {
