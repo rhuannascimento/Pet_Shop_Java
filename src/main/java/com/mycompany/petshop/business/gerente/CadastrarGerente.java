@@ -16,11 +16,11 @@ import java.util.ArrayList;
  */
 public class CadastrarGerente {
 
-    public CadastrarGerente(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password, String Cargo,Funcionario logado) throws GerenteExp {
+    public CadastrarGerente(int id, String nome, String startTime, String endTime, String cargo, String username, String password, String Cargo,Funcionario logado) throws GerenteExp {
     
         if(logado.getCargo().equalsIgnoreCase("Gerente")){
             
-            Funcionario f = new Funcionario(id,nome, startTime, endTime, cargo, username, password);
+            Funcionario f = new Funcionario(id,nome, Time.valueOf(startTime), Time.valueOf(endTime), cargo, username, password);
         
             FuncionarioRep fr = new FuncionarioRep();
         
