@@ -2,24 +2,20 @@ package com.mycompany.teste;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -65,10 +61,10 @@ public class Tela extends JFrame {
 
         painelHome.add(splitPane, BorderLayout.CENTER);
 
-        // Agenda
+        //Agenda
         JPanel agenda = desenhaAgenda();
 
-        // Pendencias
+        //Pendencias
         JPanel pendencias = desenhaPendencias();
 
         splitPane.setLeftComponent(agenda);
@@ -81,12 +77,13 @@ public class Tela extends JFrame {
         JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        ArrayList<Agendamento> agendamentos = new ArrayList<>();
+        List<Agendamento> agendamentos = new ArrayList<>();
 
-        agendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        agendamentos.add(new Agendamento("Tom", "Tosa", "16:00"));
+        agendamentos.add(new Agendamento("Jerry", "Banho", "17:00"));
 
         JList<Agendamento> list = new JList<>(agendamentos.toArray(Agendamento[]::new));
+        list.setCellRenderer(renderer);
 
         list.addMouseListener(new MouseAdapter() {
             @Override
@@ -112,11 +109,19 @@ public class Tela extends JFrame {
         return agenda;
     }
 
+    DefaultListCellRenderer renderer = new DefaultListCellRenderer() {
+        public Component getListCellRendererComponent(JList<?> list, Agendamento value, int index, boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            setText(value.toString());
+            return this;
+        }
+    };
+
     public JPanel desenhaPendencias() {
         JPanel pendencias = new JPanel(new BorderLayout());
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
 
-        // JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
+        //JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
         JButton adicionar = new JButton("Adicionar");
 
         pendencias.add(adicionar, BorderLayout.SOUTH);
@@ -193,7 +198,7 @@ public class Tela extends JFrame {
     }
 
     public JTable tabelaRacao() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Nome", "Preço", "Categoria"}, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -203,14 +208,32 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[]{agendamento.getNome(), agendamento.getServico(), agendamento.getHorario()});
         }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        JFrame f = new JFrame(a.getNome());
+                        f.setSize(300, 300);
+                        f.setVisible(true);
+                    }
+                }
+            }
+        });
 
         return tabela;
     }
 
     public JTable tabelaRoupas() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Nome", "Preço", "Categoria"}, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -220,14 +243,16 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[]{agendamento.getNome(), agendamento.getServico(), agendamento.getHorario()});
         }
+
+        tabela.setDefaultEditor(Object.class, null);
 
         return tabela;
     }
 
     public JTable tabelaBrinquedos() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Nome", "Preço", "Categoria"}, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -237,14 +262,16 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[]{agendamento.getNome(), agendamento.getServico(), agendamento.getHorario()});
         }
+
+        tabela.setDefaultEditor(Object.class, null);
 
         return tabela;
     }
 
     public JTable tabelaRemedios() {
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Preço", "Categoria" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Nome", "Preço", "Categoria"}, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -254,8 +281,10 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getNome(), agendamento.getServico(), agendamento.getHorario() });
+                    .addRow(new Object[]{agendamento.getNome(), agendamento.getServico(), agendamento.getHorario()});
         }
+
+        tabela.setDefaultEditor(Object.class, null);
 
         return tabela;
     }
