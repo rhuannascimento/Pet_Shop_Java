@@ -80,8 +80,8 @@ public class editarCliente extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         // IMPLEMENTAÇÃO DO CONTROLLER
-        // salvar.addActionListener(editarContato(this));
-        // excluir.addActionListener(excluirContato(this));
+        // salvar.addActionListener(editarCliente(this));
+        // excluir.addActionListener(excluirCliente(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });

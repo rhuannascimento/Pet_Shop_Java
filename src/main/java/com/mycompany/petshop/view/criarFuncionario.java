@@ -7,10 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 public class criarFuncionario extends JFrame {
 
+    private JTextField nome;
+    private JComboBox cargo;
     private JTextField login;
     private JTextField senha;
 
@@ -31,19 +34,37 @@ public class criarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 0;
-        painel.add(new JLabel("Login"), c);
+        painel.add(new JLabel("Nome"), c);
 
         c.gridx = 0;
         c.gridy = 1;
+        nome = new JTextField();
+        painel.add(nome, c);
+
+        c.gridx = 0;
+        c.gridy = 2;
+        painel.add(new JLabel("Cargo"), c);
+
+        c.gridx = 0;
+        c.gridy = 3;
+        cargo = new JComboBox();
+        painel.add(cargo, c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        painel.add(new JLabel("Login"), c);
+
+        c.gridx = 0;
+        c.gridy = 5;
         login = new JTextField();
         painel.add(login, c);
 
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 6;
         painel.add(new JLabel("Senha"), c);
 
         c.gridx = 0;
-        c.gridy = 3;
+        c.gridy = 7;
         senha = new JTextField();
         painel.add(senha, c);
 
@@ -59,14 +80,14 @@ public class criarFuncionario extends JFrame {
         c.gridwidth = 1;
 
         c.gridx = 0;
-        c.gridy = 4;
+        c.gridy = 8;
         painel.add(cadastrar, c);
         c.gridx = 1;
-        c.gridy = 4;
+        c.gridy = 8;
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 200);
+        this.setSize(300, 300);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

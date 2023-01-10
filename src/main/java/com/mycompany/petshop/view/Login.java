@@ -1,6 +1,8 @@
 package com.mycompany.petshop.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class Login extends javax.swing.JFrame {
 
@@ -9,6 +11,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -135,13 +138,12 @@ public class Login extends javax.swing.JFrame {
 
         if (userLogin.getText().equals("gerente") && new String(password.getPassword()).equals("123")) {
             JOptionPane.showMessageDialog(null, "Login concluído.");
-            Tela tela = new Tela();
+            Tela tela = new Tela(this.getUserLogin().getText());
             tela.renderiza();
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos.");
         }
-
     }
 
     private void userLoginActionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +155,8 @@ public class Login extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        Tela tela = new Tela();
-        tela.renderiza();
+        // Tela tela = new Tela();
+        // tela.renderiza();
 
         /* Set the Nimbus look and feel */
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
@@ -184,13 +186,12 @@ public class Login extends javax.swing.JFrame {
         // </editor-fold>
 
         /* Create and display the form */
-        /*
-         * java.awt.EventQueue.invokeLater(new Runnable() {
-         * public void run() {
-         * new login().setVisible(true);
-         * }
-         * });
-         */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify
@@ -202,4 +203,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField userLogin;
     // End of variables declaration
+
+    public JPasswordField getPassword() {
+        return password;
+    }
+
+    public JTextField getUserLogin() {
+        return userLogin;
+    }
 }

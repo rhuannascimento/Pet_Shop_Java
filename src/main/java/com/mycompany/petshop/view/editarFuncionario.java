@@ -21,7 +21,7 @@ public class editarFuncionario extends JFrame {
     private JComboBox horario;
 
     public editarFuncionario(Agendamento selected) {
-        super("Agendamento de " + selected.getA());
+        super(selected.getA());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
@@ -80,8 +80,8 @@ public class editarFuncionario extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         // IMPLEMENTAÇÃO DO CONTROLLER
-        // salvar.addActionListener(editarContato(this));
-        // excluir.addActionListener(excluirContato(this));
+        // salvar.addActionListener(editarFuncionario(this));
+        // excluir.addActionListener(excluirFuncionario(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });

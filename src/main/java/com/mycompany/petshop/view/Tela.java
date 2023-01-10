@@ -23,8 +23,9 @@ public class Tela extends JFrame {
 
     private JPanel painelPrincipal;
 
-    public Tela() {
-        super("Pet Shop");
+    public Tela(String user) {
+        super();
+        this.setTitle("Pet Shop - User: " + user);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -161,7 +162,7 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento a = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(a);
+                        editarFuncionario edit = new editarFuncionario(a);
                         edit.desenha(a);
                     }
                 }
@@ -215,7 +216,7 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento a = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(a);
+                        editarCliente edit = new editarCliente(a);
                         edit.desenha(a);
                     }
                 }
@@ -267,7 +268,7 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento a = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(a);
+                        editarServico edit = new editarServico(a);
                         edit.desenha(a);
                     }
                 }
@@ -277,6 +278,14 @@ public class Tela extends JFrame {
         JScrollPane sp = new JScrollPane(tabela);
         sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
         painelServicos.add(sp);
+
+        JButton newServButton = new JButton("Novo serviço");
+        newServButton.addActionListener(e -> {
+            criarServico c = new criarServico();
+            c.desenha();
+        });
+
+        painelServicos.add(newServButton, BorderLayout.SOUTH);
 
         painelPrincipal.add(painelServicos, "Serviços");
 
@@ -288,7 +297,7 @@ public class Tela extends JFrame {
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JPanel racao = new JPanel();
+        JScrollPane racao = new JScrollPane();
         racao.add(tabelaRacao());
         tabbedPane.addTab("Ração", racao);
 
@@ -312,7 +321,7 @@ public class Tela extends JFrame {
 
     }
 
-    public JScrollPane tabelaRacao() {
+    public JTable tabelaRacao() {
         DefaultTableModel tableModel = new DefaultTableModel(
                 new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
@@ -345,8 +354,7 @@ public class Tela extends JFrame {
             }
         });
 
-        JScrollPane sp = new JScrollPane(tabela);
-        return sp;
+        return tabela;
     }
 
     public JTable tabelaRoupas() {
@@ -464,7 +472,7 @@ public class Tela extends JFrame {
 
     public static void main(String args[]) {
 
-        Tela tela = new Tela();
+        Tela tela = new Tela("user");
         tela.renderiza();
 
     }

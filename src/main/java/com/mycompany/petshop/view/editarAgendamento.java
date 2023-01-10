@@ -80,8 +80,8 @@ public class editarAgendamento extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         // IMPLEMENTAÇÃO DO CONTROLLER
-        // salvar.addActionListener(editarContato(this));
-        // excluir.addActionListener(excluirContato(this));
+        // salvar.addActionListener(editarAgendamento(this));
+        // excluir.addActionListener(excluirAgendamento(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
