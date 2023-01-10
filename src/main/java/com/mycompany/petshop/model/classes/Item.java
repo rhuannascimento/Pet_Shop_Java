@@ -13,11 +13,11 @@ public abstract class Item {
 
     public Item(int id, String nome, float preco, String tipo, boolean disponivel, String categoria) {
         this.id = id;
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
         this.preco = preco;
-        this.tipo = tipo;
+        this.tipo = tipo.toLowerCase();
         this.disponivel = disponivel;
-        this.categoria = categoria;
+        this.categoria = categoria.toLowerCase();
     }
 
     public void setCategoria(String categoria) {
@@ -37,11 +37,11 @@ public abstract class Item {
     }
 
     public String getNome() {
-        return this.nome;
+        return this.nome.toLowerCase();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toLowerCase();
     }
 
     public float getPreco() {
@@ -53,11 +53,11 @@ public abstract class Item {
     }
 
     public String getTipo() {
-        return this.tipo;
+        return this.tipo.toLowerCase();
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        this.tipo = tipo.toLowerCase();
     }
 
     public boolean isDisponivel() {

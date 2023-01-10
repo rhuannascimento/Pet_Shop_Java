@@ -77,9 +77,9 @@ public class Seeder {
     }
 
     private void populateItem(){
-        Item i1 = new Servico(0, "Banho e Tosa", 20f, "Serviço", true, 30, 2);
-        Item i6 = new Servico(0, "Cortar unhas", 10f, "Serviço", true, 15, 2);
-        Item i11 = new Servico(0, "Castrar", 250f, "Serviço", true, 360, 1);
+        Item i1 = new Servico(0, "Banho e Tosa", 20f, "Servico", true, 30, 2);
+        Item i6 = new Servico(0, "Cortar unhas", 10f, "Servico", true, 15, 2);
+        Item i11 = new Servico(0, "Castrar", 250f, "Servico", true, 360, 1);
 
         Item i2 = new Brinquedo(10, "Brinquedos & Cia", 0, "Ossinho", 10.0f, "brinquedo", true, "Cachorro", "Fibra");
         Item i7 = new Brinquedo(5, "Brinquedos & Cia", 0, "Pneu", 12.5f, "brinquedo", true, "Cachorro", "Borracha");

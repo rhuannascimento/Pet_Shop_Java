@@ -10,7 +10,7 @@ public class Animal extends Cliente {
 
     public Animal(int id, String nome, String cpf, String especie) {
         super(id, nome, cpf, "animal");
-        this.especie = especie.toLowerCase();
+        if(especie != null) this.especie = especie.toLowerCase();
     }
 
     public String getEspecie() {

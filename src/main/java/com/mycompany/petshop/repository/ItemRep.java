@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -426,15 +427,16 @@ public class ItemRep implements DataAcessObject<Item> {
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM item WHERE nome REGEXP ?;";
+            String sql = "SELECT * FROM item WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
             
-            PreparedStatement ps = con.prepareStatement(sql);
-                        
-            ps.setString(1, nome_busca);
+            Statement ps = con.createStatement();
             
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(sql);
+            
             
             while(rs.next()){
+                System.out.println("rs: "+rs);
+                
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 float preco = rs.getFloat("preco");
