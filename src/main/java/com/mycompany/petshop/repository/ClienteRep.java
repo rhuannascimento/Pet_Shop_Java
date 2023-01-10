@@ -248,7 +248,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM item WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
+            String sql = "SELECT * FROM cliente WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
             
             Statement ps = con.createStatement();
             
