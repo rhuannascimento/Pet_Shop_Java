@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 public class ExcluirCliente {
     
-    public ExcluirCliente(Cliente cliente){
+    public ExcluirCliente(int id){
         ClienteRep cr = new ClienteRep();
       
-        cr.delete(cliente);
+        cr.deleteById(id);
     }
     
 }
