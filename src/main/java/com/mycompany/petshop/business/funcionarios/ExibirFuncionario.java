@@ -14,19 +14,19 @@ import java.util.ArrayList;
  */
 public class ExibirFuncionario {
 
-    private ArrayList<Funcionario> f = new ArrayList();
+    private ArrayList<Funcionario> funcionarios = new ArrayList();
     
     
     public ExibirFuncionario() {
         
         FuncionarioRep fr = new FuncionarioRep(); 
         
-        this.f = fr.getAll();
+        this.funcionarios = fr.getAll();
         
     }
 
-    public ArrayList<Funcionario> getF() {
-        return f;
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
     }
           
     
