@@ -5,6 +5,7 @@
 
 package com.mycompany.petshop;
 
+import com.mycompany.petshop.business.funcionarios.ExibirFuncionario;
 import com.mycompany.petshop.model.classes.*;
 import com.mycompany.petshop.repository.*;
 import java.sql.ResultSet;
