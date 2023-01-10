@@ -1,4 +1,4 @@
-package com.mycompany.petshop.view;
+package com.mycompany.petshop.view.funcionario;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;

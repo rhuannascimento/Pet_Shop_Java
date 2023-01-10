@@ -1,6 +1,14 @@
 package com.mycompany.petshop.view;
 
 import com.mycompany.petshop.model.classes.Agendamento;
+import com.mycompany.petshop.view.agendamento.criarAgendamento;
+import com.mycompany.petshop.view.agendamento.editarAgendamento;
+import com.mycompany.petshop.view.cliente.criarCliente;
+import com.mycompany.petshop.view.cliente.editarCliente;
+import com.mycompany.petshop.view.funcionario.criarFuncionario;
+import com.mycompany.petshop.view.funcionario.editarFuncionario;
+import com.mycompany.petshop.view.servico.criarServico;
+import com.mycompany.petshop.view.servico.editarServico;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

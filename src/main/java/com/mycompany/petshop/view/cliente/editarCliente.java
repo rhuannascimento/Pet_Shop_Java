@@ -1,6 +1,5 @@
-package com.mycompany.petshop.view;
+package com.mycompany.petshop.view.cliente;
 
-import com.mycompany.petshop.model.classes.Agendamento;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
@@ -13,14 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class editarServico extends JFrame {
+import com.mycompany.petshop.model.classes.Agendamento;
 
+public class editarCliente extends JFrame {
     private JTextField nome;
     private JComboBox servico;
     private JDateChooser data;
     private JComboBox horario;
 
-    public editarServico(Agendamento selected) {
+    public editarCliente(Agendamento selected) {
         super("Agendamento de " + selected.getA());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -80,8 +80,8 @@ public class editarServico extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         // IMPLEMENTAÇÃO DO CONTROLLER
-        // salvar.addActionListener(editarServico(this));
-        // excluir.addActionListener(excluirServico(this));
+        // salvar.addActionListener(editarCliente(this));
+        // excluir.addActionListener(excluirCliente(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
