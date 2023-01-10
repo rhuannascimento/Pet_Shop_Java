@@ -4,7 +4,9 @@
  */
 package com.mycompany.petshop.business.gerente;
 
+import com.mycompany.petshop.business.funcionarios.BuscarFuncionario;
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.model.exceptions.GerenteExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
 
@@ -14,8 +16,10 @@ import com.mycompany.petshop.repository.FuncionarioRep;
  */
 public class AtualizarGerente {
 
-    public AtualizarGerente(Funcionario atualizar, Funcionario logado) throws GerenteExp{
+    public AtualizarGerente(Funcionario atualizar, String username) throws GerenteExp, FuncionarioExp{
     
+        Funcionario logado = new BuscarFuncionario(username).getFuncionario();
+        
         if(logado.getCargo().equalsIgnoreCase("Gerente")){
         
         FuncionarioRep fr = new FuncionarioRep();

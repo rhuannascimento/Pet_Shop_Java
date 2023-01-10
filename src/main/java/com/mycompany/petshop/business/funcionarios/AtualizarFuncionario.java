@@ -6,6 +6,7 @@ package com.mycompany.petshop.business.funcionarios;
 
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.repository.FuncionarioRep;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,9 @@ import java.util.ArrayList;
  */
 public class AtualizarFuncionario {
 
-    public AtualizarFuncionario(Funcionario f) {
+    public AtualizarFuncionario(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password) {
+        
+        Funcionario f = new Funcionario(id, nome, startTime, endTime, cargo, username, password);
         
         FuncionarioRep fr = new FuncionarioRep();
         
