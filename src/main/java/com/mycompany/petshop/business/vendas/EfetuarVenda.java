@@ -34,16 +34,18 @@ public class EfetuarVenda {
             if(r.isDisponivel() && r.getEstoque() > 0){
             
                 r.setEstoque(r.getEstoque()-1);
-            
-            }else{
                 
                 if(r.getEstoque()==0){
                     r.setDisponivel(false);
                 }
-                
+            
+            }else{
+                                               
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
+            
+            
             
         }else if(i.getCategoria().equalsIgnoreCase("Roupa")){
                              
@@ -52,13 +54,13 @@ public class EfetuarVenda {
             if(r.isDisponivel() && r.getEstoque() > 0){
             
                 r.setEstoque(r.getEstoque()-1);
-            
-            }else{
                 
                 if(r.getEstoque()==0){
                     r.setDisponivel(false);
                 }
-                
+            
+            }else{
+                               
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
@@ -71,12 +73,12 @@ public class EfetuarVenda {
             
                 r.setEstoque(r.getEstoque()-1);
             
-            }else{
-                
                 if(r.getEstoque()==0){
                     r.setDisponivel(false);
                 }
                 
+            }else{
+                                                
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
@@ -89,12 +91,12 @@ public class EfetuarVenda {
             
                 r.setEstoque(r.getEstoque()-1);
             
-            }else{
-                
                 if(r.getEstoque()==0){
                     r.setDisponivel(false);
                 }
                 
+            }else{
+                                               
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
