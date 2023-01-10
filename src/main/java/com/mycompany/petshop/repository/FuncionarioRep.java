@@ -212,7 +212,7 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM item WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
+            String sql = "SELECT * FROM funcionario WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
             
             Statement ps = con.createStatement();
             

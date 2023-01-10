@@ -60,49 +60,55 @@ public class PETSHOP {
             
             
             funcionarios = listarFuncionarios();
-            ArrayList<Funcionario> lista = rep.getByUsername("caio.costaa");
+            ArrayList<Funcionario> lista = rep.getByUsername("caio.costa");
 
             if(lista.size() == 0) System.out.println("Não existe funcionário com esse username!");
             else System.out.println("Existe funcionário com esse username!");
+            
+            System.out.println(rep.getByNome("Ca"));
 
             
             
-            // Repository Cliente
-            ClienteRep cr = new ClienteRep();
+            // // Repository Cliente
+            // ClienteRep cr = new ClienteRep();
             
-            ArrayList<Cliente> clientes = listarClientes();
+            // ArrayList<Cliente> clientes = listarClientes();
             
-            Cliente c = clientes.get(0);
-            c.setNome("Claudim buxexa");
-            cr.update(c);
+            // Cliente c = clientes.get(0);
+            // c.setNome("Claudim buxexa");
+            // cr.update(c);
             
-            Animal a = new Animal(0, "Cachorro do claudim", c.getCpf(), "Cachorro");
+            // Animal a = new Animal(0, "Cachorro do claudim", c.getCpf(), "Cachorro");
             
-            cr.insertOne(a);
+            // cr.insertOne(a);
             
             
             
-            cr.deleteById(2);
+            // cr.deleteById(2);
             
-            clientes = listarClientes();
+            // clientes = listarClientes();
             
-            //Repository Itens
-            ArrayList<Item> itens = listarItens();
+            
+            // System.out.println(cr.getByNome("Ca"));
+            
+            
+            // //Repository Itens
+            // ArrayList<Item> itens = listarItens();
 
-            Item a2 = itens.get(0);
-            Servico s2 = null;
-            if(a2.getTipo().equalsIgnoreCase("servico")) s2 = (Servico) a2;
-            s2.setDuracao(90);// minutos
+            // Item a2 = itens.get(0);
+            // Servico s2 = null;
+            // if(a2.getTipo().equalsIgnoreCase("servico")) s2 = (Servico) a2;
+            // s2.setDuracao(90);// minutos
 
-            ItemRep ir = new ItemRep();
+            // ItemRep ir = new ItemRep();
 
-            ir.update(s2);
+            // ir.update(s2);
 
-            ir.delete(itens.get(5));
+            // ir.delete(itens.get(5));
 
-            System.out.println(ir.getById(1));
+            // System.out.println(ir.getById(1));
 
-            System.out.println(ir.getByNome("roup"));
+            // System.out.println(ir.getByNome("roup"));
 
         }
         

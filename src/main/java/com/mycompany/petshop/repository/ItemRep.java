@@ -434,9 +434,7 @@ public class ItemRep implements DataAcessObject<Item> {
             ResultSet rs = ps.executeQuery(sql);
             
             
-            while(rs.next()){
-                System.out.println("rs: "+rs);
-                
+            while(rs.next()){                
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 float preco = rs.getFloat("preco");
