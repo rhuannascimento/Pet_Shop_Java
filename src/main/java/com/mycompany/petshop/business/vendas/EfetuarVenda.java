@@ -37,6 +37,10 @@ public class EfetuarVenda {
             
             }else{
                 
+                if(r.getEstoque()==0){
+                    r.setDisponivel(false);
+                }
+                
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
@@ -50,6 +54,10 @@ public class EfetuarVenda {
                 r.setEstoque(r.getEstoque()-1);
             
             }else{
+                
+                if(r.getEstoque()==0){
+                    r.setDisponivel(false);
+                }
                 
                 throw new ItemExp("Produto não esta disponivel");
                 
@@ -65,6 +73,10 @@ public class EfetuarVenda {
             
             }else{
                 
+                if(r.getEstoque()==0){
+                    r.setDisponivel(false);
+                }
+                
                 throw new ItemExp("Produto não esta disponivel");
                 
             }
@@ -78,6 +90,10 @@ public class EfetuarVenda {
                 r.setEstoque(r.getEstoque()-1);
             
             }else{
+                
+                if(r.getEstoque()==0){
+                    r.setDisponivel(false);
+                }
                 
                 throw new ItemExp("Produto não esta disponivel");
                 
