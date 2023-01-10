@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.petshop.business.cliente;
+import com.mycompany.petshop.model.exceptions.ClienteExp;
 import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;

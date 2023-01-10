@@ -4,18 +4,28 @@ public class Roupa extends Mercadoria {
 
     private String tamanho;
     private String especie;
+    private String cor;
 
     public Roupa() {
     }
 
-    public Roupa(int estoque, String fornecedor, String categoria, int id, String nome, float preco, String tipo,
-            boolean disponivel, String tamanho, String especie) {
+    public Roupa(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
+            boolean disponivel, String tamanho, String especie, String cor) {
 
-        super(estoque, fornecedor, categoria, id, nome, preco, tipo, disponivel);
+        super(estoque, fornecedor, "roupa", id, nome, preco, tipo, disponivel);
         this.tamanho = tamanho;
         this.especie = especie;
-
+        this.cor = cor;
     }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+    
 
     public String getTamanho() {
         return this.tamanho;
