@@ -7,9 +7,6 @@ public class Servico extends Item {
     public Servico() {
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
 
     public Servico(int id, String nome, float preco, String tipo, boolean disponivel, int duracao,
             int idResponsavel) {

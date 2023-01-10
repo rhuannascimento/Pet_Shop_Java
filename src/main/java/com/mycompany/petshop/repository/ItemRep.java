@@ -286,6 +286,30 @@ public class ItemRep implements DataAcessObject<Item> {
         
         
     }
+    
+    public boolean deleteById(int id) {
+        System.out.println("Deletando o Item "+id);
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM item WHERE id = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
+    }
 
     @Override
     public boolean delete(Item valor) {

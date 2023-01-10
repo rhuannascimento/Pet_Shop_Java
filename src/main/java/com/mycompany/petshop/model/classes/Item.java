@@ -6,7 +6,7 @@ public abstract class Item {
     private float preco;
     private String tipo;
     private boolean disponivel;
-    String categoria;
+    private String categoria;
 
     public Item() {
     }

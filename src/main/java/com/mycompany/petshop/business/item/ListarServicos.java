@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.petshop.business.produto;
+package com.mycompany.petshop.business.item;
 
 import com.mycompany.petshop.model.classes.Item;
-import com.mycompany.petshop.model.classes.Mercadoria;
 import com.mycompany.petshop.repository.ItemRep;
 import java.util.ArrayList;
 
@@ -13,11 +12,11 @@ import java.util.ArrayList;
  *
  * @author Rhuan
  */
-public class ListarProdutos {
+public class ListarServicos {
     
-    private ArrayList<Item> produtos = new ArrayList();
+    private ArrayList<Item> servicos = new ArrayList();
 
-    public ListarProdutos() {
+    public ListarServicos() {
     
         ItemRep ir = new ItemRep();
     
@@ -27,16 +26,17 @@ public class ListarProdutos {
     
         for (int i = 0; i < itens.size(); i++) {
             
-           if(!itens.get(i).getCategoria().equalsIgnoreCase("servico")){
-               produtos.add(itens.get(i));
+           if(itens.get(i).getCategoria().equalsIgnoreCase("servico")){
+               servicos.add(itens.get(i));
            }
                         
         }
             
     }
 
-    public ArrayList<Item> getProdutos() {
-        return produtos;
+    public ArrayList<Item> getServicos() {
+        return servicos;
     }
-             
+    
+    
 }
