@@ -14,13 +14,11 @@ import java.sql.Time;
  */
 public class ExcluirFuncuinario {
 
-    public ExcluirFuncuinario(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password) {
-    
-        Funcionario f = new Funcionario(id, nome, startTime, endTime, cargo, username, password);
-        
+    public ExcluirFuncuinario(int id) {
+           
         FuncionarioRep fr = new FuncionarioRep();
         
-        fr.delete(f);
+        fr.deleteById(id);
     }
     
     

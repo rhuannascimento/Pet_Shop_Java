@@ -16,13 +16,13 @@ import com.mycompany.petshop.repository.FuncionarioRep;
  */
 public class ExcluirGerente {
 
-    public ExcluirGerente(String username, Funcionario excluir) throws GerenteExp, FuncionarioExp{
+    public ExcluirGerente(String username, int id) throws GerenteExp, FuncionarioExp{
     
         Funcionario logado = new BuscarFuncionario(username).getFuncionario();
         
         if(logado.getCargo().equalsIgnoreCase("Gerente")){
             FuncionarioRep fr = new FuncionarioRep();
-            fr.delete(excluir);
+            fr.deleteById(id);
         }else{
             throw new GerenteExp("Ação não permitida para este cargo!");
         }
