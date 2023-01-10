@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -181,7 +182,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
                 String telefone = rs.getString("telefone");
                 
                 Cliente c = null;
-                if(!especie.equals(null)){
+                if(especie == null){
                     c = new Animal(id, nome, cpf, especie);
                 }else{
                     c = new Pessoa(id, nome, cpf, email, telefone);
@@ -222,7 +223,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
                 String email = rs.getString("email");
                 String telefone = rs.getString("telefone");
                 
-                if(!especie.equals(null)){
+                if(especie != null){
                     f = new Animal(id, nome, cpf, especie);
                 }else{
                     f = new Pessoa(id, nome, cpf, email, telefone);
@@ -247,13 +248,11 @@ public class ClienteRep implements DataAcessObject<Cliente> {
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM cliente WHERE nome REGEXP ?;";
+            String sql = "SELECT * FROM cliente WHERE nome like '%" + nome_busca.toLowerCase() + "%';";
             
-            PreparedStatement ps = con.prepareStatement(sql);
-                        
-            ps.setString(1, nome_busca);
+            Statement ps = con.createStatement();
             
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(sql);
             
             while(rs.next()){
                 int id = rs.getInt("id");
@@ -264,7 +263,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
                 String telefone = rs.getString("telefone");
                 
                 Cliente c = null;
-                if(!especie.equals(null)){
+                if(especie != null){
                     c = new Animal(id, nome, cpf, especie);
                 }else{
                     c = new Pessoa(id, nome, cpf, email, telefone);
@@ -306,7 +305,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
                 String telefone = rs.getString("telefone");
                 
                 Cliente c = null;
-                if(!especie.equals(null)){
+                if(especie != null){
                     c = new Animal(id, nome, cpf, especie);
                 }else{
                     c = new Pessoa(id, nome, cpf, email, telefone);
