@@ -68,4 +68,9 @@ public abstract class Item {
         this.disponivel = disponivel;
     }
 
+    @Override
+    public String toString(){
+        return this.categoria + " " + this.id + " -> " + this.tipo + " " + this.nome + " - ";
+    }
+
 }
