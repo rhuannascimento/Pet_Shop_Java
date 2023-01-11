@@ -16,23 +16,24 @@ import javax.swing.JOptionPane;
  */
 public class AtualizarFuncionario {
     private boolean done;
+
     public AtualizarFuncionario(Funcionario f, boolean isGerente) {
         done = false;
-        if(isGerente){
-            boolean confirma = (JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o funcionário "+f.getNome()+"?") == JOptionPane.OK_OPTION);
-            if(confirma){
+        if (isGerente) {
+            boolean confirma = (JOptionPane.showConfirmDialog(null,
+                    "Editar funcionário " + f.getNome() + "?") == JOptionPane.OK_OPTION);
+            if (confirma) {
                 done = false;
                 FuncionarioRep fr = new FuncionarioRep();
 
                 done = fr.update(f);
             }
         }
-        
+
     }
-    
-    public boolean status(){
+
+    public boolean status() {
         return this.done;
     }
-    
-    
+
 }

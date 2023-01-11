@@ -15,7 +15,7 @@ public class criarFuncionario extends JFrame {
     private JTextField nome;
     private JTextField startTime;
     private JTextField endTime;
-    private JComboBox cargo;
+    private JTextField cargo;
     private JTextField login;
     private JPasswordField senha;
 
@@ -72,7 +72,7 @@ public class criarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 6;
-        cargo = new JComboBox();
+        cargo = new JTextField();
         painel.add(cargo, c);
 
         c.gridx = 0;

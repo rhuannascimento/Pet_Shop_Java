@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,7 +37,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Tela extends JFrame {
 
@@ -68,6 +71,8 @@ public class Tela extends JFrame {
         this.setSize(600, 300);
         this.setLocationRelativeTo(null);
         this.pack();
+        this.validate();
+        this.repaint();
         this.setVisible(true);
     }
 
@@ -161,23 +166,21 @@ public class Tela extends JFrame {
         JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
 
-        // FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
 
         // JTable tabela = new JTable(fc.exibir());
 
         DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-                "Nome", "Cargo", "Horário" }, 0);
+                "Nome", "Início exp.", "Fim exp", "Cargo", "Login" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
-
-        for (Agendamento agendamento : listaAgendamentos) {
+        for (Funcionario f : listaFuncionarios) {
             tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(),
-                            agendamento.getC() });
+                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                            f.getEndTime(), f.getCargo(),
+                            f.getUsername() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -190,9 +193,10 @@ public class Tela extends JFrame {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Agendamento a = listaAgendamentos.get(row);
-                        editarFuncionario edit = new editarFuncionario(a);
+                        Funcionario a = listaFuncionarios.get(row);
+                        editarFuncionario edit = new editarFuncionario(a, logado);
                         edit.desenha(a);
+
                     }
                 }
             }

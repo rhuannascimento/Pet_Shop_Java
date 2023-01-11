@@ -4,31 +4,34 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.mycompany.petshop.model.classes.Agendamento;
+import com.mycompany.petshop.controller.FuncionarioCtrl;
+import com.mycompany.petshop.model.classes.Funcionario;
 
 public class editarFuncionario extends JFrame {
     private JTextField id;
     private JTextField nome;
     private JTextField startTime;
     private JTextField endTime;
-    private JComboBox cargo;
+    private JTextField cargo;
     private JTextField login;
     private JPasswordField senha;
 
-    public editarFuncionario(Agendamento selected) {
-        super(selected.getA());
+    private Funcionario logado;
+
+    public editarFuncionario(Funcionario selected, Funcionario logado) {
+        super(selected.getNome());
+        this.logado = logado;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
-    public void desenha(Agendamento selected) {
+    public void desenha(Funcionario selected) {
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -44,8 +47,7 @@ public class editarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 1;
-        id = new JTextField();
-        id.setEditable(false);
+        id = new JTextField(Integer.toString(selected.getId()));
         painel.add(id, c);
 
         c.gridx = 0;
@@ -54,7 +56,7 @@ public class editarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 3;
-        nome = new JTextField();
+        nome = new JTextField(selected.getNome());
         painel.add(nome, c);
 
         c.gridwidth = 1;
@@ -69,12 +71,12 @@ public class editarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 5;
-        startTime = new JTextField();
+        startTime = new JTextField(selected.getStartTime().toString());
         painel.add(startTime, c);
 
         c.gridx = 2;
         c.gridy = 5;
-        endTime = new JTextField();
+        endTime = new JTextField(selected.getEndTime().toString());
         painel.add(endTime, c);
 
         c.gridwidth = 3;
@@ -85,7 +87,7 @@ public class editarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 8;
-        cargo = new JComboBox();
+        cargo = new JTextField(selected.getCargo());
         painel.add(cargo, c);
 
         c.gridx = 0;
@@ -94,7 +96,7 @@ public class editarFuncionario extends JFrame {
 
         c.gridx = 0;
         c.gridy = 10;
-        login = new JTextField();
+        login = new JTextField(selected.getUsername());
         painel.add(login, c);
 
         c.gridx = 0;
@@ -110,18 +112,19 @@ public class editarFuncionario extends JFrame {
         JButton excluir = new JButton("Excluir");
         JButton cancelar = new JButton("Cancelar");
 
-        // CONTROLLER
-        // salvar.addActionListener(e -> {
-        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
-        // f.atualizar(id, nome.getText(), startTime.getText(), endTime.getText(),
-        // cargo.getSelectedItem().toString(),
-        // login.getText(), new String(senha.getPassword()));
-        // });
+        salvar.addActionListener(e -> {
+            FuncionarioCtrl f = new FuncionarioCtrl(logado);
+            f.atualizar(Integer.parseInt(id.getText()), nome.getText(), startTime.getText(), endTime.getText(),
+                    cargo.getText(), login.getText(), new String(senha.getPassword()));
+        });
 
-        // excluir.addActionListener(e -> {
-        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
-        // f.excluir(id);
-        // });
+        excluir.addActionListener(e -> {
+            FuncionarioCtrl f = new FuncionarioCtrl(logado);
+            boolean result = f.excluir(selected.getId());
+            if (result)
+                this.dispose();
+        });
+
         cancelar.addActionListener(e -> {
             this.dispose();
         });
