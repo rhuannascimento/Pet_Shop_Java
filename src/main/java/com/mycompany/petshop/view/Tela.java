@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -163,17 +164,15 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaFuncionarios() {
+
         JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
-
-        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
-
-        // JTable tabela = new JTable(fc.exibir());
 
         DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
                 "Nome", "Início exp.", "Fim exp", "Cargo", "Login" }, 0);
         JTable tabela = new JTable(tableModel);
 
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
         ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
         for (Funcionario f : listaFuncionarios) {
@@ -185,23 +184,30 @@ public class Tela extends JFrame {
 
         tabela.setDefaultEditor(Object.class, null);
 
-        tabela.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int row = tabela.rowAtPoint(e.getPoint());
-                    int col = tabela.columnAtPoint(e.getPoint());
-                    if (row >= 0 && col >= 0) {
-                        Funcionario a = listaFuncionarios.get(row);
-                        editarFuncionario edit = new editarFuncionario(a, logado);
-                        edit.desenha(a);
-
-                    }
-                }
+        tableModel.addTableModelListener(new TableModelListener() {
+            public void tableChanged(TableModelEvent e) {
+                // Atualizar mouseListener com as alterações
+                mouseListener.update(tableModel);
             }
         });
 
+        /*
+         * tabela.addMouseListener(new MouseAdapter() {
+         * 
+         * @Override
+         * public void mouseClicked(MouseEvent e) {
+         * if (e.getClickCount() == 2) {
+         * int row = tabela.rowAtPoint(e.getPoint());
+         * int col = tabela.columnAtPoint(e.getPoint());
+         * if (row >= 0 && col >= 0) {
+         * Funcionario a = listaFuncionarios.get(row);
+         * editarFuncionario edit = new editarFuncionario(a, logado);
+         * edit.desenha(a, tableModel);
+         * }
+         * }
+         * }
+         * });
+         */
         JScrollPane sp = new JScrollPane(tabela);
 
         sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
@@ -211,14 +217,13 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            criarFuncionario f = new criarFuncionario(logado);
-            f.desenha();
+            criarFuncionario cf = new criarFuncionario(logado);
+            cf.desenha(tableModel);
         });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
 
         painelPrincipal.add(painelFuncionarios, "Funcionários");
-
     }
 
     public void desenhaPaginaClientes() {

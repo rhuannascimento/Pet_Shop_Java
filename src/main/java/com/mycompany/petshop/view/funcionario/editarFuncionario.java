@@ -3,15 +3,19 @@ package com.mycompany.petshop.view.funcionario;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.view.Tela;
 
 public class editarFuncionario extends JFrame {
     private JTextField id;
@@ -31,7 +35,8 @@ public class editarFuncionario extends JFrame {
 
     }
 
-    public void desenha(Funcionario selected) {
+    public void desenha(Funcionario selected, DefaultTableModel tableModel) {
+
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -113,16 +118,45 @@ public class editarFuncionario extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         salvar.addActionListener(e -> {
-            FuncionarioCtrl f = new FuncionarioCtrl(logado);
-            f.atualizar(Integer.parseInt(id.getText()), nome.getText(), startTime.getText(), endTime.getText(),
+            FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+            fc.atualizar(Integer.parseInt(id.getText()), nome.getText(), startTime.getText(), endTime.getText(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
+
+            tableModel.setRowCount(0);
+
+            tableModel.fireTableDataChanged();
+
+            ArrayList<Funcionario> listaFuncionarios = fc.exibir();
+
+            for (Funcionario f : listaFuncionarios) {
+                tableModel
+                        .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                                f.getEndTime(), f.getCargo(),
+                                f.getUsername() });
+            }
+            this.dispose();
+
+            tableModel.fireTableDataChanged();
+
         });
 
         excluir.addActionListener(e -> {
-            FuncionarioCtrl f = new FuncionarioCtrl(logado);
-            boolean result = f.excluir(selected.getId());
-            if (result)
-                this.dispose();
+            FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+            fc.excluir(selected.getId());
+            tableModel.setRowCount(0);
+
+            tableModel.fireTableDataChanged();
+
+            ArrayList<Funcionario> listaFuncionarios = fc.exibir();
+
+            for (Funcionario f : listaFuncionarios) {
+                tableModel
+                        .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                                f.getEndTime(), f.getCargo(),
+                                f.getUsername() });
+            }
+
+            this.dispose();
         });
 
         cancelar.addActionListener(e -> {
