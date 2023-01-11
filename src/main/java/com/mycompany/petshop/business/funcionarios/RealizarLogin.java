@@ -24,7 +24,7 @@ public class RealizarLogin {
         
     }
     
-    public String logar() throws FuncionarioExp{
+    public Funcionario logar() throws FuncionarioExp{
         
         FuncionarioRep fr = new FuncionarioRep();
         
@@ -38,7 +38,7 @@ public class RealizarLogin {
         
         Funcionario f = bf.getFuncionario();
         
-        return f.getCargo();
+        return f;
     }
           
 }
