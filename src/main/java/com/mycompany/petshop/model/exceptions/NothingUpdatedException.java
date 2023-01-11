@@ -13,7 +13,7 @@ import java.sql.SQLWarning;
 public class NothingUpdatedException extends Exception {
 
     public NothingUpdatedException(SQLWarning warning) {
-        super("Não houveram atualizações para essa ação! Motivo: " + warning.getMessage());
+        super("Não houveram atualizações para essa ação! Motivo: "+warning.getMessage());
     }
-
+    
 }
