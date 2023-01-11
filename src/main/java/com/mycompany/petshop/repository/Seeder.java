@@ -4,11 +4,15 @@
  */
 package com.mycompany.petshop.repository;
 
+import static com.mycompany.petshop.PETSHOP.ANSI_CYAN;
+import static com.mycompany.petshop.PETSHOP.ANSI_RESET;
 import com.mycompany.petshop.model.classes.*;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,15 +22,39 @@ import java.util.logging.Logger;
  */
 public class Seeder {
     private Connection connection;
-    public void seed(){
-        this.connection = MyConnector.connect();
-       
-        populateCliente();
-        populateFuncionario();
-        populateItem();
-        closeConnection();
+    public boolean seed(){
+        try{
+            System.out.println(ANSI_CYAN+"\n\n\n----------EXECUTANDO POPULAÇÃO DE BANCO DE DADOS"+ANSI_RESET);
+            this.connection = MyConnector.connect();
+            populateCliente();
+            populateFuncionario();
+            populateItem();
+            populateAgendamento();
+            closeConnection();
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
     }
 
+    public boolean reset(){
+        try{
+            ClienteRep cr = new ClienteRep();
+            ItemRep ir = new ItemRep();
+            FuncionarioRep fr = new FuncionarioRep();
+            AgendamentoRep ar = new AgendamentoRep();
+
+            cr.deleteAll();
+            ir.deleteAll();
+            fr.deleteAll();
+            ar.deleteAll();
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
+        
+    }
+    
     private void closeConnection() {
         try {
             if(connection != null) connection.close();
@@ -42,6 +70,10 @@ public class Seeder {
         Cliente c2 = new Pessoa(0, "João Pessoa", "34572424532", "joao@pessoa.com", "31987233259");
         Cliente c3 = new Animal(0, "Aswolfo", "16112124645", "cachorro");
         Cliente c4 = new Animal(0, "Waldineliau", "16112124645", "gato");
+        Cliente c5 = new Animal(0, "Totó", "16112124645", "cachorro");
+        Cliente c6 = new Animal(0, "Caramelo", "16112124645", "gato");
+        Cliente c7 = new Animal(0, "Belinha", "16112124645", "cachorro");
+        Cliente c8 = new Animal(0, "Zeca", "16112124645", "gato");
         
         ClienteRep cr = new ClienteRep();
         
@@ -50,10 +82,19 @@ public class Seeder {
         boolean n3 = cr.insertOne(c3);
         boolean n4 = cr.insertOne(c4);
         
+        boolean n5 = cr.insertOne(c5);
+        boolean n6 = cr.insertOne(c6);
+        boolean n7 = cr.insertOne(c7);
+        boolean n8 = cr.insertOne(c8);
+        
         if(n1) System.out.println("Cliente José cadastrado");
         if(n2) System.out.println("Cliente João cadastrado");
         if(n3) System.out.println("Cliente Aswolfo cadastrado");
         if(n4) System.out.println("Cliente Waldineliau cadastrado");
+        if(n5) System.out.println("Cliente Totó cadastrado");
+        if(n6) System.out.println("Cliente Caramelo cadastrado");
+        if(n7) System.out.println("Cliente Belinha cadastrado");
+        if(n8) System.out.println("Cliente Zeca cadastrado");
         
     }
 
@@ -135,4 +176,37 @@ public class Seeder {
         
     }
     
+    private void populateAgendamento(){
+        Agendamento a1 = new Agendamento(0, new Timestamp(2023, 1, 20, 16, 00, 0, 0), new Animal(3), new Servico(1));
+        Agendamento a2 = new Agendamento(0, new Timestamp(2023, 1, 21, 16, 00, 0, 0), new Animal(4), new Servico(1));
+        Agendamento a3 = new Agendamento(0, new Timestamp(2023, 1, 21, 10, 00, 0, 0), new Animal(5), new Servico(1));
+        Agendamento a4 = new Agendamento(0, new Timestamp(2023, 1, 21, 13, 00, 0, 0), new Animal(6), new Servico(1));
+        Agendamento a5 = new Agendamento(0, new Timestamp(2023, 1, 24, 16, 00, 0, 0), new Animal(7), new Servico(6));
+        Agendamento a6 = new Agendamento(0, new Timestamp(2023, 1, 25, 16, 00, 0, 0), new Animal(8), new Servico(6));
+        Agendamento a7 = new Agendamento(0, new Timestamp(2023, 1, 26, 16, 00, 0, 0), new Animal(3), new Servico(6));
+        Agendamento a8 = new Agendamento(0, new Timestamp(2023, 1, 27, 16, 00, 0, 0), new Animal(4), new Servico(6));
+        
+        AgendamentoRep ar = new AgendamentoRep();
+        System.out.println("O ANO ERRADO É SOMENTE NO PRINT! TA SALVANDO CERTO NO BANCO!!!!");
+        boolean n1 = ar.insertOne(a1);
+        boolean n2 = ar.insertOne(a2);
+        boolean n3 = ar.insertOne(a3);
+        boolean n4 = ar.insertOne(a4);
+        boolean n5 = ar.insertOne(a5);
+        boolean n6 = ar.insertOne(a6);
+        boolean n7 = ar.insertOne(a7);
+        boolean n8 = ar.insertOne(a8);
+        
+        
+        
+        if(n1) System.out.println("Agendamento a1 cadastrado");
+        if(n2) System.out.println("Agendamento a2 cadastrado");
+        if(n3) System.out.println("Agendamento a3 cadastrado");
+        if(n4) System.out.println("Agendamento a4 cadastrado");
+        if(n5) System.out.println("Agendamento a5 cadastrado");
+        if(n6) System.out.println("Agendamento a6 cadastrado");
+        if(n7) System.out.println("Agendamento a7 cadastrado");
+        if(n8) System.out.println("Agendamento a8 cadastrado");
+        
+    }
 }

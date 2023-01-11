@@ -4,6 +4,8 @@
  */
 package com.mycompany.petshop.repository;
 
+import static com.mycompany.petshop.PETSHOP.ANSI_CYAN;
+import static com.mycompany.petshop.PETSHOP.ANSI_RESET;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,13 +18,22 @@ import java.util.logging.Logger;
  */
 public class Migrator {
     private Connection connection;
-    public void migrate(){
-        this.connection = MyConnector.connect();
+    public boolean migrate(){
+        try{
+            
+            System.out.println(ANSI_CYAN+"\n\n\n----------EXECUTANDO MIGRAÇÃO DE BANCO DE DADOS"+ANSI_RESET);
+            this.connection = MyConnector.connect();
        
-        createCliente();
-        createItem();
-        createFuncionario();
-        closeConnection();
+            createCliente();
+            createItem();
+            createFuncionario();
+            createAgendamento();
+            closeConnection();
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
+        
     }
 
     private void closeConnection() {
@@ -74,6 +85,21 @@ public class Migrator {
             int result = statement.executeUpdate();
             
             if(result == 0) System.out.println("Tabela Funcionario Criada.");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    private void createAgendamento(){
+        String sql = "CREATE TABLE agendamento (id INTEGER PRIMARY KEY AUTOINCREMENT, data_hora DATETIME, id_animal INTEGER, id_servico INTEGER);";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            int result = statement.executeUpdate();
+            
+            if(result == 0) System.out.println("Tabela Agendamento Criada.");
             
         } catch (SQLException e) {
             e.printStackTrace();

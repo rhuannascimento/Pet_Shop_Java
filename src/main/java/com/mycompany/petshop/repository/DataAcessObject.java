@@ -17,5 +17,5 @@ public interface DataAcessObject<T> {
     public boolean delete(T valor);
     public ArrayList<T> getAll();
     public T getById(int id);
-    public ArrayList<T> getByNome(String nome);
+    public boolean deleteAll();
 }

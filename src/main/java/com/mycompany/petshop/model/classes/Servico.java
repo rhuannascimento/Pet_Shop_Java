@@ -4,7 +4,8 @@ public class Servico extends Item {
     private int duracao;
     private int idResponsavel;
 
-    public Servico() {
+    public Servico(int id) {
+        super(id, "", 0f, "", true, "servico");
     }
 
 

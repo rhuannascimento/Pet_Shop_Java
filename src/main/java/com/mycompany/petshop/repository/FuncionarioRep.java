@@ -204,7 +204,6 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         return f;
     }
 
-    @Override
     public ArrayList<Funcionario> getByNome(String nome_busca) {
         System.out.println("Buscando o funcionário "+nome_busca);
         ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
@@ -274,6 +273,28 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         }
         
         return lista;
+    }
+    
+    public boolean deleteAll() {
+        System.out.println("deletando os funcionarios");
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM funcionario;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
     }
     
 }
