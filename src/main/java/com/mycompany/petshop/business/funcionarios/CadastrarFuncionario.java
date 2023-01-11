@@ -32,6 +32,8 @@ public class CadastrarFuncionario {
 
                 this.done = fr.insertOne(f);
             }
+        }else{
+            throw new FuncionarioExp("Você não tem permissão para isso!");
         }
     }
     
