@@ -4,33 +4,26 @@
  */
 package com.mycompany.petshop.business.funcionarios;
 
-import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.sql.Time;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Rhuan
  */
-public class CadastrarFuncionario {
+public class ExcluirFuncionario {
     private boolean done;
-    public CadastrarFuncionario(Funcionario f, boolean isGerente) throws FuncionarioExp{
+    public ExcluirFuncionario(int id, boolean isGerente) {
         done = false;
         if(isGerente){
-            boolean confirma = (JOptionPane.showConfirmDialog(null, "Deseja mesmo cadastrar o funcionário "+f.getNome()+"?") == JOptionPane.OK_OPTION);
+            boolean confirma = (JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o funcionário "+id+"?") == JOptionPane.OK_OPTION);
             if(confirma){
+                done = false;
                 FuncionarioRep fr = new FuncionarioRep();
         
-                ArrayList<Funcionario> l = fr.getByUsername(f.getUsername());
-
-                if(!l.isEmpty()){
-                    throw new FuncionarioExp("Este Username esta em uso");
-                }
-
-                this.done = fr.insertOne(f);
+                done = fr.deleteById(id);
             }
         }
     }
@@ -38,6 +31,7 @@ public class CadastrarFuncionario {
     public boolean status(){
         return this.done;
     }
-
+    
+    
     
 }

@@ -8,23 +8,31 @@ import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.sql.Time;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Rhuan
  */
 public class AtualizarFuncionario {
+    private boolean done;
+    public AtualizarFuncionario(Funcionario f, boolean isGerente) {
+        done = false;
+        if(isGerente){
+            boolean confirma = (JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o funcionário "+f.getNome()+"?") == JOptionPane.OK_OPTION);
+            if(confirma){
+                done = false;
+                FuncionarioRep fr = new FuncionarioRep();
 
-    public AtualizarFuncionario(int id, String nome, Time startTime, Time endTime, String cargo, String username, String password) {
+                done = fr.update(f);
+            }
+        }
         
-        Funcionario f = new Funcionario(id, nome, startTime, endTime, cargo, username, password);
-        
-        FuncionarioRep fr = new FuncionarioRep();
-        
-        fr.update(f);
     }
     
-    
+    public boolean status(){
+        return this.done;
+    }
     
     
 }
