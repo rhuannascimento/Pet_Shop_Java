@@ -184,30 +184,22 @@ public class Tela extends JFrame {
 
         tabela.setDefaultEditor(Object.class, null);
 
-        tableModel.addTableModelListener(new TableModelListener() {
-            public void tableChanged(TableModelEvent e) {
-                // Atualizar mouseListener com as alterações
-                mouseListener.update(tableModel);
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Funcionario a = listaFuncionarios.get(row);
+                        editarFuncionario edit = new editarFuncionario(a, logado);
+                        edit.desenha(a, tableModel);
+                    }
+                }
             }
         });
 
-        /*
-         * tabela.addMouseListener(new MouseAdapter() {
-         * 
-         * @Override
-         * public void mouseClicked(MouseEvent e) {
-         * if (e.getClickCount() == 2) {
-         * int row = tabela.rowAtPoint(e.getPoint());
-         * int col = tabela.columnAtPoint(e.getPoint());
-         * if (row >= 0 && col >= 0) {
-         * Funcionario a = listaFuncionarios.get(row);
-         * editarFuncionario edit = new editarFuncionario(a, logado);
-         * edit.desenha(a, tableModel);
-         * }
-         * }
-         * }
-         * });
-         */
         JScrollPane sp = new JScrollPane(tabela);
 
         sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));

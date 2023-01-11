@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -124,8 +125,6 @@ public class editarFuncionario extends JFrame {
 
             tableModel.setRowCount(0);
 
-            tableModel.fireTableDataChanged();
-
             ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
             for (Funcionario f : listaFuncionarios) {
@@ -134,9 +133,9 @@ public class editarFuncionario extends JFrame {
                                 f.getEndTime(), f.getCargo(),
                                 f.getUsername() });
             }
-            this.dispose();
-
             tableModel.fireTableDataChanged();
+
+            this.dispose();
 
         });
 
@@ -145,8 +144,6 @@ public class editarFuncionario extends JFrame {
             fc.excluir(selected.getId());
             tableModel.setRowCount(0);
 
-            tableModel.fireTableDataChanged();
-
             ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
             for (Funcionario f : listaFuncionarios) {
@@ -155,6 +152,8 @@ public class editarFuncionario extends JFrame {
                                 f.getEndTime(), f.getCargo(),
                                 f.getUsername() });
             }
+
+            tableModel.fireTableDataChanged();
 
             this.dispose();
         });
