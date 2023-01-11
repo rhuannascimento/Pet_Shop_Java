@@ -71,6 +71,8 @@ public class criarServico extends JFrame {
         JButton cancelar = new JButton("Cancelar");
 
         // IMPLEMENTAÇÃO CONTROLLER
+        // FuncionarioCtrl f = new FuncionarioCtrl();
+        // f.cadastrar(passarJTextFields);
         // cadastrar.addActionListener(cadastrarServico(this));
         cancelar.addActionListener(e -> {
             this.dispose();

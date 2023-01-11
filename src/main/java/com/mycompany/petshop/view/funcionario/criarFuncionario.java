@@ -4,22 +4,25 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class criarFuncionario extends JFrame {
-
     private JTextField nome;
+    private JTextField startTime;
+    private JTextField endTime;
     private JComboBox cargo;
     private JTextField login;
-    private JTextField senha;
+    private JPasswordField senha;
 
     public criarFuncionario() {
         super("Cadastrar funcionário");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
     public void desenha() {
@@ -33,46 +36,74 @@ public class criarFuncionario extends JFrame {
         c.gridwidth = 2;
 
         c.gridx = 0;
-        c.gridy = 0;
+        c.gridy = 1;
         painel.add(new JLabel("Nome"), c);
 
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 2;
         nome = new JTextField();
         painel.add(nome, c);
 
-        c.gridx = 0;
-        c.gridy = 2;
-        painel.add(new JLabel("Cargo"), c);
+        c.gridwidth = 1;
 
         c.gridx = 0;
         c.gridy = 3;
+        painel.add(new JLabel("Início exp."), c);
+
+        c.gridx = 1;
+        c.gridy = 3;
+        painel.add(new JLabel("Fim exp."), c);
+
+        c.gridx = 0;
+        c.gridy = 4;
+        startTime = new JTextField();
+        painel.add(startTime, c);
+
+        c.gridx = 1;
+        c.gridy = 4;
+        endTime = new JTextField();
+        painel.add(endTime, c);
+
+        c.gridwidth = 2;
+
+        c.gridx = 0;
+        c.gridy = 5;
+        painel.add(new JLabel("Cargo"), c);
+
+        c.gridx = 0;
+        c.gridy = 6;
         cargo = new JComboBox();
         painel.add(cargo, c);
 
         c.gridx = 0;
-        c.gridy = 4;
+        c.gridy = 7;
         painel.add(new JLabel("Login"), c);
 
         c.gridx = 0;
-        c.gridy = 5;
+        c.gridy = 8;
         login = new JTextField();
         painel.add(login, c);
 
         c.gridx = 0;
-        c.gridy = 6;
+        c.gridy = 9;
         painel.add(new JLabel("Senha"), c);
 
         c.gridx = 0;
-        c.gridy = 7;
-        senha = new JTextField();
+        c.gridy = 10;
+        senha = new JPasswordField();
         painel.add(senha, c);
 
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
-        // IMPLEMENTAÇÃO CONTROLLER
-        // cadastrar.addActionListener(cadastrarFuncionario(this));
+        // CONTROLLER
+        // cadastrar.addActionListener(e -> {
+        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
+        // f.cadastrar(0, nome.getText(), startTime.getText(), endTime.getText(),
+        // cargo.getSelectedItem().toString(),
+        // login.getText(), new String(senha.getPassword()));
+        // });
+
         cancelar.addActionListener(e -> {
             this.dispose();
         });
@@ -80,24 +111,19 @@ public class criarFuncionario extends JFrame {
         c.gridwidth = 1;
 
         c.gridx = 0;
-        c.gridy = 8;
+        c.gridy = 13;
+
         painel.add(cadastrar, c);
+
         c.gridx = 1;
-        c.gridy = 8;
+        c.gridy = 13;
+
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 300);
+        this.setSize(300, 330);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-    }
-
-    public JTextField getLogin() {
-        return login;
-    }
-
-    public JTextField getSenha() {
-        return senha;
     }
 
 }
