@@ -116,8 +116,6 @@ public class criarFuncionario extends JFrame {
                             cargo.getText(), login.getText(), new String(senha.getPassword()) });
         });
 
-        tableModel.fireTableDataChanged();
-
         cancelar.addActionListener(e -> {
             this.dispose();
         });

@@ -28,10 +28,12 @@ public class editarFuncionario extends JFrame {
     private JPasswordField senha;
 
     private Funcionario logado;
+    private ArrayList<Funcionario> listaFuncionarios;
 
-    public editarFuncionario(Funcionario selected, Funcionario logado) {
+    public editarFuncionario(Funcionario selected, Funcionario logado, ArrayList<Funcionario> listaFuncionarios) {
         super(selected.getNome());
         this.logado = logado;
+        this.listaFuncionarios = listaFuncionarios;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
@@ -133,7 +135,6 @@ public class editarFuncionario extends JFrame {
                                 f.getEndTime(), f.getCargo(),
                                 f.getUsername() });
             }
-            tableModel.fireTableDataChanged();
 
             this.dispose();
 
@@ -142,19 +143,17 @@ public class editarFuncionario extends JFrame {
         excluir.addActionListener(e -> {
             FuncionarioCtrl fc = new FuncionarioCtrl(logado);
             fc.excluir(selected.getId());
+
+            listaFuncionarios.remove(selected);
+
+            listaFuncionarios = fc.exibir();
             tableModel.setRowCount(0);
 
-            ArrayList<Funcionario> listaFuncionarios = fc.exibir();
-
             for (Funcionario f : listaFuncionarios) {
-                tableModel
-                        .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
-                                f.getEndTime(), f.getCargo(),
-                                f.getUsername() });
+                tableModel.addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                        f.getEndTime(), f.getCargo(), f.getUsername() });
             }
-
             tableModel.fireTableDataChanged();
-
             this.dispose();
         });
 

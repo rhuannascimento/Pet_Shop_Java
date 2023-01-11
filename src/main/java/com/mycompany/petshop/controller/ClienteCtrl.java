@@ -61,24 +61,8 @@ public class ClienteCtrl {
 
     public ArrayList<Cliente> exibirPessoas() throws ClienteExp {
         this.exibirPessoa = new ExibirPessoas();
+        System.out.println("exibindo pessoas 2 ");
         ArrayList<Cliente> lista = this.exibirPessoa.getPessoas();
-        // String col[] = { "ID", "Nome", "cpf", "E-mail", "Telefone" };
-
-        // DefaultTableModel dtm = new DefaultTableModel(col, 0);
-
-        // try {
-        // ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
-
-        // for (Cliente c : lista) {
-        // Object[] data = { c.getId(), c.getNome(), c.getCpf(), ((Pessoa)
-        // c).getEmail(),
-        // ((Pessoa) c).getTelefone() };
-        // dtm.addRow(data);
-        // }
-
-        // } catch (Exception ex) {
-        // ex.printStackTrace();
-        // }
 
         return lista;
 

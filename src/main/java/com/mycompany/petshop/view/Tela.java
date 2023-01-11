@@ -3,6 +3,7 @@ package com.mycompany.petshop.view;
 import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
+import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Pessoa;
@@ -196,9 +197,9 @@ public class Tela extends JFrame {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Funcionario a = listaFuncionarios.get(row);
-                        editarFuncionario edit = new editarFuncionario(a, logado);
-                        edit.desenha(a, tableModel);
+                        Funcionario selected = listaFuncionarios.get(row);
+                        editarFuncionario edit = new editarFuncionario(selected, logado, listaFuncionarios);
+                        edit.desenha(selected, tableModel);
                     }
                 }
             }
@@ -223,13 +224,14 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaClientes() {
+
         JPanel painelClientes = new JPanel(new BorderLayout());
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
         JPanel pessoa = new JPanel(new BorderLayout());
-        JScrollPane spPessoa = new JScrollPane(tabelaRoupas());
+        JScrollPane spPessoa = new JScrollPane(tabelaPessoas());
         pessoa.add(spPessoa);
 
         tabbedPane.addTab("Pessoas", pessoa);
@@ -256,44 +258,60 @@ public class Tela extends JFrame {
 
     }
 
-    /*
-     * public JTable tabelaPessoas() {
-     * 
-     * DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-     * "Nome", "CPF", "E-mail", "Telefone" }, 0);
-     * JTable tabela = new JTable(tableModel);
-     * 
-     * ClienteCtrl cc = new ClienteCtrl();
-     * ArrayList<Cliente> listaPessoas = cc.exibirPessoas();
-     * 
-     * for (Cliente f : listaPessoas) {
-     * Pessoa p = (Pessoa) f;
-     * tableModel
-     * .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-     * p.getEmail(), p.getTelefone(), });
-     * }
-     * 
-     * tabela.setDefaultEditor(Object.class, null);
-     * 
-     * return tabela;
-     * 
-     * }
-     */
+    public JTable tabelaPessoas() {
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
+                "Nome", "CPF", "E-mail", "Telefone" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        ClienteCtrl cc = new ClienteCtrl();
+
+        ArrayList<Cliente> listaPessoas = new ArrayList<>();
+
+        try {
+
+            System.out.println("exibindo pessoas 1 ");
+            listaPessoas = cc.exibirPessoas();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        for (Cliente f : listaPessoas) {
+            Pessoa p = (Pessoa) f;
+            tableModel
+                    .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
+                            p.getEmail(), p.getTelefone(), });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        return tabela;
+
+    }
 
     public JTable tabelaAnimais() {
 
         DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-                "Nome", "Início exp.", "Fim exp", "Cargo", "Login" }, 0);
+                "Nome", "CPF do dono", "Éspecie" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
-        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
+        ClienteCtrl cc = new ClienteCtrl();
 
-        for (Funcionario f : listaFuncionarios) {
+        ArrayList<Cliente> listaAnimais = new ArrayList<>();
+
+        try {
+            listaAnimais = cc.exibirAnimais();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        for (Cliente f : listaAnimais) {
+            Animal p = (Animal) f;
             tableModel
-                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
-                            f.getEndTime(), f.getCargo(),
-                            f.getUsername() });
+                    .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
+                            p.getEspecie(), });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -303,6 +321,7 @@ public class Tela extends JFrame {
     }
 
     public void desenhaPaginaServicos() {
+
         JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
 

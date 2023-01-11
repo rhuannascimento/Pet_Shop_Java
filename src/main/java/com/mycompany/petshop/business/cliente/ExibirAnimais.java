@@ -16,35 +16,36 @@ import java.util.ArrayList;
  */
 public class ExibirAnimais {
 
-    private ArrayList<Cliente> animais = new ArrayList();
-    
+    private ArrayList<Cliente> animais;
+
     public ExibirAnimais() throws ClienteExp {
-        
-        ClienteRep cr = new ClienteRep(); 
-        
-        ArrayList<Cliente> l =  cr.getAll();
-        
-        
-        if(!l.isEmpty()){
+        System.out.println("exibindo pessoas 3");
+        animais = new ArrayList<Cliente>();
+        ClienteRep cr = new ClienteRep();
+
+        System.out.println("exibindo pessoas 4 ");
+        ArrayList<Cliente> l = cr.getAll();
+        System.out.println("exibindo pessoas 5 ");
+
+        System.out.println("l.isEmpty(): " + l.isEmpty());
+        if (!l.isEmpty()) {
             for (int i = 0; i < l.size(); i++) {
 
-                if(l.get(i).getTipo().equalsIgnoreCase("animal")){
+                System.out.println("l.get(i): " + l.get(i));
+                System.out.println("l.get(i).getTipo(): " + l.get(i).getTipo());
+                if (l.get(i).getTipo().equalsIgnoreCase("animal")) {
                     this.animais.add(l.get(i));
                 }
 
-
             }
-        }else{
+        } else {
             throw new ClienteExp("Não exitse clientes cadastrados!");
         }
-        
+
     }
 
     public ArrayList<Cliente> getAnimais() {
         return this.animais;
     }
-    
-    
-         
-    
+
 }
