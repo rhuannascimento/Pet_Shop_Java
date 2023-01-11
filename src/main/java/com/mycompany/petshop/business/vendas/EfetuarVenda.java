@@ -26,8 +26,10 @@ public class EfetuarVenda {
         Item i = ir.getById(id);
         
         if(i.getCategoria().equalsIgnoreCase("servico")){
-            //programa de agendamento
-        }else if(i.getCategoria().equalsIgnoreCase("remedio")){
+            
+            throw new ItemExp("Lembre-se de agendar este serviço!");            
+            
+        }if(i.getCategoria().equalsIgnoreCase("remedio")){
                              
             Remedio r = (Remedio) i;
             
