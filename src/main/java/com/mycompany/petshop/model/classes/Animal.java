@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 public class Animal extends Cliente {
     private String especie;
 
-    public Animal() {
+    public Animal(int id) {
+        super(id, "", "", "animal");
     }
 
     public Animal(int id, String nome, String cpf, String especie) {

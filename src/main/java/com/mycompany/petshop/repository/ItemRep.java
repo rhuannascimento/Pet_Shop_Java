@@ -439,11 +439,10 @@ public class ItemRep implements DataAcessObject<Item> {
         }catch(NullPointerException e){
             e.printStackTrace();
         }
-        
+        System.out.println(lista);
         return lista.get(0);
     }
 
-    @Override
     public ArrayList<Item> getByNome(String nome_busca) {
         System.out.println("Listando item de nome "+nome_busca);
         ArrayList<Item> lista = new ArrayList<Item>();
@@ -494,6 +493,28 @@ public class ItemRep implements DataAcessObject<Item> {
         }
         
         return lista;
+    }
+    
+    public boolean deleteAll() {
+        System.out.println("deletando os items");
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM item;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
     }
     
 }

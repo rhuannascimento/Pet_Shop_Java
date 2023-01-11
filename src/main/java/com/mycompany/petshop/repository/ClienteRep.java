@@ -240,7 +240,6 @@ public class ClienteRep implements DataAcessObject<Cliente> {
         return f;
     }
 
-    @Override
     public ArrayList<Cliente> getByNome(String nome_busca) {
         System.out.println("Buscando o cliente "+nome_busca);
         ArrayList<Cliente> lista = new ArrayList<Cliente>();
@@ -321,6 +320,28 @@ public class ClienteRep implements DataAcessObject<Cliente> {
         }
         
         return lista;
+    }
+    
+    public boolean deleteAll() {
+        System.out.println("deletando os clientes");
+        int affected = 0;
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "DELETE FROM cliente;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            affected = ps.executeUpdate();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return affected != 0;
     }
     
 }
