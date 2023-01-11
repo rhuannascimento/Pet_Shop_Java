@@ -51,10 +51,12 @@ public class Tela extends JFrame {
     private JPanel painelPrincipal;
     private Funcionario logado;
 
+    ArrayList<Cliente> listaClientes;
+
     public Tela(Funcionario logado) {
         super();
-        this.setTitle("Pet Shop");
-        // this.setTitle("Pet Shop - User: " + logado.getUsername());
+        this.setTitle("Pet Shop - User: " + logado.getUsername());
+        listaClientes = new ArrayList<>();
         this.logado = logado;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -263,31 +265,47 @@ public class Tela extends JFrame {
 
     public JTable tabelaPessoas() {
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-                "Nome", "CPF", "E-mail", "Telefone" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] {
+                "ID", "Nome", "CPF", "Email", "Telefone" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ClienteCtrl cc = new ClienteCtrl();
 
-        ArrayList<Cliente> listaPessoas = new ArrayList<>();
-
         try {
-
-            System.out.println("exibindo pessoas 1 ");
-            listaPessoas = cc.exibirPessoas();
-
+            listaClientes = cc.exibirPessoas();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        for (Cliente f : listaPessoas) {
-            Pessoa p = (Pessoa) f;
+        for (Cliente c : listaClientes) {
+            Pessoa p = (Pessoa) c;
             tableModel
                     .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                            p.getEmail(), p.getTelefone(), });
+                            p.getEmail(), p.getTelefone() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Cliente selected = listaClientes.get(row);
+                        editarCliente edit = new editarCliente(selected, listaClientes);
+                        edit.desenha(selected, tableModel);
+                    }
+                }
+            }
+        });
+
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
 
         return tabela;
 
