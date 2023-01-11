@@ -5,6 +5,7 @@
 package com.mycompany.petshop.business.funcionarios;
 
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.sql.Time;
 import javax.swing.JOptionPane;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ExcluirFuncionario {
     private boolean done;
-    public ExcluirFuncionario(int id, boolean isGerente) {
+    public ExcluirFuncionario(int id, boolean isGerente) throws FuncionarioExp {
         done = false;
         if(isGerente){
             boolean confirma = (JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o funcionário "+id+"?") == JOptionPane.OK_OPTION);
@@ -25,6 +26,8 @@ public class ExcluirFuncionario {
         
                 done = fr.deleteById(id);
             }
+        }else{
+            throw new FuncionarioExp("Você não tem permissão para isso!");
         }
     }
     

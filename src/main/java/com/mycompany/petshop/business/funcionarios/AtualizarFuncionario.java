@@ -5,6 +5,7 @@
 package com.mycompany.petshop.business.funcionarios;
 
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 public class AtualizarFuncionario {
     private boolean done;
 
-    public AtualizarFuncionario(Funcionario f, boolean isGerente) {
+    public AtualizarFuncionario(Funcionario f, boolean isGerente) throws FuncionarioExp {
         done = false;
         if (isGerente) {
             boolean confirma = (JOptionPane.showConfirmDialog(null,
@@ -28,6 +29,8 @@ public class AtualizarFuncionario {
 
                 done = fr.update(f);
             }
+        }else{
+            throw new FuncionarioExp("Você não tem permissão para isso!");
         }
 
     }
