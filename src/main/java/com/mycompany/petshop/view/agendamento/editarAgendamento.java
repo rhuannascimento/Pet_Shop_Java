@@ -1,5 +1,6 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view.agendamento;
 
+import com.mycompany.petshop.model.classes.Agendamento;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
@@ -10,29 +11,30 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class criarAgendamento extends JFrame {
+public class editarAgendamento extends JFrame {
 
-    private JComboBox nome;
+    private JTextField nome;
     private JComboBox servico;
     private JDateChooser data;
     private JComboBox horario;
 
-    public criarAgendamento() {
-        super("Novo agendamento");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public editarAgendamento(Agendamento selected) {
+        super("Agendamento de " + selected.getA());
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
-    public void desenha() {
-
+    public void desenha(Agendamento selected) {
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         c.insets = new Insets(3, 3, 3, 3); // espaçamento entre os componentes
-        c.fill = GridBagConstraints.HORIZONTAL; // componente ocupa toda a largura da célula
+        c.fill = GridBagConstraints.HORIZONTAL;
 
-        c.gridwidth = 2;
+        c.gridwidth = 3;
 
         c.gridx = 0;
         c.gridy = 0;
@@ -40,7 +42,8 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 1;
-        nome = new JComboBox();
+        nome = new JTextField();
+        nome.setEditable(false);
         painel.add(nome, c);
 
         c.gridx = 0;
@@ -72,9 +75,13 @@ public class criarAgendamento extends JFrame {
         horario = new JComboBox();
         painel.add(horario, c);
 
-        JButton agendar = new JButton("Agendar");
+        JButton salvar = new JButton("Salvar");
+        JButton excluir = new JButton("Excluir");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO DO CONTROLLER
+        // salvar.addActionListener(editarAgendamento(this));
+        // excluir.addActionListener(excluirAgendamento(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
@@ -83,10 +90,17 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 8;
-        painel.add(agendar, c);
+
+        painel.add(salvar, c);
 
         c.gridx = 1;
         c.gridy = 8;
+
+        painel.add(excluir, c);
+
+        c.gridx = 2;
+        c.gridy = 8;
+
         painel.add(cancelar, c);
 
         this.add(painel);
@@ -95,7 +109,7 @@ public class criarAgendamento extends JFrame {
         this.setVisible(true);
     }
 
-    public JComboBox getNome() {
+    public JTextField getNome() {
         return nome;
     }
 

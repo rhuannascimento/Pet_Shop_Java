@@ -1,4 +1,4 @@
-package com.mycompany.teste;
+package com.mycompany.petshop.view.cliente;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,16 +9,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class cadastrarCliente extends JFrame {
+public class criarCliente extends JFrame {
 
     private JTextField nome;
     private JTextField especie;
     private JTextField idade;
     private JTextField cpf;
 
-    public cadastrarCliente() {
+    public criarCliente() {
         super("Nova ficha");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void desenha() {
@@ -70,6 +70,8 @@ public class cadastrarCliente extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
+        // IMPLEMENTAÇÃO CONTROLLER
+        // cadastrar.addActionListener(cadastrarCliente(this));
         cancelar.addActionListener(e -> {
             this.dispose();
         });
