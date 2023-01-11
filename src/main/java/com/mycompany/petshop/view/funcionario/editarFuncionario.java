@@ -110,9 +110,18 @@ public class editarFuncionario extends JFrame {
         JButton excluir = new JButton("Excluir");
         JButton cancelar = new JButton("Cancelar");
 
-        // IMPLEMENTAÇÃO DO CONTROLLER
-        // salvar.addActionListener(editarFuncionario(this));
-        // excluir.addActionListener(excluirFuncionario(this));
+        // CONTROLLER
+        // salvar.addActionListener(e -> {
+        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
+        // f.atualizar(id, nome.getText(), startTime.getText(), endTime.getText(),
+        // cargo.getSelectedItem().toString(),
+        // login.getText(), new String(senha.getPassword()));
+        // });
+
+        // excluir.addActionListener(e -> {
+        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
+        // f.excluir(id);
+        // });
         cancelar.addActionListener(e -> {
             this.dispose();
         });

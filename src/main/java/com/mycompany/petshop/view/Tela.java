@@ -1,6 +1,8 @@
 package com.mycompany.petshop.view;
 
+import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
+import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
@@ -17,7 +19,6 @@ import com.mycompany.petshop.view.mercadoria.roupa.criarRoupa;
 import com.mycompany.petshop.view.mercadoria.roupa.editarRoupa;
 import com.mycompany.petshop.view.servico.criarServico;
 import com.mycompany.petshop.view.servico.editarServico;
-package com.mycompany.petshop.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -31,22 +32,22 @@ import javax.swing.JSplitPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.util.ArrayList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import com.mycompany.petshop.model.classes.*;
-import java.sql.Time;
-import java.util.Date;
-
 public class Tela extends JFrame {
 
     private JPanel painelPrincipal;
+    private Funcionario logado;
 
-    public Tela(String user) {
+    public Tela(Funcionario logado) {
         super();
-        this.setTitle("Pet Shop - User: " + user);
+        this.setTitle("Pet Shop");
+        // this.setTitle("Pet Shop - User: " + logado.getUsername());
+        this.logado = logado;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -109,9 +110,6 @@ public class Tela extends JFrame {
             tableModel
                     .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
-        // agendamentos.add(new Agendamento("Lily", new Date(2023, 2, 20, 12, 00),
-        // "Tosa"));
-        // agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         tabela.setDefaultEditor(Object.class, null);
 
@@ -119,10 +117,6 @@ public class Tela extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
-                    Agendamento selected = list.getSelectedValue();
-
-                    // editarAgendamento a = new editarAgendamento(selected);
-                    // a.desenha(selected);
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
@@ -142,10 +136,10 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        // agendarButton.addActionListener((ActionEvent e) -> {
-        // criarAgendamento a = new criarAgendamento();
-        // a.desenha();
-        // });
+        agendarButton.addActionListener((ActionEvent e) -> {
+            criarAgendamento a = new criarAgendamento();
+            a.desenha();
+        });
 
         return agenda;
 
@@ -167,7 +161,12 @@ public class Tela extends JFrame {
         JPanel painelFuncionarios = new JPanel(new BorderLayout());
         painelFuncionarios.setBorder(BorderFactory.createTitledBorder("Funcionários"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID", "Nome", "Cargo", "Horário" }, 0);
+        // FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+
+        // JTable tabela = new JTable(fc.exibir());
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
+                "Nome", "Cargo", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -177,12 +176,14 @@ public class Tela extends JFrame {
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(),
+                            agendamento.getC() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
 
         tabela.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
@@ -209,10 +210,6 @@ public class Tela extends JFrame {
             criarFuncionario f = new criarFuncionario();
             f.desenha();
         });
-        // newFuncButton.addActionListener(e -> {
-        //// cadastrarFuncionario f = new cadastrarFuncionario();
-        // f.desenha();
-        // });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
 
@@ -266,10 +263,6 @@ public class Tela extends JFrame {
             criarCliente c = new criarCliente();
             c.desenha();
         });
-        // newClienteButton.addActionListener(e -> {
-        //// cadastrarCliente c = new cadastrarCliente();
-        // c.desenha();
-        // });
 
         painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
@@ -401,8 +394,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -437,8 +430,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -473,8 +466,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -509,8 +502,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -593,7 +586,9 @@ public class Tela extends JFrame {
 
     public static void main(String args[]) {
 
-        Tela tela = new Tela("user");
+        Funcionario l = new Funcionario();
+
+        Tela tela = new Tela(l);
         tela.renderiza();
 
     }
