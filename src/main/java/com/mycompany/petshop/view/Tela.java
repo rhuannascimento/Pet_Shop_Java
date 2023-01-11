@@ -222,42 +222,21 @@ public class Tela extends JFrame {
         JPanel painelClientes = new JPanel(new BorderLayout());
         painelClientes.setBorder(BorderFactory.createTitledBorder("Clientes"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Espécie", "Idade", "CPF do dono" }, 0);
-        JTable tabela = new JTable(tableModel);
+        JTabbedPane tabbedPane = new JTabbedPane();
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        JPanel pessoa = new JPanel(new BorderLayout());
+        JScrollPane spPessoa = new JScrollPane(tabelaRacao());
+        pessoa.add(spPessoa);
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        tabbedPane.addTab("Pessoas", pessoa);
 
-        for (Agendamento agendamento : listaAgendamentos) {
-            tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
-        }
+        JPanel animais = new JPanel(new BorderLayout());
+        JScrollPane spAnimais = new JScrollPane(tabelaRoupas());
+        animais.add(spAnimais);
 
-        tabela.setDefaultEditor(Object.class, null);
+        tabbedPane.addTab("Animais", animais);
 
-        tabela.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int row = tabela.rowAtPoint(e.getPoint());
-                    int col = tabela.columnAtPoint(e.getPoint());
-                    if (row >= 0 && col >= 0) {
-                        Agendamento a = listaAgendamentos.get(row);
-                        editarCliente edit = new editarCliente(a);
-                        edit.desenha(a);
-                    }
-                }
-            }
-        });
-
-        JScrollPane sp = new JScrollPane(tabela);
-
-        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
-
-        painelClientes.add(sp);
+        tabbedPane.setPreferredSize(new Dimension(600, 300));
 
         JButton newClienteButton = new JButton("Nova ficha");
         newClienteButton.addActionListener(e -> {
@@ -267,9 +246,20 @@ public class Tela extends JFrame {
 
         painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
+        painelClientes.add(tabbedPane);
+
         painelPrincipal.add(painelClientes, "Clientes");
 
     }
+
+    /*
+     * public JTable tabelaPessoas() {
+     * 
+     * }
+     * 
+     * public JTable tabelaAnimais() {
+     * }
+     */
 
     public void desenhaPaginaServicos() {
         JPanel painelServicos = new JPanel(new BorderLayout());
