@@ -12,8 +12,8 @@ import com.mycompany.petshop.repository.AgendamentoRep;
  * @author beort
  */
 public class ExcluirAgendamento {
-    public ExcluirAgendamento(Agendamento agendamento){
+    public ExcluirAgendamento(int id){
         AgendamentoRep ar = new AgendamentoRep();
-        ar.deleteById(agendamento.getId());
+        ar.deleteById(id);
     }
 }

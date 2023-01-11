@@ -55,7 +55,7 @@ public class ClienteCtrl {
 
     }
 
-    public  ArrayList<Cliente> exibirPessoas() throws ClienteExp {
+    public ArrayList<Cliente> exibirPessoas() throws ClienteExp {
         this.exibirPessoa = new ExibirPessoas();
         ArrayList<Cliente> lista = this.exibirPessoa.getPessoas();
         // String col[] = { "ID", "Nome", "cpf", "E-mail", "Telefone" };
@@ -63,42 +63,43 @@ public class ClienteCtrl {
         // DefaultTableModel dtm = new DefaultTableModel(col, 0);
 
         // try {
-        //     ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
+        // ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
 
-        //     for (Cliente c : lista) {
-        //         Object[] data = { c.getId(), c.getNome(), c.getCpf(), ((Pessoa) c).getEmail(),
-        //                 ((Pessoa) c).getTelefone() };
-        //         dtm.addRow(data);
-        //     }
+        // for (Cliente c : lista) {
+        // Object[] data = { c.getId(), c.getNome(), c.getCpf(), ((Pessoa)
+        // c).getEmail(),
+        // ((Pessoa) c).getTelefone() };
+        // dtm.addRow(data);
+        // }
 
         // } catch (Exception ex) {
-        //     ex.printStackTrace();
+        // ex.printStackTrace();
         // }
 
         return lista;
 
     }
-    public void cadastrarCliente(int id, String nome, String cpf, String tipo, String telefone,String email, String especie) throws ClienteExp {
-        CadastrarCliente cadastrar;
-        cadastrar = new CadastrarCliente(id, nome, cpf, tipo, telefone, email, especie);    
+
+    public void cadastrarCliente(int id, String nome, String cpf, String tipo, String telefone, String email,
+            String especie) throws ClienteExp {
+
+        cadastrarCliente = new CadastrarCliente(id, nome, cpf, tipo, telefone, email, especie);
     }
 
-    public void atualizarAnimal(int id, String nome, String cpf, String especie){
-        AtualizarAnimal atualizar;
-        atualizar = new AtualizarAnimal(id, nome, cpf, especie);
+    public void atualizarAnimal(int id, String nome, String cpf, String especie) {
 
-    }
-
-    public void atualizarPessoa(int id, String nome, String cpf, String email, String telefone){
-        AtualizarPessoa atualizar;
-        atualizar = new AtualizarPessoa(id, nome, cpf, email, telefone);
+        atualizarAnimal = new AtualizarAnimal(id, nome, cpf, especie);
 
     }
 
-    public void excluirCliente(int id){
-        ExcluirCliente excluir;
-        excluir = new ExcluirCliente(id);
+    public void atualizarPessoa(int id, String nome, String cpf, String email, String telefone) {
+
+        atualizarPessoa = new AtualizarPessoa(id, nome, cpf, email, telefone);
+
     }
 
+    public void excluirCliente(int id) {
+        excluirCliente = new ExcluirCliente(id);
+    }
 
 }
