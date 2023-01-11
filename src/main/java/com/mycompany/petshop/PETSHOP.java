@@ -230,6 +230,12 @@ public class PETSHOP {
             imprimirListaAgendamento(ar.getByDate(new Date(2023, 1, 26)));
 
             System.out.println(ANSI_GREEN + "----------- TESTES FINALIZADOS, RESETANDO BANCO DE DADOS!" + ANSI_RESET);
+
+            FuncionarioRep frep = new FuncionarioRep();
+            boolean log = frep.login("caio.costa", "senhacaio");
+            System.out.println("Logou? "+log);
+            log = frep.login("caio.costa", "senhacaioerrada");
+            System.out.println("Logou? "+log);
             RES = true;
         } catch (Exception ex) {
             ex.printStackTrace();

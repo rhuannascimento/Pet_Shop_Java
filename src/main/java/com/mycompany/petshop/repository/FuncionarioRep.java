@@ -275,6 +275,44 @@ public class FuncionarioRep implements DataAcessObject<Funcionario> {
         return lista;
     }
     
+    public boolean login(String username, String senha_login) {
+        username = username.toLowerCase();
+        System.out.println("Fazendo login de "+ username);
+        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+        Funcionario f = null;
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM funcionario WHERE usuario = ? AND senha = ?;";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ps.setString(1, username);
+            ps.setString(2, senha_login);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nome = rs.getString("nome");
+                Time horario_inicio = rs.getTime("horario_inicio");
+                Time horario_fim = rs.getTime("horario_fim");
+                String cargo = rs.getString("cargo");
+                String usuario = rs.getString("usuario");
+                String senha = rs.getString("senha");
+                f = new Funcionario(id, nome, horario_inicio, horario_fim, cargo, usuario, senha);
+                lista.add(f);
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return lista.size() == 1;
+    }
+    
     public boolean deleteAll() {
         System.out.println("deletando os funcionarios");
         int affected = 0;
