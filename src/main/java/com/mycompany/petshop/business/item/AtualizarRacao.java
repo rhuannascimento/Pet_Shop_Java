@@ -14,6 +14,6 @@ public class AtualizarRacao {
         Item i;
         i = new Racao(estoque, fornecedor, id, nome, preco, tipo,disponivel,especie,sabor, idade_recomendada);
         ItemRep ir = new ItemRep();
-       ir.update(i);    
+        ir.update(i);    
     }
 }
