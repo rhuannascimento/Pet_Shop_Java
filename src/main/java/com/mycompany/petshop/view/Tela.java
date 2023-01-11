@@ -7,6 +7,14 @@ import com.mycompany.petshop.view.cliente.criarCliente;
 import com.mycompany.petshop.view.cliente.editarCliente;
 import com.mycompany.petshop.view.funcionario.criarFuncionario;
 import com.mycompany.petshop.view.funcionario.editarFuncionario;
+import com.mycompany.petshop.view.mercadoria.brinquedo.criarBrinquedo;
+import com.mycompany.petshop.view.mercadoria.brinquedo.editarBrinquedo;
+import com.mycompany.petshop.view.mercadoria.racao.criarRacao;
+import com.mycompany.petshop.view.mercadoria.racao.editarRacao;
+import com.mycompany.petshop.view.mercadoria.remedio.criarRemedio;
+import com.mycompany.petshop.view.mercadoria.remedio.editarRemedio;
+import com.mycompany.petshop.view.mercadoria.roupa.criarRoupa;
+import com.mycompany.petshop.view.mercadoria.roupa.editarRoupa;
 import com.mycompany.petshop.view.servico.criarServico;
 import com.mycompany.petshop.view.servico.editarServico;
 
@@ -305,20 +313,56 @@ public class Tela extends JFrame {
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        JScrollPane racao = new JScrollPane();
-        racao.add(tabelaRacao());
+        JPanel racao = new JPanel(new BorderLayout());
+        JScrollPane spRacao = new JScrollPane(tabelaRacao());
+        racao.add(spRacao);
+        JButton newRacaoButton = new JButton("Registrar ração");
+
+        newRacaoButton.addActionListener(e -> {
+            criarRacao c = new criarRacao();
+            c.desenha();
+        });
+        racao.add(newRacaoButton, BorderLayout.SOUTH);
+
         tabbedPane.addTab("Ração", racao);
 
-        JPanel roupas = new JPanel();
-        roupas.add(tabelaRoupas());
+        JPanel roupas = new JPanel(new BorderLayout());
+        JScrollPane spRoupas = new JScrollPane(tabelaRoupas());
+        roupas.add(spRoupas);
+        JButton newRoupaButton = new JButton("Registrar roupa");
+
+        newRoupaButton.addActionListener(e -> {
+            criarRoupa c = new criarRoupa();
+            c.desenha();
+        });
+        roupas.add(newRoupaButton, BorderLayout.SOUTH);
+
         tabbedPane.addTab("Roupas", roupas);
 
-        JPanel brinquedos = new JPanel();
-        brinquedos.add(tabelaBrinquedos());
+        JPanel brinquedos = new JPanel(new BorderLayout());
+        JScrollPane spBrinquedos = new JScrollPane(tabelaBrinquedos());
+        brinquedos.add(spBrinquedos);
+        JButton newBrinquedoButton = new JButton("Registrar brinquedo");
+
+        newBrinquedoButton.addActionListener(e -> {
+            criarBrinquedo c = new criarBrinquedo();
+            c.desenha();
+        });
+        brinquedos.add(newBrinquedoButton, BorderLayout.SOUTH);
+
         tabbedPane.addTab("Brinquedos", brinquedos);
 
-        JPanel remedios = new JPanel();
-        remedios.add(tabelaRemedios());
+        JPanel remedios = new JPanel(new BorderLayout());
+        JScrollPane spRemedios = new JScrollPane(tabelaRemedios());
+        remedios.add(spRemedios);
+        JButton newRemedioButton = new JButton("Registrar remédio");
+
+        newRemedioButton.addActionListener(e -> {
+            criarRemedio c = new criarRemedio();
+            c.desenha();
+        });
+        remedios.add(newRemedioButton, BorderLayout.SOUTH);
+
         tabbedPane.addTab("Remédios", remedios);
 
         tabbedPane.setPreferredSize(new Dimension(600, 300));
@@ -330,6 +374,7 @@ public class Tela extends JFrame {
     }
 
     public JTable tabelaRacao() {
+
         DefaultTableModel tableModel = new DefaultTableModel(
                 new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
         JTable tabela = new JTable(tableModel);
@@ -347,6 +392,7 @@ public class Tela extends JFrame {
         tabela.setDefaultEditor(Object.class, null);
 
         tabela.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
@@ -354,9 +400,8 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento a = listaAgendamentos.get(row);
-                        JFrame f = new JFrame(a.getA());
-                        f.setSize(300, 300);
-                        f.setVisible(true);
+                        editarRacao edit = new editarRacao(a);
+                        edit.desenha(a);
                     }
                 }
             }
@@ -382,6 +427,22 @@ public class Tela extends JFrame {
 
         tabela.setDefaultEditor(Object.class, null);
 
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarRoupa edit = new editarRoupa(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
+
         return tabela;
     }
 
@@ -402,6 +463,22 @@ public class Tela extends JFrame {
 
         tabela.setDefaultEditor(Object.class, null);
 
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarBrinquedo edit = new editarBrinquedo(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
+
         return tabela;
     }
 
@@ -421,6 +498,22 @@ public class Tela extends JFrame {
         }
 
         tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Agendamento a = listaAgendamentos.get(row);
+                        editarRemedio edit = new editarRemedio(a);
+                        edit.desenha(a);
+                    }
+                }
+            }
+        });
 
         return tabela;
     }
