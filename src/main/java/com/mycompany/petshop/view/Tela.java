@@ -1,8 +1,11 @@
 package com.mycompany.petshop.view;
 
+import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
+import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
@@ -188,6 +191,7 @@ public class Tela extends JFrame {
 
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if (e.getClickCount() == 2) {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
@@ -225,13 +229,13 @@ public class Tela extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
 
         JPanel pessoa = new JPanel(new BorderLayout());
-        JScrollPane spPessoa = new JScrollPane(tabelaRacao());
+        JScrollPane spPessoa = new JScrollPane(tabelaRoupas());
         pessoa.add(spPessoa);
 
         tabbedPane.addTab("Pessoas", pessoa);
 
         JPanel animais = new JPanel(new BorderLayout());
-        JScrollPane spAnimais = new JScrollPane(tabelaRoupas());
+        JScrollPane spAnimais = new JScrollPane(tabelaAnimais());
         animais.add(spAnimais);
 
         tabbedPane.addTab("Animais", animais);
@@ -255,11 +259,48 @@ public class Tela extends JFrame {
     /*
      * public JTable tabelaPessoas() {
      * 
+     * DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
+     * "Nome", "CPF", "E-mail", "Telefone" }, 0);
+     * JTable tabela = new JTable(tableModel);
+     * 
+     * ClienteCtrl cc = new ClienteCtrl();
+     * ArrayList<Cliente> listaPessoas = cc.exibirPessoas();
+     * 
+     * for (Cliente f : listaPessoas) {
+     * Pessoa p = (Pessoa) f;
+     * tableModel
+     * .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
+     * p.getEmail(), p.getTelefone(), });
      * }
      * 
-     * public JTable tabelaAnimais() {
+     * tabela.setDefaultEditor(Object.class, null);
+     * 
+     * return tabela;
+     * 
      * }
      */
+
+    public JTable tabelaAnimais() {
+
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
+                "Nome", "Início exp.", "Fim exp", "Cargo", "Login" }, 0);
+        JTable tabela = new JTable(tableModel);
+
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
+
+        for (Funcionario f : listaFuncionarios) {
+            tableModel
+                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                            f.getEndTime(), f.getCargo(),
+                            f.getUsername() });
+        }
+
+        tabela.setDefaultEditor(Object.class, null);
+
+        return tabela;
+
+    }
 
     public void desenhaPaginaServicos() {
         JPanel painelServicos = new JPanel(new BorderLayout());
@@ -575,12 +616,4 @@ public class Tela extends JFrame {
         add(barraBotoes, BorderLayout.SOUTH);
     }
 
-    public static void main(String args[]) {
-
-        Funcionario l = new Funcionario();
-
-        Tela tela = new Tela(l);
-        tela.renderiza();
-
-    }
 }
