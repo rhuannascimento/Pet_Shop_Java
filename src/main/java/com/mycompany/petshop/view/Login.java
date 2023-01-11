@@ -138,8 +138,8 @@ public class Login extends javax.swing.JFrame {
 
         if (userLogin.getText().equals("gerente") && new String(password.getPassword()).equals("123")) {
             JOptionPane.showMessageDialog(null, "Login concluído.");
-            Tela tela = new Tela(this.getUserLogin().getText());
-            tela.renderiza();
+            // Tela tela = new Tela(this.getUserLogin().getText());
+            // tela.renderiza();
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos.");
