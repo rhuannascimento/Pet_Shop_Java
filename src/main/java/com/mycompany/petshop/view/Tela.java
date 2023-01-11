@@ -211,7 +211,7 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            criarFuncionario f = new criarFuncionario();
+            criarFuncionario f = new criarFuncionario(logado);
             f.desenha();
         });
 

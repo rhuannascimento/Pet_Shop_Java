@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.mycompany.petshop.controller.FuncionarioCtrl;
+import com.mycompany.petshop.model.classes.Funcionario;
+
 public class criarFuncionario extends JFrame {
     private JTextField nome;
     private JTextField startTime;
@@ -19,8 +22,11 @@ public class criarFuncionario extends JFrame {
     private JTextField login;
     private JPasswordField senha;
 
-    public criarFuncionario() {
+    private Funcionario logado;
+
+    public criarFuncionario(Funcionario logado) {
         super("Cadastrar funcionário");
+        this.logado = logado;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
@@ -96,13 +102,11 @@ public class criarFuncionario extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
-        // CONTROLLER
-        // cadastrar.addActionListener(e -> {
-        // FuncionarioCtrl f = new FuncionarioCtrl(logado);
-        // f.cadastrar(0, nome.getText(), startTime.getText(), endTime.getText(),
-        // cargo.getSelectedItem().toString(),
-        // login.getText(), new String(senha.getPassword()));
-        // });
+        cadastrar.addActionListener(e -> {
+            FuncionarioCtrl f = new FuncionarioCtrl(logado);
+            f.cadastrar(0, nome.getText(), startTime.getText(), endTime.getText(),
+                    cargo.getText(), login.getText(), new String(senha.getPassword()));
+        });
 
         cancelar.addActionListener(e -> {
             this.dispose();
