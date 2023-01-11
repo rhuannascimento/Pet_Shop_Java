@@ -108,31 +108,34 @@ public class Tela extends JFrame {
         JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Serviço", "Horário" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] {
+                "Nome", "Serviço", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
-
-        for (Agendamento agendamento : listaAgendamentos) {
+        for (Funcionario f : listaFuncionarios) {
             tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                            f.getEndTime(), f.getCargo(),
+                            f.getUsername() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
 
         tabela.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if (e.getClickCount() == 2) {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Agendamento a = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(a);
-                        edit.desenha(a);
+                        Funcionario selected = listaFuncionarios.get(row);
+                        editarFuncionario edit = new editarFuncionario(selected, logado, listaFuncionarios);
+                        edit.desenha(selected, tableModel);
                     }
                 }
             }
@@ -140,7 +143,7 @@ public class Tela extends JFrame {
 
         JScrollPane sp = new JScrollPane(tabela);
 
-        sp.setMaximumSize(new Dimension(this.getSize().width, this.getSize().height));
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
 
         agenda.add(sp);
 

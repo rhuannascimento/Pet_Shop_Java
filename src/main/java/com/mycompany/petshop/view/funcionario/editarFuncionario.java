@@ -10,13 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
-import com.mycompany.petshop.view.Tela;
 
 public class editarFuncionario extends JFrame {
     private JTextField id;

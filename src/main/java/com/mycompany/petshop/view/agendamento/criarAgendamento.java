@@ -1,22 +1,20 @@
 package com.mycompany.petshop.view.agendamento;
 
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class criarAgendamento extends JFrame {
 
-    private JComboBox nome;
-    private JComboBox servico;
-    private JDateChooser data;
-    private JComboBox horario;
+    private JTextField nome;
+    private JTextField servico;
+    private JTextField data;
+    private JTextField horario;
 
     public criarAgendamento() {
         super("Novo agendamento");
@@ -40,7 +38,7 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 1;
-        nome = new JComboBox();
+        nome = new JTextField();
         painel.add(nome, c);
 
         c.gridx = 0;
@@ -49,7 +47,7 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 3;
-        servico = new JComboBox();
+        servico = new JTextField();
         painel.add(servico, c);
 
         c.gridx = 0;
@@ -58,9 +56,7 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 5;
-        data = new JDateChooser();
-        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
-        editor.setEditable(false);
+        data = new JTextField();
         painel.add(data, c);
 
         c.gridx = 0;
@@ -69,7 +65,7 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 7;
-        horario = new JComboBox();
+        horario = new JTextField();
         painel.add(horario, c);
 
         JButton agendar = new JButton("Agendar");
@@ -97,19 +93,19 @@ public class criarAgendamento extends JFrame {
         this.setVisible(true);
     }
 
-    public JComboBox getNome() {
+    public JTextField getNome() {
         return nome;
     }
 
-    public JComboBox getServico() {
+    public JTextField getServico() {
         return servico;
     }
 
-    public JDateChooser getData() {
+    public JTextField getData() {
         return data;
     }
 
-    public JComboBox getHorario() {
+    public JTextField getHorario() {
         return horario;
     }
 }
