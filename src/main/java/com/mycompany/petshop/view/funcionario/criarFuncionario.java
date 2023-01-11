@@ -3,6 +3,8 @@ package com.mycompany.petshop.view.funcionario;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+import javax.swing.DefaultBoundedRangeModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -10,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
@@ -31,7 +34,7 @@ public class criarFuncionario extends JFrame {
 
     }
 
-    public void desenha() {
+    public void desenha(DefaultTableModel tableModel) {
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -106,6 +109,11 @@ public class criarFuncionario extends JFrame {
             FuncionarioCtrl f = new FuncionarioCtrl(logado);
             f.cadastrar(0, nome.getText(), startTime.getText(), endTime.getText(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
+
+            tableModel
+                    .addRow(new Object[] { 0, nome.getText(), startTime.getText(),
+                            endTime.getText(),
+                            cargo.getText(), login.getText(), new String(senha.getPassword()) });
         });
 
         cancelar.addActionListener(e -> {

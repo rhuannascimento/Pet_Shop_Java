@@ -29,6 +29,10 @@ public class ClienteCtrl {
     private AtualizarPessoa atualizarPessoa;
     private AtualizarAnimal atualizarAnimal;
 
+    public ClienteCtrl() {
+
+    }
+
     public ArrayList<Cliente> exibirAnimais() throws ClienteExp {
         this.exibirAnimal = new ExibirAnimais();
 
@@ -55,50 +59,36 @@ public class ClienteCtrl {
 
     }
 
-    public  ArrayList<Cliente> exibirPessoas() throws ClienteExp {
+    public ArrayList<Cliente> exibirPessoas() throws ClienteExp {
         this.exibirPessoa = new ExibirPessoas();
+        System.out.println("exibindo pessoas 2 ");
         ArrayList<Cliente> lista = this.exibirPessoa.getPessoas();
-        // String col[] = { "ID", "Nome", "cpf", "E-mail", "Telefone" };
-
-        // DefaultTableModel dtm = new DefaultTableModel(col, 0);
-
-        // try {
-        //     ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
-
-        //     for (Cliente c : lista) {
-        //         Object[] data = { c.getId(), c.getNome(), c.getCpf(), ((Pessoa) c).getEmail(),
-        //                 ((Pessoa) c).getTelefone() };
-        //         dtm.addRow(data);
-        //     }
-
-        // } catch (Exception ex) {
-        //     ex.printStackTrace();
-        // }
 
         return lista;
 
     }
-    public void cadastrarCliente(int id, String nome, String cpf, String tipo, String telefone,String email, String especie) throws ClienteExp {
+
+    public void cadastrarCliente(int id, String nome, String cpf, String tipo, String telefone, String email,
+            String especie) throws ClienteExp {
         CadastrarCliente cadastrar;
-        cadastrar = new CadastrarCliente(id, nome, cpf, tipo, telefone, email, especie);    
+        cadastrar = new CadastrarCliente(id, nome, cpf, tipo, telefone, email, especie);
     }
 
-    public void atualizarAnimal(int id, String nome, String cpf, String especie){
+    public void atualizarAnimal(int id, String nome, String cpf, String especie) {
         AtualizarAnimal atualizar;
         atualizar = new AtualizarAnimal(id, nome, cpf, especie);
 
     }
 
-    public void atualizarPessoa(int id, String nome, String cpf, String email, String telefone){
+    public void atualizarPessoa(int id, String nome, String cpf, String email, String telefone) {
         AtualizarPessoa atualizar;
         atualizar = new AtualizarPessoa(id, nome, cpf, email, telefone);
 
     }
 
-    public void excluirCliente(int id){
+    public void excluirCliente(int id) {
         ExcluirCliente excluir;
         excluir = new ExcluirCliente(id);
     }
-
 
 }
