@@ -7,8 +7,8 @@ public class Pessoa extends Cliente {
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String cpf, String tipo, String email, String telefone) {
-        super(id, nome, cpf, "animal");
+    public Pessoa(int id, String nome, String cpf, String email, String telefone) {
+        super(id, nome, cpf, "pessoa");
         this.email = email;
         this.telefone = telefone;
     }
@@ -29,4 +29,9 @@ public class Pessoa extends Cliente {
         this.telefone = telefone;
     }
 
+    public String toString(){
+        String s = super.toString() + " - " + this.email + " - " + this.telefone;
+        return s;
+    }
+    
 }

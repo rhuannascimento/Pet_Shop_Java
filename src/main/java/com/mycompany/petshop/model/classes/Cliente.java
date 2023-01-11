@@ -13,7 +13,6 @@ public abstract class Cliente {
     this.id = id;
     this.nome = nome;
     this.cpf = cpf;
-    this.tipo = tipo;
   }
 
   public int getId() {
@@ -46,6 +45,11 @@ public abstract class Cliente {
 
   public void setTipo(String tipo) {
     this.tipo = tipo;
+  }
+  
+  public String toString(){
+      String s = this.id + " - " + this.cpf + " - " + this.nome;
+      return s;
   }
 
 }

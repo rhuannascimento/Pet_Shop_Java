@@ -17,6 +17,7 @@ import com.mycompany.petshop.view.mercadoria.roupa.criarRoupa;
 import com.mycompany.petshop.view.mercadoria.roupa.editarRoupa;
 import com.mycompany.petshop.view.servico.criarServico;
 import com.mycompany.petshop.view.servico.editarServico;
+package com.mycompany.petshop.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -34,6 +35,10 @@ import java.util.ArrayList;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.mycompany.petshop.model.classes.*;
+import java.sql.Time;
+import java.util.Date;
 
 public class Tela extends JFrame {
 
@@ -104,6 +109,9 @@ public class Tela extends JFrame {
             tableModel
                     .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
         }
+        // agendamentos.add(new Agendamento("Lily", new Date(2023, 2, 20, 12, 00),
+        // "Tosa"));
+        // agendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         tabela.setDefaultEditor(Object.class, null);
 
@@ -111,6 +119,10 @@ public class Tela extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
+                    Agendamento selected = list.getSelectedValue();
+
+                    // editarAgendamento a = new editarAgendamento(selected);
+                    // a.desenha(selected);
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
@@ -130,10 +142,10 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        agendarButton.addActionListener((ActionEvent e) -> {
-            criarAgendamento a = new criarAgendamento();
-            a.desenha();
-        });
+        // agendarButton.addActionListener((ActionEvent e) -> {
+        // criarAgendamento a = new criarAgendamento();
+        // a.desenha();
+        // });
 
         return agenda;
 
@@ -197,6 +209,10 @@ public class Tela extends JFrame {
             criarFuncionario f = new criarFuncionario();
             f.desenha();
         });
+        // newFuncButton.addActionListener(e -> {
+        //// cadastrarFuncionario f = new cadastrarFuncionario();
+        // f.desenha();
+        // });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
 
@@ -250,6 +266,10 @@ public class Tela extends JFrame {
             criarCliente c = new criarCliente();
             c.desenha();
         });
+        // newClienteButton.addActionListener(e -> {
+        //// cadastrarCliente c = new cadastrarCliente();
+        // c.desenha();
+        // });
 
         painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
@@ -381,8 +401,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -417,8 +437,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -453,8 +473,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel
@@ -489,8 +509,8 @@ public class Tela extends JFrame {
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
+        // listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
+        // listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
 
         for (Agendamento agendamento : listaAgendamentos) {
             tableModel

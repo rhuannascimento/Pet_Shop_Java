@@ -2,14 +2,16 @@ package com.mycompany.petshop.model.classes;
 
 public class Servico extends Item {
     private int duracao;
-    private String idResponsavel;
+    private int idResponsavel;
 
-    public Servico() {
+    public Servico(int id) {
+        super(id, "", 0f, "", true, "servico");
     }
 
+
     public Servico(int id, String nome, float preco, String tipo, boolean disponivel, int duracao,
-            String idResponsavel) {
-        super(id, nome, preco, tipo, disponivel);
+            int idResponsavel) {
+        super(id, nome, preco, tipo, disponivel, "servico");
         this.duracao = duracao;
         this.idResponsavel = idResponsavel;
     }
@@ -22,11 +24,11 @@ public class Servico extends Item {
         this.duracao = duracao;
     }
 
-    public String getIdResponsavel() {
+    public int getIdResponsavel() {
         return this.idResponsavel;
     }
 
-    public void setIdResponsavel(String idResponsavel) {
+    public void setIdResponsavel(int idResponsavel) {
         this.idResponsavel = idResponsavel;
     }
 

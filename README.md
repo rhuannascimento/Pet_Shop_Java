@@ -53,3 +53,20 @@ Os commits devem ter os seguintes prefixos (conventional commits):
  - "fix: " para correções;
  - "refactor: " para refatorações;
  - "chore: " para tarefas genéricas não enquadrada nas superiores
+
+## Orientações para a execução
+
+Para executar o projeto, sem alterações pré-programadas de banco, basta executar o projeto da seguinte forma:
+
+```mvn package && java -jar target/PETSHOP-1.0-SNAPSHOT-jar-with-dependencies.jar```
+
+É possível passar argumentos para executar ações pré programadas de banco de dados. São elas:
+ - **migrate**: cria as tabelas do banco de dados, caso elas não existam
+ - **seed**: popula as tabelas do banco de dados com informações suficientes para executar qualquer operação da aplicação
+ - **test** efetua um teste de cada operação dos repositórios, de forma a validar toda a aplicação. Esse argumento faz o banco sofrer diversas alterações, pensadas nos dados criados pelo argumento seed. Por alterar bastante o banco, ao final da operação, os bancos são limpos, ficando sem dado nenhum.
+
+ Pelo fato do arg **test** limpar os bancos, é possível populá-los novamente, usando novamente o seed.
+
+ Um exemplo de comando para rodar a aplicação, migrar os bancos, popular os bancos, testar a aplicação e popular os bancos novamente é:
+
+ ```mvn package && java -jar target/PETSHOP-1.0-SNAPSHOT-jar-with-dependencies.jar migrate seed test seed```
