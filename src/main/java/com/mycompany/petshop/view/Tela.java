@@ -378,7 +378,7 @@ public class Tela extends JFrame {
                     if (row >= 0 && col >= 0) {
                         Servico selected = listaServicos.get(row);
                         editarServico edit = new editarServico(selected);
-                        edit.desenha(selected, tableModel, listaServicos);
+                        edit.desenha(selected, tableModel, listaServicos, row);
                     }
                 }
             }

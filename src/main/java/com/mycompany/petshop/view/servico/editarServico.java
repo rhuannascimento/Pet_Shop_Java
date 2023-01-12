@@ -26,7 +26,7 @@ public class editarServico extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void desenha(Servico selected, DefaultTableModel tableModel, ArrayList<Servico> listaServicos) {
+    public void desenha(Servico selected, DefaultTableModel tableModel, ArrayList<Servico> listaServicos, int row) {
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
@@ -105,22 +105,16 @@ public class editarServico extends JFrame {
             ItemCtrl ic = new ItemCtrl();
             ic.excluirItem(selected.getId());
 
-            listaServicos.remove(selected);
-
             ArrayList<Item> list = ic.exibirServicos();
-
             for (Item i : list) {
                 Servico s = (Servico) i;
                 listaServicos.add(s);
             }
 
-            tableModel.setRowCount(0);
+            listaServicos.remove(selected);
 
-            for (Servico s : listaServicos) {
-                tableModel
-                        .addRow(new Object[] { s.getNome(), s.getDuracao(), s.getPreco(),
-                        });
-            }
+            tableModel.removeRow(row);
+
             tableModel.fireTableDataChanged();
             this.dispose();
         });
