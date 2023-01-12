@@ -29,7 +29,7 @@ public class ExibirPessoas {
         if(!l.isEmpty()){
             for (int i = 0; i < l.size(); i++) {
 
-                if(l.get(i).getTipo().equalsIgnoreCase("pessoa")){
+                if(l.get(i) instanceof Pessoa){
                     this.pessoas.add(l.get(i));
                 }
 

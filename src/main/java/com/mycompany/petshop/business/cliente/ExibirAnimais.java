@@ -19,21 +19,19 @@ public class ExibirAnimais {
     private ArrayList<Cliente> animais;
 
     public ExibirAnimais() throws ClienteExp {
-        System.out.println("exibindo pessoas 3");
+        
         animais = new ArrayList<Cliente>();
         ClienteRep cr = new ClienteRep();
 
-        System.out.println("exibindo pessoas 4 ");
+       
         ArrayList<Cliente> l = cr.getAll();
-        System.out.println("exibindo pessoas 5 ");
-
-        System.out.println("l.isEmpty(): " + l.isEmpty());
+       
         if (!l.isEmpty()) {
             for (int i = 0; i < l.size(); i++) {
 
-                System.out.println("l.get(i): " + l.get(i));
-                System.out.println("l.get(i).getTipo(): " + l.get(i).getTipo());
-                if (l.get(i).getTipo().equalsIgnoreCase("animal")) {
+         
+   
+                if (l.get(i) instanceof Animal) {
                     this.animais.add(l.get(i));
                 }
 
