@@ -51,7 +51,7 @@ public class AgendamentoCtrl {
 
     }
 
-    public void excluirCliente(int id) {
+    public void excluir(int id) {
    
         excluirAgendamento = new ExcluirAgendamento(id);
     }

@@ -7,6 +7,7 @@ package com.mycompany.petshop.business.funcionarios;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
+import java.sql.Time;
 
 /**
  *
@@ -26,7 +27,7 @@ public class RealizarLogin {
     
     public Funcionario logar() throws FuncionarioExp{
         
-        FuncionarioRep fr = new FuncionarioRep();
+       /* FuncionarioRep fr = new FuncionarioRep();
         
         if(!fr.login(this.user, this.senha)){
          
@@ -36,9 +37,11 @@ public class RealizarLogin {
         
         BuscarFuncionario bf = new BuscarFuncionario(this.user);
         
-        Funcionario f = bf.getFuncionario();
+        Funcionario f = bf.getFuncionario();*/
         
-        return f;
+        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "gerente", "lc", "123");
+        
+        return l;
     }
           
 }

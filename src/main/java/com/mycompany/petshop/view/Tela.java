@@ -141,8 +141,8 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Agendamento selected = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(selected);
-                        edit.desenha(selected);
+                        editarAgendamento edit = new editarAgendamento(selected, listaAgendamentos);
+                        edit.desenha(selected, tableModel);
                     }
                 }
             }

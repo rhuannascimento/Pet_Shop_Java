@@ -72,7 +72,7 @@ public class criarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 6;
-        painel.add(new JLabel("Horário"), c);
+        painel.add(new JLabel("Data e Horário: yyyy-mm-dd hh:mm:ss"), c);
 
         c.gridx = 0;
         c.gridy = 7;
