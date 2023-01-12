@@ -393,7 +393,7 @@ public class Tela extends JFrame {
         JButton newServButton = new JButton("Novo serviço");
         newServButton.addActionListener(e -> {
             criarServico c = new criarServico();
-            c.desenha(listaServicos, tableModel);
+            c.desenha(listaServicos, tableModel, logado);
         });
 
         painelServicos.add(newServButton, BorderLayout.SOUTH);

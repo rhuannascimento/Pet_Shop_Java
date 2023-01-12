@@ -5,6 +5,7 @@ import com.mycompany.petshop.business.item.*;
 import java.util.ArrayList;
 
 public class ItemCtrl {
+    private ExibirItem exibir;
     private ListarProdutos exibirProdutos;
     private ListarServicos exibirServicos;
     private CadastrarRacao cadastrarRacao;
@@ -150,6 +151,23 @@ public class ItemCtrl {
     }
 
     public void atualizarServico(String text, String text2, String text3) {
+    }
+
+    public Item getUltimo() {
+
+        try {
+            this.exibir = new ExibirItem();
+        } catch (Exception ex) {
+
+        }
+
+        try {
+            return exibir.getUltimo();
+        } catch (Exception ex) {
+
+        }
+
+        return null;
     }
 
 }

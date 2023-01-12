@@ -13,7 +13,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import com.mycompany.petshop.business.item.ListarServicos;
 import com.mycompany.petshop.controller.FuncionarioCtrl;
+import com.mycompany.petshop.controller.ItemCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Servico;
 
@@ -27,7 +29,7 @@ public class criarServico extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void desenha(ArrayList<Servico> listaServicos, DefaultTableModel tableModel) {
+    public void desenha(ArrayList<Servico> listaServicos, DefaultTableModel tableModel, Funcionario logado) {
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
@@ -47,71 +49,40 @@ public class criarServico extends JFrame {
         nome = new JTextField();
         painel.add(nome, c);
 
-        c.gridwidth = 1;
-
         c.gridx = 0;
         c.gridy = 3;
-        painel.add(new JLabel("Início exp."), c);
-
-        c.gridx = 1;
-        c.gridy = 3;
-        painel.add(new JLabel("Fim exp."), c);
-
-        c.gridx = 0;
-        c.gridy = 4;
-        startTime = new JTextField();
-        painel.add(startTime, c);
+        painel.add(new JLabel("Duração"), c);
 
         c.gridx = 1;
         c.gridy = 4;
-        endTime = new JTextField();
-        painel.add(endTime, c);
+        duracao = new JTextField();
+        painel.add(duracao, c);
 
         c.gridwidth = 2;
 
         c.gridx = 0;
         c.gridy = 5;
-        painel.add(new JLabel("Cargo"), c);
+        painel.add(new JLabel("Preço"), c);
 
         c.gridx = 0;
         c.gridy = 6;
-        cargo = new JTextField();
-        painel.add(cargo, c);
+        preco = new JTextField();
+        painel.add(preco, c);
 
-        c.gridx = 0;
-        c.gridy = 7;
-        painel.add(new JLabel("Login"), c);
-
-        c.gridx = 0;
-        c.gridy = 8;
-        login = new JTextField();
-        painel.add(login, c);
-
-        c.gridx = 0;
-        c.gridy = 9;
-        painel.add(new JLabel("Senha"), c);
-
-        c.gridx = 0;
-        c.gridy = 10;
-        senha = new JPasswordField();
-        painel.add(senha, c);
-
-        JButton cadastrar = new JButton("Cadastrar");
+        JButton cadastrar = new JButton("Registrar");
         JButton cancelar = new JButton("Cancelar");
 
         cadastrar.addActionListener(e -> {
-            FuncionarioCtrl f = new FuncionarioCtrl(logado);
+            ItemCtrl ic = new ItemCtrl();
 
-            f.cadastrar(0, nome.getText(), startTime.getText().toString(), endTime.getText().toString(),
-                    cargo.getText(), login.getText(), new String(senha.getPassword()));
+            ic.cadastraServico(0, nome.getText(), Float.parseFloat(preco.getText()), "servico",
+                    true, Integer.parseInt(duracao.getText()), logado.getId());
 
-            Funcionario novo = f.getUltimo();
-            listaFuncionarios.add(novo);
+            Servico novo = (Servico) ic.getUltimo();
+            listaServicos.add(novo);
 
             tableModel
-                    .addRow(new Object[] { novo.getId(), novo.getNome(), novo.getStartTime(),
-                            novo.getEndTime(),
-                            novo.getCargo(), novo.getUsername(), novo.getPassword() });
+                    .addRow(new Object[] { novo.getNome(), novo.getDuracao(), novo.getPreco(), });
 
             this.dispose();
         });
