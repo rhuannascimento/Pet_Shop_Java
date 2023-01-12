@@ -16,7 +16,7 @@ import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;
 
-public class editarCliente extends JFrame {
+public class editarPessoa extends JFrame {
     private JTextField id;
     private JTextField nome;
     private JTextField cpf;
@@ -25,7 +25,7 @@ public class editarCliente extends JFrame {
 
     private ArrayList<Cliente> listaClientes;
 
-    public editarCliente(Cliente selected, ArrayList<Cliente> listaClientes) {
+    public editarPessoa(Cliente selected, ArrayList<Cliente> listaClientes) {
         super(selected.getNome());
         this.listaClientes = listaClientes;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

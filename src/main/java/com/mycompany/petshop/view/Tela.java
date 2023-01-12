@@ -10,7 +10,7 @@ import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
-import com.mycompany.petshop.view.cliente.editarCliente;
+import com.mycompany.petshop.view.cliente.editarPessoa;
 import com.mycompany.petshop.view.funcionario.criarFuncionario;
 import com.mycompany.petshop.view.funcionario.editarFuncionario;
 import com.mycompany.petshop.view.mercadoria.brinquedo.criarBrinquedo;
@@ -219,7 +219,7 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            criarFuncionario cf = new criarFuncionario(logado);
+            criarFuncionario cf = new criarFuncionario(logado, listaFuncionarios);
             cf.desenha(tableModel);
         });
 
@@ -296,7 +296,7 @@ public class Tela extends JFrame {
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
                         Cliente selected = listaClientes.get(row);
-                        editarCliente edit = new editarCliente(selected, listaClientes);
+                        editarPessoa edit = new editarPessoa(selected, listaClientes);
                         edit.desenha(selected, tableModel);
                     }
                 }
@@ -461,7 +461,10 @@ public class Tela extends JFrame {
     public JTable tabelaRacao() {
 
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Sabor", "Idade", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -497,7 +500,9 @@ public class Tela extends JFrame {
 
     public JTable tabelaRoupas() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Tipo", "Tamanho", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -533,7 +538,10 @@ public class Tela extends JFrame {
 
     public JTable tabelaBrinquedos() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Tipo", "Material", "Espécie", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -569,7 +577,10 @@ public class Tela extends JFrame {
 
     public JTable tabelaRemedios() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Utilidade", "Orientação", "Tipo", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
