@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class BuscarFuncionario {
 
-    Funcionario f;
+    private Funcionario f;
     
     public BuscarFuncionario(String username) throws FuncionarioExp{
     

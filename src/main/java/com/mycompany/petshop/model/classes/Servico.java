@@ -8,6 +8,10 @@ public class Servico extends Item {
         super(id, "", 0f, "", true, "servico");
     }
 
+    
+    public Servico(){
+        
+    }
 
     public Servico(int id, String nome, float preco, String tipo, boolean disponivel, int duracao,
             int idResponsavel) {

@@ -10,7 +10,7 @@ public class Agendamento {
     private Timestamp data_hora;
     private Animal animal;
     private Servico servico;
-
+    
     private String a;
     private String b;
     private String c;
@@ -21,8 +21,10 @@ public class Agendamento {
         this.c = c;
     }
 
+    
+    
     public String getA() {
-        return this.a;
+        return a;
     }
 
     public void setA(String a) {
@@ -30,7 +32,7 @@ public class Agendamento {
     }
 
     public String getB() {
-        return this.b;
+        return b;
     }
 
     public void setB(String b) {
@@ -38,12 +40,13 @@ public class Agendamento {
     }
 
     public String getC() {
-        return this.c;
+        return c;
     }
 
     public void setC(String c) {
         this.c = c;
     }
+
 
     public Agendamento(int id, Timestamp data_hora, Animal animal, Servico servico) {
         this.id = id;
@@ -52,12 +55,7 @@ public class Agendamento {
         this.servico = servico;
     }
 
-    public Agendamento(Animal animal, Timestamp data_hora, Servico servico) {
-        this.id = id;
-        this.data_hora = data_hora;
-        this.animal = animal;
-        this.servico = servico;
-    }
+ 
 
     public Timestamp getData_hora() {
         return data_hora;
