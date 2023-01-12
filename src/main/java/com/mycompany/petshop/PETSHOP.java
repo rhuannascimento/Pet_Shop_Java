@@ -7,6 +7,7 @@ package com.mycompany.petshop;
 import com.mycompany.petshop.business.funcionarios.ExibirFuncionario;
 import com.mycompany.petshop.model.classes.*;
 import com.mycompany.petshop.repository.*;
+import com.mycompany.petshop.view.Login;
 import com.mycompany.petshop.view.Tela;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -73,10 +74,13 @@ public class PETSHOP {
         }
         System.out.println(ANSI_RESET);
 
-        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "gerente", "lc", "123");
+        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
 
-        Tela tela = new Tela(l);
-        tela.renderiza();
+        Login k = new Login();
+        
+        k.main();
+        
+       
     }
 
     static boolean testar() {

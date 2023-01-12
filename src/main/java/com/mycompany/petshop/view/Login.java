@@ -1,5 +1,8 @@
 package com.mycompany.petshop.view;
 
+import com.mycompany.petshop.controller.FuncionarioCtrl;
+import com.mycompany.petshop.controller.LoginCtrl;
+import com.mycompany.petshop.model.classes.Funcionario;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -35,7 +38,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/petshop.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(240, 200));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -136,14 +139,18 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        if (userLogin.getText().equals("gerente") && new String(password.getPassword()).equals("123")) {
-            JOptionPane.showMessageDialog(null, "Login concluído.");
-            // Tela tela = new Tela(this.getUserLogin().getText());
-            // tela.renderiza();
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos.");
-        }
+        //Tela tela = new Tela(this.getUserLogin().getText());
+        // tela.renderiza();
+       
+        LoginCtrl l = new LoginCtrl();
+        
+        Funcionario f = l.fazerLogin(userLogin.getText(), new String(password.getPassword()));
+        
+        this.dispose();
+        
+        Tela t = new Tela(f);
+       
+        t.renderiza();
     }
 
     private void userLoginActionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +160,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main() {
 
         // Tela tela = new Tela();
         // tela.renderiza();

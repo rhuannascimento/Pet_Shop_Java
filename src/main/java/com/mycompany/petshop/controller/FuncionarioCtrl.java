@@ -25,10 +25,15 @@ public class FuncionarioCtrl {
     private CadastrarFuncionario cadastrar;
     private ExcluirFuncionario excluir;
     private AtualizarFuncionario atualizar;
-
+ 
+    
+    
+    
     public FuncionarioCtrl(Funcionario logado) {
         this.isGerente = logado.getCargo().equalsIgnoreCase("gerente");
     }
+    
+    
 
     public Funcionario getUltimo(){
         
