@@ -3,19 +3,24 @@ package com.mycompany.petshop.view.funcionario;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
-import javax.swing.DefaultBoundedRangeModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.toedter.components.JSpinField;
 
 public class criarFuncionario extends JFrame {
     private JTextField nome;
@@ -26,15 +31,18 @@ public class criarFuncionario extends JFrame {
     private JPasswordField senha;
 
     private Funcionario logado;
+    private ArrayList<Funcionario> listaFuncionarios;
 
-    public criarFuncionario(Funcionario logado) {
+    public criarFuncionario(Funcionario logado, ArrayList<Funcionario> listaFuncionarios) {
         super("Cadastrar funcionário");
         this.logado = logado;
+        this.listaFuncionarios = listaFuncionarios;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
     public void desenha(DefaultTableModel tableModel) {
+
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -107,13 +115,25 @@ public class criarFuncionario extends JFrame {
 
         cadastrar.addActionListener(e -> {
             FuncionarioCtrl f = new FuncionarioCtrl(logado);
-            f.cadastrar(0, nome.getText(), startTime.getText(), endTime.getText(),
+
+            f.cadastrar(0, nome.getText(), startTime.getText().toString(), endTime.getText().toString(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
 
+            // CORRIGIR
+            /*
+             * listaFuncionarios
+             * .add(new Funcionario(0, nome.getText(), LoclTime.parse(startTime.getText()),
+             * Time.parse(endTime.getText()), cargo.getText(),
+             * login.getText(),
+             * new String(senha.getPassword())));
+             */
+
             tableModel
-                    .addRow(new Object[] { 0, nome.getText(), startTime.getText(),
+                    .addRow(new Object[] { 0, nome.getText().toString(), startTime.getText().toString(),
                             endTime.getText(),
                             cargo.getText(), login.getText(), new String(senha.getPassword()) });
+
+            this.dispose();
         });
 
         cancelar.addActionListener(e -> {

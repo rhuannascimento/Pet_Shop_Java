@@ -10,7 +10,7 @@ import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
-import com.mycompany.petshop.view.cliente.editarCliente;
+import com.mycompany.petshop.view.cliente.editarPessoa;
 import com.mycompany.petshop.view.funcionario.criarFuncionario;
 import com.mycompany.petshop.view.funcionario.editarFuncionario;
 import com.mycompany.petshop.view.mercadoria.brinquedo.criarBrinquedo;
@@ -51,10 +51,12 @@ public class Tela extends JFrame {
     private JPanel painelPrincipal;
     private Funcionario logado;
 
+    ArrayList<Cliente> listaClientes;
+
     public Tela(Funcionario logado) {
         super();
-        this.setTitle("Pet Shop");
-        // this.setTitle("Pet Shop - User: " + logado.getUsername());
+        this.setTitle("Pet Shop - User: " + logado.getUsername());
+        listaClientes = new ArrayList<>();
         this.logado = logado;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -108,31 +110,34 @@ public class Tela extends JFrame {
         JPanel agenda = new JPanel(new BorderLayout());
         agenda.setBorder(BorderFactory.createTitledBorder("Agenda"));
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Nome", "Serviço", "Horário" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] {
+                "Nome", "Serviço", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
-
-        for (Agendamento agendamento : listaAgendamentos) {
+        for (Funcionario f : listaFuncionarios) {
             tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
+                            f.getEndTime(), f.getCargo(),
+                            f.getUsername() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
 
         tabela.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if (e.getClickCount() == 2) {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Agendamento a = listaAgendamentos.get(row);
-                        editarAgendamento edit = new editarAgendamento(a);
-                        edit.desenha(a);
+                        Funcionario selected = listaFuncionarios.get(row);
+                        editarFuncionario edit = new editarFuncionario(selected, logado, listaFuncionarios);
+                        edit.desenha(selected, tableModel);
                     }
                 }
             }
@@ -140,7 +145,7 @@ public class Tela extends JFrame {
 
         JScrollPane sp = new JScrollPane(tabela);
 
-        sp.setMaximumSize(new Dimension(this.getSize().width, this.getSize().height));
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
 
         agenda.add(sp);
 
@@ -214,7 +219,7 @@ public class Tela extends JFrame {
         JButton newFuncButton = new JButton("Cadastrar funcionário");
 
         newFuncButton.addActionListener(e -> {
-            criarFuncionario cf = new criarFuncionario(logado);
+            criarFuncionario cf = new criarFuncionario(logado, listaFuncionarios);
             cf.desenha(tableModel);
         });
 
@@ -260,31 +265,47 @@ public class Tela extends JFrame {
 
     public JTable tabelaPessoas() {
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-                "Nome", "CPF", "E-mail", "Telefone" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] {
+                "ID", "Nome", "CPF", "Email", "Telefone" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ClienteCtrl cc = new ClienteCtrl();
 
-        ArrayList<Cliente> listaPessoas = new ArrayList<>();
-
         try {
-
-            System.out.println("exibindo pessoas 1 ");
-            listaPessoas = cc.exibirPessoas();
-
+            listaClientes = cc.exibirPessoas();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        for (Cliente f : listaPessoas) {
-            Pessoa p = (Pessoa) f;
+        for (Cliente c : listaClientes) {
+            Pessoa p = (Pessoa) c;
             tableModel
                     .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                            p.getEmail(), p.getTelefone(), });
+                            p.getEmail(), p.getTelefone() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
+
+        tabela.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Cliente selected = listaClientes.get(row);
+                        editarPessoa edit = new editarPessoa(selected, listaClientes);
+                        edit.desenha(selected, tableModel);
+                    }
+                }
+            }
+        });
+
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
 
         return tabela;
 
@@ -440,7 +461,10 @@ public class Tela extends JFrame {
     public JTable tabelaRacao() {
 
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Sabor", "Idade", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -476,7 +500,9 @@ public class Tela extends JFrame {
 
     public JTable tabelaRoupas() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Tipo", "Tamanho", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -512,7 +538,10 @@ public class Tela extends JFrame {
 
     public JTable tabelaBrinquedos() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Tipo", "Material", "Espécie", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
@@ -548,7 +577,10 @@ public class Tela extends JFrame {
 
     public JTable tabelaRemedios() {
         DefaultTableModel tableModel = new DefaultTableModel(
-                new String[] { "Nome", "Valor Un.", "Fornecedor", "Estoque" }, 0);
+                new String[] { "ID", "Nome", "Valor Un.", "Espécie", "Utilidade", "Orientação", "Tipo", "Disponível",
+                        "Fornecedor", "Estoque" },
+                0);
+
         JTable tabela = new JTable(tableModel);
 
         ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();

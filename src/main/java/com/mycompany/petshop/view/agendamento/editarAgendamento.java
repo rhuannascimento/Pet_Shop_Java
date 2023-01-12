@@ -1,24 +1,21 @@
 package com.mycompany.petshop.view.agendamento;
 
 import com.mycompany.petshop.model.classes.Agendamento;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class editarAgendamento extends JFrame {
 
     private JTextField nome;
-    private JComboBox servico;
-    private JDateChooser data;
-    private JComboBox horario;
+    private JTextField servico;
+    private JTextField data;
+    private JTextField horario;
 
     public editarAgendamento(Agendamento selected) {
         super("Agendamento de " + selected.getA());
@@ -52,7 +49,7 @@ public class editarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 3;
-        servico = new JComboBox();
+        servico = new JTextField();
         painel.add(servico, c);
 
         c.gridx = 0;
@@ -61,9 +58,7 @@ public class editarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 5;
-        data = new JDateChooser();
-        JTextFieldDateEditor editor = (JTextFieldDateEditor) data.getDateEditor();
-        editor.setEditable(false);
+        data = new JTextField();
         painel.add(data, c);
 
         c.gridx = 0;
@@ -72,7 +67,7 @@ public class editarAgendamento extends JFrame {
 
         c.gridx = 0;
         c.gridy = 7;
-        horario = new JComboBox();
+        horario = new JTextField();
         painel.add(horario, c);
 
         JButton salvar = new JButton("Salvar");
@@ -113,15 +108,15 @@ public class editarAgendamento extends JFrame {
         return nome;
     }
 
-    public JComboBox getServico() {
+    public JTextField getServico() {
         return servico;
     }
 
-    public JDateChooser getData() {
+    public JTextField getData() {
         return data;
     }
 
-    public JComboBox getHorario() {
+    public JTextField getHorario() {
         return horario;
     }
 }
