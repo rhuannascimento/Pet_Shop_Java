@@ -3,7 +3,6 @@ package com.mycompany.petshop.business.agendamento;
 import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Servico;
 import com.mycompany.petshop.model.classes.Agendamento;
-import com.mycompany.petshop.model.classes.Agenda;
 import com.mycompany.petshop.model.exceptions.AgendamentoExp;
 import com.mycompany.petshop.repository.AgendamentoRep;
 import java.sql.Timestamp;
