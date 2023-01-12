@@ -37,8 +37,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource(""))); // NOI18N
+        
+        
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/petshop.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(240, 200));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
