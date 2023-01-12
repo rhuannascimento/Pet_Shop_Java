@@ -113,21 +113,19 @@ public class criarFuncionario extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
-        
-        
         cadastrar.addActionListener(e -> {
             FuncionarioCtrl f = new FuncionarioCtrl(logado);
 
             f.cadastrar(0, nome.getText(), startTime.getText().toString(), endTime.getText().toString(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
-            
+
             Funcionario novo = f.getUltimo();
             listaFuncionarios.add(novo);
-            
+
             tableModel
                     .addRow(new Object[] { novo.getId(), novo.getNome(), novo.getStartTime(),
                             novo.getEndTime(),
-                            novo.getCargo(), novo.getUsername(), novo.getPassword()});
+                            novo.getCargo(), novo.getUsername(), novo.getPassword() });
 
             this.dispose();
         });
@@ -149,7 +147,7 @@ public class criarFuncionario extends JFrame {
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 330);
+        this.setSize(300, 370);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

@@ -131,7 +131,7 @@ public class editarFuncionario extends JFrame {
             selected.setCargo(cargo.getText());
             selected.setUsername(login.getText());
             selected.setPassword(new String(senha.getPassword()));
-            
+
             tableModel.setRowCount(0);
 
             ArrayList<Funcionario> listaFuncionarios = fc.exibir();
@@ -186,7 +186,7 @@ public class editarFuncionario extends JFrame {
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 400);
+        this.setSize(300, 430);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

@@ -2,11 +2,14 @@ package com.mycompany.petshop.view;
 
 import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.controller.FuncionarioCtrl;
+import com.mycompany.petshop.controller.ItemCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
 import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.classes.Item;
 import com.mycompany.petshop.model.classes.Pessoa;
+import com.mycompany.petshop.model.classes.Servico;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
@@ -37,6 +40,7 @@ import javax.swing.JSplitPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
 import java.sql.Time;
 import java.util.ArrayList;
 import javax.swing.JTabbedPane;
@@ -221,7 +225,7 @@ public class Tela extends JFrame {
         newFuncButton.addActionListener(e -> {
             criarFuncionario cf = new criarFuncionario(logado, listaFuncionarios);
             cf.desenha(tableModel);
-             
+
         });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);
@@ -346,45 +350,50 @@ public class Tela extends JFrame {
 
         JPanel painelServicos = new JPanel(new BorderLayout());
         painelServicos.setBorder(BorderFactory.createTitledBorder("Serviços"));
-
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Tipo", "Duração", "Valor" }, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "Tipo",
+                "Duração", "Valor" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+        ItemCtrl ic = new ItemCtrl();
+        ArrayList<Item> listaItens = ic.exibirServicos();
+        ArrayList<Servico> listaServicos = new ArrayList<>();
 
-        listaAgendamentos.add(new Agendamento("Lily", "Tosa", "16:00"));
-        listaAgendamentos.add(new Agendamento("Tom", "Banho", "17:00"));
-
-        for (Agendamento agendamento : listaAgendamentos) {
+        for (Item i : listaItens) {
+            Servico s = (Servico) i;
+            listaServicos.add(s);
             tableModel
-                    .addRow(new Object[] { agendamento.getA(), agendamento.getB(), agendamento.getC() });
+                    .addRow(new Object[] { s.getNome(), s.getDuracao(), s.getPreco() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
 
         tabela.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if (e.getClickCount() == 2) {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Agendamento a = listaAgendamentos.get(row);
-                        editarServico edit = new editarServico(a);
-                        edit.desenha(a);
+                        Servico selected = listaServicos.get(row);
+                        editarServico edit = new editarServico(selected);
+                        edit.desenha(selected, tableModel, listaServicos);
                     }
                 }
             }
         });
 
         JScrollPane sp = new JScrollPane(tabela);
+
         sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
+
         painelServicos.add(sp);
 
         JButton newServButton = new JButton("Novo serviço");
         newServButton.addActionListener(e -> {
             criarServico c = new criarServico();
-            c.desenha();
+            c.desenha(listaServicos, tableModel);
         });
 
         painelServicos.add(newServButton, BorderLayout.SOUTH);

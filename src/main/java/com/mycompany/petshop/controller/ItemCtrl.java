@@ -90,9 +90,10 @@ public class ItemCtrl {
     }
 
     public void cadastrarBrinquedo(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
-    boolean disponivel, String especie, String material) {
+            boolean disponivel, String especie, String material) {
 
-        cadastrarBrinquedo = new CadastrarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie, material);
+        cadastrarBrinquedo = new CadastrarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie,
+                material);
     }
 
     public void atualizarBrinquedo(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
@@ -146,6 +147,9 @@ public class ItemCtrl {
 
     public void excluirItem(int id) {
         excluirItem = new ExcluirItem(id);
+    }
+
+    public void atualizarServico(String text, String text2, String text3) {
     }
 
 }
