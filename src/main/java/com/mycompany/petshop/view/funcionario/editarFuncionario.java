@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.model.classes.Funcionario;
+import java.sql.Time;
 
 public class editarFuncionario extends JFrame {
     private JTextField id;
@@ -123,6 +124,14 @@ public class editarFuncionario extends JFrame {
             fc.atualizar(Integer.parseInt(id.getText()), nome.getText(), startTime.getText(), endTime.getText(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
 
+            selected.setId(Integer.parseInt(id.getText()));
+            selected.setNome(nome.getText());
+            selected.setStartTime(Time.valueOf(startTime.getText()));
+            selected.setEndTime(Time.valueOf(endTime.getText()));
+            selected.setCargo(cargo.getText());
+            selected.setUsername(login.getText());
+            selected.setPassword(new String(senha.getPassword()));
+            
             tableModel.setRowCount(0);
 
             ArrayList<Funcionario> listaFuncionarios = fc.exibir();

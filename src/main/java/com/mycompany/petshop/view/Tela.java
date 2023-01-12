@@ -221,6 +221,7 @@ public class Tela extends JFrame {
         newFuncButton.addActionListener(e -> {
             criarFuncionario cf = new criarFuncionario(logado, listaFuncionarios);
             cf.desenha(tableModel);
+             
         });
 
         painelFuncionarios.add(newFuncButton, BorderLayout.SOUTH);

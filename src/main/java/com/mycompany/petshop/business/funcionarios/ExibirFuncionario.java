@@ -5,6 +5,7 @@
 package com.mycompany.petshop.business.funcionarios;
 
 import com.mycompany.petshop.model.classes.Funcionario;
+import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.util.ArrayList;
 
@@ -23,6 +24,19 @@ public class ExibirFuncionario {
         
         this.funcionarios = fr.getAll();
         
+    }
+    
+    public Funcionario getUltimo() throws FuncionarioExp{
+        
+       
+       if(this.funcionarios.size() > 0){
+           
+           return funcionarios.get(funcionarios.size()-1);
+           
+       }else{
+           throw new FuncionarioExp("Não há funcionarios cadastrados!");
+       }
+              
     }
 
     public ArrayList<Funcionario> getFuncionarios() {

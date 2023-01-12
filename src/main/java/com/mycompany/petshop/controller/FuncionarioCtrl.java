@@ -30,7 +30,25 @@ public class FuncionarioCtrl {
         this.isGerente = logado.getCargo().equalsIgnoreCase("gerente");
     }
 
+    public Funcionario getUltimo(){
+        
+        try{
+            this.exibir = new ExibirFuncionario();
+        }catch(Exception ex){
+                                   
+        }
+        
+        try{
+            return  exibir.getUltimo();
+        }catch(Exception ex){
+            
+        }    
+         
+        return null;
+    }
+    
     public ArrayList<Funcionario> exibir() {
+        
 
         this.exibir = new ExibirFuncionario();
 
@@ -97,6 +115,8 @@ public class FuncionarioCtrl {
 
     public boolean atualizar(int id, String nome, String inicio, String fim, String cargo, String username,
             String password) {
+                
+        if(password != null && !password.equalsIgnoreCase("")){
         Time startTime = Time.valueOf(inicio);
         Time endTime = Time.valueOf(fim);
         try {
@@ -104,6 +124,7 @@ public class FuncionarioCtrl {
             atualizar = new AtualizarFuncionario(f, this.isGerente);
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
         }
         return atualizar.status();
     }

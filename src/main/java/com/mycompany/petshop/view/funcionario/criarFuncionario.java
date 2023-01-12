@@ -113,25 +113,21 @@ public class criarFuncionario extends JFrame {
         JButton cadastrar = new JButton("Cadastrar");
         JButton cancelar = new JButton("Cancelar");
 
+        
+        
         cadastrar.addActionListener(e -> {
             FuncionarioCtrl f = new FuncionarioCtrl(logado);
 
             f.cadastrar(0, nome.getText(), startTime.getText().toString(), endTime.getText().toString(),
                     cargo.getText(), login.getText(), new String(senha.getPassword()));
-
-            // CORRIGIR
-            /*
-             * listaFuncionarios
-             * .add(new Funcionario(0, nome.getText(), LoclTime.parse(startTime.getText()),
-             * Time.parse(endTime.getText()), cargo.getText(),
-             * login.getText(),
-             * new String(senha.getPassword())));
-             */
-
+            
+            Funcionario novo = f.getUltimo();
+            listaFuncionarios.add(novo);
+            
             tableModel
-                    .addRow(new Object[] { 0, nome.getText().toString(), startTime.getText().toString(),
-                            endTime.getText(),
-                            cargo.getText(), login.getText(), new String(senha.getPassword()) });
+                    .addRow(new Object[] { novo.getId(), novo.getNome(), novo.getStartTime(),
+                            novo.getEndTime(),
+                            novo.getCargo(), novo.getUsername(), novo.getPassword()});
 
             this.dispose();
         });
