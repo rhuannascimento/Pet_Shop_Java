@@ -48,7 +48,7 @@ public class editarServico extends JFrame {
 
         c.gridx = 0;
         c.gridy = 2;
-        painel.add(new JLabel("Duração"), c);
+        painel.add(new JLabel("Duração (em min)"), c);
 
         c.gridx = 0;
         c.gridy = 3;

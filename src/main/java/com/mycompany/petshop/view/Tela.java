@@ -32,8 +32,11 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -49,6 +52,9 @@ import javax.swing.JTextField;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.GridBagConstraints;
 
 public class Tela extends JFrame {
 
@@ -168,12 +174,63 @@ public class Tela extends JFrame {
         JPanel pendencias = new JPanel(new BorderLayout());
         pendencias.setBorder(BorderFactory.createTitledBorder("Pendências"));
 
-        // JList<Pendencia> list = new JList<>(pendencias.toArray(new Pendencia[0]));
-        JButton adicionar = new JButton("Adicionar");
+        DefaultListModel listModel = new DefaultListModel();
+        JList lista = new JList(listModel);
 
-        pendencias.add(adicionar, BorderLayout.SOUTH);
+        JButton novaPend = adicionarPendencia(listModel);
+
+        pendencias.add(lista, BorderLayout.CENTER);
+        pendencias.add(novaPend, BorderLayout.SOUTH);
 
         return pendencias;
+    }
+
+    public JButton adicionarPendencia(DefaultListModel listModel) {
+        JButton novaPend = new JButton("Adicionar");
+
+        JFrame np = new JFrame("Nova pendência");
+        JPanel painel = new JPanel();
+        painel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.insets = new Insets(3, 3, 3, 3);
+        c.fill = GridBagConstraints.HORIZONTAL;
+
+        c.gridx = 0;
+        c.gridy = 0;
+        painel.add(new JLabel("Inserir"), c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        JTextField input = new JTextField();
+        painel.add(input, c);
+
+        JButton adicionar = new JButton("Adicionar");
+
+        adicionar.addActionListener(e -> {
+
+            if (input.getText() == "") {
+                np.dispose();
+            } else {
+                listModel.addElement(input.getText());
+                np.dispose();
+            }
+        });
+
+        c.gridx = 0;
+        c.gridy = 3;
+        painel.add(adicionar, c);
+
+        np.add(painel);
+        np.setSize(150, 140);
+        np.setLocationRelativeTo(null);
+        np.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        novaPend.addActionListener(e -> {
+            np.setVisible(true);
+        });
+
+        return novaPend;
     }
 
     public void desenhaPaginaFuncionarios() {
@@ -362,7 +419,7 @@ public class Tela extends JFrame {
             Servico s = (Servico) i;
             listaServicos.add(s);
             tableModel
-                    .addRow(new Object[] { s.getNome(), s.getDuracao(), s.getPreco() });
+                    .addRow(new Object[] { s.getNome(), s.getDuracao() + " min", "R$ " + (int) s.getPreco() + ",00" });
         }
 
         tabela.setDefaultEditor(Object.class, null);

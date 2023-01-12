@@ -51,9 +51,9 @@ public class criarServico extends JFrame {
 
         c.gridx = 0;
         c.gridy = 3;
-        painel.add(new JLabel("Duração"), c);
+        painel.add(new JLabel("Duração (em min)"), c);
 
-        c.gridx = 1;
+        c.gridx = 0;
         c.gridy = 4;
         duracao = new JTextField();
         painel.add(duracao, c);
@@ -104,7 +104,7 @@ public class criarServico extends JFrame {
         painel.add(cancelar, c);
 
         this.add(painel);
-        this.setSize(300, 370);
+        this.setSize(300, 300);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
