@@ -6,12 +6,15 @@ import com.mycompany.petshop.model.classes.Agendamento;
 import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Servico;
 import com.mycompany.petshop.model.exceptions.AgendamentoExp;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AgendamentoCtrl {
 
     private ExibirAgendamentos exibirAgendamentos;
+    private ListarAgendamentoPorData listarPorData;
     private CadastrarAgendamento cadastrarAgendamento;
     private ExcluirAgendamento excluirAgendamento;
     private AtualizarAgendamento atualizarAgendamento;
@@ -21,10 +24,22 @@ public class AgendamentoCtrl {
 
         ArrayList<Agendamento> lista = this.exibirAgendamentos.getAgendamentos();
 
-        
+        return lista;
+    }
+    
+   public ArrayList<Agendamento> exibirAgendamentos(String data) {
+        ArrayList<Agendamento> lista;
+        if(!data.equalsIgnoreCase("todos")){
+            this.listarPorData = new ListarAgendamentoPorData(data);
+
+            lista = this.listarPorData.getAgendamentos();
+            
+        }else{
+            lista = this.exibirAgendamentos();
+            
+        }
 
         return lista;
-
     }
     
      public Agendamento getUltimo(){
