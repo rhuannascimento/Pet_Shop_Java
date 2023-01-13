@@ -13,7 +13,9 @@ import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.model.classes.Servico;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
-import com.mycompany.petshop.view.cliente.criarCliente;
+import com.mycompany.petshop.view.cliente.animal.criarAnimal;
+import com.mycompany.petshop.view.cliente.animal.editarAnimal;
+import com.mycompany.petshop.view.cliente.pessoa.criarPessoa;
 import com.mycompany.petshop.view.cliente.pessoa.editarPessoa;
 import com.mycompany.petshop.view.funcionario.criarFuncionario;
 import com.mycompany.petshop.view.funcionario.editarFuncionario;
@@ -303,27 +305,47 @@ public class Tela extends JFrame {
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
+        DefaultTableModel tableModelPessoas = new DefaultTableModel(new String[] {
+                "ID", "Nome", "CPF", "Email", "Telefone" }, 0);
+
+        ArrayList<Pessoa> listaPessoas = new ArrayList<>();
+
         JPanel pessoa = new JPanel(new BorderLayout());
-        JScrollPane spPessoa = new JScrollPane(tabelaPessoas());
+        JScrollPane spPessoa = new JScrollPane(tabelaPessoas(tableModelPessoas, listaPessoas));
         pessoa.add(spPessoa);
+
+        JButton newPessoaButton = new JButton("Novo cliente");
+        newPessoaButton.addActionListener(e -> {
+            criarPessoa cp = new criarPessoa();
+            cp.desenha(listaPessoas, tableModelPessoas);
+        });
+
+        pessoa.add(newPessoaButton, BorderLayout.SOUTH);
 
         tabbedPane.addTab("Pessoas", pessoa);
 
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        DefaultTableModel tableModelAnimais = new DefaultTableModel(new String[] { "ID",
+                "Nome", "CPF do dono", "Éspecie" }, 0);
+
+        ArrayList<Animal> listaAnimais = new ArrayList<>();
+
         JPanel animais = new JPanel(new BorderLayout());
-        JScrollPane spAnimais = new JScrollPane(tabelaAnimais());
+        JScrollPane spAnimais = new JScrollPane(tabelaAnimais(tableModelAnimais, listaAnimais));
         animais.add(spAnimais);
+
+        JButton newAnimalButton = new JButton("Nova ficha");
+        newAnimalButton.addActionListener(e -> {
+            criarAnimal ca = new criarAnimal();
+            ca.desenha(listaAnimais, tableModelAnimais);
+        });
+
+        pessoa.add(newPessoaButton, BorderLayout.SOUTH);
 
         tabbedPane.addTab("Animais", animais);
 
         tabbedPane.setPreferredSize(new Dimension(600, 300));
-
-        JButton newClienteButton = new JButton("Nova ficha");
-        newClienteButton.addActionListener(e -> {
-            criarCliente c = new criarCliente();
-            c.desenha();
-        });
-
-        painelClientes.add(newClienteButton, BorderLayout.SOUTH);
 
         painelClientes.add(tabbedPane);
 
@@ -331,10 +353,8 @@ public class Tela extends JFrame {
 
     }
 
-    public JTable tabelaPessoas() {
+    public JTable tabelaPessoas(DefaultTableModel tableModel, ArrayList<Pessoa> listaPessoas) {
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] {
-                "ID", "Nome", "CPF", "Email", "Telefone" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ClienteCtrl cc = new ClienteCtrl();
@@ -344,8 +364,6 @@ public class Tela extends JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-        ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
         for (Cliente c : listaClientes) {
             Pessoa p = (Pessoa) c;
@@ -382,34 +400,50 @@ public class Tela extends JFrame {
 
     }
 
-    public JTable tabelaAnimais() {
+    public JTable tabelaAnimais(DefaultTableModel tableModel, ArrayList<Animal> listaAnimais) {
 
-        DefaultTableModel tableModel = new DefaultTableModel(new String[] { "ID",
-                "Nome", "CPF do dono", "Éspecie" }, 0);
         JTable tabela = new JTable(tableModel);
 
         ClienteCtrl cc = new ClienteCtrl();
 
-        ArrayList<Cliente> listaAnimais = new ArrayList<>();
-
         try {
-            listaAnimais = cc.exibirAnimais();
-
+            listaClientes = cc.exibirAnimais();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        for (Cliente f : listaAnimais) {
-            Animal p = (Animal) f;
+        for (Cliente c : listaClientes) {
+            Animal a = (Animal) c;
+            listaAnimais.add(a);
             tableModel
-                    .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                            p.getEspecie(), });
+                    .addRow(new Object[] { a.getId(), a.getNome(), a.getCpf(),
+                            a.getEspecie() });
         }
 
         tabela.setDefaultEditor(Object.class, null);
 
-        return tabela;
+        tabela.addMouseListener(new MouseAdapter() {
 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                if (e.getClickCount() == 2) {
+                    int row = tabela.rowAtPoint(e.getPoint());
+                    int col = tabela.columnAtPoint(e.getPoint());
+                    if (row >= 0 && col >= 0) {
+                        Animal selected = listaAnimais.get(row);
+                        editarAnimal edit = new editarAnimal(selected);
+                        edit.desenha(selected, tableModel, listaAnimais, row);
+                    }
+                }
+            }
+        });
+
+        JScrollPane sp = new JScrollPane(tabela);
+
+        sp.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height));
+
+        return tabela;
     }
 
     public void desenhaPaginaServicos() {

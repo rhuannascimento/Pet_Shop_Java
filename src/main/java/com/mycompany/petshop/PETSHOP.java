@@ -74,7 +74,8 @@ public class PETSHOP {
         }
         System.out.println(ANSI_RESET);
 
-        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
+        // Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0,
+        // 0, 0), "gerente", "lc", "123");
 
         Login k = new Login();
 

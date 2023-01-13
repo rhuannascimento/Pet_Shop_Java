@@ -14,25 +14,21 @@ import javax.swing.JPanel;
 
 import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.model.classes.Cliente;
-import com.mycompany.petshop.model.classes.Pessoa;
+import com.mycompany.petshop.model.classes.Animal;
 
 public class editarAnimal extends JFrame {
-    private JTextField id;
+    private JLabel id;
     private JTextField nome;
     private JTextField cpf;
-    private JTextField email;
-    private JTextField telefone;
+    private JTextField especie;
 
-    private ArrayList<Cliente> listaClientes;
-
-    public editarAnimal(Cliente selected, ArrayList<Cliente> listaClientes) {
+    public editarAnimal(Animal selected) {
         super(selected.getNome());
-        this.listaClientes = listaClientes;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
-    public void desenha(Cliente selected, DefaultTableModel tableModel) {
+    public void desenha(Animal selected, DefaultTableModel tableModel, ArrayList<Animal> listaAnimais, int row) {
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -48,8 +44,7 @@ public class editarAnimal extends JFrame {
 
         c.gridx = 0;
         c.gridy = 1;
-        id = new JTextField();
-        nome.setEditable(false);
+        id = new JLabel(String.valueOf(selected.getId()));
         painel.add(id, c);
 
         c.gridx = 0;
@@ -63,7 +58,7 @@ public class editarAnimal extends JFrame {
 
         c.gridx = 0;
         c.gridy = 4;
-        painel.add(new JLabel("CPF"), c);
+        painel.add(new JLabel("CPF do dono"), c);
 
         c.gridx = 0;
         c.gridy = 5;
@@ -72,21 +67,7 @@ public class editarAnimal extends JFrame {
 
         c.gridx = 0;
         c.gridy = 6;
-        painel.add(new JLabel("Email"), c);
-
-        c.gridx = 0;
-        c.gridy = 7;
-        email = new JTextField();
-        painel.add(email, c);
-
-        c.gridx = 0;
-        c.gridy = 8;
-        painel.add(new JLabel("Telefone"), c);
-
-        c.gridx = 0;
-        c.gridy = 9;
-        telefone = new JTextField();
-        painel.add(telefone, c);
+        painel.add(new JLabel("Espécie"), c);
 
         JButton salvar = new JButton("Salvar");
         JButton excluir = new JButton("Excluir");
@@ -94,8 +75,7 @@ public class editarAnimal extends JFrame {
 
         salvar.addActionListener(e -> {
             ClienteCtrl cc = new ClienteCtrl();
-            cc.atualizarPessoa(Integer.parseInt(id.getText()), nome.getText(), cpf.getText(), email.getText(),
-                    telefone.getText());
+            cc.atualizarAnimal(selected.getId(), nome.getText(), cpf.getText(), especie.getText());
             ;
 
             tableModel.setRowCount(0);
@@ -103,17 +83,17 @@ public class editarAnimal extends JFrame {
             ArrayList<Cliente> listaClientes = new ArrayList<>();
 
             try {
-                listaClientes = cc.exibirPessoas();
+                listaClientes = cc.exibirAnimais();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
             for (Cliente z : listaClientes) {
-                Pessoa p = (Pessoa) z;
+                Animal p = (Animal) z;
                 tableModel
                         .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                                p.getEmail(), p.getTelefone() });
+                                p.getEspecie() });
             }
 
             this.dispose();
@@ -124,12 +104,12 @@ public class editarAnimal extends JFrame {
             ClienteCtrl cc = new ClienteCtrl();
             cc.excluirCliente(selected.getId());
 
-            listaClientes.remove(selected);
+            listaAnimais.remove(selected);
 
             ArrayList<Cliente> listaClientes = new ArrayList<>();
 
             try {
-                listaClientes = cc.exibirPessoas();
+                listaClientes = cc.exibirAnimais();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -137,10 +117,10 @@ public class editarAnimal extends JFrame {
             tableModel.setRowCount(0);
 
             for (Cliente z : listaClientes) {
-                Pessoa p = (Pessoa) z;
+                Animal p = (Animal) z;
                 tableModel
                         .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                                p.getEmail(), p.getTelefone() });
+                                p.getCpf(), p.getEspecie() });
             }
             tableModel.fireTableDataChanged();
             this.dispose();
@@ -177,20 +157,12 @@ public class editarAnimal extends JFrame {
         return nome;
     }
 
-    public JTextField getId() {
-        return this.id;
-    }
-
     public JTextField getCpf() {
         return this.cpf;
     }
 
-    public JTextField getEmail() {
-        return this.email;
-    }
-
-    public JTextField getTelefone() {
-        return this.telefone;
+    public JTextField getEspecie() {
+        return this.especie;
     }
 
 }

@@ -1,10 +1,7 @@
 package com.mycompany.petshop.business.item;
 
-import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Item;
-import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.model.exceptions.ItemExp;
-import com.mycompany.petshop.repository.FuncionarioRep;
 import com.mycompany.petshop.repository.ItemRep;
 
 import java.util.ArrayList;

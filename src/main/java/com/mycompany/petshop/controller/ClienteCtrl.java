@@ -9,7 +9,9 @@ import com.mycompany.petshop.business.cliente.AtualizarPessoa;
 import com.mycompany.petshop.business.cliente.CadastrarCliente;
 import com.mycompany.petshop.business.cliente.ExcluirCliente;
 import com.mycompany.petshop.business.cliente.ExibirAnimais;
+import com.mycompany.petshop.business.cliente.ExibirCliente;
 import com.mycompany.petshop.business.cliente.ExibirPessoas;
+import com.mycompany.petshop.business.item.ExibirItem;
 import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;
@@ -22,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  * @author beort
  */
 public class ClienteCtrl {
+    private ExibirCliente exibir;
     private ExibirPessoas exibirPessoa;
     private ExibirAnimais exibirAnimal;
     private CadastrarCliente cadastrarCliente;
@@ -100,6 +103,23 @@ public class ClienteCtrl {
 
     public void excluirCliente(int id) {
         excluirCliente = new ExcluirCliente(id);
+    }
+
+    public Cliente getUltimo() {
+
+        try {
+            this.exibir = new ExibirCliente();
+        } catch (Exception ex) {
+
+        }
+
+        try {
+            return exibir.getUltimo();
+        } catch (Exception ex) {
+
+        }
+
+        return null;
     }
 
 }
