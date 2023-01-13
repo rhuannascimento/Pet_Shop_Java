@@ -1,5 +1,6 @@
 package com.mycompany.petshop.view;
 
+import com.mycompany.petshop.controller.AgendamentoCtrl;
 import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.controller.ItemCtrl;
@@ -124,14 +125,18 @@ public class Tela extends JFrame {
                 "Nome", "Serviço", "Horário" }, 0);
         JTable tabela = new JTable(tableModel);
 
-        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
-        ArrayList<Funcionario> listaFuncionarios = fc.exibir();
+        AgendamentoCtrl fc = new AgendamentoCtrl();
+        ArrayList<Agendamento> listaAgendamentos = fc.exibirAgendamentos();
 
-        for (Funcionario f : listaFuncionarios) {
+        for (Agendamento f : listaAgendamentos) {
             tableModel
-                    .addRow(new Object[] { f.getId(), f.getNome(), f.getStartTime(),
-                            f.getEndTime(), f.getCargo(),
-                            f.getUsername() });
+                    .addRow(new Object[] {
+                    
+                        f.getAnimal().getNome(), 
+                        f.getServico().getNome(), 
+                        f.getData_hora().toString()
+                    
+                    });
         }
 
         tabela.setDefaultEditor(Object.class, null);
@@ -145,8 +150,8 @@ public class Tela extends JFrame {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Funcionario selected = listaFuncionarios.get(row);
-                        editarFuncionario edit = new editarFuncionario(selected, logado, listaFuncionarios);
+                        Agendamento selected = listaAgendamentos.get(row);
+                        editarAgendamento edit = new editarAgendamento(selected, listaAgendamentos);
                         edit.desenha(selected, tableModel);
                     }
                 }
@@ -161,9 +166,11 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        agendarButton.addActionListener((ActionEvent e) -> {
-            criarAgendamento a = new criarAgendamento();
-            a.desenha();
+        
+        
+        agendarButton.addActionListener(e -> {
+            criarAgendamento a = new criarAgendamento(listaAgendamentos);
+            a.desenha(tableModel);
         });
 
         return agenda;

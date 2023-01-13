@@ -12,18 +12,15 @@ import java.util.ArrayList;
 
 public class AtualizarAgendamento {
     public AtualizarAgendamento(int id, Timestamp data_hora, Animal animal, Servico servico){
-        ArrayList<Agendamento> lista1 = new ArrayList<Agendamento>();
-        ArrayList<Agendamento> lista2 = new ArrayList<Agendamento>();
+
+
         Agendamento a;
         AgendamentoRep ar = new AgendamentoRep();
         a = new Agendamento(id,data_hora,animal,servico);
-        lista1 = ar.getByDate(data_hora);
-        lista2 = ar.getByTimestamp(data_hora);
-        if(!lista1.isEmpty() && !lista2.isEmpty()){
-            System.out.println("Horário já reservado");
-        }else{
+        
+        
             ar.update(a);
-        }
+        
         
     }
     

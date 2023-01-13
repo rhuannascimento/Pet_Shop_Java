@@ -44,6 +44,9 @@ public class PETSHOP {
 
         boolean bmigrate = false, bseed = false, btest = false;
 
+        m.migrate();
+        s.seed();
+        
         for (String arg : args) {
             if (arg.equalsIgnoreCase("migrate")) {
                 bmigrate = m.migrate();
@@ -74,7 +77,7 @@ public class PETSHOP {
         }
         System.out.println(ANSI_RESET);
 
-        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
+        //Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
 
         Login k = new Login();
         
