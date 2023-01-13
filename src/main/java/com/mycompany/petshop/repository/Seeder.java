@@ -67,13 +67,13 @@ public class Seeder {
     }
     
     private void populateCliente(){
-        Cliente c1 = new Pessoa(0, "José dos Campos", "'16112124645", "jose@campos.com", "31984685434");
+        Cliente c1 = new Pessoa(0, "José dos Campos", "16112124645", "jose@campos.com", "31984685434");
         Cliente c2 = new Pessoa(0, "João Pessoa", "34572424532", "joao@pessoa.com", "31987233259");
         Cliente c3 = new Animal(0, "Aswolfo", "16112124645", "cachorro");
         Cliente c4 = new Animal(0, "Waldineliau", "16112124645", "gato");
         Cliente c5 = new Animal(0, "Totó", "16112124645", "cachorro");
-        Cliente c6 = new Animal(0, "Caramelo", "16112124645", "gato");
-        Cliente c7 = new Animal(0, "Belinha", "16112124645", "cachorro");
+        Cliente c6 = new Animal(0, "Caramelo", "34572424532", "gato");
+        Cliente c7 = new Animal(0, "Belinha", "34572424532", "cachorro");
         Cliente c8 = new Animal(0, "Zeca", "16112124645", "gato");
         
         ClienteRep cr = new ClienteRep();

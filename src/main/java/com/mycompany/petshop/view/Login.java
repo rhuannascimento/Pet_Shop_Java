@@ -148,9 +148,9 @@ public class Login extends javax.swing.JFrame {
 
         this.dispose();
 
-        Tela t = new Tela(f);
+        TelaPrincipal.main(new String[]{});
+        
 
-        t.renderiza();
     }
 
     private void userLoginActionPerformed(java.awt.event.ActionEvent evt) {

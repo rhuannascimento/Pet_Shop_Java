@@ -11,9 +11,8 @@ import java.sql.Timestamp;
 public class CadastrarAgendamento {
     public CadastrarAgendamento(int id, Timestamp data_hora, Animal animal, Servico servico) {
        
-        Agendamento a;
+        Agendamento a = new Agendamento(id,data_hora,animal,servico);
         AgendamentoRep ar = new AgendamentoRep();
-        a = new Agendamento(id,data_hora,animal,servico);
         
         ar.insertOne(a);
      

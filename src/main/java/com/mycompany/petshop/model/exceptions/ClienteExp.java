@@ -4,6 +4,8 @@
  */
 package com.mycompany.petshop.model.exceptions;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author beort
@@ -11,5 +13,6 @@ package com.mycompany.petshop.model.exceptions;
 public class ClienteExp extends Exception{
        public ClienteExp(String message) {
         super(message);
+        JOptionPane.showMessageDialog(null, message, "Erro de pesquisa", JOptionPane.WARNING_MESSAGE);
     }
 }

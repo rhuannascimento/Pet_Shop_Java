@@ -54,6 +54,10 @@ public class PETSHOP {
             if (arg.equalsIgnoreCase("test")) {
                 btest = testar();
             }
+            if(arg.equalsIgnoreCase("reset")){
+                s.reset();
+                s.seed();
+            }
         }
 
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n-----------" + ANSI_BLUE + "resultados: \n");

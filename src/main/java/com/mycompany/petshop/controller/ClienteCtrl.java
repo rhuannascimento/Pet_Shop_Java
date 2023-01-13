@@ -6,6 +6,7 @@ package com.mycompany.petshop.controller;
 
 import com.mycompany.petshop.business.cliente.AtualizarAnimal;
 import com.mycompany.petshop.business.cliente.AtualizarPessoa;
+import com.mycompany.petshop.business.cliente.BuscarCliente;
 import com.mycompany.petshop.business.cliente.CadastrarCliente;
 import com.mycompany.petshop.business.cliente.ExcluirCliente;
 import com.mycompany.petshop.business.cliente.ExibirAnimais;
@@ -17,6 +18,8 @@ import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.model.exceptions.ClienteExp;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,32 +30,40 @@ public class ClienteCtrl {
     private ExibirCliente exibir;
     private ExibirPessoas exibirPessoa;
     private ExibirAnimais exibirAnimal;
+    private BuscarCliente buscarCliente;
     private CadastrarCliente cadastrarCliente;
     private ExcluirCliente excluirCliente;
     private AtualizarPessoa atualizarPessoa;
     private AtualizarAnimal atualizarAnimal;
 
-    public ArrayList<Cliente> exibirAnimais() throws ClienteExp {
-        this.exibirAnimal = new ExibirAnimais();
+    public ArrayList<Cliente> exibirAnimais() {
+        try {
+            this.exibirAnimal = new ExibirAnimais();
+        } catch (ClienteExp ex) {
+            
+        }
 
         ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
 
-        // String col[] = { "ID", "Nome", "cpf", "especie" };
 
-        // DefaultTableModel dtm = new DefaultTableModel(col, 0);
+        return lista;
 
-        // try {
-        // ArrayList<Cliente> lista = this.exibirAnimal.getAnimais();
-
-        // for (Cliente c : lista) {
-        // Object[] data = { c.getId(), c.getNome(), c.getCpf(),
-        // ((Animal)c).getEspecie() };
-        // dtm.addRow(data);
-        // }
-
-        // } catch (Exception ex) {
-        // ex.printStackTrace();
-        // }
+    }
+    
+    public ArrayList<Cliente> exibirAnimais(String cpf) {
+        ArrayList<Cliente> lista = new ArrayList<>();
+        
+        if(cpf.length() == 11){
+            try {
+                this.buscarCliente = new BuscarCliente();
+                lista = this.buscarCliente.obterAnimaisPorCpf(cpf);
+            } catch (ClienteExp ex) {}
+        }else{
+            try {
+                this.exibirAnimal = new ExibirAnimais();
+            } catch (ClienteExp ex) {}
+            lista = this.exibirAnimal.getAnimais();
+        }
 
         return lista;
 

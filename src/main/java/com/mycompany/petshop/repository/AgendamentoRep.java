@@ -55,7 +55,7 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
 
     @Override
     public boolean update(Agendamento valor) {
-        System.out.println("Atualizando o agendamento "+valor);
+        System.out.println("Atualizando o agendamento "+valor+", definindo os valores: "+valor);
         int affected = 0;
         
         try{
@@ -67,8 +67,8 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
             
             
             ps.setTimestamp(1, valor.getData_hora());
-            ps.setInt(1, valor.getAnimal().getId());
-            ps.setInt(1, valor.getServico().getId());
+            ps.setInt(2, valor.getAnimal().getId());
+            ps.setInt(3, valor.getServico().getId());
             ps.setInt(4, valor.getId());
             
             affected = ps.executeUpdate();

@@ -10,11 +10,13 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class AgendamentoCtrl {
 
     private ExibirAgendamentos exibirAgendamentos;
     private ListarAgendamentoPorData listarPorData;
+    private BuscarAgendamentoPorId listarPorId;
     private CadastrarAgendamento cadastrarAgendamento;
     private ExcluirAgendamento excluirAgendamento;
     private AtualizarAgendamento atualizarAgendamento;
@@ -67,7 +69,13 @@ public class AgendamentoCtrl {
     }
 
     public void excluir(int id) {
-   
-        excluirAgendamento = new ExcluirAgendamento(id);
+        boolean confirma = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o agendamento "+id+"?") == JOptionPane.OK_OPTION;
+        if(confirma)
+            excluirAgendamento = new ExcluirAgendamento(id);
+    }
+    
+    public Agendamento exibirAgendamentoById(int id){
+        listarPorId = new BuscarAgendamentoPorId(id);
+        return listarPorId.getAgendamento();
     }
 }

@@ -5,6 +5,7 @@
 package com.mycompany.petshop.model.exceptions;
 
 import java.sql.SQLWarning;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +14,8 @@ import java.sql.SQLWarning;
 public class NothingSelectedException extends Exception {
 
     public NothingSelectedException(SQLWarning warning) {
-        super("Não foram encontrados resultados para essa consulta! Motivo: "+warning.getMessage());
+        super("Não foram encontrados resultados para essa consulta!");
+        JOptionPane.showMessageDialog(null, "Não foram encontrados resultados para essa consulta!");
     }
     
 }

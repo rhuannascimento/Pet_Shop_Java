@@ -97,7 +97,7 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "id - " + id + ", data_hora - " + data_hora + ", animal - " + animal + ", servico - " + servico;
+        return "id - " + id + ", data_hora - " + getDataHoraString() + ", animal - " + animal + ", servico - " + servico;
     }
 
     public void printAgendamento() {

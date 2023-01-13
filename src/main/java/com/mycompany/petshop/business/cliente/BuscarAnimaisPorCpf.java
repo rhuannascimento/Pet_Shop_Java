@@ -1,4 +1,5 @@
-/*
+
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -14,44 +15,32 @@ import java.util.ArrayList;
  *
  * @author Rhuan
  */
-public class BuscarCliente {
-    
-    private Cliente f;
-    
-    public BuscarCliente(int id){
-    
-        ClienteRep fr = new ClienteRep();
+public class BuscarAnimaisPorCpf {
+
+    private ArrayList<Cliente> animais;
+    private ClienteRep cr;
+
+    public BuscarAnimaisPorCpf() throws ClienteExp {
         
-        this.f = fr.getById(id); 
-      
-    }
-    
-    public BuscarCliente(){ 
+        animais = new ArrayList<>();
+        cr = new ClienteRep();
     }
 
-    public Cliente getCliente() {
-        return f;
-    }
-    
-    public ArrayList<Cliente> obterAnimaisPorCpf(String cpf) throws ClienteExp{
-        ClienteRep fr = new ClienteRep();
-        ArrayList<Cliente> l = fr.getByCpf(cpf);
-        
-        ArrayList<Cliente> l2 = new ArrayList<>();
-        
+    public ArrayList<Cliente> getAnimais(String cpf) throws ClienteExp {
+        ArrayList<Cliente> l = cr.getByCpf(cpf);
+       System.out.println("\nPreenchendo array de animais");
         if (!l.isEmpty()) {
             for (int i = 0; i < l.size(); i++) {
                 if (l.get(i) instanceof Animal) {
-                    l2.add(l.get(i));
+                    System.out.println(l.get(i));
+                    this.animais.add(l.get(i));
                 }
-
             }
         } else {
             throw new ClienteExp("Não exitse clientes cadastrados!");
         }
-        return l2;
-        
+        return this.animais;
     }
-    
-    
+
 }
+

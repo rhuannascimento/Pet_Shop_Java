@@ -182,7 +182,7 @@ public class ClienteRep implements DataAcessObject<Cliente> {
                 String telefone = rs.getString("telefone");
                 
                 Cliente c = null;
-                if(especie == null){
+                if(especie != null){
                     c = new Animal(id, nome, cpf, especie);
                 }else{
                     c = new Pessoa(id, nome, cpf, email, telefone);
