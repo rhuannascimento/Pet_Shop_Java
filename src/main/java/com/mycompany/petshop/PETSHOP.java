@@ -44,9 +44,6 @@ public class PETSHOP {
 
         boolean bmigrate = false, bseed = false, btest = false;
 
-        m.migrate();
-        s.seed();
-        
         for (String arg : args) {
             if (arg.equalsIgnoreCase("migrate")) {
                 bmigrate = m.migrate();
@@ -77,13 +74,12 @@ public class PETSHOP {
         }
         System.out.println(ANSI_RESET);
 
-        //Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
+        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "funcionario", "lc", "123");
 
         Login k = new Login();
-        
+
         k.main();
-        
-       
+
     }
 
     static boolean testar() {
@@ -240,9 +236,9 @@ public class PETSHOP {
 
             FuncionarioRep frep = new FuncionarioRep();
             boolean log = frep.login("caio.costa", "senhacaio");
-            System.out.println("Logou? "+log);
+            System.out.println("Logou? " + log);
             log = frep.login("caio.costa", "senhacaioerrada");
-            System.out.println("Logou? "+log);
+            System.out.println("Logou? " + log);
             RES = true;
         } catch (Exception ex) {
             ex.printStackTrace();

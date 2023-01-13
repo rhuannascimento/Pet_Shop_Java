@@ -14,7 +14,7 @@ import com.mycompany.petshop.model.classes.Servico;
 import com.mycompany.petshop.view.agendamento.criarAgendamento;
 import com.mycompany.petshop.view.agendamento.editarAgendamento;
 import com.mycompany.petshop.view.cliente.criarCliente;
-import com.mycompany.petshop.view.cliente.editarPessoa;
+import com.mycompany.petshop.view.cliente.pessoa.editarPessoa;
 import com.mycompany.petshop.view.funcionario.criarFuncionario;
 import com.mycompany.petshop.view.funcionario.editarFuncionario;
 import com.mycompany.petshop.view.mercadoria.brinquedo.criarBrinquedo;
@@ -131,11 +131,11 @@ public class Tela extends JFrame {
         for (Agendamento f : listaAgendamentos) {
             tableModel
                     .addRow(new Object[] {
-                    
-                        f.getAnimal().getNome(), 
-                        f.getServico().getNome(), 
-                        f.getData_hora().toString()
-                    
+
+                            f.getAnimal().getNome(),
+                            f.getServico().getNome(),
+                            f.getData_hora().toString()
+
                     });
         }
 
@@ -166,8 +166,7 @@ public class Tela extends JFrame {
 
         JButton agendarButton = new JButton("Novo Agendamento");
         agenda.add(agendarButton, BorderLayout.SOUTH);
-        
-        
+
         agendarButton.addActionListener(e -> {
             criarAgendamento a = new criarAgendamento(listaAgendamentos);
             a.desenha(tableModel);
@@ -346,8 +345,11 @@ public class Tela extends JFrame {
             ex.printStackTrace();
         }
 
+        ArrayList<Pessoa> listaPessoas = new ArrayList<>();
+
         for (Cliente c : listaClientes) {
             Pessoa p = (Pessoa) c;
+            listaPessoas.add(p);
             tableModel
                     .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
                             p.getEmail(), p.getTelefone() });
@@ -364,9 +366,9 @@ public class Tela extends JFrame {
                     int row = tabela.rowAtPoint(e.getPoint());
                     int col = tabela.columnAtPoint(e.getPoint());
                     if (row >= 0 && col >= 0) {
-                        Cliente selected = listaClientes.get(row);
-                        editarPessoa edit = new editarPessoa(selected, listaClientes);
-                        edit.desenha(selected, tableModel);
+                        Pessoa selected = listaPessoas.get(row);
+                        editarPessoa edit = new editarPessoa(selected);
+                        edit.desenha(selected, tableModel, listaPessoas, row);
                     }
                 }
             }

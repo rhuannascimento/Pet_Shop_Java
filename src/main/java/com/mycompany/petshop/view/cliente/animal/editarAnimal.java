@@ -1,4 +1,4 @@
-package com.mycompany.petshop.view.cliente;
+package com.mycompany.petshop.view.cliente.animal;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,7 +16,7 @@ import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;
 
-public class editarPessoa extends JFrame {
+public class editarAnimal extends JFrame {
     private JTextField id;
     private JTextField nome;
     private JTextField cpf;
@@ -25,7 +25,7 @@ public class editarPessoa extends JFrame {
 
     private ArrayList<Cliente> listaClientes;
 
-    public editarPessoa(Cliente selected, ArrayList<Cliente> listaClientes) {
+    public editarAnimal(Cliente selected, ArrayList<Cliente> listaClientes) {
         super(selected.getNome());
         this.listaClientes = listaClientes;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

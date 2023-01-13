@@ -1,4 +1,4 @@
-package com.mycompany.petshop.view.cliente;
+package com.mycompany.petshop.view.cliente.pessoa;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,23 +16,20 @@ import com.mycompany.petshop.controller.ClienteCtrl;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Pessoa;
 
-public class editarAnimal extends JFrame {
+public class editarPessoa extends JFrame {
     private JTextField id;
     private JTextField nome;
     private JTextField cpf;
     private JTextField email;
     private JTextField telefone;
 
-    private ArrayList<Cliente> listaClientes;
-
-    public editarAnimal(Cliente selected, ArrayList<Cliente> listaClientes) {
+    public editarPessoa(Pessoa selected) {
         super(selected.getNome());
-        this.listaClientes = listaClientes;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
-    public void desenha(Cliente selected, DefaultTableModel tableModel) {
+    public void desenha(Pessoa selected, DefaultTableModel tableModel, ArrayList<Pessoa> listaPessoas, int row) {
         JPanel painel = new JPanel();
         painel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -98,19 +95,30 @@ public class editarAnimal extends JFrame {
                     telefone.getText());
             ;
 
+            selected.setId(selected.getId());
+            selected.setNome(nome.getText());
+            selected.setCpf(cpf.getText());
+            selected.setNome(selected.getTipo());
+            selected.setEmail(email.getText());
+            selected.setTelefone(telefone.getText());
+
             tableModel.setRowCount(0);
 
-            ArrayList<Cliente> listaClientes = new ArrayList<>();
+            ArrayList<Cliente> list = new ArrayList<>();
 
             try {
-                listaClientes = cc.exibirPessoas();
+                list = cc.exibirPessoas();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-            for (Cliente z : listaClientes) {
-                Pessoa p = (Pessoa) z;
+            for (Cliente n : list) {
+                Pessoa p = (Pessoa) n;
+                listaPessoas.add(p);
+            }
+
+            for (Pessoa p : listaPessoas) {
                 tableModel
                         .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
                                 p.getEmail(), p.getTelefone() });
@@ -124,24 +132,24 @@ public class editarAnimal extends JFrame {
             ClienteCtrl cc = new ClienteCtrl();
             cc.excluirCliente(selected.getId());
 
-            listaClientes.remove(selected);
-
-            ArrayList<Cliente> listaClientes = new ArrayList<>();
+            ArrayList<Cliente> list = new ArrayList<>();
 
             try {
-                listaClientes = cc.exibirPessoas();
+                list = cc.exibirPessoas();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            tableModel.setRowCount(0);
 
-            for (Cliente z : listaClientes) {
-                Pessoa p = (Pessoa) z;
-                tableModel
-                        .addRow(new Object[] { p.getId(), p.getNome(), p.getCpf(),
-                                p.getEmail(), p.getTelefone() });
+            for (Cliente n : list) {
+                Pessoa p = (Pessoa) n;
+                listaPessoas.add(p);
             }
+
+            listaPessoas.remove(selected);
+
+            tableModel.removeRow(row);
+
             tableModel.fireTableDataChanged();
             this.dispose();
         });
