@@ -6,6 +6,7 @@ package com.mycompany.petshop.view;
 
 import com.mycompany.petshop.controller.AgendamentoCtrl;
 import com.mycompany.petshop.controller.ClienteCtrl;
+import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.controller.ItemCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
 import com.mycompany.petshop.model.classes.Animal;
@@ -56,14 +57,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tableAgendamentos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableSelectServicoCadastrarAgendamento.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableSelectAnimalCadastrarAgendamento.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableFuncionarios.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         
         tableAgendamentos.getTableHeader().setOpaque(false);
         tableSelectServicoCadastrarAgendamento.getTableHeader().setOpaque(false);
         tableSelectAnimalCadastrarAgendamento.getTableHeader().setOpaque(false);
+        tableFuncionarios.getTableHeader().setOpaque(false);
         
         tableAgendamentos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableSelectServicoCadastrarAgendamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableSelectAnimalCadastrarAgendamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableFuncionarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
     }
     
     void inicializarComponentes(){
@@ -165,6 +170,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonCancelarEditarAgendamento = new javax.swing.JButton();
         panelFuncionarios = new javax.swing.JPanel();
         title1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableFuncionarios = new javax.swing.JTable();
+        jLabel24 = new javax.swing.JLabel();
+        buttonCadastrarFuncionario = new javax.swing.JButton();
+        buttonEditarFuncionario = new javax.swing.JButton();
+        buttonDeletarFuncionario = new javax.swing.JButton();
         panelClientes = new javax.swing.JPanel();
         title2 = new javax.swing.JLabel();
         panelServicos = new javax.swing.JPanel();
@@ -891,13 +902,69 @@ public class TelaPrincipal extends javax.swing.JFrame {
         title1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title1.setText("Funcionários");
 
+        tableFuncionarios.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableFuncionarios.setFocusable(false);
+        tableFuncionarios.setRowHeight(32);
+        tableFuncionarios.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableFuncionarios.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableFuncionarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tableFuncionarios);
+
+        jLabel24.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Funcionários");
+
+        buttonCadastrarFuncionario.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarFuncionario.setText("Cadastrar Novo");
+        buttonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        buttonEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarFuncionario.setText("Editar");
+        buttonEditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarFuncionario.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarFuncionario.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarFuncionario.setText("Deletar");
+        buttonDeletarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarFuncionarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelFuncionariosLayout = new javax.swing.GroupLayout(panelFuncionarios);
         panelFuncionarios.setLayout(panelFuncionariosLayout);
         panelFuncionariosLayout.setHorizontalGroup(
             panelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFuncionariosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title1, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                .addGroup(panelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title1, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelFuncionariosLayout.createSequentialGroup()
+                        .addComponent(buttonCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonDeletarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFuncionariosLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         panelFuncionariosLayout.setVerticalGroup(
@@ -905,7 +972,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(panelFuncionariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(title1)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(panelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCadastrarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelContent.add(panelFuncionarios, "funcionarios");
@@ -1056,6 +1132,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         table.getColumnModel().getColumn(0).setMaxWidth(40);
     }
     
+    private void loadTableFuncionario(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Cargo", "Username", "Nome", "Início Expediente", "Fim Expediente"}, 0);
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(this.logado);
+        
+        ArrayList<Funcionario> lista = fc.exibir();
+
+        for (Funcionario f : lista) {
+            dtm.addRow(new Object[] {
+                f.getId(),
+                f.getCargo(),
+                f.getUsername(),
+                f.getNome(),
+                f.getStartTime(),
+                f.getEndTime()
+            });
+        }
+        
+        tableFuncionarios.setModel(dtm);
+    }
+    
     
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
         // TODO add your handling code here:
@@ -1069,6 +1166,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFuncionariosActionPerformed
         // TODO add your handling code here:
+        loadTableFuncionario();
         layout.show(panelContent, "funcionarios");
     }//GEN-LAST:event_buttonFuncionariosActionPerformed
 
@@ -1262,6 +1360,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.show(panelContent, "inicio");
     }//GEN-LAST:event_buttonCancelarEditarAgendamentoActionPerformed
 
+    private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
+
+    private void buttonEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarFuncionarioActionPerformed
+
+    private void buttonDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonDeletarFuncionarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1302,11 +1412,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton agendamentosExibirHoje;
     private javax.swing.JButton agendamentosExibirTodos;
     private javax.swing.JButton buttonCadastrarAgendamento;
+    private javax.swing.JButton buttonCadastrarFuncionario;
     private javax.swing.JButton buttonCancelarCadastroAgendamento;
     private javax.swing.JButton buttonCancelarEditarAgendamento;
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonDeletarAgendamento;
+    private javax.swing.JButton buttonDeletarFuncionario;
     private javax.swing.JButton buttonEditarAgendamento;
+    private javax.swing.JButton buttonEditarFuncionario;
     private javax.swing.JButton buttonEfetuarCadastroAgendamento;
     private javax.swing.JButton buttonEfetuarEditarAgendamento;
     private javax.swing.JButton buttonFuncionarios;
@@ -1329,6 +1442,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1338,6 +1452,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1362,6 +1477,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerMinutoCadastrarAgendamento;
     private javax.swing.JSpinner spinnerMinutoEditarAgendamento;
     private javax.swing.JTable tableAgendamentos;
+    private javax.swing.JTable tableFuncionarios;
     private javax.swing.JTable tableSelectAnimalCadastrarAgendamento;
     private javax.swing.JTable tableSelectAnimalEditarAgendamento;
     private javax.swing.JTable tableSelectServicoCadastrarAgendamento;
