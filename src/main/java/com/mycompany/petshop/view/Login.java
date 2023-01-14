@@ -144,11 +144,13 @@ public class Login extends javax.swing.JFrame {
 
         LoginCtrl l = new LoginCtrl();
 
+        
         Funcionario f = l.fazerLogin(userLogin.getText(), new String(password.getPassword()));
 
-        this.dispose();
-
-        TelaPrincipal.main(new String[]{});
+        if(f.getCargo().equalsIgnoreCase("gerente") || f.getCargo().equalsIgnoreCase("funcionario")){  
+            TelaPrincipal.main(f);
+            this.dispose();
+        }
         
 
     }
