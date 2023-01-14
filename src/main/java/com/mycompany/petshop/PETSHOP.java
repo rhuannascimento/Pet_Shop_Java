@@ -8,7 +8,6 @@ import com.mycompany.petshop.business.funcionarios.ExibirFuncionario;
 import com.mycompany.petshop.model.classes.*;
 import com.mycompany.petshop.repository.*;
 import com.mycompany.petshop.view.Login;
-import com.mycompany.petshop.view.Tela;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
