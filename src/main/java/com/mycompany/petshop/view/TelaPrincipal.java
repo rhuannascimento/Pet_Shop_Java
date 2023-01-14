@@ -384,6 +384,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonEditarAgendamento4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        panelCadastrarBrinquedo = new javax.swing.JPanel();
+        title20 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal3 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal1 = new javax.swing.JButton();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        brinquedoCadastrarEstoque = new javax.swing.JTextField();
+        brinquedoCadastrarFornecedor = new javax.swing.JTextField();
+        jLabel84 = new javax.swing.JLabel();
+        brinquedoCadastrarPreco = new javax.swing.JTextField();
+        brinquedoCadastrarNome = new javax.swing.JTextField();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        brinquedoCadastrarEspecie = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        brinquedoCadastrarMaterial = new javax.swing.JTextField();
         panelRacao = new javax.swing.JPanel();
         title19 = new javax.swing.JLabel();
         jScrollPane16 = new javax.swing.JScrollPane();
@@ -2808,6 +2825,131 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelContent.add(panelBrinquedo, "brinquedos");
 
+        title20.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title20.setText("Brinquedos");
+
+        jLabel81.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel81.setText("Cadastrar Brinquedos");
+
+        buttonCancelarCadastroAnimal3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal3.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal3.setText("Cancelar");
+        buttonCancelarCadastroAnimal3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal3ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal1.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal1.setText("Cadastrar");
+        buttonEfetuarEditarAnimal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal1ActionPerformed(evt);
+            }
+        });
+
+        jLabel82.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel82.setText("Estoque");
+
+        jLabel83.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel83.setText("Fornecedor");
+
+        jLabel84.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel84.setText("Preço");
+
+        jLabel85.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel85.setText("Nome");
+
+        jLabel86.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel86.setText("Material");
+
+        jLabel87.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel87.setText("Especie");
+
+        javax.swing.GroupLayout panelCadastrarBrinquedoLayout = new javax.swing.GroupLayout(panelCadastrarBrinquedo);
+        panelCadastrarBrinquedo.setLayout(panelCadastrarBrinquedoLayout);
+        panelCadastrarBrinquedoLayout.setHorizontalGroup(
+            panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title20, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel81, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarBrinquedoLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoCadastrarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelCadastrarBrinquedoLayout.setVerticalGroup(
+            panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                        .addComponent(jLabel85)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brinquedoCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel84)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brinquedoCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                        .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                                .addComponent(jLabel87)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel86)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoCadastrarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCadastrarBrinquedoLayout.createSequentialGroup()
+                                .addComponent(jLabel82)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel83)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelCadastrarBrinquedo, "cadastrarBrinquedo");
+
         title19.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title19.setText("Mercadorias");
@@ -4461,6 +4603,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCadastrarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento4ActionPerformed
         // TODO add your handling code here:
+        
+        layout.show(panelContent, "cadastrarBrinquedo");
     }//GEN-LAST:event_buttonCadastrarAgendamento4ActionPerformed
 
     private void buttonDeletarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento4ActionPerformed
@@ -4561,6 +4705,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.show(panelContent, "mercadorias");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void buttonCancelarCadastroAnimal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal3ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal3ActionPerformed
+
+    private void buttonEfetuarEditarAnimal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal1ActionPerformed
+        // TODO add your handling code here:
+        
+        ItemCtrl ir = new ItemCtrl();
+        int estoque = Integer.parseInt(brinquedoCadastrarEstoque.getText());
+        String fornecedor = brinquedoCadastrarFornecedor.getText();
+        int id = 0;
+        String nome = brinquedoCadastrarNome.getText();
+        float preco = Float.parseFloat(brinquedoCadastrarPreco.getText());
+        String tipo = "brinquedo";
+        boolean disponivel = true;
+        String especie = brinquedoCadastrarEspecie.getText();
+        String material = brinquedoCadastrarMaterial.getText();
+        
+        ir.cadastrarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie, material);
+        
+        loadTableBrinquedos();
+        
+        layout.show(panelContent, "brinquedos");
+        
+        
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4615,6 +4787,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton agendamentosExibirTodos3;
     private javax.swing.JButton agendamentosExibirTodos4;
     private javax.swing.JButton agendamentosExibirTodos5;
+    private javax.swing.JTextField brinquedoCadastrarEspecie;
+    private javax.swing.JTextField brinquedoCadastrarEstoque;
+    private javax.swing.JTextField brinquedoCadastrarFornecedor;
+    private javax.swing.JTextField brinquedoCadastrarMaterial;
+    private javax.swing.JTextField brinquedoCadastrarNome;
+    private javax.swing.JTextField brinquedoCadastrarPreco;
     private javax.swing.JButton buttonCadastrarAgendamento;
     private javax.swing.JButton buttonCadastrarAgendamento2;
     private javax.swing.JButton buttonCadastrarAgendamento3;
@@ -4628,6 +4806,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarCadastroAnimal;
     private javax.swing.JButton buttonCancelarCadastroAnimal1;
     private javax.swing.JButton buttonCancelarCadastroAnimal2;
+    private javax.swing.JButton buttonCancelarCadastroAnimal3;
     private javax.swing.JButton buttonCancelarCadastroAnimal4;
     private javax.swing.JButton buttonCancelarCadastroFuncionario;
     private javax.swing.JButton buttonCancelarCadastroFuncionario1;
@@ -4663,6 +4842,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonEfetuarEdicao1;
     private javax.swing.JButton buttonEfetuarEditarAgendamento;
     private javax.swing.JButton buttonEfetuarEditarAnimal;
+    private javax.swing.JButton buttonEfetuarEditarAnimal1;
     private javax.swing.JButton buttonEfetuarEditarFuncionario;
     private javax.swing.JButton buttonFuncionarios;
     private javax.swing.JButton buttonInicio;
@@ -4769,6 +4949,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -4797,6 +4984,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelBrinquedo;
     private javax.swing.JPanel panelCadastrarAgendamento;
     private javax.swing.JPanel panelCadastrarAnimal;
+    private javax.swing.JPanel panelCadastrarBrinquedo;
     private javax.swing.JPanel panelCadastrarCliente;
     private javax.swing.JPanel panelCadastrarFuncionario;
     private javax.swing.JPanel panelCadastrarServico;
@@ -4873,6 +5061,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title18;
     private javax.swing.JLabel title19;
     private javax.swing.JLabel title2;
+    private javax.swing.JLabel title20;
     private javax.swing.JLabel title3;
     private javax.swing.JLabel title4;
     private javax.swing.JLabel title5;
