@@ -100,6 +100,12 @@ public class ItemCtrl {
                 idade_recomendada);
 
     }
+    
+    public void atualizarRacao(Racao r) {
+
+        atualizarRacao = new AtualizarRacao(r);
+
+    }
 
     public void cadastrarBrinquedo(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String especie, String material) {
@@ -114,6 +120,10 @@ public class ItemCtrl {
         atualizarBrinquedo = new AtualizarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie,
                 material);
     }
+    
+    public void atualizarBrinquedo(Brinquedo b) {
+        atualizarBrinquedo = new AtualizarBrinquedo(b);
+    }
 
     public void cadastrarRoupa(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String tamanho, String especie, String cor) {
@@ -127,6 +137,11 @@ public class ItemCtrl {
 
         atualizarRoupa = new AtualizarRoupa(estoque, fornecedor, id, nome, preco, tipo, disponivel, tamanho, especie,
                 cor);
+    }
+    
+    public void atualizarRoupa(Roupa r) {
+
+        atualizarRoupa = new AtualizarRoupa(r);
     }
 
     public void cadastraRemedio(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
@@ -143,6 +158,12 @@ public class ItemCtrl {
                 orientacao);
 
     }
+    
+    public void atualizarRemedio(Remedio r) {
+
+        atualizarRemedio = new AtualizarRemedio(r);
+
+    }
 
     public void cadastraServico(int id, String nome, float preco, String tipo, boolean disponivel, int duracao,
             int idResponsavel) {
@@ -156,7 +177,7 @@ public class ItemCtrl {
         atualizarServico = new AtualizarServico(id, nome, preco, tipo, disponivel, duracao, idResponsavel);
 
     }
-
+    
     public void excluirItem(int id) {
         excluirItem = new ExcluirItem(id);
     }

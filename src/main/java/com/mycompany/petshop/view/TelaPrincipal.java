@@ -14,6 +14,7 @@ import com.mycompany.petshop.model.classes.Brinquedo;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Item;
+import com.mycompany.petshop.model.classes.Mercadoria;
 import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.model.classes.Racao;
 import com.mycompany.petshop.model.classes.Remedio;
@@ -389,6 +390,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonEditarAgendamento4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        buttonEditarAgendamento6 = new javax.swing.JButton();
         panelCadastrarBrinquedo = new javax.swing.JPanel();
         title20 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
@@ -436,6 +438,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonEditarAgendamento5 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        buttonEditarAgendamento7 = new javax.swing.JButton();
         panelCadastrarRacao = new javax.swing.JPanel();
         title22 = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
@@ -487,6 +490,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonEditarAgendamento3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        buttonEditarAgendamento8 = new javax.swing.JButton();
+        panelCadastrarRemedio = new javax.swing.JPanel();
+        title24 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal8 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal5 = new javax.swing.JButton();
+        jLabel104 = new javax.swing.JLabel();
+        jLabel105 = new javax.swing.JLabel();
+        remedioCadastrarUtilidade = new javax.swing.JTextField();
+        jLabel106 = new javax.swing.JLabel();
+        remedioCadastrarPreco = new javax.swing.JTextField();
+        remedioCadastrarNome = new javax.swing.JTextField();
+        jLabel107 = new javax.swing.JLabel();
+        remedioCadastrarEspecie = new javax.swing.JTextField();
+        jLabel108 = new javax.swing.JLabel();
+        remedioCadastrarEstoque = new javax.swing.JTextField();
+        jLabel117 = new javax.swing.JLabel();
+        remedioCadastrarFornecedor = new javax.swing.JTextField();
+        jLabel118 = new javax.swing.JLabel();
+        remedioCadastrarOrientacao = new javax.swing.JTextField();
+        panelEditarRemedio = new javax.swing.JPanel();
+        title26 = new javax.swing.JLabel();
+        jLabel127 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal10 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal7 = new javax.swing.JButton();
+        jLabel128 = new javax.swing.JLabel();
+        jLabel129 = new javax.swing.JLabel();
+        remedioEditarUtilidade = new javax.swing.JTextField();
+        jLabel130 = new javax.swing.JLabel();
+        remedioEditarPreco = new javax.swing.JTextField();
+        remedioEditarNome = new javax.swing.JTextField();
+        jLabel131 = new javax.swing.JLabel();
+        remedioEditarEspecie = new javax.swing.JTextField();
+        jLabel132 = new javax.swing.JLabel();
+        remedioEditarEstoque = new javax.swing.JTextField();
+        jLabel133 = new javax.swing.JLabel();
+        remedioEditarFornecedor = new javax.swing.JTextField();
+        jLabel134 = new javax.swing.JLabel();
+        remedioEditarOrientacao = new javax.swing.JTextField();
         panelRoupa = new javax.swing.JPanel();
         title3 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -500,6 +542,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonEditarAgendamento2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        buttonEditarAgendamento9 = new javax.swing.JButton();
+        panelEditarRoupa = new javax.swing.JPanel();
+        title27 = new javax.swing.JLabel();
+        jLabel121 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal11 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal8 = new javax.swing.JButton();
+        jLabel136 = new javax.swing.JLabel();
+        roupaEditarTamanho = new javax.swing.JTextField();
+        jLabel137 = new javax.swing.JLabel();
+        roupaEditarPreco = new javax.swing.JTextField();
+        roupaEditarNome = new javax.swing.JTextField();
+        jLabel138 = new javax.swing.JLabel();
+        roupaEditarEspecie = new javax.swing.JTextField();
+        jLabel139 = new javax.swing.JLabel();
+        roupaEditarEstoque = new javax.swing.JTextField();
+        jLabel140 = new javax.swing.JLabel();
+        roupaEditarFornecedor = new javax.swing.JTextField();
+        jLabel141 = new javax.swing.JLabel();
+        roupaEditarCor = new javax.swing.JTextField();
+        jLabel142 = new javax.swing.JLabel();
+        panelCadastrarRoupa = new javax.swing.JPanel();
+        title25 = new javax.swing.JLabel();
+        jLabel119 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal9 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal6 = new javax.swing.JButton();
+        jLabel120 = new javax.swing.JLabel();
+        roupaCadastrarTamanho = new javax.swing.JTextField();
+        jLabel122 = new javax.swing.JLabel();
+        roupaCadastrarPreco = new javax.swing.JTextField();
+        roupaCadastrarNome = new javax.swing.JTextField();
+        jLabel123 = new javax.swing.JLabel();
+        roupaCadastrarEspecie = new javax.swing.JTextField();
+        jLabel124 = new javax.swing.JLabel();
+        roupaCadastrarEstoque = new javax.swing.JTextField();
+        jLabel125 = new javax.swing.JLabel();
+        roupaCadastrarFornecedor = new javax.swing.JTextField();
+        jLabel126 = new javax.swing.JLabel();
+        roupaCadastrarCor = new javax.swing.JTextField();
+        jLabel135 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2825,6 +2906,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonEditarAgendamento6.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento6.setForeground(new java.awt.Color(0, 204, 0));
+        buttonEditarAgendamento6.setText("Vender");
+        buttonEditarAgendamento6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBrinquedoLayout = new javax.swing.GroupLayout(panelBrinquedo);
         panelBrinquedo.setLayout(panelBrinquedoLayout);
         panelBrinquedoLayout.setHorizontalGroup(
@@ -2841,19 +2931,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agendamentosExibirAmanha4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(buttonCadastrarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(agendamentosExibirTodos4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelBrinquedoLayout.createSequentialGroup()
-                                .addGap(0, 127, Short.MAX_VALUE)
-                                .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirTodos4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonDeletarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBrinquedoLayout.createSequentialGroup()
                                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                                .addGap(0, 64, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelBrinquedoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane15)))
@@ -2877,9 +2969,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDeletarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCadastrarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                    .addComponent(buttonCadastrarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -3222,6 +3315,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonEditarAgendamento7.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento7.setForeground(new java.awt.Color(0, 204, 0));
+        buttonEditarAgendamento7.setText("Vender");
+        buttonEditarAgendamento7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRacaoLayout = new javax.swing.GroupLayout(panelRacao);
         panelRacao.setLayout(panelRacaoLayout);
         panelRacaoLayout.setHorizontalGroup(
@@ -3238,19 +3340,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agendamentosExibirAmanha5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(buttonCadastrarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(agendamentosExibirTodos5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRacaoLayout.createSequentialGroup()
-                                .addGap(0, 127, Short.MAX_VALUE)
-                                .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirTodos5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonDeletarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRacaoLayout.createSequentialGroup()
                                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRacaoLayout.createSequentialGroup()
+                                .addGap(0, 64, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelRacaoLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane16)))
@@ -3274,9 +3378,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDeletarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCadastrarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                    .addComponent(buttonCadastrarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -3640,6 +3745,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonEditarAgendamento8.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento8.setForeground(new java.awt.Color(0, 204, 0));
+        buttonEditarAgendamento8.setText("Vender");
+        buttonEditarAgendamento8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRemedioLayout = new javax.swing.GroupLayout(panelRemedio);
         panelRemedio.setLayout(panelRemedioLayout);
         panelRemedioLayout.setHorizontalGroup(
@@ -3656,19 +3770,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agendamentosExibirAmanha3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(buttonCadastrarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(agendamentosExibirTodos3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRemedioLayout.createSequentialGroup()
-                                .addGap(0, 127, Short.MAX_VALUE)
-                                .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirTodos3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonDeletarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRemedioLayout.createSequentialGroup()
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRemedioLayout.createSequentialGroup()
+                                .addGap(0, 64, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelRemedioLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane14)))
@@ -3692,13 +3808,286 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDeletarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCadastrarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                    .addComponent(buttonCadastrarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         panelContent.add(panelRemedio, "remedios");
+
+        title24.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title24.setText("Remédio");
+
+        jLabel103.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel103.setText("Cadastrar Remédio");
+
+        buttonCancelarCadastroAnimal8.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal8.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal8.setText("Cancelar");
+        buttonCancelarCadastroAnimal8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal8ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal5.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal5.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal5.setText("Cadastrar");
+        buttonEfetuarEditarAnimal5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal5ActionPerformed(evt);
+            }
+        });
+
+        jLabel104.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel104.setText("Utilidade");
+
+        jLabel105.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel105.setText("Orientação");
+
+        jLabel106.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel106.setText("Preço");
+
+        jLabel107.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel107.setText("Nome");
+
+        jLabel108.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel108.setText("Especie");
+
+        jLabel117.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel117.setText("Estoque");
+
+        jLabel118.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel118.setText("Fornecedor");
+
+        javax.swing.GroupLayout panelCadastrarRemedioLayout = new javax.swing.GroupLayout(panelCadastrarRemedio);
+        panelCadastrarRemedio.setLayout(panelCadastrarRemedioLayout);
+        panelCadastrarRemedioLayout.setHorizontalGroup(
+            panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title24, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarRemedioLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(remedioCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarUtilidade, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarOrientacao))
+                .addGap(57, 57, 57)
+                .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelCadastrarRemedioLayout.setVerticalGroup(
+            panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                        .addComponent(jLabel107)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel106)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel108)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel104)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioCadastrarUtilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel117)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelCadastrarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel105)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioCadastrarOrientacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCadastrarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel118)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelCadastrarRemedio, "cadastrarRemedio");
+
+        title26.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title26.setText("Remédio");
+
+        jLabel127.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel127.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel127.setText("Editar Remédio");
+
+        buttonCancelarCadastroAnimal10.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal10.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal10.setText("Cancelar");
+        buttonCancelarCadastroAnimal10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal10ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal7.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal7.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal7.setText("Salvar");
+        buttonEfetuarEditarAnimal7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal7ActionPerformed(evt);
+            }
+        });
+
+        jLabel128.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel128.setText("Utilidade");
+
+        jLabel129.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel129.setText("Orientação");
+
+        jLabel130.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel130.setText("Preço");
+
+        jLabel131.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel131.setText("Nome");
+
+        jLabel132.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel132.setText("Especie");
+
+        jLabel133.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel133.setText("Estoque");
+
+        jLabel134.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel134.setText("Fornecedor");
+
+        javax.swing.GroupLayout panelEditarRemedioLayout = new javax.swing.GroupLayout(panelEditarRemedio);
+        panelEditarRemedio.setLayout(panelEditarRemedioLayout);
+        panelEditarRemedioLayout.setHorizontalGroup(
+            panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                        .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title26, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel127, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarRemedioLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(remedioEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel128, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarUtilidade, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jLabel129, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarOrientacao))
+                .addGap(57, 57, 57)
+                .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remedioEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelEditarRemedioLayout.setVerticalGroup(
+            panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                        .addComponent(jLabel131)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel130)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel132)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(remedioEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                        .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel128)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioEditarUtilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel133)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelEditarRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel129)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioEditarOrientacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarRemedioLayout.createSequentialGroup()
+                                .addComponent(jLabel134)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(remedioEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelEditarRemedio, "editarRemedio");
 
         title3.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -3787,6 +4176,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        buttonEditarAgendamento9.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento9.setForeground(new java.awt.Color(51, 204, 0));
+        buttonEditarAgendamento9.setText("Vender");
+        buttonEditarAgendamento9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRoupaLayout = new javax.swing.GroupLayout(panelRoupa);
         panelRoupa.setLayout(panelRoupaLayout);
         panelRoupaLayout.setHorizontalGroup(
@@ -3803,19 +4201,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(agendamentosExibirAmanha2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(buttonCadastrarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(agendamentosExibirTodos2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRoupaLayout.createSequentialGroup()
-                                .addGap(0, 127, Short.MAX_VALUE)
-                                .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirTodos2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonDeletarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRoupaLayout.createSequentialGroup()
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRoupaLayout.createSequentialGroup()
+                                .addGap(0, 64, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelRoupaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane13)))
@@ -3839,13 +4239,290 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonDeletarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCadastrarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                    .addComponent(buttonCadastrarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         panelContent.add(panelRoupa, "roupas");
+
+        title27.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title27.setText("Roupa");
+
+        jLabel121.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel121.setText("Editar Roupa");
+
+        buttonCancelarCadastroAnimal11.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal11.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal11.setText("Cancelar");
+        buttonCancelarCadastroAnimal11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal11ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal8.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal8.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal8.setText("Salvar");
+        buttonEfetuarEditarAnimal8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal8ActionPerformed(evt);
+            }
+        });
+
+        jLabel136.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel136.setText("Tamanho");
+
+        jLabel137.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel137.setText("Preço");
+
+        jLabel138.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel138.setText("Nome");
+
+        jLabel139.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel139.setText("Especie");
+
+        jLabel140.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel140.setText("Estoque");
+
+        jLabel141.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel141.setText("Fornecedor");
+
+        jLabel142.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel142.setText("Cor");
+
+        javax.swing.GroupLayout panelEditarRoupaLayout = new javax.swing.GroupLayout(panelEditarRoupa);
+        panelEditarRoupa.setLayout(panelEditarRoupaLayout);
+        panelEditarRoupaLayout.setHorizontalGroup(
+            panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title27, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel121, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarRoupaLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roupaEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roupaEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roupaEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(roupaEditarCor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel136, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaEditarTamanho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelEditarRoupaLayout.setVerticalGroup(
+            panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                        .addComponent(jLabel138)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel137)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel139)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel136)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaEditarTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel140)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelEditarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel141)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel142)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaEditarCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelEditarRoupa, "editarRoupa");
+
+        title25.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title25.setText("Roupa");
+
+        jLabel119.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel119.setText("Cadastrar Roupa");
+
+        buttonCancelarCadastroAnimal9.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal9.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal9.setText("Cancelar");
+        buttonCancelarCadastroAnimal9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal9ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal6.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal6.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal6.setText("Cadastrar");
+        buttonEfetuarEditarAnimal6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal6ActionPerformed(evt);
+            }
+        });
+
+        jLabel120.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel120.setText("Tamanho");
+
+        jLabel122.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel122.setText("Preço");
+
+        jLabel123.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel123.setText("Nome");
+
+        jLabel124.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel124.setText("Especie");
+
+        jLabel125.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel125.setText("Estoque");
+
+        jLabel126.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel126.setText("Fornecedor");
+
+        jLabel135.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel135.setText("Cor");
+
+        javax.swing.GroupLayout panelCadastrarRoupaLayout = new javax.swing.GroupLayout(panelCadastrarRoupa);
+        panelCadastrarRoupa.setLayout(panelCadastrarRoupaLayout);
+        panelCadastrarRoupaLayout.setHorizontalGroup(
+            panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title25, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel119, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarRoupaLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(roupaCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roupaCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roupaCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(roupaCadastrarCor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel120, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaCadastrarTamanho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roupaCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelCadastrarRoupaLayout.setVerticalGroup(
+            panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                        .addComponent(jLabel123)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel122)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaCadastrarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel124)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roupaCadastrarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel120)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaCadastrarTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel125)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaCadastrarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelCadastrarRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel126)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaCadastrarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelCadastrarRoupaLayout.createSequentialGroup()
+                                .addComponent(jLabel135)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roupaCadastrarCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelCadastrarRoupa, "cadastrarRoupa");
 
         getContentPane().add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 950, 610));
 
@@ -3956,7 +4633,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void loadTableRoupas(){
-        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Tamanho", "Cor", "Especie"}, 0);
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Tamanho", "Cor", "Especie", "Estoque"}, 0);
         
         ItemCtrl ic = new ItemCtrl();
         
@@ -3973,7 +4650,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.getPreco(),
                     f.getTamanho(),
                     f.getCor(),
-                    f.getEspecie()
+                    f.getEspecie(),
+                    f.getEstoque()
                 });
             }
             
@@ -3982,7 +4660,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void loadTableRacoes(){
-        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Sabor", "Idade Recomendada", "Especie"}, 0);
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Sabor", "Idade Recomendada", "Especie", "Estoque"}, 0);
         
         ItemCtrl ic = new ItemCtrl();
         
@@ -3999,7 +4677,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.getPreco(),
                     f.getSabor(),
                     f.getIdade_recomendada(),
-                    f.getEspecie()
+                    f.getEspecie(),
+                    f.getEstoque()
                 });
             }
         }
@@ -4007,7 +4686,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void loadTableRemedios(){
-        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Utilidade", "Orientação"}, 0);
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Utilidade", "Orientação", "Estoque"}, 0);
         
         ItemCtrl ic = new ItemCtrl();
         
@@ -4023,7 +4702,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.getNome(),
                     f.getPreco(),
                     f.getUtilidade(),
-                    f.getOrientacao()
+                    f.getOrientacao(),
+                    f.getEstoque()
                 });
             }
         }
@@ -4031,7 +4711,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void loadTableBrinquedos(){
-        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Espécie", "Material", "Fornecedor"}, 0);
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Espécie", "Material", "Estoque"}, 0);
         
         ItemCtrl ic = new ItemCtrl();
         
@@ -4048,7 +4728,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.getPreco(),
                     f.getEspecie(),
                     f.getMaterial(),
-                    f.getFornecedor()
+                    f.getEstoque()
                 });
             }
         }
@@ -4970,6 +5650,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCadastrarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento2ActionPerformed
         // TODO add your handling code here:
+        
+        layout.show(panelContent, "cadastrarRoupa");
     }//GEN-LAST:event_buttonCadastrarAgendamento2ActionPerformed
 
     private void buttonDeletarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento2ActionPerformed
@@ -4987,6 +5669,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonEditarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento2ActionPerformed
         // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+        
+        int linhaSelecionada = tableRoupas.getSelectedRow();
+        
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableRoupas.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            this.roupaAnterior = (Roupa) fc.exibirProdutos(id);
+            
+            roupaEditarNome.setText(roupaAnterior.getNome());
+            roupaEditarEspecie.setText(roupaAnterior.getEspecie());
+            roupaEditarEstoque.setText(roupaAnterior.getEstoque()+"");
+            roupaEditarFornecedor.setText(roupaAnterior.getFornecedor());
+            roupaEditarPreco.setText(roupaAnterior.getPreco()+"");
+            roupaEditarTamanho.setText(roupaAnterior.getTamanho()+"");
+            roupaEditarCor.setText(roupaAnterior.getCor()+"");
+
+            layout.show(panelContent, "editarRoupa");
+        }
     }//GEN-LAST:event_buttonEditarAgendamento2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -5015,6 +5716,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCadastrarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento3ActionPerformed
         // TODO add your handling code here:
+        layout.show(panelContent, "cadastrarRemedio");
     }//GEN-LAST:event_buttonCadastrarAgendamento3ActionPerformed
 
     private void buttonDeletarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento3ActionPerformed
@@ -5032,6 +5734,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonEditarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento3ActionPerformed
         // TODO add your handling code here:
+        int linhaSelecionada = tableRemedios.getSelectedRow();
+        
+        ItemCtrl fc = new ItemCtrl();
+        
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableRemedios.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            this.remedioAnterior = (Remedio) fc.exibirProdutos(id);
+            System.out.println(remedioAnterior);
+            remedioEditarNome.setText(remedioAnterior.getNome());
+            remedioEditarEstoque.setText(remedioAnterior.getEstoque()+"");
+            remedioEditarFornecedor.setText(remedioAnterior.getFornecedor());
+            remedioEditarPreco.setText(remedioAnterior.getPreco()+"");
+            remedioEditarUtilidade.setText(remedioAnterior.getUtilidade());
+            remedioEditarOrientacao.setText(remedioAnterior.getOrientacao());
+            layout.show(panelContent, "editarRemedio");
+        }
     }//GEN-LAST:event_buttonEditarAgendamento3ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -5218,15 +5937,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         ItemCtrl ir = new ItemCtrl();
-        int estoque = Integer.parseInt(brinquedoEditarEstoque.getText());
-        String fornecedor = brinquedoEditarFornecedor.getText();
+        int estoque = Integer.parseInt(brinquedoCadastrarEstoque.getText());
+        brinquedoCadastrarEstoque.setText("");
+        String fornecedor = brinquedoCadastrarFornecedor.getText();
+        brinquedoCadastrarFornecedor.setText("");
         int id = 0;
-        String nome = brinquedoEditarNome.getText();
-        float preco = Float.parseFloat(brinquedoEditarPreco.getText());
+        String nome = brinquedoCadastrarNome.getText();
+        brinquedoCadastrarNome.setText("");
+        float preco = Float.parseFloat(brinquedoCadastrarPreco.getText());
+        brinquedoCadastrarPreco.setText("");
         String tipo = "brinquedo";
         boolean disponivel = true;
-        String especie = brinquedoEditarEspecie.getText();
-        String material = brinquedoEditarMaterial.getText();
+        String especie = brinquedoCadastrarEspecie.getText();
+        brinquedoCadastrarEspecie.setText("");
+        String material = brinquedoCadastrarMaterial.getText();
+        brinquedoCadastrarMaterial.setText("");
         
         ir.cadastrarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie, material);
         
@@ -5323,6 +6048,236 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonEfetuarEditarAnimal4ActionPerformed
 
+    private void buttonCancelarCadastroAnimal8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal8ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal8ActionPerformed
+
+    private void buttonEfetuarEditarAnimal5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal5ActionPerformed
+        // TODO add your handling code here:
+        int id = 0;
+        String nome = remedioCadastrarNome.getText();
+        float preco = Float.parseFloat(remedioCadastrarPreco.getText()); 
+        int estoque = Integer.parseInt(remedioCadastrarEstoque.getText()); 
+        String fornecedor = remedioCadastrarFornecedor.getText();
+        String tipo = "remedio";
+        boolean disponivel = true;
+        String utilidade = remedioCadastrarUtilidade.getText();
+        String orientacao = remedioCadastrarOrientacao.getText();
+        
+        ItemCtrl ir = new ItemCtrl();
+        
+        ir.cadastraRemedio(estoque, fornecedor, id, nome, preco, tipo, disponivel, utilidade, orientacao);
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+        
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal5ActionPerformed
+
+    private void buttonCancelarCadastroAnimal10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal10ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal10ActionPerformed
+
+    private void buttonEfetuarEditarAnimal7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal7ActionPerformed
+
+        ItemCtrl ic = new ItemCtrl();
+        int id = remedioAnterior.getId();
+        String nome = remedioEditarNome.getText();
+        float preco = Float.parseFloat(remedioEditarPreco.getText()); 
+        int estoque = Integer.parseInt(remedioEditarEstoque.getText()); 
+        String fornecedor = remedioEditarFornecedor.getText();
+        String tipo = "remedio";
+        boolean disponivel = true;
+        String utilidade = remedioEditarUtilidade.getText();
+        String orientacao = remedioEditarOrientacao.getText();
+        
+        ItemCtrl ir = new ItemCtrl();
+        
+        ir.atualizarRemedio(estoque, fornecedor, id, nome, preco, tipo, disponivel, utilidade, orientacao);
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+        
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal7ActionPerformed
+
+    private void buttonCancelarCadastroAnimal9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal9ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal9ActionPerformed
+
+    private void buttonEfetuarEditarAnimal6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal6ActionPerformed
+        // TODO add your handling code here:
+        int estoque = Integer.parseInt(roupaCadastrarEstoque.getText());
+        roupaCadastrarEstoque.setText("");
+        String fornecedor = roupaCadastrarFornecedor.getText();
+        roupaCadastrarFornecedor.setText("");
+        int id = 0;
+        String nome = roupaCadastrarNome.getText();
+        roupaCadastrarNome.setText("");
+        float preco = Float.parseFloat(roupaCadastrarPreco.getText());
+        roupaCadastrarPreco.setText("");
+        String tipo = "roupa";
+        boolean disponivel = true;
+        String tamanho = roupaCadastrarTamanho.getText();
+        roupaCadastrarTamanho.setText("");
+        String especie = roupaCadastrarEspecie.getText();
+        roupaCadastrarEspecie.setText("");
+        String cor = roupaCadastrarCor.getText();
+        roupaCadastrarCor.setText("");
+        
+        ItemCtrl ir = new ItemCtrl();
+        ir.cadastrarRoupa(estoque, fornecedor, id, nome, preco, tipo, disponivel, tamanho, especie, cor);
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal6ActionPerformed
+
+    private void buttonCancelarCadastroAnimal11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal11ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal11ActionPerformed
+
+    private void buttonEfetuarEditarAnimal8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal8ActionPerformed
+        // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+        
+        int estoque = Integer.parseInt(roupaEditarEstoque.getText());
+        String fornecedor = roupaEditarFornecedor.getText();
+        int id = roupaAnterior.getId();
+        String nome = roupaEditarNome.getText();
+        float preco = Float.parseFloat(roupaEditarPreco.getText());
+        String tipo = "roupa";
+        boolean disponivel = true;
+        String tamanho = roupaEditarTamanho.getText();
+        String especie = roupaEditarEspecie.getText();
+        String cor = roupaEditarCor.getText();
+        
+        fc.atualizarRoupa(estoque, fornecedor, id, nome, preco, tipo, disponivel, tamanho, especie, cor);
+
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+        
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal8ActionPerformed
+
+    private void buttonEditarAgendamento6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento6ActionPerformed
+        // TODO add your handling code here:
+        int linhaSelecionada = tableBrinquedos.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            ItemCtrl fc = new ItemCtrl();
+            
+            DefaultTableModel model = (DefaultTableModel) tableBrinquedos.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            
+            Brinquedo m = (Brinquedo) fc.exibirProdutos(id);
+            
+            int estoque = m.getEstoque();
+            
+            int qtdd = Integer.parseInt( JOptionPane.showInputDialog("Qual a quantidade será vendida?"));
+            
+            if(qtdd > estoque){
+                JOptionPane.showMessageDialog(null, "Estoque insuficiente! Favor contactar o fornecedor "+m.getFornecedor());
+            }else if(qtdd == estoque){
+                m.setDisponivel(false);
+                m.setEstoque(0);
+                JOptionPane.showMessageDialog(null, "O Estoque de "+m.getNome()+" acabou! Favor contactar o fornecedor "+m.getFornecedor());
+            }else{
+                m.setEstoque(estoque-qtdd);
+            }
+            
+            fc.atualizarBrinquedo(m);
+            
+            loadTableBrinquedos();
+        }
+    }//GEN-LAST:event_buttonEditarAgendamento6ActionPerformed
+
+    private void buttonEditarAgendamento7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento7ActionPerformed
+        int linhaSelecionada = tableRacoes.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            ItemCtrl fc = new ItemCtrl();
+            
+            DefaultTableModel model = (DefaultTableModel) tableRacoes.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            
+            Racao m = (Racao) fc.exibirProdutos(id);
+            
+            int estoque = m.getEstoque();
+            
+            int qtdd = Integer.parseInt( JOptionPane.showInputDialog("Qual a quantidade será vendida?"));
+            
+            if(qtdd > estoque){
+                JOptionPane.showMessageDialog(null, "Estoque insuficiente! Favor contactar o fornecedor "+m.getFornecedor());
+            }else if(qtdd == estoque){
+                m.setDisponivel(false);
+                m.setEstoque(0);
+                JOptionPane.showMessageDialog(null, "O Estoque de "+m.getNome()+" acabou! Favor contactar o fornecedor "+m.getFornecedor());
+            }else{
+                m.setEstoque(estoque-qtdd);
+            }
+            
+            fc.atualizarRacao(m);
+            
+            loadTableRacoes();
+        }
+    }//GEN-LAST:event_buttonEditarAgendamento7ActionPerformed
+
+    private void buttonEditarAgendamento8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento8ActionPerformed
+        int linhaSelecionada = tableRemedios.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            ItemCtrl fc = new ItemCtrl();
+            
+            DefaultTableModel model = (DefaultTableModel) tableRemedios.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            
+            Remedio m = (Remedio) fc.exibirProdutos(id);
+            
+            int estoque = m.getEstoque();
+            
+            int qtdd = Integer.parseInt( JOptionPane.showInputDialog("Qual a quantidade será vendida?"));
+            
+            if(qtdd > estoque){
+                JOptionPane.showMessageDialog(null, "Estoque insuficiente! Favor contactar o fornecedor "+m.getFornecedor());
+            }else if(qtdd == estoque){
+                m.setDisponivel(false);
+                m.setEstoque(0);
+                JOptionPane.showMessageDialog(null, "O Estoque de "+m.getNome()+" acabou! Favor contactar o fornecedor "+m.getFornecedor());
+            }else{
+                m.setEstoque(estoque-qtdd);
+            }
+            
+            fc.atualizarRemedio(m);
+            
+            loadTableRemedios();
+        }
+    }//GEN-LAST:event_buttonEditarAgendamento8ActionPerformed
+
+    private void buttonEditarAgendamento9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento9ActionPerformed
+        int linhaSelecionada = tableRoupas.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            ItemCtrl fc = new ItemCtrl();
+            
+            DefaultTableModel model = (DefaultTableModel) tableRoupas.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            
+            Roupa m = (Roupa) fc.exibirProdutos(id);
+            
+            int estoque = m.getEstoque();
+            
+            int qtdd = Integer.parseInt( JOptionPane.showInputDialog("Qual a quantidade será vendida?"));
+            
+            if(qtdd > estoque){
+                JOptionPane.showMessageDialog(null, "Estoque insuficiente! Favor contactar o fornecedor "+m.getFornecedor());
+            }else if(qtdd == estoque){
+                m.setDisponivel(false);
+                m.setEstoque(0);
+                JOptionPane.showMessageDialog(null, "O Estoque de "+m.getNome()+" acabou! Favor contactar o fornecedor "+m.getFornecedor());
+            }else{
+                m.setEstoque(estoque-qtdd);
+            }
+            
+            fc.atualizarRoupa(m);
+            
+            loadTableRoupas();
+        }
+    }//GEN-LAST:event_buttonEditarAgendamento9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -5401,12 +6356,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarCadastroAgendamento;
     private javax.swing.JButton buttonCancelarCadastroAnimal;
     private javax.swing.JButton buttonCancelarCadastroAnimal1;
+    private javax.swing.JButton buttonCancelarCadastroAnimal10;
+    private javax.swing.JButton buttonCancelarCadastroAnimal11;
     private javax.swing.JButton buttonCancelarCadastroAnimal2;
     private javax.swing.JButton buttonCancelarCadastroAnimal3;
     private javax.swing.JButton buttonCancelarCadastroAnimal4;
     private javax.swing.JButton buttonCancelarCadastroAnimal5;
     private javax.swing.JButton buttonCancelarCadastroAnimal6;
     private javax.swing.JButton buttonCancelarCadastroAnimal7;
+    private javax.swing.JButton buttonCancelarCadastroAnimal8;
+    private javax.swing.JButton buttonCancelarCadastroAnimal9;
     private javax.swing.JButton buttonCancelarCadastroFuncionario;
     private javax.swing.JButton buttonCancelarCadastroFuncionario1;
     private javax.swing.JButton buttonCancelarCadastroFuncionario2;
@@ -5428,6 +6387,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonEditarAgendamento3;
     private javax.swing.JButton buttonEditarAgendamento4;
     private javax.swing.JButton buttonEditarAgendamento5;
+    private javax.swing.JButton buttonEditarAgendamento6;
+    private javax.swing.JButton buttonEditarAgendamento7;
+    private javax.swing.JButton buttonEditarAgendamento8;
+    private javax.swing.JButton buttonEditarAgendamento9;
     private javax.swing.JButton buttonEditarCliente;
     private javax.swing.JButton buttonEditarClienteAnimal;
     private javax.swing.JButton buttonEditarFuncionario;
@@ -5445,6 +6408,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonEfetuarEditarAnimal2;
     private javax.swing.JButton buttonEfetuarEditarAnimal3;
     private javax.swing.JButton buttonEfetuarEditarAnimal4;
+    private javax.swing.JButton buttonEfetuarEditarAnimal5;
+    private javax.swing.JButton buttonEfetuarEditarAnimal6;
+    private javax.swing.JButton buttonEfetuarEditarAnimal7;
+    private javax.swing.JButton buttonEfetuarEditarAnimal8;
     private javax.swing.JButton buttonEfetuarEditarFuncionario;
     private javax.swing.JButton buttonFuncionarios;
     private javax.swing.JButton buttonInicio;
@@ -5477,6 +6444,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
@@ -5486,9 +6459,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
+    private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel127;
+    private javax.swing.JLabel jLabel128;
+    private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel130;
+    private javax.swing.JLabel jLabel131;
+    private javax.swing.JLabel jLabel132;
+    private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel134;
+    private javax.swing.JLabel jLabel135;
+    private javax.swing.JLabel jLabel136;
+    private javax.swing.JLabel jLabel137;
+    private javax.swing.JLabel jLabel138;
+    private javax.swing.JLabel jLabel139;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel140;
+    private javax.swing.JLabel jLabel141;
+    private javax.swing.JLabel jLabel142;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -5613,6 +6612,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelCadastrarCliente;
     private javax.swing.JPanel panelCadastrarFuncionario;
     private javax.swing.JPanel panelCadastrarRacao;
+    private javax.swing.JPanel panelCadastrarRemedio;
+    private javax.swing.JPanel panelCadastrarRoupa;
     private javax.swing.JPanel panelCadastrarServico;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelContent;
@@ -5622,6 +6623,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelEditarCliente;
     private javax.swing.JPanel panelEditarFuncionario;
     private javax.swing.JPanel panelEditarRacao;
+    private javax.swing.JPanel panelEditarRemedio;
+    private javax.swing.JPanel panelEditarRoupa;
     private javax.swing.JPanel panelEditarServico;
     private javax.swing.JPanel panelFuncionarios;
     private javax.swing.JPanel panelInicio;
@@ -5646,6 +6649,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField racoesEditarNome;
     private javax.swing.JTextField racoesEditarPreco;
     private javax.swing.JTextField racoesEditarSabor;
+    private javax.swing.JTextField remedioCadastrarEspecie;
+    private javax.swing.JTextField remedioCadastrarEstoque;
+    private javax.swing.JTextField remedioCadastrarFornecedor;
+    private javax.swing.JTextField remedioCadastrarNome;
+    private javax.swing.JTextField remedioCadastrarOrientacao;
+    private javax.swing.JTextField remedioCadastrarPreco;
+    private javax.swing.JTextField remedioCadastrarUtilidade;
+    private javax.swing.JTextField remedioEditarEspecie;
+    private javax.swing.JTextField remedioEditarEstoque;
+    private javax.swing.JTextField remedioEditarFornecedor;
+    private javax.swing.JTextField remedioEditarNome;
+    private javax.swing.JTextField remedioEditarOrientacao;
+    private javax.swing.JTextField remedioEditarPreco;
+    private javax.swing.JTextField remedioEditarUtilidade;
+    private javax.swing.JTextField roupaCadastrarCor;
+    private javax.swing.JTextField roupaCadastrarEspecie;
+    private javax.swing.JTextField roupaCadastrarEstoque;
+    private javax.swing.JTextField roupaCadastrarFornecedor;
+    private javax.swing.JTextField roupaCadastrarNome;
+    private javax.swing.JTextField roupaCadastrarPreco;
+    private javax.swing.JTextField roupaCadastrarTamanho;
+    private javax.swing.JTextField roupaEditarCor;
+    private javax.swing.JTextField roupaEditarEspecie;
+    private javax.swing.JTextField roupaEditarEstoque;
+    private javax.swing.JTextField roupaEditarFornecedor;
+    private javax.swing.JTextField roupaEditarNome;
+    private javax.swing.JTextField roupaEditarPreco;
+    private javax.swing.JTextField roupaEditarTamanho;
     private javax.swing.JSpinner spinnerAnoCadastrarAgendamento;
     private javax.swing.JSpinner spinnerAnoEditarAgendamento;
     private javax.swing.JSpinner spinnerDiaCadastrarAgendamento;
@@ -5707,6 +6738,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title21;
     private javax.swing.JLabel title22;
     private javax.swing.JLabel title23;
+    private javax.swing.JLabel title24;
+    private javax.swing.JLabel title25;
+    private javax.swing.JLabel title26;
+    private javax.swing.JLabel title27;
     private javax.swing.JLabel title3;
     private javax.swing.JLabel title4;
     private javax.swing.JLabel title5;

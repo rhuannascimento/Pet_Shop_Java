@@ -21,4 +21,12 @@ public class AtualizarBrinquedo {
         ir.update(i);
 
     }
+    
+    public AtualizarBrinquedo(Brinquedo b){
+            
+        Item i = b;
+        ItemRep ir = new ItemRep();
+        ir.update(i);
+
+    }
 }

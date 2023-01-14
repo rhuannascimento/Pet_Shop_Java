@@ -18,4 +18,11 @@ public class AtualizarRoupa {
         ItemRep ir = new ItemRep();
         ir.update(i);
     }
+    
+    public AtualizarRoupa(Roupa r){
+        Item i;
+        i = r;
+        ItemRep ir = new ItemRep();
+        ir.update(i);
+    }
 }
