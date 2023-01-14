@@ -10,10 +10,14 @@ import com.mycompany.petshop.controller.FuncionarioCtrl;
 import com.mycompany.petshop.controller.ItemCtrl;
 import com.mycompany.petshop.model.classes.Agendamento;
 import com.mycompany.petshop.model.classes.Animal;
+import com.mycompany.petshop.model.classes.Brinquedo;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Item;
 import com.mycompany.petshop.model.classes.Pessoa;
+import com.mycompany.petshop.model.classes.Racao;
+import com.mycompany.petshop.model.classes.Remedio;
+import com.mycompany.petshop.model.classes.Roupa;
 import com.mycompany.petshop.model.classes.Servico;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -68,6 +72,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tableClientesAnimais.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableClientesPessoas.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableServicos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableBrinquedos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableRacoes.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableRemedios.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableRoupas.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableMercadorias.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         
         tableAgendamentos.getTableHeader().setOpaque(false);
         tableSelectServicoCadastrarAgendamento.getTableHeader().setOpaque(false);
@@ -76,6 +85,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tableClientesAnimais.getTableHeader().setOpaque(false);
         tableClientesPessoas.getTableHeader().setOpaque(false);
         tableServicos.getTableHeader().setOpaque(false);
+        tableBrinquedos.getTableHeader().setOpaque(false);
+        tableRacoes.getTableHeader().setOpaque(false);
+        tableRemedios.getTableHeader().setOpaque(false);
+        tableRoupas.getTableHeader().setOpaque(false);
+        tableMercadorias.getTableHeader().setOpaque(false);
         
         tableAgendamentos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableSelectServicoCadastrarAgendamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -84,6 +98,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tableClientesAnimais.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableClientesPessoas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableBrinquedos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableRacoes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableRemedios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableRoupas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableMercadorias.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
     }
     
@@ -344,16 +363,66 @@ public class TelaPrincipal extends javax.swing.JFrame {
         painelMercadorias = new javax.swing.JPanel();
         title2 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        tableAgendamentos1 = new javax.swing.JTable();
+        tableMercadorias = new javax.swing.JTable();
         jLabel70 = new javax.swing.JLabel();
         agendamentosExibirHoje1 = new javax.swing.JButton();
         agendamentosExibirAmanha1 = new javax.swing.JButton();
         agendamentosExibirTodos1 = new javax.swing.JButton();
-        buttonCadastrarAgendamento1 = new javax.swing.JButton();
         buttonDeletarAgendamento1 = new javax.swing.JButton();
-        buttonEditarAgendamento1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        panelBrinquedo = new javax.swing.JPanel();
+        title17 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        tableBrinquedos = new javax.swing.JTable();
+        jLabel74 = new javax.swing.JLabel();
+        agendamentosExibirHoje4 = new javax.swing.JButton();
+        agendamentosExibirAmanha4 = new javax.swing.JButton();
+        agendamentosExibirTodos4 = new javax.swing.JButton();
+        buttonCadastrarAgendamento4 = new javax.swing.JButton();
+        buttonDeletarAgendamento4 = new javax.swing.JButton();
+        buttonEditarAgendamento4 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        panelRacao = new javax.swing.JPanel();
+        title19 = new javax.swing.JLabel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        tableRacoes = new javax.swing.JTable();
+        jLabel75 = new javax.swing.JLabel();
+        agendamentosExibirHoje5 = new javax.swing.JButton();
+        agendamentosExibirAmanha5 = new javax.swing.JButton();
+        agendamentosExibirTodos5 = new javax.swing.JButton();
+        buttonCadastrarAgendamento5 = new javax.swing.JButton();
+        buttonDeletarAgendamento5 = new javax.swing.JButton();
+        buttonEditarAgendamento5 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        panelRemedio = new javax.swing.JPanel();
+        title4 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        tableRemedios = new javax.swing.JTable();
+        jLabel73 = new javax.swing.JLabel();
+        agendamentosExibirHoje3 = new javax.swing.JButton();
+        agendamentosExibirAmanha3 = new javax.swing.JButton();
+        agendamentosExibirTodos3 = new javax.swing.JButton();
+        buttonCadastrarAgendamento3 = new javax.swing.JButton();
+        buttonDeletarAgendamento3 = new javax.swing.JButton();
+        buttonEditarAgendamento3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        panelRoupa = new javax.swing.JPanel();
+        title3 = new javax.swing.JLabel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        tableRoupas = new javax.swing.JTable();
+        jLabel72 = new javax.swing.JLabel();
+        agendamentosExibirHoje2 = new javax.swing.JButton();
+        agendamentosExibirAmanha2 = new javax.swing.JButton();
+        agendamentosExibirTodos2 = new javax.swing.JButton();
+        buttonCadastrarAgendamento2 = new javax.swing.JButton();
+        buttonDeletarAgendamento2 = new javax.swing.JButton();
+        buttonEditarAgendamento2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2471,10 +2540,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         title2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title2.setText("Início");
+        title2.setText("Mercadorias");
 
-        tableAgendamentos1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        tableAgendamentos1.setModel(new javax.swing.table.DefaultTableModel(
+        tableMercadorias.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableMercadorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -2482,16 +2551,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             }
         ));
-        tableAgendamentos1.setFocusable(false);
-        tableAgendamentos1.setRowHeight(32);
-        tableAgendamentos1.setSelectionBackground(new java.awt.Color(81, 81, 81));
-        tableAgendamentos1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tableAgendamentos1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane11.setViewportView(tableAgendamentos1);
+        tableMercadorias.setFocusable(false);
+        tableMercadorias.setRowHeight(32);
+        tableMercadorias.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableMercadorias.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableMercadorias.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(tableMercadorias);
 
         jLabel70.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel70.setText("Agendamentos");
+        jLabel70.setText("Mercadorias");
 
         agendamentosExibirHoje1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
         agendamentosExibirHoje1.setText("Roupas");
@@ -2517,28 +2586,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        buttonCadastrarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        buttonCadastrarAgendamento1.setText("Cadastrar Novo");
-        buttonCadastrarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCadastrarAgendamento1ActionPerformed(evt);
-            }
-        });
-
         buttonDeletarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
         buttonDeletarAgendamento1.setForeground(new java.awt.Color(197, 0, 0));
         buttonDeletarAgendamento1.setText("Deletar");
         buttonDeletarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonDeletarAgendamento1ActionPerformed(evt);
-            }
-        });
-
-        buttonEditarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        buttonEditarAgendamento1.setText("Editar");
-        buttonEditarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditarAgendamento1ActionPerformed(evt);
             }
         });
 
@@ -2550,6 +2603,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton4.setText("Tudo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelMercadoriasLayout = new javax.swing.GroupLayout(painelMercadorias);
         painelMercadorias.setLayout(painelMercadoriasLayout);
@@ -2561,24 +2619,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(painelMercadoriasLayout.createSequentialGroup()
-                        .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelMercadoriasLayout.createSequentialGroup()
-                                .addComponent(agendamentosExibirHoje1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(agendamentosExibirAmanha1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buttonCadastrarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(agendamentosExibirHoje1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirAmanha1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(agendamentosExibirTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelMercadoriasLayout.createSequentialGroup()
-                                .addGap(0, 127, Short.MAX_VALUE)
-                                .addComponent(buttonEditarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(buttonDeletarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(painelMercadoriasLayout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelMercadoriasLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -2602,14 +2655,599 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(agendamentosExibirTodos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonDeletarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonCadastrarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addComponent(buttonDeletarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         panelContent.add(painelMercadorias, "mercadorias");
+
+        title17.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title17.setText("Mercadorias");
+
+        tableBrinquedos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableBrinquedos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableBrinquedos.setFocusable(false);
+        tableBrinquedos.setRowHeight(32);
+        tableBrinquedos.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableBrinquedos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableBrinquedos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane15.setViewportView(tableBrinquedos);
+
+        jLabel74.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel74.setText("Brinquedos");
+
+        agendamentosExibirHoje4.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirHoje4.setText("Roupas");
+        agendamentosExibirHoje4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirHoje4ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirAmanha4.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirAmanha4.setText("Rações");
+        agendamentosExibirAmanha4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirAmanha4ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirTodos4.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirTodos4.setText("Remédios");
+        agendamentosExibirTodos4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirTodos4ActionPerformed(evt);
+            }
+        });
+
+        buttonCadastrarAgendamento4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarAgendamento4.setText("Cadastrar Novo");
+        buttonCadastrarAgendamento4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarAgendamento4ActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarAgendamento4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarAgendamento4.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarAgendamento4.setText("Deletar");
+        buttonDeletarAgendamento4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarAgendamento4ActionPerformed(evt);
+            }
+        });
+
+        buttonEditarAgendamento4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento4.setText("Editar");
+        buttonEditarAgendamento4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento4ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("Brinquedos");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("Tudo");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBrinquedoLayout = new javax.swing.GroupLayout(panelBrinquedo);
+        panelBrinquedo.setLayout(panelBrinquedoLayout);
+        panelBrinquedoLayout.setHorizontalGroup(
+            panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel74, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                        .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                                .addComponent(agendamentosExibirHoje4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirAmanha4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonCadastrarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirTodos4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                                .addGap(0, 127, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane15)))
+                .addContainerGap())
+        );
+        panelBrinquedoLayout.setVerticalGroup(
+            panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirAmanha4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirHoje4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirTodos4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEditarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCadastrarAgendamento4, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panelContent.add(panelBrinquedo, "brinquedos");
+
+        title19.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title19.setText("Mercadorias");
+
+        tableRacoes.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableRacoes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableRacoes.setFocusable(false);
+        tableRacoes.setRowHeight(32);
+        tableRacoes.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableRacoes.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableRacoes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane16.setViewportView(tableRacoes);
+
+        jLabel75.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel75.setText("Rações");
+
+        agendamentosExibirHoje5.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirHoje5.setText("Roupas");
+        agendamentosExibirHoje5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirHoje5ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirAmanha5.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirAmanha5.setText("Rações");
+        agendamentosExibirAmanha5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirAmanha5ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirTodos5.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirTodos5.setText("Remédios");
+        agendamentosExibirTodos5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirTodos5ActionPerformed(evt);
+            }
+        });
+
+        buttonCadastrarAgendamento5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarAgendamento5.setText("Cadastrar Novo");
+        buttonCadastrarAgendamento5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarAgendamento5ActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarAgendamento5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarAgendamento5.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarAgendamento5.setText("Deletar");
+        buttonDeletarAgendamento5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarAgendamento5ActionPerformed(evt);
+            }
+        });
+
+        buttonEditarAgendamento5.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento5.setText("Editar");
+        buttonEditarAgendamento5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento5ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("Brinquedos");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setText("Tudo");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRacaoLayout = new javax.swing.GroupLayout(panelRacao);
+        panelRacao.setLayout(panelRacaoLayout);
+        panelRacaoLayout.setHorizontalGroup(
+            panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel75, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelRacaoLayout.createSequentialGroup()
+                        .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRacaoLayout.createSequentialGroup()
+                                .addComponent(agendamentosExibirHoje5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirAmanha5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonCadastrarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirTodos5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRacaoLayout.createSequentialGroup()
+                                .addGap(0, 127, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRacaoLayout.createSequentialGroup()
+                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelRacaoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane16)))
+                .addContainerGap())
+        );
+        panelRacaoLayout.setVerticalGroup(
+            panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirAmanha5, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirHoje5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirTodos5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelRacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEditarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCadastrarAgendamento5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panelContent.add(panelRacao, "racoes");
+
+        title4.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title4.setText("Mercadorias");
+
+        tableRemedios.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableRemedios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableRemedios.setFocusable(false);
+        tableRemedios.setRowHeight(32);
+        tableRemedios.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableRemedios.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableRemedios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane14.setViewportView(tableRemedios);
+
+        jLabel73.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel73.setText("Remédios");
+
+        agendamentosExibirHoje3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirHoje3.setText("Roupas");
+        agendamentosExibirHoje3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirHoje3ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirAmanha3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirAmanha3.setText("Rações");
+        agendamentosExibirAmanha3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirAmanha3ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirTodos3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirTodos3.setText("Remédios");
+        agendamentosExibirTodos3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirTodos3ActionPerformed(evt);
+            }
+        });
+
+        buttonCadastrarAgendamento3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarAgendamento3.setText("Cadastrar Novo");
+        buttonCadastrarAgendamento3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarAgendamento3ActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarAgendamento3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarAgendamento3.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarAgendamento3.setText("Deletar");
+        buttonDeletarAgendamento3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarAgendamento3ActionPerformed(evt);
+            }
+        });
+
+        buttonEditarAgendamento3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento3.setText("Editar");
+        buttonEditarAgendamento3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento3ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Brinquedos");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Tudo");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRemedioLayout = new javax.swing.GroupLayout(panelRemedio);
+        panelRemedio.setLayout(panelRemedioLayout);
+        panelRemedioLayout.setHorizontalGroup(
+            panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel73, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelRemedioLayout.createSequentialGroup()
+                        .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRemedioLayout.createSequentialGroup()
+                                .addComponent(agendamentosExibirHoje3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirAmanha3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonCadastrarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirTodos3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRemedioLayout.createSequentialGroup()
+                                .addGap(0, 127, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRemedioLayout.createSequentialGroup()
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelRemedioLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane14)))
+                .addContainerGap())
+        );
+        panelRemedioLayout.setVerticalGroup(
+            panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRemedioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirAmanha3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirHoje3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirTodos3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelRemedioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEditarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCadastrarAgendamento3, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panelContent.add(panelRemedio, "remedios");
+
+        title3.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title3.setText("Mercadorias");
+
+        tableRoupas.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableRoupas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableRoupas.setFocusable(false);
+        tableRoupas.setRowHeight(32);
+        tableRoupas.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableRoupas.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableRoupas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane13.setViewportView(tableRoupas);
+
+        jLabel72.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel72.setText("Roupas");
+
+        agendamentosExibirHoje2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirHoje2.setText("Roupas");
+        agendamentosExibirHoje2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirHoje2ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirAmanha2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirAmanha2.setText("Rações");
+        agendamentosExibirAmanha2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirAmanha2ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirTodos2.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirTodos2.setText("Remédios");
+        agendamentosExibirTodos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirTodos2ActionPerformed(evt);
+            }
+        });
+
+        buttonCadastrarAgendamento2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarAgendamento2.setText("Cadastrar Novo");
+        buttonCadastrarAgendamento2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarAgendamento2ActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarAgendamento2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarAgendamento2.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarAgendamento2.setText("Deletar");
+        buttonDeletarAgendamento2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarAgendamento2ActionPerformed(evt);
+            }
+        });
+
+        buttonEditarAgendamento2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento2.setText("Editar");
+        buttonEditarAgendamento2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento2ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Brinquedos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Tudo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRoupaLayout = new javax.swing.GroupLayout(panelRoupa);
+        panelRoupa.setLayout(panelRoupaLayout);
+        panelRoupaLayout.setHorizontalGroup(
+            panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel72, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelRoupaLayout.createSequentialGroup()
+                        .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRoupaLayout.createSequentialGroup()
+                                .addComponent(agendamentosExibirHoje2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirAmanha2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonCadastrarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirTodos2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRoupaLayout.createSequentialGroup()
+                                .addGap(0, 127, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelRoupaLayout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelRoupaLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane13)))
+                .addContainerGap())
+        );
+        panelRoupaLayout.setVerticalGroup(
+            panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRoupaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirAmanha2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirHoje2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirTodos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelRoupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEditarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCadastrarAgendamento2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panelContent.add(panelRoupa, "roupas");
 
         getContentPane().add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 950, 610));
 
@@ -2697,6 +3335,129 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         tableServicos.setModel(dtm);
     }
+    
+    
+    private void loadTableMercadorias(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Categoria"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirProdutos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item f : lista) {
+            dtm.addRow(new Object[] {
+                f.getId(),
+                f.getNome(),
+                f.getPreco(),
+                f.getCategoria()
+            });
+        }
+        tableMercadorias.setModel(dtm);
+    }
+    
+    private void loadTableRoupas(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Tamanho", "Cor", "Especie"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirProdutos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item r : lista) {
+            if(r instanceof Roupa){
+                Roupa f = (Roupa) r;
+                dtm.addRow(new Object[] {
+                    f.getId(),
+                    f.getNome(),
+                    f.getPreco(),
+                    f.getTamanho(),
+                    f.getCor(),
+                    f.getEspecie()
+                });
+            }
+            
+        }
+        tableRoupas.setModel(dtm);
+    }
+    
+    private void loadTableRacoes(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Sabor", "Idade Recomendada", "Especie"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirProdutos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item r : lista) {
+            if(r instanceof Racao){
+                Racao f = (Racao) r;
+                dtm.addRow(new Object[] {
+                    f.getId(),
+                    f.getNome(),
+                    f.getPreco(),
+                    f.getSabor(),
+                    f.getIdade_recomendada(),
+                    f.getEspecie()
+                });
+            }
+        }
+        tableRacoes.setModel(dtm);
+    }
+    
+    private void loadTableRemedios(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Utilidade", "Orientação"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirProdutos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item r : lista) {
+            if(r instanceof Remedio){
+                Remedio f = (Remedio) r;
+                dtm.addRow(new Object[] {
+                    f.getId(),
+                    f.getNome(),
+                    f.getPreco(),
+                    f.getUtilidade(),
+                    f.getOrientacao()
+                });
+            }
+        }
+        tableRemedios.setModel(dtm);
+    }
+    
+    private void loadTableBrinquedos(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Espécie", "Material"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirProdutos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item r : lista) {
+            if(r instanceof Brinquedo){
+                Brinquedo f = (Brinquedo) r;
+                dtm.addRow(new Object[] {
+                    f.getId(),
+                    f.getNome(),
+                    f.getPreco(),
+                    f.getEspecie(),
+                    f.getMaterial()
+                });
+            }
+        }
+        tableBrinquedos.setModel(dtm);
+    }
+    
+    
+    
     
     private void loadTableAnimal(JTable table, String cpfDono){
         DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome"}, 0);
@@ -2859,6 +3620,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonMercadoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMercadoriasActionPerformed
         // TODO add your handling code here:
+        loadTableMercadorias();
         layout.show(panelContent, "mercadorias");
     }//GEN-LAST:event_buttonMercadoriasActionPerformed
 
@@ -3544,31 +4306,251 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void agendamentosExibirHoje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje1ActionPerformed
         // TODO add your handling code here:
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
     }//GEN-LAST:event_agendamentosExibirHoje1ActionPerformed
 
     private void agendamentosExibirAmanha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha1ActionPerformed
         // TODO add your handling code here:
+        loadTableRacoes();
+        layout.show(panelContent, "racoes");
     }//GEN-LAST:event_agendamentosExibirAmanha1ActionPerformed
 
     private void agendamentosExibirTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos1ActionPerformed
         // TODO add your handling code here:
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
     }//GEN-LAST:event_agendamentosExibirTodos1ActionPerformed
-
-    private void buttonCadastrarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCadastrarAgendamento1ActionPerformed
 
     private void buttonDeletarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonDeletarAgendamento1ActionPerformed
+        ItemCtrl fc = new ItemCtrl();
 
-    private void buttonEditarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonEditarAgendamento1ActionPerformed
+        int linhaSelecionada = tableMercadorias.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableMercadorias.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableMercadorias();
+        }
+    }//GEN-LAST:event_buttonDeletarAgendamento1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        loadTableBrinquedos();
+        layout.show(panelContent, "brinquedos");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void agendamentosExibirHoje2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje2ActionPerformed
+        // TODO add your handling code here:
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+        
+    }//GEN-LAST:event_agendamentosExibirHoje2ActionPerformed
+
+    private void agendamentosExibirAmanha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha2ActionPerformed
+        // TODO add your handling code here:
+        loadTableRacoes();
+        layout.show(panelContent, "racoes");
+    }//GEN-LAST:event_agendamentosExibirAmanha2ActionPerformed
+
+    private void agendamentosExibirTodos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos2ActionPerformed
+        // TODO add your handling code here:
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_agendamentosExibirTodos2ActionPerformed
+
+    private void buttonCadastrarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarAgendamento2ActionPerformed
+
+    private void buttonDeletarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento2ActionPerformed
+        // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+
+        int linhaSelecionada = tableRoupas.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableRoupas.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableRoupas();
+        }
+    }//GEN-LAST:event_buttonDeletarAgendamento2ActionPerformed
+
+    private void buttonEditarAgendamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarAgendamento2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        loadTableBrinquedos();
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void agendamentosExibirHoje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje3ActionPerformed
+        // TODO add your handling code here:
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_agendamentosExibirHoje3ActionPerformed
+
+    private void agendamentosExibirAmanha3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha3ActionPerformed
+        // TODO add your handling code here:
+        loadTableRacoes();
+        layout.show(panelContent, "racoes");
+    }//GEN-LAST:event_agendamentosExibirAmanha3ActionPerformed
+
+    private void agendamentosExibirTodos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos3ActionPerformed
+        // TODO add your handling code here:
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_agendamentosExibirTodos3ActionPerformed
+
+    private void buttonCadastrarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarAgendamento3ActionPerformed
+
+    private void buttonDeletarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento3ActionPerformed
+        // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+
+        int linhaSelecionada = tableRemedios.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableRemedios.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableRemedios();
+        }
+    }//GEN-LAST:event_buttonDeletarAgendamento3ActionPerformed
+
+    private void buttonEditarAgendamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarAgendamento3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        loadTableBrinquedos();
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void agendamentosExibirHoje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje4ActionPerformed
+        // TODO add your handling code here:
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_agendamentosExibirHoje4ActionPerformed
+
+    private void agendamentosExibirAmanha4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha4ActionPerformed
+        // TODO add your handling code here:
+        loadTableRacoes();
+        layout.show(panelContent, "racoes");
+    }//GEN-LAST:event_agendamentosExibirAmanha4ActionPerformed
+
+    private void agendamentosExibirTodos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos4ActionPerformed
+        // TODO add your handling code here:
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_agendamentosExibirTodos4ActionPerformed
+
+    private void buttonCadastrarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarAgendamento4ActionPerformed
+
+    private void buttonDeletarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento4ActionPerformed
+        // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+
+        int linhaSelecionada = tableBrinquedos.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableBrinquedos.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableBrinquedos();
+        }
+    }//GEN-LAST:event_buttonDeletarAgendamento4ActionPerformed
+
+    private void buttonEditarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarAgendamento4ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        loadTableBrinquedos();
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void agendamentosExibirHoje5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje5ActionPerformed
+        // TODO add your handling code here:
+        loadTableRoupas();
+        layout.show(panelContent, "roupas");
+    }//GEN-LAST:event_agendamentosExibirHoje5ActionPerformed
+
+    private void agendamentosExibirAmanha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha5ActionPerformed
+        // TODO add your handling code here:
+        loadTableRacoes();
+        layout.show(panelContent, "racoes");
+    }//GEN-LAST:event_agendamentosExibirAmanha5ActionPerformed
+
+    private void agendamentosExibirTodos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos5ActionPerformed
+        // TODO add your handling code here:
+        loadTableRemedios();
+        layout.show(panelContent, "remedios");
+    }//GEN-LAST:event_agendamentosExibirTodos5ActionPerformed
+
+    private void buttonCadastrarAgendamento5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarAgendamento5ActionPerformed
+
+    private void buttonDeletarAgendamento5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento5ActionPerformed
+        // TODO add your handling code here:
+        ItemCtrl fc = new ItemCtrl();
+
+        int linhaSelecionada = tableRacoes.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableRacoes.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableRacoes();
+        }
+    }//GEN-LAST:event_buttonDeletarAgendamento5ActionPerformed
+
+    private void buttonEditarAgendamento5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarAgendamento5ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        loadTableBrinquedos();
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        loadTableMercadorias();
+        layout.show(panelContent, "mercadorias");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        loadTableMercadorias();
+        layout.show(panelContent, "mercadorias");
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        loadTableMercadorias();
+        layout.show(panelContent, "mercadorias");
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        loadTableMercadorias();
+        layout.show(panelContent, "mercadorias");
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        loadTableMercadorias();
+        layout.show(panelContent, "mercadorias");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3608,12 +4590,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agendamentosExibirAmanha;
     private javax.swing.JButton agendamentosExibirAmanha1;
+    private javax.swing.JButton agendamentosExibirAmanha2;
+    private javax.swing.JButton agendamentosExibirAmanha3;
+    private javax.swing.JButton agendamentosExibirAmanha4;
+    private javax.swing.JButton agendamentosExibirAmanha5;
     private javax.swing.JButton agendamentosExibirHoje;
     private javax.swing.JButton agendamentosExibirHoje1;
+    private javax.swing.JButton agendamentosExibirHoje2;
+    private javax.swing.JButton agendamentosExibirHoje3;
+    private javax.swing.JButton agendamentosExibirHoje4;
+    private javax.swing.JButton agendamentosExibirHoje5;
     private javax.swing.JButton agendamentosExibirTodos;
     private javax.swing.JButton agendamentosExibirTodos1;
+    private javax.swing.JButton agendamentosExibirTodos2;
+    private javax.swing.JButton agendamentosExibirTodos3;
+    private javax.swing.JButton agendamentosExibirTodos4;
+    private javax.swing.JButton agendamentosExibirTodos5;
     private javax.swing.JButton buttonCadastrarAgendamento;
-    private javax.swing.JButton buttonCadastrarAgendamento1;
+    private javax.swing.JButton buttonCadastrarAgendamento2;
+    private javax.swing.JButton buttonCadastrarAgendamento3;
+    private javax.swing.JButton buttonCadastrarAgendamento4;
+    private javax.swing.JButton buttonCadastrarAgendamento5;
     private javax.swing.JButton buttonCadastrarCliente;
     private javax.swing.JButton buttonCadastrarClienteAnimal;
     private javax.swing.JButton buttonCadastrarFuncionario;
@@ -3631,12 +4628,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonDeletarAgendamento;
     private javax.swing.JButton buttonDeletarAgendamento1;
+    private javax.swing.JButton buttonDeletarAgendamento2;
+    private javax.swing.JButton buttonDeletarAgendamento3;
+    private javax.swing.JButton buttonDeletarAgendamento4;
+    private javax.swing.JButton buttonDeletarAgendamento5;
     private javax.swing.JButton buttonDeletarCliente;
     private javax.swing.JButton buttonDeletarClienteAnimal;
     private javax.swing.JButton buttonDeletarFuncionario;
     private javax.swing.JButton buttonDeletarServico;
     private javax.swing.JButton buttonEditarAgendamento;
-    private javax.swing.JButton buttonEditarAgendamento1;
+    private javax.swing.JButton buttonEditarAgendamento2;
+    private javax.swing.JButton buttonEditarAgendamento3;
+    private javax.swing.JButton buttonEditarAgendamento4;
+    private javax.swing.JButton buttonEditarAgendamento5;
     private javax.swing.JButton buttonEditarCliente;
     private javax.swing.JButton buttonEditarClienteAnimal;
     private javax.swing.JButton buttonEditarFuncionario;
@@ -3666,9 +4670,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField especieCadastrarAnimal;
     private javax.swing.JTextField especieEditarAnimal;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3738,6 +4750,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
@@ -3749,6 +4765,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3765,6 +4785,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField nomeEditarServico;
     private javax.swing.JPanel painelMercadorias;
     private javax.swing.JPanel panelAnimal;
+    private javax.swing.JPanel panelBrinquedo;
     private javax.swing.JPanel panelCadastrarAgendamento;
     private javax.swing.JPanel panelCadastrarAnimal;
     private javax.swing.JPanel panelCadastrarCliente;
@@ -3780,6 +4801,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelFuncionarios;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelRacao;
+    private javax.swing.JPanel panelRemedio;
+    private javax.swing.JPanel panelRoupa;
     private javax.swing.JPanel panelServicos;
     private javax.swing.JTextField precoCadastrarServico;
     private javax.swing.JTextField precoEditarServico;
@@ -3802,12 +4826,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerMinutoInicioCadastrarFuncionario;
     private javax.swing.JSpinner spinnerMinutoInicioEditarFuncionario;
     private javax.swing.JTable tableAgendamentos;
-    private javax.swing.JTable tableAgendamentos1;
+    private javax.swing.JTable tableBrinquedos;
     private javax.swing.JTable tableClientesAnimais;
     private javax.swing.JTable tableClientesPessoas;
     private javax.swing.JTable tableFuncionarios;
+    private javax.swing.JTable tableMercadorias;
+    private javax.swing.JTable tableRacoes;
+    private javax.swing.JTable tableRemedios;
     private javax.swing.JTable tableResponsavel;
     private javax.swing.JTable tableResponsavelCadastrar;
+    private javax.swing.JTable tableRoupas;
     private javax.swing.JTable tableSelectAnimalCadastrarAgendamento;
     private javax.swing.JTable tableSelectAnimalEditarAgendamento;
     private javax.swing.JTable tableSelectServicoCadastrarAgendamento;
@@ -3832,8 +4860,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title14;
     private javax.swing.JLabel title15;
     private javax.swing.JLabel title16;
+    private javax.swing.JLabel title17;
     private javax.swing.JLabel title18;
+    private javax.swing.JLabel title19;
     private javax.swing.JLabel title2;
+    private javax.swing.JLabel title3;
+    private javax.swing.JLabel title4;
     private javax.swing.JLabel title5;
     private javax.swing.JLabel title6;
     private javax.swing.JLabel title7;
