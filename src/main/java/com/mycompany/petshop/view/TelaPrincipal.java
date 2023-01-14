@@ -341,9 +341,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         tableResponsavel = new javax.swing.JTable();
         jLabel71 = new javax.swing.JLabel();
-        panelMercadorias = new javax.swing.JPanel();
-        title4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        painelMercadorias = new javax.swing.JPanel();
+        title2 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tableAgendamentos1 = new javax.swing.JTable();
+        jLabel70 = new javax.swing.JLabel();
+        agendamentosExibirHoje1 = new javax.swing.JButton();
+        agendamentosExibirAmanha1 = new javax.swing.JButton();
+        agendamentosExibirTodos1 = new javax.swing.JButton();
+        buttonCadastrarAgendamento1 = new javax.swing.JButton();
+        buttonDeletarAgendamento1 = new javax.swing.JButton();
+        buttonEditarAgendamento1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2459,41 +2469,147 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelContent.add(panelEditarServico, "editarServico");
 
-        title4.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
-        title4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title4.setText("Mercadorias");
+        title2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title2.setText("Início");
 
-        javax.swing.GroupLayout panelMercadoriasLayout = new javax.swing.GroupLayout(panelMercadorias);
-        panelMercadorias.setLayout(panelMercadoriasLayout);
-        panelMercadoriasLayout.setHorizontalGroup(
-            panelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMercadoriasLayout.createSequentialGroup()
+        tableAgendamentos1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableAgendamentos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableAgendamentos1.setFocusable(false);
+        tableAgendamentos1.setRowHeight(32);
+        tableAgendamentos1.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableAgendamentos1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableAgendamentos1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(tableAgendamentos1);
+
+        jLabel70.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel70.setText("Agendamentos");
+
+        agendamentosExibirHoje1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirHoje1.setText("Roupas");
+        agendamentosExibirHoje1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirHoje1ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirAmanha1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirAmanha1.setText("Rações");
+        agendamentosExibirAmanha1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirAmanha1ActionPerformed(evt);
+            }
+        });
+
+        agendamentosExibirTodos1.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        agendamentosExibirTodos1.setText("Remédios");
+        agendamentosExibirTodos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendamentosExibirTodos1ActionPerformed(evt);
+            }
+        });
+
+        buttonCadastrarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarAgendamento1.setText("Cadastrar Novo");
+        buttonCadastrarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarAgendamento1ActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarAgendamento1.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarAgendamento1.setText("Deletar");
+        buttonDeletarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarAgendamento1ActionPerformed(evt);
+            }
+        });
+
+        buttonEditarAgendamento1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarAgendamento1.setText("Editar");
+        buttonEditarAgendamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarAgendamento1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Brinquedos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Tudo");
+
+        javax.swing.GroupLayout painelMercadoriasLayout = new javax.swing.GroupLayout(painelMercadorias);
+        painelMercadorias.setLayout(painelMercadoriasLayout);
+        painelMercadoriasLayout.setHorizontalGroup(
+            painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelMercadoriasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title4, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(painelMercadoriasLayout.createSequentialGroup()
+                        .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelMercadoriasLayout.createSequentialGroup()
+                                .addComponent(agendamentosExibirHoje1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(agendamentosExibirAmanha1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonCadastrarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agendamentosExibirTodos1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelMercadoriasLayout.createSequentialGroup()
+                                .addGap(0, 127, Short.MAX_VALUE)
+                                .addComponent(buttonEditarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonDeletarAgendamento1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelMercadoriasLayout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(painelMercadoriasLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane11)))
                 .addContainerGap())
         );
-        panelMercadoriasLayout.setVerticalGroup(
-            panelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMercadoriasLayout.createSequentialGroup()
+        painelMercadoriasLayout.setVerticalGroup(
+            painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelMercadoriasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title4)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addComponent(title2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirAmanha1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirHoje1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(agendamentosExibirTodos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelMercadoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEditarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCadastrarAgendamento1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        panelContent.add(panelMercadorias, "mercadorias");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-
-        panelContent.add(jPanel1, "card9");
+        panelContent.add(painelMercadorias, "mercadorias");
 
         getContentPane().add(panelContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 950, 610));
 
@@ -3426,6 +3542,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonEfetuarEdicao1ActionPerformed
 
+    private void agendamentosExibirHoje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirHoje1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendamentosExibirHoje1ActionPerformed
+
+    private void agendamentosExibirAmanha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirAmanha1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendamentosExibirAmanha1ActionPerformed
+
+    private void agendamentosExibirTodos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendamentosExibirTodos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendamentosExibirTodos1ActionPerformed
+
+    private void buttonCadastrarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarAgendamento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCadastrarAgendamento1ActionPerformed
+
+    private void buttonDeletarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarAgendamento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonDeletarAgendamento1ActionPerformed
+
+    private void buttonEditarAgendamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditarAgendamento1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3463,9 +3607,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agendamentosExibirAmanha;
+    private javax.swing.JButton agendamentosExibirAmanha1;
     private javax.swing.JButton agendamentosExibirHoje;
+    private javax.swing.JButton agendamentosExibirHoje1;
     private javax.swing.JButton agendamentosExibirTodos;
+    private javax.swing.JButton agendamentosExibirTodos1;
     private javax.swing.JButton buttonCadastrarAgendamento;
+    private javax.swing.JButton buttonCadastrarAgendamento1;
     private javax.swing.JButton buttonCadastrarCliente;
     private javax.swing.JButton buttonCadastrarClienteAnimal;
     private javax.swing.JButton buttonCadastrarFuncionario;
@@ -3482,11 +3630,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarEditarFuncionario;
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonDeletarAgendamento;
+    private javax.swing.JButton buttonDeletarAgendamento1;
     private javax.swing.JButton buttonDeletarCliente;
     private javax.swing.JButton buttonDeletarClienteAnimal;
     private javax.swing.JButton buttonDeletarFuncionario;
     private javax.swing.JButton buttonDeletarServico;
     private javax.swing.JButton buttonEditarAgendamento;
+    private javax.swing.JButton buttonEditarAgendamento1;
     private javax.swing.JButton buttonEditarCliente;
     private javax.swing.JButton buttonEditarClienteAnimal;
     private javax.swing.JButton buttonEditarFuncionario;
@@ -3516,7 +3666,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField especieCadastrarAnimal;
     private javax.swing.JTextField especieEditarAnimal;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3584,6 +3736,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
@@ -3592,9 +3745,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3610,6 +3763,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField nomeEditarAnimal;
     private javax.swing.JTextField nomeEditarCliente;
     private javax.swing.JTextField nomeEditarServico;
+    private javax.swing.JPanel painelMercadorias;
     private javax.swing.JPanel panelAnimal;
     private javax.swing.JPanel panelCadastrarAgendamento;
     private javax.swing.JPanel panelCadastrarAnimal;
@@ -3626,7 +3780,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelFuncionarios;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelMenu;
-    private javax.swing.JPanel panelMercadorias;
     private javax.swing.JPanel panelServicos;
     private javax.swing.JTextField precoCadastrarServico;
     private javax.swing.JTextField precoEditarServico;
@@ -3649,6 +3802,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerMinutoInicioCadastrarFuncionario;
     private javax.swing.JSpinner spinnerMinutoInicioEditarFuncionario;
     private javax.swing.JTable tableAgendamentos;
+    private javax.swing.JTable tableAgendamentos1;
     private javax.swing.JTable tableClientesAnimais;
     private javax.swing.JTable tableClientesPessoas;
     private javax.swing.JTable tableFuncionarios;
@@ -3679,7 +3833,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title15;
     private javax.swing.JLabel title16;
     private javax.swing.JLabel title18;
-    private javax.swing.JLabel title4;
+    private javax.swing.JLabel title2;
     private javax.swing.JLabel title5;
     private javax.swing.JLabel title6;
     private javax.swing.JLabel title7;
