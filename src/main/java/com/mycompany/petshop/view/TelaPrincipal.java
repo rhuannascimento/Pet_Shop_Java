@@ -5160,18 +5160,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tableRacoes.getModel();
             int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
             this.racaoAnterior = (Racao) fc.exibirProdutos(id);
-        }
-        
-        racoesEditarNome.setText(racaoAnterior.getNome());
-        racoesEditarEspecie.setText(racaoAnterior.getEspecie());
-        racoesEditarEstoque.setText(racaoAnterior.getEstoque()+"");
-        racoesEditarFornecedor.setText(racaoAnterior.getFornecedor());
-        racoesEditarIdade.setValue(racaoAnterior.getIdade_recomendada());
-        racoesEditarPreco.setText(racaoAnterior.getPreco()+"");
-        racoesEditarSabor.setText(racaoAnterior.getSabor());
+            
+            racoesEditarNome.setText(racaoAnterior.getNome());
+            racoesEditarEspecie.setText(racaoAnterior.getEspecie());
+            racoesEditarEstoque.setText(racaoAnterior.getEstoque()+"");
+            racoesEditarFornecedor.setText(racaoAnterior.getFornecedor());
+            racoesEditarIdade.setValue(racaoAnterior.getIdade_recomendada());
+            racoesEditarPreco.setText(racaoAnterior.getPreco()+"");
+            racoesEditarSabor.setText(racaoAnterior.getSabor());
 
-        layout.show(panelContent, "editarRacao");
-        
+            layout.show(panelContent, "editarRacao");
+        }
     }//GEN-LAST:event_buttonEditarAgendamento5ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
