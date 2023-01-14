@@ -4261,8 +4261,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         String preco = precoEditarServico.getText();
         String duracao = duracaoEditarServico.getText();
         
+        int id = responsavel.getId();
+        
+        int selectedRow = tableResponsavel.getSelectedRow();
+        if (selectedRow != -1) { // verifica se há uma linha selecionada
+            id = (int) tableResponsavel.getModel().getValueAt(selectedRow, 0);
+            
+        }
+        
+        
         ItemCtrl ic = new ItemCtrl();
-        ic.atualizarServico(this.sAnterior.getId(), nome, Float.parseFloat(preco), "servico", true, Integer.parseInt(duracao), this.responsavel.getId());
+        ic.atualizarServico(this.sAnterior.getId(), nome, Float.parseFloat(preco), "servico", true, Integer.parseInt(duracao), id);
         
         loadTableServicos();
         layout.show(panelContent, "servicos");
