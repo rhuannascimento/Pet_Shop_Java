@@ -38,4 +38,10 @@ public class ExibirItem {
         return itens;
     }
 
+    public Item getProdutoById(int id){
+        ItemRep ir = new ItemRep();
+
+        return ir.getById(id);
+    }
+    
 }

@@ -70,13 +70,7 @@ public class criarAnimal extends JFrame {
         cadastrar.addActionListener(e -> {
             ClienteCtrl cc = new ClienteCtrl();
 
-            try {
-                cc.cadastrarCliente(0, nome.getText(), cpf.getText(), "animal", "", "", especie.getText());
-
-                ;
-            } catch (ClienteExp exp) {
-
-            }
+            cc.cadastrarCliente(0, nome.getText(), cpf.getText(), "animal", "", "", especie.getText());
 
             Animal novo = (Animal) cc.getUltimo();
             listaAnimais.add(novo);

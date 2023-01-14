@@ -48,6 +48,17 @@ public class ItemCtrl {
         return lista;
 
     }
+    
+    public Item exibirProdutos(int id) {
+        this.exibir = new ExibirItem();
+
+        Item lista = this.exibir.getProdutoById(id);
+
+        
+
+        return lista;
+
+    }
 
     public ArrayList<Item> exibirServicos() {
         this.exibirServicos = new ListarServicos();

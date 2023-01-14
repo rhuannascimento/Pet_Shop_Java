@@ -80,14 +80,9 @@ public class criarPessoa extends JFrame {
         cadastrar.addActionListener(e -> {
             ClienteCtrl cc = new ClienteCtrl();
 
-            try {
-                cc.cadastrarCliente(0, nome.getText(), cpf.getText(), "pessoa", telefone.getText(), email.getText(),
-                        "pessoa");
-
-                ;
-            } catch (ClienteExp exp) {
-
-            }
+            cc.cadastrarCliente(0, nome.getText(), cpf.getText(), "pessoa", telefone.getText(), email.getText(),
+                    "pessoa");
+            
 
             Pessoa novo = (Pessoa) cc.getUltimo();
             listaPessoas.add(novo);

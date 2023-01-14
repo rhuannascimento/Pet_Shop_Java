@@ -13,6 +13,7 @@ import com.mycompany.petshop.model.classes.Animal;
 import com.mycompany.petshop.model.classes.Cliente;
 import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.classes.Item;
+import com.mycompany.petshop.model.classes.Pessoa;
 import com.mycompany.petshop.model.classes.Servico;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -22,6 +23,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.regex.Pattern;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -51,25 +54,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     CardLayout layout;
     
-    private String caseListAgendamento;
-    private int idEditandoAgendamento;
+    private String caseListAgendamento, cpfCliente;
+    private int idEditandoAgendamento, idEditandoCliente, idEditandoAnimal;
     private Agendamento anterior;
+    private Funcionario responsavel;
+    private Servico sAnterior;
     
     void inicializarTabelas(){
         tableAgendamentos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableSelectServicoCadastrarAgendamento.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableSelectAnimalCadastrarAgendamento.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         tableFuncionarios.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableClientesAnimais.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableClientesPessoas.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
+        tableServicos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
         
         tableAgendamentos.getTableHeader().setOpaque(false);
         tableSelectServicoCadastrarAgendamento.getTableHeader().setOpaque(false);
         tableSelectAnimalCadastrarAgendamento.getTableHeader().setOpaque(false);
         tableFuncionarios.getTableHeader().setOpaque(false);
+        tableClientesAnimais.getTableHeader().setOpaque(false);
+        tableClientesPessoas.getTableHeader().setOpaque(false);
+        tableServicos.getTableHeader().setOpaque(false);
         
         tableAgendamentos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableSelectServicoCadastrarAgendamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableSelectAnimalCadastrarAgendamento.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableFuncionarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableClientesAnimais.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableClientesPessoas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableServicos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
     }
     
@@ -230,9 +244,103 @@ public class TelaPrincipal extends javax.swing.JFrame {
         spinnerMinutoFimEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 59, 15));
         spinnerHoraFimEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(8, 0, 23, 1));
         panelClientes = new javax.swing.JPanel();
-        title2 = new javax.swing.JLabel();
+        title9 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableClientesPessoas = new javax.swing.JTable();
+        buttonCadastrarCliente = new javax.swing.JButton();
+        buttonEditarCliente = new javax.swing.JButton();
+        buttonDeletarCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        panelAnimal = new javax.swing.JPanel();
+        title11 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tableClientesAnimais = new javax.swing.JTable();
+        buttonCadastrarClienteAnimal = new javax.swing.JButton();
+        buttonEditarClienteAnimal = new javax.swing.JButton();
+        buttonDeletarClienteAnimal = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        panelCadastrarAnimal = new javax.swing.JPanel();
+        title13 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal = new javax.swing.JButton();
+        buttonEfetuarCadastroAnimal = new javax.swing.JButton();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        nomeCadastrarAnimal = new javax.swing.JTextField();
+        especieCadastrarAnimal = new javax.swing.JTextField();
+        panelEditarAnimal = new javax.swing.JPanel();
+        title14 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal1 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal = new javax.swing.JButton();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        nomeEditarAnimal = new javax.swing.JTextField();
+        especieEditarAnimal = new javax.swing.JTextField();
+        panelEditarCliente = new javax.swing.JPanel();
+        title12 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        buttonEfetuarCadastroFuncionario2 = new javax.swing.JButton();
+        buttonCancelarCadastroFuncionario2 = new javax.swing.JButton();
+        jLabel56 = new javax.swing.JLabel();
+        nomeEditarCliente = new javax.swing.JTextField();
+        cpfEditarCliente = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        emailEditarCliente = new javax.swing.JTextField();
+        telefoneEditarCliente = new javax.swing.JTextField();
+        panelCadastrarCliente = new javax.swing.JPanel();
+        title10 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        buttonEfetuarCadastroFuncionario1 = new javax.swing.JButton();
+        buttonCancelarCadastroFuncionario1 = new javax.swing.JButton();
+        jLabel52 = new javax.swing.JLabel();
+        nomeCadastrarCliente = new javax.swing.JTextField();
+        cpfCadastrarCliente = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        emailCadastrarCliente = new javax.swing.JTextField();
+        telefoneCadastrarCliente = new javax.swing.JTextField();
         panelServicos = new javax.swing.JPanel();
-        title3 = new javax.swing.JLabel();
+        title15 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tableServicos = new javax.swing.JTable();
+        buttonCadastrarServico = new javax.swing.JButton();
+        buttonEditarServico = new javax.swing.JButton();
+        buttonDeletarServico = new javax.swing.JButton();
+        panelCadastrarServico = new javax.swing.JPanel();
+        title18 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal4 = new javax.swing.JButton();
+        buttonEfetuarEdicao1 = new javax.swing.JButton();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        nomeCadastrarServico = new javax.swing.JTextField();
+        precoCadastrarServico = new javax.swing.JTextField();
+        jLabel79 = new javax.swing.JLabel();
+        duracaoCadastrarServico = new javax.swing.JTextField();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tableResponsavelCadastrar = new javax.swing.JTable();
+        jLabel80 = new javax.swing.JLabel();
+        panelEditarServico = new javax.swing.JPanel();
+        title16 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal2 = new javax.swing.JButton();
+        buttonEfetuarEdicao = new javax.swing.JButton();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        nomeEditarServico = new javax.swing.JTextField();
+        precoEditarServico = new javax.swing.JTextField();
+        jLabel69 = new javax.swing.JLabel();
+        duracaoEditarServico = new javax.swing.JTextField();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tableResponsavel = new javax.swing.JTable();
+        jLabel71 = new javax.swing.JLabel();
         panelMercadorias = new javax.swing.JPanel();
         title4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -301,14 +409,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
+            .addGroup(panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonMercadorias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonServicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(buttonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonMercadorias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonServicos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonFuncionarios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(buttonInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelMenuLayout.setVerticalGroup(
@@ -1413,9 +1521,62 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelContent.add(panelEditarFuncionario, "editarFuncionario");
 
-        title2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
-        title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title2.setText("Clientes");
+        title9.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title9.setText("Clientes");
+
+        jLabel47.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel47.setText("Clientes");
+
+        tableClientesPessoas.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableClientesPessoas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableClientesPessoas.setFocusable(false);
+        tableClientesPessoas.setRowHeight(32);
+        tableClientesPessoas.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableClientesPessoas.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableClientesPessoas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(tableClientesPessoas);
+
+        buttonCadastrarCliente.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarCliente.setText("Cadastrar Novo");
+        buttonCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarClienteActionPerformed(evt);
+            }
+        });
+
+        buttonEditarCliente.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarCliente.setText("Editar");
+        buttonEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarClienteActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarCliente.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarCliente.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarCliente.setText("Deletar");
+        buttonDeletarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarClienteActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jButton1.setText("Listar Animais");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelClientesLayout = new javax.swing.GroupLayout(panelClientes);
         panelClientes.setLayout(panelClientesLayout);
@@ -1423,22 +1584,574 @@ public class TelaPrincipal extends javax.swing.JFrame {
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title2, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelClientesLayout.createSequentialGroup()
+                        .addComponent(buttonCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonDeletarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelClientesLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(title9, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 112, Short.MAX_VALUE))
+                    .addGroup(panelClientesLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane7))
+                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelClientesLayout.setVerticalGroup(
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title2)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addComponent(title9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelContent.add(panelClientes, "clientes");
 
-        title3.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
-        title3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title3.setText("Servicos");
+        title11.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title11.setText("Animais");
+
+        jLabel49.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel49.setText("Animais do cliente");
+
+        tableClientesAnimais.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableClientesAnimais.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableClientesAnimais.setFocusable(false);
+        tableClientesAnimais.setRowHeight(32);
+        tableClientesAnimais.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableClientesAnimais.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableClientesAnimais.getTableHeader().setReorderingAllowed(false);
+        jScrollPane8.setViewportView(tableClientesAnimais);
+
+        buttonCadastrarClienteAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarClienteAnimal.setText("Cadastrar Novo");
+        buttonCadastrarClienteAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarClienteAnimalActionPerformed(evt);
+            }
+        });
+
+        buttonEditarClienteAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarClienteAnimal.setText("Editar");
+        buttonEditarClienteAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarClienteAnimalActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarClienteAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarClienteAnimal.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarClienteAnimal.setText("Deletar");
+        buttonDeletarClienteAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarClienteAnimalActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jButton3.setText("Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAnimalLayout = new javax.swing.GroupLayout(panelAnimal);
+        panelAnimal.setLayout(panelAnimalLayout);
+        panelAnimalLayout.setHorizontalGroup(
+            panelAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAnimalLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(title11, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelAnimalLayout.createSequentialGroup()
+                        .addComponent(buttonCadastrarClienteAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEditarClienteAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonDeletarClienteAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelAnimalLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane8)))
+                .addContainerGap())
+        );
+        panelAnimalLayout.setVerticalGroup(
+            panelAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCadastrarClienteAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarClienteAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarClienteAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        panelContent.add(panelAnimal, "animais");
+
+        title13.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title13.setText("Animais");
+
+        jLabel51.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel51.setText("Cadastrar Animal");
+
+        buttonCancelarCadastroAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal.setText("Cancelar");
+        buttonCancelarCadastroAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimalActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarCadastroAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarCadastroAnimal.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarCadastroAnimal.setText("Cadastrar");
+        buttonEfetuarCadastroAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarCadastroAnimalActionPerformed(evt);
+            }
+        });
+
+        jLabel60.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel60.setText("Nome:");
+
+        jLabel61.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel61.setText("Espécie");
+
+        javax.swing.GroupLayout panelCadastrarAnimalLayout = new javax.swing.GroupLayout(panelCadastrarAnimal);
+        panelCadastrarAnimal.setLayout(panelCadastrarAnimalLayout);
+        panelCadastrarAnimalLayout.setHorizontalGroup(
+            panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarAnimalLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title13, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarAnimalLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarCadastroAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelCadastrarAnimalLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(especieCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelCadastrarAnimalLayout.setVerticalGroup(
+            panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel60)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(especieCadastrarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                .addGroup(panelCadastrarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarCadastroAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelCadastrarAnimal, "cadastrarAnimal");
+
+        title14.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title14.setText("Animais");
+
+        jLabel62.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel62.setText("Editar Animal");
+
+        buttonCancelarCadastroAnimal1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal1.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal1.setText("Cancelar");
+        buttonCancelarCadastroAnimal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal1ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal.setText("Salvar");
+        buttonEfetuarEditarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimalActionPerformed(evt);
+            }
+        });
+
+        jLabel63.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel63.setText("Nome:");
+
+        jLabel64.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel64.setText("Espécie");
+
+        javax.swing.GroupLayout panelEditarAnimalLayout = new javax.swing.GroupLayout(panelEditarAnimal);
+        panelEditarAnimal.setLayout(panelEditarAnimalLayout);
+        panelEditarAnimalLayout.setHorizontalGroup(
+            panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarAnimalLayout.createSequentialGroup()
+                        .addGroup(panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title14, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarAnimalLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelEditarAnimalLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(especieEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelEditarAnimalLayout.setVerticalGroup(
+            panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarAnimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel63)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(especieEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
+                .addGroup(panelEditarAnimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroAnimal1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarEditarAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelEditarAnimal, "editarAnimal");
+
+        title12.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title12.setText("Clientes");
+
+        jLabel50.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel50.setText("Cadastrar novo Cliente");
+
+        buttonEfetuarCadastroFuncionario2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarCadastroFuncionario2.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarCadastroFuncionario2.setText("Salvar");
+        buttonEfetuarCadastroFuncionario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarCadastroFuncionario2ActionPerformed(evt);
+            }
+        });
+
+        buttonCancelarCadastroFuncionario2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroFuncionario2.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroFuncionario2.setText("Cancelar");
+        buttonCancelarCadastroFuncionario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroFuncionario2ActionPerformed(evt);
+            }
+        });
+
+        jLabel56.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel56.setText("Nome");
+
+        nomeEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeEditarClienteActionPerformed(evt);
+            }
+        });
+
+        cpfEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfEditarClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel57.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel57.setText("CPF");
+
+        jLabel58.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel58.setText("E-mail");
+
+        jLabel59.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel59.setText("Telefone");
+
+        javax.swing.GroupLayout panelEditarClienteLayout = new javax.swing.GroupLayout(panelEditarCliente);
+        panelEditarCliente.setLayout(panelEditarClienteLayout);
+        panelEditarClienteLayout.setHorizontalGroup(
+            panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarClienteLayout.createSequentialGroup()
+                .addGroup(panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarClienteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarClienteLayout.createSequentialGroup()
+                                .addComponent(buttonCancelarCadastroFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonEfetuarCadastroFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelEditarClienteLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel57)
+                            .addComponent(jLabel56)
+                            .addComponent(jLabel59)
+                            .addComponent(nomeEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(cpfEditarCliente)
+                            .addComponent(jLabel58)
+                            .addComponent(emailEditarCliente)
+                            .addComponent(telefoneEditarCliente))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelEditarClienteLayout.setVerticalGroup(
+            panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel57)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cpfEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(emailEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel59)
+                .addGap(2, 2, 2)
+                .addComponent(telefoneEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGroup(panelEditarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarCadastroFuncionario2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelEditarCliente, "editarCliente");
+
+        title10.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title10.setText("Clientes");
+
+        jLabel48.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel48.setText("Cadastrar novo Cliente");
+
+        buttonEfetuarCadastroFuncionario1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarCadastroFuncionario1.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarCadastroFuncionario1.setText("Cadastrar");
+        buttonEfetuarCadastroFuncionario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarCadastroFuncionario1ActionPerformed(evt);
+            }
+        });
+
+        buttonCancelarCadastroFuncionario1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroFuncionario1.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroFuncionario1.setText("Cancelar");
+        buttonCancelarCadastroFuncionario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroFuncionario1ActionPerformed(evt);
+            }
+        });
+
+        jLabel52.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel52.setText("Nome");
+
+        nomeCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeCadastrarClienteActionPerformed(evt);
+            }
+        });
+
+        cpfCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpfCadastrarClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel53.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel53.setText("CPF");
+
+        jLabel54.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel54.setText("E-mail");
+
+        jLabel55.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel55.setText("Telefone");
+
+        javax.swing.GroupLayout panelCadastrarClienteLayout = new javax.swing.GroupLayout(panelCadastrarCliente);
+        panelCadastrarCliente.setLayout(panelCadastrarClienteLayout);
+        panelCadastrarClienteLayout.setHorizontalGroup(
+            panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarClienteLayout.createSequentialGroup()
+                .addGroup(panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarClienteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarClienteLayout.createSequentialGroup()
+                                .addComponent(buttonCancelarCadastroFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonEfetuarCadastroFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelCadastrarClienteLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel53)
+                            .addComponent(jLabel52)
+                            .addComponent(jLabel55)
+                            .addComponent(nomeCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(cpfCadastrarCliente)
+                            .addComponent(jLabel54)
+                            .addComponent(emailCadastrarCliente)
+                            .addComponent(telefoneCadastrarCliente))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelCadastrarClienteLayout.setVerticalGroup(
+            panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nomeCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cpfCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(emailCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel55)
+                .addGap(2, 2, 2)
+                .addComponent(telefoneCadastrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGroup(panelCadastrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarCadastroFuncionario1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelCadastrarCliente, "cadastrarCliente");
+
+        title15.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title15.setText("Serviços");
+
+        jLabel65.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel65.setText("Serviços");
+
+        tableServicos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableServicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tableServicos.setFocusable(false);
+        tableServicos.setRowHeight(32);
+        tableServicos.setSelectionBackground(new java.awt.Color(81, 81, 81));
+        tableServicos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableServicos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane9.setViewportView(tableServicos);
+
+        buttonCadastrarServico.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCadastrarServico.setText("Cadastrar Novo");
+        buttonCadastrarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarServicoActionPerformed(evt);
+            }
+        });
+
+        buttonEditarServico.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonEditarServico.setText("Editar");
+        buttonEditarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarServicoActionPerformed(evt);
+            }
+        });
+
+        buttonDeletarServico.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonDeletarServico.setForeground(new java.awt.Color(197, 0, 0));
+        buttonDeletarServico.setText("Deletar");
+        buttonDeletarServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeletarServicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelServicosLayout = new javax.swing.GroupLayout(panelServicos);
         panelServicos.setLayout(panelServicosLayout);
@@ -1446,18 +2159,305 @@ public class TelaPrincipal extends javax.swing.JFrame {
             panelServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelServicosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title3, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                .addGroup(panelServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelServicosLayout.createSequentialGroup()
+                        .addComponent(buttonCadastrarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonDeletarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelServicosLayout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(title15, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 112, Short.MAX_VALUE))
+                    .addGroup(panelServicosLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane9))
+                    .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelServicosLayout.setVerticalGroup(
             panelServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelServicosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(title3)
-                .addContainerGap(562, Short.MAX_VALUE))
+                .addComponent(title15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addGroup(panelServicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(buttonEditarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeletarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         panelContent.add(panelServicos, "servicos");
+
+        title18.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title18.setText("Serviços");
+
+        jLabel76.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel76.setText("Cadastrar Serviço");
+
+        buttonCancelarCadastroAnimal4.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal4.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal4.setText("Cancelar");
+        buttonCancelarCadastroAnimal4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal4ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEdicao1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEdicao1.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEdicao1.setText("Cadastrar");
+        buttonEfetuarEdicao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEdicao1ActionPerformed(evt);
+            }
+        });
+
+        jLabel77.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel77.setText("Nome");
+
+        jLabel78.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel78.setText("Preço");
+
+        jLabel79.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel79.setText("Duração (Em minutos)");
+
+        tableResponsavelCadastrar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableResponsavelCadastrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableResponsavelCadastrar.setRowHeight(40);
+        tableResponsavelCadastrar.getTableHeader().setResizingAllowed(false);
+        tableResponsavelCadastrar.getTableHeader().setReorderingAllowed(false);
+        jScrollPane12.setViewportView(tableResponsavelCadastrar);
+        if (tableResponsavelCadastrar.getColumnModel().getColumnCount() > 0) {
+            tableResponsavelCadastrar.getColumnModel().getColumn(0).setMinWidth(40);
+            tableResponsavelCadastrar.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tableResponsavelCadastrar.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
+
+        jLabel80.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel80.setText("Selecione o Responsável");
+
+        javax.swing.GroupLayout panelCadastrarServicoLayout = new javax.swing.GroupLayout(panelCadastrarServico);
+        panelCadastrarServico.setLayout(panelCadastrarServicoLayout);
+        panelCadastrarServicoLayout.setHorizontalGroup(
+            panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarServicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarServicoLayout.createSequentialGroup()
+                        .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title18, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel76, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadastrarServicoLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEdicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelCadastrarServicoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(precoCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeCadastrarServico, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(duracaoCadastrarServico)
+                    .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113))
+        );
+        panelCadastrarServicoLayout.setVerticalGroup(
+            panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadastrarServicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel77)
+                    .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadastrarServicoLayout.createSequentialGroup()
+                        .addComponent(nomeCadastrarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel78)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(precoCadastrarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel79)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(duracaoCadastrarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGroup(panelCadastrarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroAnimal4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarEdicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelCadastrarServico, "cadastrarServico");
+
+        title16.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title16.setText("Serviços");
+
+        jLabel66.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel66.setText("Editar Serviço");
+
+        buttonCancelarCadastroAnimal2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal2.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal2.setText("Cancelar");
+        buttonCancelarCadastroAnimal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal2ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEdicao.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEdicao.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEdicao.setText("Concluir");
+        buttonEfetuarEdicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEdicaoActionPerformed(evt);
+            }
+        });
+
+        jLabel67.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel67.setText("Nome");
+
+        jLabel68.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel68.setText("Preço");
+
+        jLabel69.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel69.setText("Duração");
+
+        tableResponsavel.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tableResponsavel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableResponsavel.setRowHeight(40);
+        tableResponsavel.getTableHeader().setResizingAllowed(false);
+        tableResponsavel.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(tableResponsavel);
+        if (tableResponsavel.getColumnModel().getColumnCount() > 0) {
+            tableResponsavel.getColumnModel().getColumn(0).setMinWidth(40);
+            tableResponsavel.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tableResponsavel.getColumnModel().getColumn(0).setMaxWidth(40);
+        }
+
+        jLabel71.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel71.setText("Selecione o Responsável");
+
+        javax.swing.GroupLayout panelEditarServicoLayout = new javax.swing.GroupLayout(panelEditarServico);
+        panelEditarServico.setLayout(panelEditarServicoLayout);
+        panelEditarServicoLayout.setHorizontalGroup(
+            panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarServicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarServicoLayout.createSequentialGroup()
+                        .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title16, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarServicoLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelEditarServicoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precoEditarServico, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeEditarServico, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(duracaoEditarServico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113))
+        );
+        panelEditarServicoLayout.setVerticalGroup(
+            panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarServicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel67)
+                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarServicoLayout.createSequentialGroup()
+                        .addComponent(nomeEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel68)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(precoEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel69)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(duracaoEditarServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addGroup(panelEditarServicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCancelarCadastroAnimal2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEfetuarEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        panelContent.add(panelEditarServico, "editarServico");
 
         title4.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1519,6 +2519,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tableAgendamentos.setModel(dtm);
     }
     
+    private void loadTableClientesPessoa(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "CPF", "Email", "Telefone"}, 0);
+        
+        ClienteCtrl fc = new ClienteCtrl();
+        
+        ArrayList<Cliente> lista = fc.exibirPessoas();
+
+        for (Cliente f : lista) {
+            Pessoa p = (Pessoa) f;
+            dtm.addRow(new Object[] {
+                p.getId(),
+                p.getNome(),
+                p.getCpf(),
+                p.getEmail(),
+                p.getTelefone()
+            });
+        }
+        
+        tableClientesPessoas.setModel(dtm);
+    }
+    
     private void loadTableServico(JTable table){
         DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome"}, 0);
         
@@ -1539,6 +2560,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
         table.getColumnModel().getColumn(0).setMaxWidth(40);
     }
     
+    private void loadTableServicos(){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Responsavel", "Duração (minutos)"}, 0);
+        
+        ItemCtrl ic = new ItemCtrl();
+        
+        ArrayList<Item> lista = ic.exibirServicos();
+        
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+        
+        for (Item i : lista) {
+            Servico f = (Servico) i;
+            dtm.addRow(new Object[] {
+                f.getId(),
+                f.getNome(),
+                f.getPreco(),
+                fc.exibirPorId(f.getIdResponsavel()).getNome(),
+                f.getDuracao()
+            });
+        }
+        tableServicos.setModel(dtm);
+    }
+    
     private void loadTableAnimal(JTable table, String cpfDono){
         DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome"}, 0);
         
@@ -1557,6 +2600,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
         table.getColumnModel().getColumn(0).setPreferredWidth(40);
         table.getColumnModel().getColumn(0).setMinWidth(40);
         table.getColumnModel().getColumn(0).setMaxWidth(40);
+    }
+    
+    private void loadTableResponsavel(JTable table){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome"}, 0);
+        
+        FuncionarioCtrl cc = new FuncionarioCtrl(logado);
+        
+        ArrayList<Funcionario> lista = cc.exibir();
+
+        for (Funcionario f : lista) {
+            dtm.addRow(new Object[] {
+                f.getId(),
+                f.getNome()
+            });
+        }
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setModel(dtm);
+        table.getColumnModel().getColumn(0).setPreferredWidth(40);
+        table.getColumnModel().getColumn(0).setMinWidth(40);
+        table.getColumnModel().getColumn(0).setMaxWidth(40);
+    }
+    
+    private void loadTableClienteAnimal(String cpfDono){
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Espécie"}, 0);
+        
+        ClienteCtrl cc = new ClienteCtrl();
+        
+        ArrayList<Cliente> lista = cc.exibirAnimais(cpfDono);
+
+        for (Cliente a : lista) {
+            Animal f = (Animal) a;
+            dtm.addRow(new Object[] {
+                f.getId(),
+                f.getNome(),
+                f.getEspecie(),
+            });
+        }
+        tableClientesAnimais.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tableClientesAnimais.setModel(dtm);
     }
     
     private void loadTableFuncionario(){
@@ -1581,6 +2663,79 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     
+    private boolean validarCpf(String cpf){
+        if (cpf == null) {
+            return false;
+        }
+        // removendo caracteres especiais
+        cpf = cpf.replaceAll("[.-]", "");
+        if (cpf.length() != 11 || cpf.equals("00000000000") || cpf.equals("11111111111") ||
+            cpf.equals("22222222222") || cpf.equals("33333333333") || cpf.equals("44444444444") ||
+            cpf.equals("55555555555") || cpf.equals("66666666666") || cpf.equals("77777777777") ||
+            cpf.equals("88888888888") || cpf.equals("99999999999")) {
+            return false;
+        }
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+        try {
+            sm = 0;
+            peso = 10;
+            for (i = 0; i < 9; i++) {
+                num = (int) (cpf.charAt(i) - 48);
+                sm = sm + (num * peso);
+                peso = peso - 1;
+            }
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11)) {
+                dig10 = '0';
+            } else {
+                dig10 = (char) (r + 48);
+            }
+            sm = 0;
+            peso = 11;
+            for (i = 0; i < 10; i++) {
+                num = (int) (cpf.charAt(i) - 48);
+                sm = sm + (num * peso);
+                peso = peso - 1;
+            }
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11)) {
+                dig11 = '0';
+            } else {
+                dig11 = (char) (r + 48);
+            }
+            if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10))) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    private boolean validarEmail(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        return pat.matcher(email).matches();
+    }
+    
+    private boolean validarTelefone(String phone){
+        String phoneNumberRegex = "^\\(?([0-9]{2})\\)?[-.\\s]?([0-9]{5})[-.\\s]?([0-9]{4})$";
+        Pattern pat = Pattern.compile(phoneNumberRegex);
+        if (phone == null) {
+            return false;
+        }
+        if(phone.length() == 11) {
+            return true;
+        }
+        
+        return pat.matcher(phone).matches();
+    }
+    
     private void buttonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInicioActionPerformed
         // TODO add your handling code here:
         layout.show(panelContent, "inicio");
@@ -1599,11 +2754,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
         // TODO add your handling code here:
+        loadTableClientesPessoa();
         layout.show(panelContent, "clientes");
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonServicosActionPerformed
         // TODO add your handling code here:
+        loadTableServicos();
         layout.show(panelContent, "servicos");
     }//GEN-LAST:event_buttonServicosActionPerformed
 
@@ -1910,6 +3067,365 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textUsuarioEditarFuncionarioActionPerformed
 
+    private void buttonCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        
+        layout.show(panelContent, "cadastrarCliente");
+        
+        
+    }//GEN-LAST:event_buttonCadastrarClienteActionPerformed
+
+    private void buttonEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarClienteActionPerformed
+        // TODO add your handling code here:
+        
+        int linhaSelecionada = tableClientesPessoas.getSelectedRow();
+
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableClientesPessoas.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            ClienteCtrl fc = new ClienteCtrl();
+            
+            Pessoa anterior = (Pessoa) fc.exibirCliente(id);
+            
+            System.out.println(anterior);
+            
+            nomeEditarCliente.setText(anterior.getNome());
+            emailEditarCliente.setText(anterior.getEmail());
+            cpfEditarCliente.setText(anterior.getCpf());
+            telefoneEditarCliente.setText(anterior.getTelefone());
+            
+            idEditandoCliente = anterior.getId();
+            
+            layout.show(panelContent, "editarCliente");
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_buttonEditarClienteActionPerformed
+
+    private void buttonDeletarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarClienteActionPerformed
+        // TODO add your handling code here:
+        ClienteCtrl fc = new ClienteCtrl();
+
+        int linhaSelecionada = tableClientesPessoas.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableClientesPessoas.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirCliente(id);
+            loadTableClientesPessoa();
+        }
+    }//GEN-LAST:event_buttonDeletarClienteActionPerformed
+
+    private void buttonEfetuarCadastroFuncionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarCadastroFuncionario1ActionPerformed
+        // TODO add your handling code here:
+        
+        ClienteCtrl cc = new ClienteCtrl();
+        
+        String cpf = cpfCadastrarCliente.getText();
+        String email = emailCadastrarCliente.getText();
+        String telefone = telefoneCadastrarCliente.getText();
+       
+        boolean cpfValido = validarCpf(cpf);
+        boolean emailValido = validarEmail(email);
+        boolean telefoneValido = validarTelefone(telefone);
+        
+        if(!cpfValido){
+            JOptionPane.showMessageDialog(null, "CPF Inválido!");
+        }else if(!emailValido){
+            JOptionPane.showMessageDialog(null, "Email Inválido!");
+        }else if(!telefoneValido){
+            JOptionPane.showMessageDialog(null, "Telefone Inválido!");
+        }else{
+            cc.cadastrarCliente(0, nomeCadastrarCliente.getText(), cpf, "pessoa", telefone, email, null);
+            loadTableClientesPessoa();
+            layout.show(panelContent, "clientes");
+        }
+    }//GEN-LAST:event_buttonEfetuarCadastroFuncionario1ActionPerformed
+
+    private void buttonCancelarCadastroFuncionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroFuncionario1ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "clientes");
+    }//GEN-LAST:event_buttonCancelarCadastroFuncionario1ActionPerformed
+
+    private void nomeCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeCadastrarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeCadastrarClienteActionPerformed
+
+    private void cpfCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfCadastrarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfCadastrarClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int linhaSelecionada = tableClientesPessoas.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableClientesPessoas.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            
+            ClienteCtrl cc = new ClienteCtrl();
+            Cliente listar = cc.exibirCliente(id);
+            
+            cpfCliente = listar.getCpf();
+            loadTableClienteAnimal(listar.getCpf());
+            
+            layout.show(panelContent, "animais");
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para listar seus animais!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonCadastrarClienteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarClienteAnimalActionPerformed
+        // TODO add your handling code here:
+        
+        layout.show(panelContent, "cadastrarAnimal");
+    }//GEN-LAST:event_buttonCadastrarClienteAnimalActionPerformed
+
+    private void buttonEditarClienteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarClienteAnimalActionPerformed
+        // TODO add your handling code here:
+        
+        int linhaSelecionada = tableClientesAnimais.getSelectedRow();
+
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableClientesAnimais.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            ClienteCtrl fc = new ClienteCtrl();
+            
+            Animal anterior = (Animal) fc.exibirCliente(id);
+            
+            
+            nomeEditarAnimal.setText(anterior.getNome());
+            especieEditarAnimal.setText(anterior.getEspecie());
+            
+            idEditandoAnimal = anterior.getId();
+            cpfCliente = anterior.getCpf();
+            
+            layout.show(panelContent, "editarAnimal");
+        }
+        
+    }//GEN-LAST:event_buttonEditarClienteAnimalActionPerformed
+
+    private void buttonDeletarClienteAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarClienteAnimalActionPerformed
+        ClienteCtrl fc = new ClienteCtrl();
+
+        int linhaSelecionada = tableClientesAnimais.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableClientesAnimais.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirCliente(id);
+            loadTableClienteAnimal(cpfCliente);
+        }
+    }//GEN-LAST:event_buttonDeletarClienteAnimalActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        layout.show(panelContent, "clientes");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void buttonEfetuarCadastroFuncionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarCadastroFuncionario2ActionPerformed
+        // TODO add your handling code here:
+        String nome = nomeEditarCliente.getText();
+        String email = emailEditarCliente.getText();
+        String cpf = cpfEditarCliente.getText();
+        String telefone = telefoneEditarCliente.getText();
+        
+        boolean cpfValido = validarCpf(cpf);
+        boolean emailValido = validarEmail(email);
+        boolean telefoneValido = validarTelefone(telefone);
+        
+        System.out.println(cpf + " - " + email + " - " + telefone);
+        
+        if(!cpfValido){
+            JOptionPane.showMessageDialog(null, "CPF Inválido!");
+        }else if(!emailValido){
+            JOptionPane.showMessageDialog(null, "Email Inválido!");
+        }else if(!telefoneValido){
+            JOptionPane.showMessageDialog(null, "Telefone Inválido!");
+        }else{
+            ClienteCtrl cc = new ClienteCtrl();
+            cc.atualizarPessoa(idEditandoCliente, nome, cpf, telefone, email);
+            loadTableClientesPessoa();
+            layout.show(panelContent, "clientes");
+        }
+        
+        
+    }//GEN-LAST:event_buttonEfetuarCadastroFuncionario2ActionPerformed
+
+    private void buttonCancelarCadastroFuncionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroFuncionario2ActionPerformed
+        // TODO add your handling code here:
+        
+        layout.show(panelContent, "clientes");
+    }//GEN-LAST:event_buttonCancelarCadastroFuncionario2ActionPerformed
+
+    private void nomeEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeEditarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeEditarClienteActionPerformed
+
+    private void cpfEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfEditarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpfEditarClienteActionPerformed
+
+    private void buttonCancelarCadastroAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCancelarCadastroAnimalActionPerformed
+
+    private void buttonEfetuarCadastroAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarCadastroAnimalActionPerformed
+        // TODO add your handling code here:
+        ClienteCtrl cc = new ClienteCtrl();
+        
+        String nome = nomeCadastrarAnimal.getText();
+        String especie = especieCadastrarAnimal.getText();
+       
+        
+        cc.cadastrarCliente(0, nome, cpfCliente, "animal", null, null, especie);
+        loadTableClienteAnimal(cpfCliente);
+        layout.show(panelContent, "animais");
+        
+    }//GEN-LAST:event_buttonEfetuarCadastroAnimalActionPerformed
+
+    private void buttonCancelarCadastroAnimal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal1ActionPerformed
+        // TODO add your handling code here:
+        layout.show(panelContent, "animais");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal1ActionPerformed
+
+    private void buttonEfetuarEditarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimalActionPerformed
+        // TODO add your handling code here:
+        ClienteCtrl cc = new ClienteCtrl();
+        
+        String nome = nomeEditarAnimal.getText();
+        String especie = especieEditarAnimal.getText();
+       
+        
+        cc.atualizarAnimal(idEditandoAnimal, nome, cpfCliente, especie);
+        loadTableClienteAnimal(cpfCliente);
+        layout.show(panelContent, "animais");
+        
+        
+        
+        
+    }//GEN-LAST:event_buttonEfetuarEditarAnimalActionPerformed
+
+    private void buttonCadastrarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarServicoActionPerformed
+        // TODO add your handling code here:
+        loadTableResponsavel(tableResponsavelCadastrar);
+        layout.show(panelContent, "cadastrarServico");
+    }//GEN-LAST:event_buttonCadastrarServicoActionPerformed
+
+    private void buttonEditarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarServicoActionPerformed
+        int linhaSelecionada = tableServicos.getSelectedRow();
+
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableServicos.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            ItemCtrl fc = new ItemCtrl();
+            
+            this.sAnterior = (Servico) fc.exibirProdutos(id);
+            
+            nomeEditarServico.setText(sAnterior.getNome());
+            precoEditarServico.setText(sAnterior.getPreco()+"");
+            duracaoEditarServico.setText(sAnterior.getDuracao()+"");
+            
+            FuncionarioCtrl fun = new FuncionarioCtrl(logado);
+            this.responsavel = fun.exibirPorId(sAnterior.getIdResponsavel());
+            
+            loadTableResponsavel(tableResponsavel);
+            
+            
+            TableModel r = tableResponsavel.getModel();
+            int idLinhaSelecionada = 0, nLinhaSelecionada = 0;
+            for(int i = 0; i < r.getColumnCount(); i++){
+                idLinhaSelecionada = (Integer) r.getValueAt(i, 0);
+                nLinhaSelecionada = i;
+                if(this.responsavel.getId() == idLinhaSelecionada) break; 
+            }
+            tableResponsavel.getSelectionModel().setSelectionInterval(nLinhaSelecionada, nLinhaSelecionada);
+            
+            
+            
+            layout.show(panelContent, "editarServico");
+        }
+    }//GEN-LAST:event_buttonEditarServicoActionPerformed
+
+    private void buttonDeletarServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarServicoActionPerformed
+        // TODO add your handling code here:
+        
+        ItemCtrl fc = new ItemCtrl();
+
+        int linhaSelecionada = tableServicos.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableServicos.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluirItem(id);
+            loadTableServicos();
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_buttonDeletarServicoActionPerformed
+
+    private void buttonCancelarCadastroAnimal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal2ActionPerformed
+        // TODO add your handling code here:
+            layout.show(panelContent, "servicos");
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal2ActionPerformed
+
+    private void buttonEfetuarEdicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEdicaoActionPerformed
+        // TODO add your handling code here:
+        String nome = nomeEditarServico.getText();
+        String preco = precoEditarServico.getText();
+        String duracao = duracaoEditarServico.getText();
+        
+        ItemCtrl ic = new ItemCtrl();
+        ic.atualizarServico(this.sAnterior.getId(), nome, Float.parseFloat(preco), "servico", true, Integer.parseInt(duracao), this.responsavel.getId());
+        
+        loadTableServicos();
+        layout.show(panelContent, "servicos");
+        
+    }//GEN-LAST:event_buttonEfetuarEdicaoActionPerformed
+
+    private void buttonCancelarCadastroAnimal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal4ActionPerformed
+
+    private void buttonEfetuarEdicao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEdicao1ActionPerformed
+        ItemCtrl ic = new ItemCtrl();
+        
+        String nome = nomeCadastrarServico.getText();
+        float preco = Float.parseFloat(precoCadastrarServico.getText());
+        int duracao = Integer.parseInt(duracaoCadastrarServico.getText());
+        
+        int linhaSelecionada = tableResponsavelCadastrar.getSelectedRow();
+
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableResponsavelCadastrar.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+            
+            Funcionario responsavel = fc.exibirPorId(id);
+            
+            int idResponsavel = responsavel.getId();
+            
+            ic.cadastraServico(0, nome, preco, "servico", true, duracao, idResponsavel);
+            
+            loadTableServicos();
+            
+            layout.show(panelContent, "servicos");
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um responsável");
+        }
+        
+    }//GEN-LAST:event_buttonEfetuarEdicao1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1950,19 +3466,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton agendamentosExibirHoje;
     private javax.swing.JButton agendamentosExibirTodos;
     private javax.swing.JButton buttonCadastrarAgendamento;
+    private javax.swing.JButton buttonCadastrarCliente;
+    private javax.swing.JButton buttonCadastrarClienteAnimal;
     private javax.swing.JButton buttonCadastrarFuncionario;
+    private javax.swing.JButton buttonCadastrarServico;
     private javax.swing.JButton buttonCancelarCadastroAgendamento;
+    private javax.swing.JButton buttonCancelarCadastroAnimal;
+    private javax.swing.JButton buttonCancelarCadastroAnimal1;
+    private javax.swing.JButton buttonCancelarCadastroAnimal2;
+    private javax.swing.JButton buttonCancelarCadastroAnimal4;
     private javax.swing.JButton buttonCancelarCadastroFuncionario;
+    private javax.swing.JButton buttonCancelarCadastroFuncionario1;
+    private javax.swing.JButton buttonCancelarCadastroFuncionario2;
     private javax.swing.JButton buttonCancelarEditarAgendamento;
     private javax.swing.JButton buttonCancelarEditarFuncionario;
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonDeletarAgendamento;
+    private javax.swing.JButton buttonDeletarCliente;
+    private javax.swing.JButton buttonDeletarClienteAnimal;
     private javax.swing.JButton buttonDeletarFuncionario;
+    private javax.swing.JButton buttonDeletarServico;
     private javax.swing.JButton buttonEditarAgendamento;
+    private javax.swing.JButton buttonEditarCliente;
+    private javax.swing.JButton buttonEditarClienteAnimal;
     private javax.swing.JButton buttonEditarFuncionario;
+    private javax.swing.JButton buttonEditarServico;
     private javax.swing.JButton buttonEfetuarCadastroAgendamento;
+    private javax.swing.JButton buttonEfetuarCadastroAnimal;
     private javax.swing.JButton buttonEfetuarCadastroFuncionario;
+    private javax.swing.JButton buttonEfetuarCadastroFuncionario1;
+    private javax.swing.JButton buttonEfetuarCadastroFuncionario2;
+    private javax.swing.JButton buttonEfetuarEdicao;
+    private javax.swing.JButton buttonEfetuarEdicao1;
     private javax.swing.JButton buttonEfetuarEditarAgendamento;
+    private javax.swing.JButton buttonEfetuarEditarAnimal;
     private javax.swing.JButton buttonEfetuarEditarFuncionario;
     private javax.swing.JButton buttonFuncionarios;
     private javax.swing.JButton buttonInicio;
@@ -1970,6 +3507,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonServicos;
     private javax.swing.JComboBox<String> comboCargoCadastrarFuncionario;
     private javax.swing.JComboBox<String> comboCargoEditarFuncionario;
+    private javax.swing.JTextField cpfCadastrarCliente;
+    private javax.swing.JTextField cpfEditarCliente;
+    private javax.swing.JTextField duracaoCadastrarServico;
+    private javax.swing.JTextField duracaoEditarServico;
+    private javax.swing.JTextField emailCadastrarCliente;
+    private javax.swing.JTextField emailEditarCliente;
+    private javax.swing.JTextField especieCadastrarAnimal;
+    private javax.swing.JTextField especieEditarAnimal;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2011,29 +3558,78 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextField nomeCadastrarAnimal;
+    private javax.swing.JTextField nomeCadastrarCliente;
+    private javax.swing.JTextField nomeCadastrarServico;
+    private javax.swing.JTextField nomeEditarAnimal;
+    private javax.swing.JTextField nomeEditarCliente;
+    private javax.swing.JTextField nomeEditarServico;
+    private javax.swing.JPanel panelAnimal;
     private javax.swing.JPanel panelCadastrarAgendamento;
+    private javax.swing.JPanel panelCadastrarAnimal;
+    private javax.swing.JPanel panelCadastrarCliente;
     private javax.swing.JPanel panelCadastrarFuncionario;
+    private javax.swing.JPanel panelCadastrarServico;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelEditarAgendamento;
+    private javax.swing.JPanel panelEditarAnimal;
+    private javax.swing.JPanel panelEditarCliente;
     private javax.swing.JPanel panelEditarFuncionario;
+    private javax.swing.JPanel panelEditarServico;
     private javax.swing.JPanel panelFuncionarios;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelMenu;
     private javax.swing.JPanel panelMercadorias;
     private javax.swing.JPanel panelServicos;
+    private javax.swing.JTextField precoCadastrarServico;
+    private javax.swing.JTextField precoEditarServico;
     private javax.swing.JSpinner spinnerAnoCadastrarAgendamento;
     private javax.swing.JSpinner spinnerAnoEditarAgendamento;
     private javax.swing.JSpinner spinnerDiaCadastrarAgendamento;
@@ -2053,11 +3649,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerMinutoInicioCadastrarFuncionario;
     private javax.swing.JSpinner spinnerMinutoInicioEditarFuncionario;
     private javax.swing.JTable tableAgendamentos;
+    private javax.swing.JTable tableClientesAnimais;
+    private javax.swing.JTable tableClientesPessoas;
     private javax.swing.JTable tableFuncionarios;
+    private javax.swing.JTable tableResponsavel;
+    private javax.swing.JTable tableResponsavelCadastrar;
     private javax.swing.JTable tableSelectAnimalCadastrarAgendamento;
     private javax.swing.JTable tableSelectAnimalEditarAgendamento;
     private javax.swing.JTable tableSelectServicoCadastrarAgendamento;
     private javax.swing.JTable tableSelectServicoEditarAgendamento;
+    private javax.swing.JTable tableServicos;
+    private javax.swing.JTextField telefoneCadastrarCliente;
+    private javax.swing.JTextField telefoneEditarCliente;
     private javax.swing.JTextField textNomeCadastrarFuncionario;
     private javax.swing.JTextField textNomeEditarFuncionario;
     private javax.swing.JTextField textPesquisaCpfCadastrarAgendamento;
@@ -2068,12 +3671,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField textUsuarioEditarFuncionario;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
-    private javax.swing.JLabel title2;
-    private javax.swing.JLabel title3;
+    private javax.swing.JLabel title10;
+    private javax.swing.JLabel title11;
+    private javax.swing.JLabel title12;
+    private javax.swing.JLabel title13;
+    private javax.swing.JLabel title14;
+    private javax.swing.JLabel title15;
+    private javax.swing.JLabel title16;
+    private javax.swing.JLabel title18;
     private javax.swing.JLabel title4;
     private javax.swing.JLabel title5;
     private javax.swing.JLabel title6;
     private javax.swing.JLabel title7;
     private javax.swing.JLabel title8;
+    private javax.swing.JLabel title9;
     // End of variables declaration//GEN-END:variables
 }
