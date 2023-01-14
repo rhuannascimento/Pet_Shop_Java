@@ -3525,11 +3525,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         title23.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title23.setText("Brinquedos");
+        title23.setText("Rações");
 
         jLabel102.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel102.setText("Editar Brinquedo");
+        jLabel102.setText("Editar Ração");
 
         buttonCancelarCadastroAnimal7.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         buttonCancelarCadastroAnimal7.setForeground(new java.awt.Color(153, 0, 51));
@@ -5430,6 +5430,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCancelarCadastroAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimalActionPerformed
         // TODO add your handling code here:
+        layout.show(panelContent, "animais");
     }//GEN-LAST:event_buttonCancelarCadastroAnimalActionPerformed
 
     private void buttonEfetuarCadastroAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarCadastroAnimalActionPerformed
@@ -5559,6 +5560,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCancelarCadastroAnimal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal4ActionPerformed
         // TODO add your handling code here:
+        layout.show(panelContent, "servicos");
     }//GEN-LAST:event_buttonCancelarCadastroAnimal4ActionPerformed
 
     private void buttonEfetuarEdicao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEdicao1ActionPerformed
@@ -5964,6 +5966,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void buttonCancelarCadastroAnimal5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal5ActionPerformed
         // TODO add your handling code here:
+        layout.show(panelContent, "brinquedos");
     }//GEN-LAST:event_buttonCancelarCadastroAnimal5ActionPerformed
 
     private void buttonEfetuarEditarAnimal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal2ActionPerformed
