@@ -17,7 +17,12 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author viier
- */
+ *//*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class FuncionarioCtrl {
     private boolean isGerente;
     private ExibirFuncionario exibir;

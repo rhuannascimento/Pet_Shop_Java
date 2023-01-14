@@ -11,7 +11,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 /**
  *
  * @author viier

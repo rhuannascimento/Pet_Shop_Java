@@ -20,7 +20,12 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 /**
  *
  * @author Rhuan

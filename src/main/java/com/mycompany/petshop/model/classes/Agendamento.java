@@ -4,7 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.sql.Date;
 import java.sql.Timestamp;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class Agendamento {
     private int id;
     private Timestamp data_hora;

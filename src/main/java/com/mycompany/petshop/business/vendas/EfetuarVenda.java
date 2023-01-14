@@ -16,7 +16,12 @@ import com.mycompany.petshop.repository.ItemRep;
 /**
  *
  * @author Rhuan
- */
+ *//*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class EfetuarVenda {
 
     public EfetuarVenda(int id) throws ItemExp {

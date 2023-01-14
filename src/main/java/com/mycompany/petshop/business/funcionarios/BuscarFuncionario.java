@@ -8,7 +8,12 @@ import com.mycompany.petshop.model.classes.Funcionario;
 import com.mycompany.petshop.model.exceptions.FuncionarioExp;
 import com.mycompany.petshop.repository.FuncionarioRep;
 import java.util.ArrayList;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 /**
  *
  * @author Rhuan

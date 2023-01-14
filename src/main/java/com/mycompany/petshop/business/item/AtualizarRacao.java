@@ -6,7 +6,12 @@ import com.mycompany.petshop.model.classes.Racao;
 import com.mycompany.petshop.repository.ItemRep;
 import java.sql.Time;
 import java.util.ArrayList;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class AtualizarRacao {
     
     public AtualizarRacao(int estoque, String fornecedor, int id, String nome, float preco, String tipo,

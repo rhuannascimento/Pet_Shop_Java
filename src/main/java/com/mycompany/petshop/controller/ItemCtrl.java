@@ -3,7 +3,12 @@ package com.mycompany.petshop.controller;
 import com.mycompany.petshop.model.classes.*;
 import com.mycompany.petshop.business.item.*;
 import java.util.ArrayList;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class ItemCtrl {
     private ExibirItem exibir;
     private ListarProdutos exibirProdutos;

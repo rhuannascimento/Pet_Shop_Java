@@ -6,7 +6,12 @@ import com.mycompany.petshop.model.classes.Funcionario;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+/*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class Login extends javax.swing.JFrame {
 
     /**

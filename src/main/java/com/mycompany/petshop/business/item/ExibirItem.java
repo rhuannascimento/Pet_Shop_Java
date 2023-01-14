@@ -9,7 +9,12 @@ import java.util.ArrayList;
 /**
  *
  * @author Rhuan
- */
+ *//*
+    Caio Henrique Vieira Costa - 202176020
+    Rhuan Nascimento - 202176033
+    Bernardo Ortiz - ?
+    Lucas Duarte - 202176012
+*/
 public class ExibirItem {
 
     private ArrayList<Item> itens = new ArrayList();
