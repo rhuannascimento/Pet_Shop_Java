@@ -42,6 +42,11 @@ public class ExibirFuncionario {
     public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
-          
+    
+    
+    public Funcionario porId(int id){
+        FuncionarioRep fr = new FuncionarioRep(); 
+        return fr.getById(id);
+    }      
     
 }

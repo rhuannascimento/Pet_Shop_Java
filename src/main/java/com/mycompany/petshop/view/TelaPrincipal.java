@@ -75,20 +75,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     void inicializarComponentes(){
         spinnerAnoCadastrarAgendamento.setValue(LocalDate.now().getYear());
-        
+        if(!this.logado.getCargo().equalsIgnoreCase("gerente")){
+            buttonDeletarFuncionario.setEnabled(false);
+            buttonEditarFuncionario.setEnabled(false);
+        }
     }
     
     public TelaPrincipal(Funcionario logado) {
         initComponents();
         
-        inicializarTabelas();
-        inicializarComponentes();
+        
         
         caseListAgendamento = "hoje";
         loadTableAgendamento(caseListAgendamento);
         
         layout = (CardLayout)(panelContent.getLayout());
         this.logado = logado;
+        
+        inicializarTabelas();
+        inicializarComponentes();
         
         
     }
@@ -200,7 +205,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         spinnerMinutoFimCadastrarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 59, 15));
-        spinnerHoraFimCadastrarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(8, 0, 23, 1));
+        spinnerHoraFimCadastrarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(18, 0, 23, 1));
+        panelEditarFuncionario = new javax.swing.JPanel();
+        title8 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        spinnerHoraInicioEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(8, 0, 23, 1));
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        spinnerMinutoInicioEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 59, 15));
+        buttonEfetuarEditarFuncionario = new javax.swing.JButton();
+        buttonCancelarEditarFuncionario = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        textNomeEditarFuncionario = new javax.swing.JTextField();
+        textUsuarioEditarFuncionario = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        textSenhaEditarFuncionario = new javax.swing.JPasswordField();
+        comboCargoEditarFuncionario = new javax.swing.JComboBox<>();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        spinnerMinutoFimEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 59, 15));
+        spinnerHoraFimEditarFuncionario = new javax.swing.JSpinner(new SpinnerNumberModel(8, 0, 23, 1));
         panelClientes = new javax.swing.JPanel();
         title2 = new javax.swing.JLabel();
         panelServicos = new javax.swing.JPanel();
@@ -1013,7 +1041,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         title7.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title7.setText("Início");
+        title7.setText("Funcionário");
 
         jLabel25.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1197,6 +1225,193 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         panelContent.add(panelCadastrarFuncionario, "cadastrarFuncionario");
+
+        title8.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title8.setText("Funcionário");
+
+        jLabel30.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("Editar Funcionário");
+
+        jLabel39.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel39.setText("Selecione a Início do Expediente");
+
+        spinnerHoraInicioEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Hora:");
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel41.setText("Minuto:");
+
+        spinnerMinutoInicioEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        buttonEfetuarEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarFuncionario.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarFuncionario.setText("Salvar");
+        buttonEfetuarEditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        buttonCancelarEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarEditarFuncionario.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarEditarFuncionario.setText("Cancelar");
+        buttonCancelarEditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarEditarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel31.setText("Nome");
+
+        textNomeEditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNomeEditarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        textUsuarioEditarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textUsuarioEditarFuncionarioActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel32.setText("Usuário");
+
+        jLabel42.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel42.setText("Senha");
+
+        comboCargoEditarFuncionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel43.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel43.setText("Cargo");
+
+        jLabel44.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel44.setText("Selecione a Fim do Expediente");
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel45.setText("Hora:");
+
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel46.setText("Minuto:");
+
+        spinnerMinutoFimEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        spinnerHoraFimEditarFuncionario.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout panelEditarFuncionarioLayout = new javax.swing.GroupLayout(panelEditarFuncionario);
+        panelEditarFuncionario.setLayout(panelEditarFuncionarioLayout);
+        panelEditarFuncionarioLayout.setHorizontalGroup(
+            panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarFuncionarioLayout.createSequentialGroup()
+                                .addComponent(buttonCancelarEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonEfetuarEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32)
+                            .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(textNomeEditarFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                .addComponent(textUsuarioEditarFuncionario, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel42, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel31)
+                                .addComponent(textSenhaEditarFuncionario)
+                                .addComponent(jLabel43)
+                                .addComponent(comboCargoEditarFuncionario, 0, 300, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(spinnerHoraInicioEditarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spinnerMinutoInicioEditarFuncionario)))
+                            .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(spinnerHoraFimEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spinnerMinutoFimEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(69, 69, 69)))
+                .addContainerGap())
+        );
+        panelEditarFuncionarioLayout.setVerticalGroup(
+            panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addComponent(textNomeEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textUsuarioEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinnerHoraInicioEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerMinutoInicioEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addComponent(textSenhaEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboCargoEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelEditarFuncionarioLayout.createSequentialGroup()
+                        .addComponent(jLabel44)
+                        .addGap(12, 12, 12)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelEditarFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinnerHoraFimEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerMinutoFimEditarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelEditarFuncionario, "editarFuncionario");
 
         title2.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1584,11 +1799,57 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
 
     private void buttonEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarFuncionarioActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tableFuncionarios.getSelectedRow();
+       
+        comboCargoEditarFuncionario.setModel(new DefaultComboBoxModel(new String[]{"funcionario", "gerente"}));
+        
+        
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableFuncionarios.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+            
+            Funcionario anterior = fc.exibirPorId(id);
+            
+            System.out.println(anterior);
+            
+            textNomeEditarFuncionario.setText(anterior.getNome());
+            textUsuarioEditarFuncionario.setText(anterior.getUsername());
+            textSenhaEditarFuncionario.setText("");
+            
+            int cargo = 0;
+            if(anterior.getCargo().equalsIgnoreCase("gerente")) cargo = 1;
+            comboCargoEditarFuncionario.setSelectedIndex(cargo);
+            
+            int horaInicio = anterior.getStartTime().getHours();
+            int minutoInicio = anterior.getStartTime().getMinutes();
+            int horaFim = anterior.getEndTime().getHours();
+            int minutoFim = anterior.getEndTime().getMinutes();
+            
+            spinnerHoraInicioEditarFuncionario.setValue(horaInicio);
+            spinnerHoraFimEditarFuncionario.setValue(horaFim);
+            spinnerMinutoInicioEditarFuncionario.setValue(minutoInicio);
+            spinnerMinutoInicioEditarFuncionario.setValue(minutoFim);
+            
+            layout.show(panelContent, "editarFuncionario");
+
+        }
     }//GEN-LAST:event_buttonEditarFuncionarioActionPerformed
 
     private void buttonDeletarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeletarFuncionarioActionPerformed
-        // TODO add your handling code here:
+        FuncionarioCtrl fc = new FuncionarioCtrl(logado);
+
+        int linhaSelecionada = tableFuncionarios.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableFuncionarios.getModel();
+            int id = (Integer) model.getValueAt(linhaSelecionada, 0); 
+            fc.excluir(id);
+            loadTableFuncionario();
+        }
+        
+        
     }//GEN-LAST:event_buttonDeletarFuncionarioActionPerformed
 
     private void buttonEfetuarCadastroFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarCadastroFuncionarioActionPerformed
@@ -1616,6 +1877,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void textUsuarioCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioCadastrarFuncionarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textUsuarioCadastrarFuncionarioActionPerformed
+
+    private void buttonEfetuarEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarFuncionarioActionPerformed
+        FuncionarioCtrl fc = new FuncionarioCtrl(this.logado);
+        
+        String inicio = "" + String.format("%02d", spinnerHoraInicioEditarFuncionario.getValue()) + ":"+String.format("%02d", spinnerMinutoInicioEditarFuncionario.getValue())+":00";
+        String fim = "" + String.format("%02d", spinnerHoraFimEditarFuncionario.getValue()) + ":"+String.format("%02d", spinnerMinutoFimEditarFuncionario.getValue())+":00";
+        
+        
+        int linhaSelecionada = tableFuncionarios.getSelectedRow(), id = 0;
+        System.out.println(linhaSelecionada);
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableFuncionarios.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            fc.atualizar(id, textNomeEditarFuncionario.getText(), inicio, fim, (String) comboCargoEditarFuncionario.getSelectedItem(), textUsuarioEditarFuncionario.getText(), textSenhaEditarFuncionario.getText());
+        }
+        
+        
+        loadTableFuncionario();
+        layout.show(panelContent, "funcionarios");
+    }//GEN-LAST:event_buttonEfetuarEditarFuncionarioActionPerformed
+
+    private void buttonCancelarEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarEditarFuncionarioActionPerformed
+        layout.show(panelContent, "funcionarios");
+    }//GEN-LAST:event_buttonCancelarEditarFuncionarioActionPerformed
+
+    private void textNomeEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeEditarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNomeEditarFuncionarioActionPerformed
+
+    private void textUsuarioEditarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsuarioEditarFuncionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textUsuarioEditarFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1661,6 +1954,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarCadastroAgendamento;
     private javax.swing.JButton buttonCancelarCadastroFuncionario;
     private javax.swing.JButton buttonCancelarEditarAgendamento;
+    private javax.swing.JButton buttonCancelarEditarFuncionario;
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonDeletarAgendamento;
     private javax.swing.JButton buttonDeletarFuncionario;
@@ -1669,11 +1963,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonEfetuarCadastroAgendamento;
     private javax.swing.JButton buttonEfetuarCadastroFuncionario;
     private javax.swing.JButton buttonEfetuarEditarAgendamento;
+    private javax.swing.JButton buttonEfetuarEditarFuncionario;
     private javax.swing.JButton buttonFuncionarios;
     private javax.swing.JButton buttonInicio;
     private javax.swing.JButton buttonMercadorias;
     private javax.swing.JButton buttonServicos;
     private javax.swing.JComboBox<String> comboCargoCadastrarFuncionario;
+    private javax.swing.JComboBox<String> comboCargoEditarFuncionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1697,13 +1993,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1721,6 +2028,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelEditarAgendamento;
+    private javax.swing.JPanel panelEditarFuncionario;
     private javax.swing.JPanel panelFuncionarios;
     private javax.swing.JPanel panelInicio;
     private javax.swing.JPanel panelMenu;
@@ -1733,13 +2041,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerHoraCadastrarAgendamento;
     private javax.swing.JSpinner spinnerHoraEditarAgendamento;
     private javax.swing.JSpinner spinnerHoraFimCadastrarFuncionario;
+    private javax.swing.JSpinner spinnerHoraFimEditarFuncionario;
     private javax.swing.JSpinner spinnerHoraInicioCadastrarFuncionario;
+    private javax.swing.JSpinner spinnerHoraInicioEditarFuncionario;
     private javax.swing.JSpinner spinnerMesCadastrarAgendamento;
     private javax.swing.JSpinner spinnerMesEditarAgendamento;
     private javax.swing.JSpinner spinnerMinutoCadastrarAgendamento;
     private javax.swing.JSpinner spinnerMinutoEditarAgendamento;
     private javax.swing.JSpinner spinnerMinutoFimCadastrarFuncionario;
+    private javax.swing.JSpinner spinnerMinutoFimEditarFuncionario;
     private javax.swing.JSpinner spinnerMinutoInicioCadastrarFuncionario;
+    private javax.swing.JSpinner spinnerMinutoInicioEditarFuncionario;
     private javax.swing.JTable tableAgendamentos;
     private javax.swing.JTable tableFuncionarios;
     private javax.swing.JTable tableSelectAnimalCadastrarAgendamento;
@@ -1747,10 +2059,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tableSelectServicoCadastrarAgendamento;
     private javax.swing.JTable tableSelectServicoEditarAgendamento;
     private javax.swing.JTextField textNomeCadastrarFuncionario;
+    private javax.swing.JTextField textNomeEditarFuncionario;
     private javax.swing.JTextField textPesquisaCpfCadastrarAgendamento;
     private javax.swing.JTextField textPesquisaCpfEditarAgendamento;
     private javax.swing.JPasswordField textSenhaCadastrarFuncionario;
+    private javax.swing.JPasswordField textSenhaEditarFuncionario;
     private javax.swing.JTextField textUsuarioCadastrarFuncionario;
+    private javax.swing.JTextField textUsuarioEditarFuncionario;
     private javax.swing.JLabel title;
     private javax.swing.JLabel title1;
     private javax.swing.JLabel title2;
@@ -1759,5 +2074,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title5;
     private javax.swing.JLabel title6;
     private javax.swing.JLabel title7;
+    private javax.swing.JLabel title8;
     // End of variables declaration//GEN-END:variables
 }
