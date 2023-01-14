@@ -219,7 +219,7 @@ public class ItemRep implements DataAcessObject<Item> {
                 ps.setString(8, s.getCategoria());  // categoria
                 ps.setString(9, null);              // utilidade
                 ps.setString(10, null);             // orientacao
-                ps.setString(11, null);             // especie
+                ps.setString(11, s.getEspecie());             // especie
                 ps.setString(12, null);             // cor
                 ps.setString(13, null);             // tamanho
                 ps.setString(14, s.getMaterial());             // material

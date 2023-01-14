@@ -16,6 +16,7 @@ public class CadastrarBrinquedo {
             
         Item i;
         i = new Brinquedo(estoque, fornecedor, id, nome, preco, tipo,disponivel,especie,material);
+        System.out.println(i);
         ItemRep ir = new ItemRep();
         ir.insertOne(i);
 

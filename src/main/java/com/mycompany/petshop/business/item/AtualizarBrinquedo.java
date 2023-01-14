@@ -16,6 +16,7 @@ public class AtualizarBrinquedo {
             
         Item i;
         i = new Brinquedo(estoque, fornecedor, id, nome, preco, tipo,disponivel,especie,material);
+        System.out.println(estoque + " - " + fornecedor+ " - " + id+ " - " + nome+ " - " + preco+ " - " + tipo+ " - " +disponivel+ " - " +especie+ " - " +material);
         ItemRep ir = new ItemRep();
         ir.update(i);
 

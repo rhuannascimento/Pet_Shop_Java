@@ -110,7 +110,7 @@ public class ItemCtrl {
 
     public void atualizarBrinquedo(int estoque, String fornecedor, int id, String nome, float preco, String tipo,
             boolean disponivel, String especie, String material) {
-
+        
         atualizarBrinquedo = new AtualizarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie,
                 material);
     }

@@ -19,6 +19,7 @@ import com.mycompany.petshop.model.classes.Racao;
 import com.mycompany.petshop.model.classes.Remedio;
 import com.mycompany.petshop.model.classes.Roupa;
 import com.mycompany.petshop.model.classes.Servico;
+import com.mycompany.petshop.repository.ItemRep;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -63,6 +64,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private Agendamento anterior;
     private Funcionario responsavel;
     private Servico sAnterior;
+    private Brinquedo brinquedoAnterior;
+    private Roupa roupaAnterior;
+    private Racao racaoAnterior;
+    private Remedio remedioAnterior;
     
     void inicializarTabelas(){
         tableAgendamentos.getTableHeader().setFont(new java.awt.Font("Liberation Sans", 0, 18));
@@ -401,6 +406,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         brinquedoCadastrarEspecie = new javax.swing.JTextField();
         jLabel87 = new javax.swing.JLabel();
         brinquedoCadastrarMaterial = new javax.swing.JTextField();
+        panelEditarBrinquedo = new javax.swing.JPanel();
+        title21 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        buttonCancelarCadastroAnimal5 = new javax.swing.JButton();
+        buttonEfetuarEditarAnimal2 = new javax.swing.JButton();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        brinquedoEditarEstoque = new javax.swing.JTextField();
+        brinquedoEditarFornecedor = new javax.swing.JTextField();
+        jLabel91 = new javax.swing.JLabel();
+        brinquedoEditarPreco = new javax.swing.JTextField();
+        brinquedoEditarNome = new javax.swing.JTextField();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        brinquedoEditarEspecie = new javax.swing.JTextField();
+        jLabel94 = new javax.swing.JLabel();
+        brinquedoEditarMaterial = new javax.swing.JTextField();
         panelRacao = new javax.swing.JPanel();
         title19 = new javax.swing.JLabel();
         jScrollPane16 = new javax.swing.JScrollPane();
@@ -2950,6 +2972,131 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         panelContent.add(panelCadastrarBrinquedo, "cadastrarBrinquedo");
 
+        title21.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        title21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title21.setText("Brinquedos");
+
+        jLabel88.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel88.setText("Editar Brinquedo");
+
+        buttonCancelarCadastroAnimal5.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonCancelarCadastroAnimal5.setForeground(new java.awt.Color(153, 0, 51));
+        buttonCancelarCadastroAnimal5.setText("Cancelar");
+        buttonCancelarCadastroAnimal5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroAnimal5ActionPerformed(evt);
+            }
+        });
+
+        buttonEfetuarEditarAnimal2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        buttonEfetuarEditarAnimal2.setForeground(new java.awt.Color(0, 153, 51));
+        buttonEfetuarEditarAnimal2.setText("Salvar");
+        buttonEfetuarEditarAnimal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEfetuarEditarAnimal2ActionPerformed(evt);
+            }
+        });
+
+        jLabel89.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel89.setText("Estoque");
+
+        jLabel90.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel90.setText("Fornecedor");
+
+        jLabel91.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel91.setText("Preço");
+
+        jLabel92.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel92.setText("Nome");
+
+        jLabel93.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel93.setText("Material");
+
+        jLabel94.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel94.setText("Especie");
+
+        javax.swing.GroupLayout panelEditarBrinquedoLayout = new javax.swing.GroupLayout(panelEditarBrinquedo);
+        panelEditarBrinquedo.setLayout(panelEditarBrinquedoLayout);
+        panelEditarBrinquedoLayout.setHorizontalGroup(
+            panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                        .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(title21, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
+                            .addComponent(jLabel88, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarBrinquedoLayout.createSequentialGroup()
+                        .addComponent(buttonCancelarCadastroAnimal5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonEfetuarEditarAnimal2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(brinquedoEditarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brinquedoEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelEditarBrinquedoLayout.setVerticalGroup(
+            panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(title21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                        .addComponent(jLabel92)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brinquedoEditarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel91)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brinquedoEditarPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                        .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonCancelarCadastroAnimal5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonEfetuarEditarAnimal2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                        .addGroup(panelEditarBrinquedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                                .addComponent(jLabel94)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoEditarEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel93)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoEditarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEditarBrinquedoLayout.createSequentialGroup()
+                                .addComponent(jLabel89)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoEditarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel90)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(brinquedoEditarFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        panelContent.add(panelEditarBrinquedo, "editarBrinquedo");
+
         title19.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
         title19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title19.setText("Mercadorias");
@@ -3575,7 +3722,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     
     private void loadTableBrinquedos(){
-        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Espécie", "Material"}, 0);
+        DefaultTableModel dtm = new DefaultTableModel(new String[] {"ID","Nome", "Preco", "Espécie", "Material", "Fornecedor"}, 0);
         
         ItemCtrl ic = new ItemCtrl();
         
@@ -3591,7 +3738,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     f.getNome(),
                     f.getPreco(),
                     f.getEspecie(),
-                    f.getMaterial()
+                    f.getMaterial(),
+                    f.getFornecedor()
                 });
             }
         }
@@ -4621,7 +4769,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonDeletarAgendamento4ActionPerformed
 
     private void buttonEditarAgendamento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarAgendamento4ActionPerformed
-        // TODO add your handling code here:
+        
+        int linhaSelecionada = tableBrinquedos.getSelectedRow();
+
+        int id = 0;
+        if (linhaSelecionada != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableBrinquedos.getModel();
+            id = (Integer) model.getValueAt(linhaSelecionada, 0);
+            
+            ItemCtrl fc = new ItemCtrl();
+            
+            this.brinquedoAnterior = (Brinquedo) fc.exibirProdutos(id);
+            
+            brinquedoEditarEspecie.setText(brinquedoAnterior.getEspecie());
+            brinquedoEditarEstoque.setText(brinquedoAnterior.getEstoque()+"");
+            brinquedoEditarFornecedor.setText(brinquedoAnterior.getFornecedor());
+            brinquedoEditarMaterial.setText(brinquedoAnterior.getMaterial());
+            brinquedoEditarNome.setText(brinquedoAnterior.getNome());
+            brinquedoEditarPreco.setText(brinquedoAnterior.getPreco()+"");
+            
+            layout.show(panelContent, "editarBrinquedo");
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_buttonEditarAgendamento4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -4714,15 +4887,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         ItemCtrl ir = new ItemCtrl();
-        int estoque = Integer.parseInt(brinquedoCadastrarEstoque.getText());
-        String fornecedor = brinquedoCadastrarFornecedor.getText();
+        int estoque = Integer.parseInt(brinquedoEditarEstoque.getText());
+        String fornecedor = brinquedoEditarFornecedor.getText();
         int id = 0;
-        String nome = brinquedoCadastrarNome.getText();
-        float preco = Float.parseFloat(brinquedoCadastrarPreco.getText());
+        String nome = brinquedoEditarNome.getText();
+        float preco = Float.parseFloat(brinquedoEditarPreco.getText());
         String tipo = "brinquedo";
         boolean disponivel = true;
-        String especie = brinquedoCadastrarEspecie.getText();
-        String material = brinquedoCadastrarMaterial.getText();
+        String especie = brinquedoEditarEspecie.getText();
+        String material = brinquedoEditarMaterial.getText();
         
         ir.cadastrarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie, material);
         
@@ -4732,6 +4905,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_buttonEfetuarEditarAnimal1ActionPerformed
+
+    private void buttonCancelarCadastroAnimal5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroAnimal5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCancelarCadastroAnimal5ActionPerformed
+
+    private void buttonEfetuarEditarAnimal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEfetuarEditarAnimal2ActionPerformed
+        // TODO add your handling code here:
+        
+        ItemCtrl ir = new ItemCtrl();
+        
+        int estoque = Integer.parseInt(brinquedoEditarEstoque.getText());
+        String fornecedor = brinquedoEditarFornecedor.getText();
+        int id = brinquedoAnterior.getId();
+        String nome = brinquedoEditarNome.getText();
+        float preco = Float.parseFloat(brinquedoEditarPreco.getText());
+        String tipo = "brinquedo";
+        boolean disponivel = true;
+        String especie = brinquedoEditarEspecie.getText();
+        String material = brinquedoEditarMaterial.getText();
+        
+        ir.atualizarBrinquedo(estoque, fornecedor, id, nome, preco, tipo, disponivel, especie, material);
+        
+        
+        
+        loadTableBrinquedos();
+        
+        layout.show(panelContent, "brinquedos");
+    }//GEN-LAST:event_buttonEfetuarEditarAnimal2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4793,6 +4994,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField brinquedoCadastrarMaterial;
     private javax.swing.JTextField brinquedoCadastrarNome;
     private javax.swing.JTextField brinquedoCadastrarPreco;
+    private javax.swing.JTextField brinquedoEditarEspecie;
+    private javax.swing.JTextField brinquedoEditarEstoque;
+    private javax.swing.JTextField brinquedoEditarFornecedor;
+    private javax.swing.JTextField brinquedoEditarMaterial;
+    private javax.swing.JTextField brinquedoEditarNome;
+    private javax.swing.JTextField brinquedoEditarPreco;
     private javax.swing.JButton buttonCadastrarAgendamento;
     private javax.swing.JButton buttonCadastrarAgendamento2;
     private javax.swing.JButton buttonCadastrarAgendamento3;
@@ -4808,6 +5015,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonCancelarCadastroAnimal2;
     private javax.swing.JButton buttonCancelarCadastroAnimal3;
     private javax.swing.JButton buttonCancelarCadastroAnimal4;
+    private javax.swing.JButton buttonCancelarCadastroAnimal5;
     private javax.swing.JButton buttonCancelarCadastroFuncionario;
     private javax.swing.JButton buttonCancelarCadastroFuncionario1;
     private javax.swing.JButton buttonCancelarCadastroFuncionario2;
@@ -4843,6 +5051,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton buttonEfetuarEditarAgendamento;
     private javax.swing.JButton buttonEfetuarEditarAnimal;
     private javax.swing.JButton buttonEfetuarEditarAnimal1;
+    private javax.swing.JButton buttonEfetuarEditarAnimal2;
     private javax.swing.JButton buttonEfetuarEditarFuncionario;
     private javax.swing.JButton buttonFuncionarios;
     private javax.swing.JButton buttonInicio;
@@ -4956,7 +5165,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -4992,6 +5208,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelContent;
     private javax.swing.JPanel panelEditarAgendamento;
     private javax.swing.JPanel panelEditarAnimal;
+    private javax.swing.JPanel panelEditarBrinquedo;
     private javax.swing.JPanel panelEditarCliente;
     private javax.swing.JPanel panelEditarFuncionario;
     private javax.swing.JPanel panelEditarServico;
@@ -5062,6 +5279,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel title19;
     private javax.swing.JLabel title2;
     private javax.swing.JLabel title20;
+    private javax.swing.JLabel title21;
     private javax.swing.JLabel title3;
     private javax.swing.JLabel title4;
     private javax.swing.JLabel title5;
