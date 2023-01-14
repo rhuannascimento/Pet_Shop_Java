@@ -23,7 +23,7 @@ public class LoginCtrl {
     public Funcionario fazerLogin(String username, String senha){
         
         RealizarLogin rl = new RealizarLogin(username, senha);
-        
+        System.out.println(username + " - " + senha);
         try{
             return rl.logar();
         }catch(Exception ex){

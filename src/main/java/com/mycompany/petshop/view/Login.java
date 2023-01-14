@@ -37,8 +37,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        
-        
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/petshop.png"))); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(240, 200));
 
@@ -140,18 +139,20 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        //Tela tela = new Tela(this.getUserLogin().getText());
+        // Tela tela = new Tela(this.getUserLogin().getText());
         // tela.renderiza();
-       
+
         LoginCtrl l = new LoginCtrl();
+
         
         Funcionario f = l.fazerLogin(userLogin.getText(), new String(password.getPassword()));
+
+        if(f.getCargo().equalsIgnoreCase("gerente") || f.getCargo().equalsIgnoreCase("funcionario")){  
+            TelaPrincipal.main(f);
+            this.dispose();
+        }
         
-        this.dispose();
-        
-        Tela t = new Tela(f);
-       
-        t.renderiza();
+
     }
 
     private void userLoginActionPerformed(java.awt.event.ActionEvent evt) {

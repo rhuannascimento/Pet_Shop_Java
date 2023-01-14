@@ -19,4 +19,12 @@ public class AtualizarRemedio {
        ItemRep ir = new ItemRep();
        ir.update(i);
     }
+    
+    public AtualizarRemedio(Remedio r){
+    
+       Item i;
+       i = r;
+       ItemRep ir = new ItemRep();
+       ir.update(i);
+    }
 }

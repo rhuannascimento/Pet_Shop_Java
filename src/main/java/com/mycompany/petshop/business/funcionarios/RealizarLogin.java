@@ -27,7 +27,7 @@ public class RealizarLogin {
     
     public Funcionario logar() throws FuncionarioExp{
         
-       /* FuncionarioRep fr = new FuncionarioRep();
+        FuncionarioRep fr = new FuncionarioRep();
         
         if(!fr.login(this.user, this.senha)){
          
@@ -37,11 +37,11 @@ public class RealizarLogin {
         
         BuscarFuncionario bf = new BuscarFuncionario(this.user);
         
-        Funcionario f = bf.getFuncionario();*/
+        Funcionario f = bf.getFuncionario();
         
-        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "gerente", "lc", "123");
+//        Funcionario l = new Funcionario(123, "Lucas", new Time(0, 0, 0), new Time(0, 0, 0), "gerente", "lc", "123");
         
-        return l;
+        return f;
     }
           
 }

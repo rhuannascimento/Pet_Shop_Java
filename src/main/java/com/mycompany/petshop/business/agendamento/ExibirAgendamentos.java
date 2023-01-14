@@ -13,7 +13,7 @@ public class ExibirAgendamentos {
 
         AgendamentoRep ar = new AgendamentoRep();
 
-        this.agendamentos = ar.getAll();
+        this.agendamentos = ar.getAllStartingToday();
 
     }
     

@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -54,7 +55,7 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
 
     @Override
     public boolean update(Agendamento valor) {
-        System.out.println("Atualizando o agendamento "+valor);
+        System.out.println("Atualizando o agendamento "+valor+", definindo os valores: "+valor);
         int affected = 0;
         
         try{
@@ -66,8 +67,8 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
             
             
             ps.setTimestamp(1, valor.getData_hora());
-            ps.setInt(1, valor.getAnimal().getId());
-            ps.setInt(1, valor.getServico().getId());
+            ps.setInt(2, valor.getAnimal().getId());
+            ps.setInt(3, valor.getServico().getId());
             ps.setInt(4, valor.getId());
             
             affected = ps.executeUpdate();
@@ -138,9 +139,51 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM agendamento";
+            String sql = "SELECT * FROM agendamento ORDER BY data_hora ASC";
             
             PreparedStatement ps = con.prepareStatement(sql);
+                        
+            ResultSet rs = ps.executeQuery();
+            
+            ClienteRep cr = new ClienteRep();
+            ItemRep ir = new ItemRep();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                Timestamp data_hora = rs.getTimestamp("data_hora");
+                int id_servico = rs.getInt("id_servico");
+                int id_animal = rs.getInt("id_animal");
+                
+                Animal a = (Animal) cr.getById(id_animal);
+                Servico s = (Servico) ir.getById(id_servico);
+                
+                Agendamento c = new Agendamento(id, data_hora, a, s);
+                lista.add(c);
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Agendamento> getAllStartingToday() {
+        System.out.println("Listando todos os agendamentos a partir de hoje");
+        ArrayList<Agendamento> lista = new ArrayList<Agendamento>();
+        
+        try{
+            Connection con = MyConnector.connect();
+            
+            String sql = "SELECT * FROM agendamento WHERE data_hora >= ? ORDER BY data_hora ASC";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            LocalDate today = LocalDate.now();
+            Timestamp inicio = new Timestamp(today.getYear(), today.getMonthValue(), today.getDayOfMonth(), 00, 00, 0, 0);
+            
+            ps.setTimestamp(1, inicio);
                         
             ResultSet rs = ps.executeQuery();
             
@@ -302,7 +345,7 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM agendamento where data_hora BETWEEN ? AND ?;";
+            String sql = "SELECT * FROM agendamento where data_hora BETWEEN ? AND ? ORDER BY data_hora ASC;";
             
             PreparedStatement ps = con.prepareStatement(sql);
                         
@@ -347,7 +390,7 @@ public class AgendamentoRep implements DataAcessObject<Agendamento>{
         try{
             Connection con = MyConnector.connect();
             
-            String sql = "SELECT * FROM agendamento where data_hora BETWEEN ? AND ?;";
+            String sql = "SELECT * FROM agendamento where data_hora BETWEEN ? AND ? ORDER BY data_hora ASC;";
             
             PreparedStatement ps = con.prepareStatement(sql);
                         

@@ -61,6 +61,12 @@ public class Agendamento {
         return data_hora;
     }
 
+    public String getDataHoraString() {
+        String s = "";
+        s = (String.format("%02d", this.data_hora.getDate()) + "/" + String.format("%02d", this.data_hora.getMonth())+ "/" + this.data_hora.getYear() + " " + this.data_hora.getHours()+ ":"+String.format("%02d", this.data_hora.getMinutes()));
+        return s;
+    }
+    
     public void setData_hora(Timestamp data_hora) {
         this.data_hora = data_hora;
     }
@@ -91,7 +97,7 @@ public class Agendamento {
 
     @Override
     public String toString() {
-        return "id - " + id + ", data_hora - " + data_hora + ", animal - " + animal + ", servico - " + servico;
+        return "id - " + id + ", data_hora - " + getDataHoraString() + ", animal - " + animal + ", servico - " + servico;
     }
 
     public void printAgendamento() {

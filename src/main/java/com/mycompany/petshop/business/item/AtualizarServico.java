@@ -23,6 +23,16 @@ public class AtualizarServico {
         ir.update(i);
         
     }
+    
+    public AtualizarServico(Servico s) {
+    
+        Item i = s;
+    
+        ItemRep ir = new ItemRep();
+        
+        ir.update(i);
+        
+    }
             
     
 }

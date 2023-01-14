@@ -16,4 +16,11 @@ public class AtualizarRacao {
         ItemRep ir = new ItemRep();
         ir.update(i);    
     }
+    
+    public AtualizarRacao(Racao r){
+        Item i;
+        i = r;
+        ItemRep ir = new ItemRep();
+        ir.update(i);    
+    }
 }

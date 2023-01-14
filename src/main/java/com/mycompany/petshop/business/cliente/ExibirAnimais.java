@@ -20,24 +20,20 @@ public class ExibirAnimais {
 
     public ExibirAnimais() throws ClienteExp {
         
-        animais = new ArrayList<Cliente>();
+        animais = new ArrayList<>();
+        
         ClienteRep cr = new ClienteRep();
-
-       
         ArrayList<Cliente> l = cr.getAll();
        
         if (!l.isEmpty()) {
             for (int i = 0; i < l.size(); i++) {
-
-         
-   
                 if (l.get(i) instanceof Animal) {
                     this.animais.add(l.get(i));
                 }
 
             }
         } else {
-            throw new ClienteExp("Não exitse clientes cadastrados!");
+            throw new ClienteExp("Não existem clientes cadastrados!");
         }
 
     }

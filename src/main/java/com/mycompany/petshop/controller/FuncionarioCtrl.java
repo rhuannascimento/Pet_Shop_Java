@@ -121,16 +121,36 @@ public class FuncionarioCtrl {
     public boolean atualizar(int id, String nome, String inicio, String fim, String cargo, String username,
             String password) {
                 
+        boolean res = false;
+        
         if(password != null && !password.equalsIgnoreCase("")){
-        Time startTime = Time.valueOf(inicio);
-        Time endTime = Time.valueOf(fim);
-        try {
-            Funcionario f = new Funcionario(id, nome, startTime, endTime, cargo, username, password);
-            atualizar = new AtualizarFuncionario(f, this.isGerente);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            Time startTime = Time.valueOf(inicio);
+            Time endTime = Time.valueOf(fim);
+            try {
+                Funcionario f = new Funcionario(id, nome, startTime, endTime, cargo, username, password);
+                atualizar = new AtualizarFuncionario(f, this.isGerente);
+                res = atualizar.status();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
+        return res;
+    }
+    
+    public Funcionario exibirPorId(int id){
+        
+        try{
+            this.exibir = new ExibirFuncionario();
+        }catch(Exception ex){
+                                   
         }
-        return atualizar.status();
+        
+        try{
+            return  exibir.porId(id);
+        }catch(Exception ex){
+            
+        }    
+         
+        return null;
     }
 }
